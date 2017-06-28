@@ -1,0 +1,24 @@
+{
+    "topicaEventAmplifyApp": {
+        "channelGroup" : {
+            "home": {
+                "title": "Channel Groups",
+                "createLabel": "Create a new Channel Group",
+                "createOrEditLabel": "Create or edit a Channel Group"
+            },
+            "created": "A new Channel Group is created with identifier {{ param }}",
+            "updated": "A Channel Group is updated with identifier {{ param }}",
+            "deleted": "A Channel Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Channel Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Channel Group"
+            },
+            "channelGroupType": "Channel Group Type",
+            "name": "Name",
+            "point": "Point",
+            "description": "Description"
+        }
+    }
+}

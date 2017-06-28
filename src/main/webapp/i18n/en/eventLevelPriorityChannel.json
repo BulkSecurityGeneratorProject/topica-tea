@@ -1,0 +1,22 @@
+{
+    "topicaEventAmplifyApp": {
+        "eventLevelPriorityChannel" : {
+            "home": {
+                "title": "Event Level Priority Channels",
+                "createLabel": "Create a new Event Level Priority Channel",
+                "createOrEditLabel": "Create or edit a Event Level Priority Channel"
+            },
+            "created": "A new Event Level Priority Channel is created with identifier {{ param }}",
+            "updated": "A Event Level Priority Channel is updated with identifier {{ param }}",
+            "deleted": "A Event Level Priority Channel is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Event Level Priority Channel {{ id }}?"
+            },
+            "detail": {
+                "title": "Event Level Priority Channel"
+            },
+            "isMeatContent": "Is Meat Content",
+            "eventLevel": "Event Level"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "topicaEventAmplifyApp": {
+        "ChannelGroupType" : {
+            "null": "",
+            "ROLE": "ROLE",
+            "INVITEE": "INVITEE",
+            "SCALE": "SCALE"
+        }
+    }
+}

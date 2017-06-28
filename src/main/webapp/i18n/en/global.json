@@ -7,6 +7,14 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "product": "Product",
+                "brandkey": "Brandkey",
+                "eventLevelPriorityChannel": "Event Level Priority Channel",
+                "eventLevelPriorityGroup": "Event Level Priority Group",
+                "brandkeyProduct": "Brandkey Product",
+                "channelGroup": "Channel Group",
+                "question": "Question",
+                "event": "Event",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "isMeatContent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "eventLevel",
+            "fieldType": "EventLevel",
+            "fieldValues": "E1,E2,E3,E4"
+        }
+    ],
+    "changelogDate": "20170628090210",
+    "entityTableName": "event_level_priority_channel",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

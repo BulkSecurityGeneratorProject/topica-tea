@@ -1,0 +1,11 @@
+{
+    "topicaEventAmplifyApp": {
+        "EventStatus" : {
+            "null": "",
+            "NEW": "NEW",
+            "PROCESS": "PROCESS",
+            "EDITOR": "EDITOR",
+            "APPROVAL": "APPROVAL"
+        }
+    }
+}

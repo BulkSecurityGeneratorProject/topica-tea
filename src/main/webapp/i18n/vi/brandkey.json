@@ -1,0 +1,22 @@
+{
+    "topicaEventAmplifyApp": {
+        "brandkey" : {
+            "home": {
+                "title": "Brandkeys",
+                "createLabel": "Thêm mới một Brandkey",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Brandkey"
+            },
+            "created": "Một Brandkey mới được tạo với định danh {{ param }}",
+            "updated": "Một Brandkey cập nhật với định danh {{ param }}",
+            "deleted": "Một Brandkey đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Brandkey {{ id }}?"
+            },
+            "detail": {
+                "title": "Brandkey"
+            },
+            "brandkeyName": "Brandkey Name",
+            "description": "Description"
+        }
+    }
+}

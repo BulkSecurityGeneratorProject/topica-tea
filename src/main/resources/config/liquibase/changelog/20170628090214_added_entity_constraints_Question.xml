@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Question.
+    -->
+    <changeSet id="20170628090214-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="question"
+                                 constraintName="fk_question_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="channel_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="invitee_id"
+                                 baseTableName="question"
+                                 constraintName="fk_question_invitee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="channel_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="scale_id"
+                                 baseTableName="question"
+                                 constraintName="fk_question_scale_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="channel_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="questions_id"
+                                 baseTableName="question_brandkeys"
+                                 constraintName="fk_question_brandkeys_questions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+        <addForeignKeyConstraint baseColumnNames="brandkeys_id"
+                                 baseTableName="question_brandkeys"
+                                 constraintName="fk_question_brandkeys_brandkeys_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brandkey"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,79 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEventLabel" data-translate="topicaEventAmplifyApp.event.home.createOrEditLabel">Create or edit a Event</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.event.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.event.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.eventStatus" for="field_eventStatus">Event Status</label>
+            <select class="form-control" name="eventStatus" ng-model="vm.event.eventStatus" id="field_eventStatus">
+                <option value="NEW" data-translate="topicaEventAmplifyApp.EventStatus.NEW">NEW</option>
+                <option value="PROCESS" data-translate="topicaEventAmplifyApp.EventStatus.PROCESS">PROCESS</option>
+                <option value="EDITOR" data-translate="topicaEventAmplifyApp.EventStatus.EDITOR">EDITOR</option>
+                <option value="APPROVAL" data-translate="topicaEventAmplifyApp.EventStatus.APPROVAL">APPROVAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.eventLevel" for="field_eventLevel">Event Level</label>
+            <select class="form-control" name="eventLevel" ng-model="vm.event.eventLevel" id="field_eventLevel">
+                <option value="E1" data-translate="topicaEventAmplifyApp.EventLevel.E1">E1</option>
+                <option value="E2" data-translate="topicaEventAmplifyApp.EventLevel.E2">E2</option>
+                <option value="E3" data-translate="topicaEventAmplifyApp.EventLevel.E3">E3</option>
+                <option value="E4" data-translate="topicaEventAmplifyApp.EventLevel.E4">E4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.amplifyType" for="field_amplifyType">Amplify Type</label>
+            <select class="form-control" name="amplifyType" ng-model="vm.event.amplifyType" id="field_amplifyType">
+                <option value="SHARE" data-translate="topicaEventAmplifyApp.AmplifyType.SHARE">SHARE</option>
+                <option value="SPONSOR" data-translate="topicaEventAmplifyApp.AmplifyType.SPONSOR">SPONSOR</option>
+                <option value="INJECT" data-translate="topicaEventAmplifyApp.AmplifyType.INJECT">INJECT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.priorityGroup" for="field_priorityGroup">Priority Group</label>
+            <select class="form-control" name="priorityGroup" ng-model="vm.event.priorityGroup" id="field_priorityGroup">
+                <option value="K0A" data-translate="topicaEventAmplifyApp.PriorityGroup.K0A">K0A</option>
+                <option value="K0B" data-translate="topicaEventAmplifyApp.PriorityGroup.K0B">K0B</option>
+                <option value="K1" data-translate="topicaEventAmplifyApp.PriorityGroup.K1">K1</option>
+                <option value="K2" data-translate="topicaEventAmplifyApp.PriorityGroup.K2">K2</option>
+                <option value="K3" data-translate="topicaEventAmplifyApp.PriorityGroup.K3">K3</option>
+                <option value="K4" data-translate="topicaEventAmplifyApp.PriorityGroup.K4">K4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.schedule" for="field_schedule">Schedule</label>
+                <div class="input-group">
+                    <input id="field_schedule" type="text" class="form-control" name="schedule" datetime-picker="{{dateformat}}" ng-model="vm.event.schedule" is-open="vm.datePickerOpenStatus.schedule"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('schedule')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.event.question" for="field_question">Question</label>
+            <select class="form-control" id="field_question" name="question" ng-model="vm.event.questionId" ng-options="question.id as question.id for question in vm.questions | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

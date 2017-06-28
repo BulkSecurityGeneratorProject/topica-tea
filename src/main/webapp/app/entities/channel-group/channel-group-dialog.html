@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myChannelGroupLabel" data-translate="topicaEventAmplifyApp.channelGroup.home.createOrEditLabel">Create or edit a Channel Group</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.channelGroup.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.channelGroup.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.channelGroup.channelGroupType" for="field_channelGroupType">Channel Group Type</label>
+            <select class="form-control" name="channelGroupType" ng-model="vm.channelGroup.channelGroupType" id="field_channelGroupType" required>
+                <option value="ROLE" data-translate="topicaEventAmplifyApp.ChannelGroupType.ROLE">ROLE</option>
+                <option value="INVITEE" data-translate="topicaEventAmplifyApp.ChannelGroupType.INVITEE">INVITEE</option>
+                <option value="SCALE" data-translate="topicaEventAmplifyApp.ChannelGroupType.SCALE">SCALE</option>
+            </select>
+            <div ng-show="editForm.channelGroupType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.channelGroupType.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.channelGroup.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.channelGroup.name"
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.channelGroup.point" for="field_point">Point</label>
+            <input type="number" class="form-control" name="point" id="field_point"
+                    ng-model="vm.channelGroup.point"
+                    required/>
+            <div ng-show="editForm.point.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.point.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.point.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.channelGroup.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.channelGroup.description"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

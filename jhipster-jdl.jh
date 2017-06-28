@@ -1,0 +1,100 @@
+
+enum EventStatus {
+	NEW, PROCESS, EDITOR, APPROVAL
+}
+
+enum EventLevel {
+	E1, E2, E3, E4
+}
+
+enum AmplifyType {
+	SHARE, SPONSOR, INJECT
+}
+
+enum ChannelGroupType {
+	ROLE, INVITEE, SCALE
+}
+
+enum PriorityGroup {
+	K0A, K0B, K1, K2, K3, K4
+}
+
+enum EventType {
+	CONFERENCE, WORKSHOP, CONTEST, BOOTCAMP, PARTY
+}
+
+entity Product {
+	productName String required,
+    description String
+}
+
+entity Brandkey {
+	brandkeyName String required,
+    description String
+}
+
+entity EventLevelPriorityChannel {
+	isMeatContent Boolean,
+    eventLevel EventLevel
+}
+
+entity EventLevelPriorityGroup {
+	isMeatContent Boolean,
+    eventLevel EventLevel required,
+    priorityGroup PriorityGroup required
+}
+
+entity BrandkeyProduct {
+}
+
+relationship OneToOne {
+	BrandkeyProduct{brandkey} to Brandkey,
+    BrandkeyProduct{product} to Product
+}
+
+entity ChannelGroup {
+	channelGroupType ChannelGroupType required,
+    name String required,
+    point Long required,
+    description String
+}
+
+entity Question {
+	isMeatContent Boolean,
+    eventType EventType,
+    amplifyType AmplifyType
+}
+
+relationship OneToOne {
+	Question{role} to ChannelGroup
+    , Question{invitee} to ChannelGroup
+    , Question{scale} to ChannelGroup
+}
+
+relationship ManyToMany {
+	Question{brandkeys} to Brandkey
+}
+
+entity Event {
+	eventStatus EventStatus,
+	eventLevel EventLevel,
+    amplifyType AmplifyType,
+    priorityGroup PriorityGroup,
+    schedule ZonedDateTime
+}
+
+relationship OneToOne {
+	Event{question} to Question
+}
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+service all with serviceImpl
+// Set an angular suffix
+//angularSuffix * with mySuffix

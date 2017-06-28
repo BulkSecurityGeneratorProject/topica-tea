@@ -1,0 +1,49 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.question.detail.title">Question</span> {{vm.question.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.question.isMeatContent">Is Meat Content</span></dt>
+        <dd>
+            <span>{{vm.question.isMeatContent}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.eventType">Event Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.EventType.' + vm.question.eventType}}">{{vm.question.eventType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.amplifyType">Amplify Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + vm.question.amplifyType}}">{{vm.question.amplifyType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.role">Role</span></dt>
+        <dd>
+            <a ui-sref="channel-group-detail({id:vm.question.roleId})">{{vm.question.roleId}}</a>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.invitee">Invitee</span></dt>
+        <dd>
+            <a ui-sref="channel-group-detail({id:vm.question.inviteeId})">{{vm.question.inviteeId}}</a>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.scale">Scale</span></dt>
+        <dd>
+            <a ui-sref="channel-group-detail({id:vm.question.scaleId})">{{vm.question.scaleId}}</a>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.question.brandkeys">Brandkeys</span></dt>
+        <dd>
+            <span ng-repeat="brandkeys in vm.question.brandkeys">
+                <a ui-sref="brandkey-detail({id: brandkeys.id})">{{brandkeys.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="question-detail.edit({id:vm.question.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

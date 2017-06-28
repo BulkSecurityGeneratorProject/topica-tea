@@ -1,0 +1,26 @@
+{
+    "topicaEventAmplifyApp": {
+        "event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "Thêm mới một Event",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Event"
+            },
+            "created": "Một Event mới được tạo với định danh {{ param }}",
+            "updated": "Một Event cập nhật với định danh {{ param }}",
+            "deleted": "Một Event đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "eventStatus": "Event Status",
+            "eventLevel": "Event Level",
+            "amplifyType": "Amplify Type",
+            "priorityGroup": "Priority Group",
+            "schedule": "Schedule",
+            "question": "Question"
+        }
+    }
+}

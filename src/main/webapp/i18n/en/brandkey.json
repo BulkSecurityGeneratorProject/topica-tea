@@ -1,0 +1,22 @@
+{
+    "topicaEventAmplifyApp": {
+        "brandkey" : {
+            "home": {
+                "title": "Brandkeys",
+                "createLabel": "Create a new Brandkey",
+                "createOrEditLabel": "Create or edit a Brandkey"
+            },
+            "created": "A new Brandkey is created with identifier {{ param }}",
+            "updated": "A Brandkey is updated with identifier {{ param }}",
+            "deleted": "A Brandkey is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Brandkey {{ id }}?"
+            },
+            "detail": {
+                "title": "Brandkey"
+            },
+            "brandkeyName": "Brandkey Name",
+            "description": "Description"
+        }
+    }
+}

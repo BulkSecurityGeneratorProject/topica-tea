@@ -1,0 +1,12 @@
+{
+    "topicaEventAmplifyApp": {
+        "EventType" : {
+            "null": "",
+            "CONFERENCE": "CONFERENCE",
+            "WORKSHOP": "WORKSHOP",
+            "CONTEST": "CONTEST",
+            "BOOTCAMP": "BOOTCAMP",
+            "PARTY": "PARTY"
+        }
+    }
+}

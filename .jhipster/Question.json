@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "role",
+            "otherEntityName": "channelGroup",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "question"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "invitee",
+            "otherEntityName": "channelGroup",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "question"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "scale",
+            "otherEntityName": "channelGroup",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "question"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "brandkeys",
+            "otherEntityName": "brandkey",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "isMeatContent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "eventType",
+            "fieldType": "EventType",
+            "fieldValues": "CONFERENCE,WORKSHOP,CONTEST,BOOTCAMP,PARTY"
+        },
+        {
+            "fieldName": "amplifyType",
+            "fieldType": "AmplifyType",
+            "fieldValues": "SHARE,SPONSOR,INJECT"
+        }
+    ],
+    "changelogDate": "20170628090214",
+    "entityTableName": "question",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

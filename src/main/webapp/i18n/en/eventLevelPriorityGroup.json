@@ -1,0 +1,23 @@
+{
+    "topicaEventAmplifyApp": {
+        "eventLevelPriorityGroup" : {
+            "home": {
+                "title": "Event Level Priority Groups",
+                "createLabel": "Create a new Event Level Priority Group",
+                "createOrEditLabel": "Create or edit a Event Level Priority Group"
+            },
+            "created": "A new Event Level Priority Group is created with identifier {{ param }}",
+            "updated": "A Event Level Priority Group is updated with identifier {{ param }}",
+            "deleted": "A Event Level Priority Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Event Level Priority Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Event Level Priority Group"
+            },
+            "isMeatContent": "Is Meat Content",
+            "eventLevel": "Event Level",
+            "priorityGroup": "Priority Group"
+        }
+    }
+}

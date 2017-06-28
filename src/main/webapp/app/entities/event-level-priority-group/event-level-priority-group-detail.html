@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.detail.title">Event Level Priority Group</span> {{vm.eventLevelPriorityGroup.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.isMeatContent">Is Meat Content</span></dt>
+        <dd>
+            <span>{{vm.eventLevelPriorityGroup.isMeatContent}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.eventLevel">Event Level</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.EventLevel.' + vm.eventLevelPriorityGroup.eventLevel}}">{{vm.eventLevelPriorityGroup.eventLevel}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.priorityGroup">Priority Group</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.PriorityGroup.' + vm.eventLevelPriorityGroup.priorityGroup}}">{{vm.eventLevelPriorityGroup.priorityGroup}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="event-level-priority-group-detail.edit({id:vm.eventLevelPriorityGroup.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

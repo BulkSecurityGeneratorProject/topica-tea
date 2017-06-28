@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.event.detail.title">Event</span> {{vm.event.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.EventStatus.' + vm.event.eventStatus}}">{{vm.event.eventStatus}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.eventLevel">Event Level</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.EventLevel.' + vm.event.eventLevel}}">{{vm.event.eventLevel}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.amplifyType">Amplify Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + vm.event.amplifyType}}">{{vm.event.amplifyType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.priorityGroup">Priority Group</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.PriorityGroup.' + vm.event.priorityGroup}}">{{vm.event.priorityGroup}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.schedule">Schedule</span></dt>
+        <dd>
+            <span>{{vm.event.schedule | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.question">Question</span></dt>
+        <dd>
+            <a ui-sref="question-detail({id:vm.event.questionId})">{{vm.event.questionId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="event-detail.edit({id:vm.event.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

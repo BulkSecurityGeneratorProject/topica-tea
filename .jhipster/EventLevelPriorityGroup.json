@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "isMeatContent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "eventLevel",
+            "fieldType": "EventLevel",
+            "fieldValues": "E1,E2,E3,E4",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "priorityGroup",
+            "fieldType": "PriorityGroup",
+            "fieldValues": "K0A,K0B,K1,K2,K3,K4",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170628090211",
+    "entityTableName": "event_level_priority_group",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "brandkey",
+            "otherEntityName": "brandkey",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "brandkeyProduct"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "brandkeyProduct"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170628090212",
+    "entityTableName": "brandkey_product",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,23 @@
+{
+    "topicaEventAmplifyApp": {
+        "eventLevelPriorityGroup" : {
+            "home": {
+                "title": "Event Level Priority Groups",
+                "createLabel": "Thêm mới một Event Level Priority Group",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Event Level Priority Group"
+            },
+            "created": "Một Event Level Priority Group mới được tạo với định danh {{ param }}",
+            "updated": "Một Event Level Priority Group cập nhật với định danh {{ param }}",
+            "deleted": "Một Event Level Priority Group đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Event Level Priority Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Event Level Priority Group"
+            },
+            "isMeatContent": "Is Meat Content",
+            "eventLevel": "Event Level",
+            "priorityGroup": "Priority Group"
+        }
+    }
+}

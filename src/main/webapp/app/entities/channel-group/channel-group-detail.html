@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.channelGroup.detail.title">Channel Group</span> {{vm.channelGroup.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.channelGroup.channelGroupType">Channel Group Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.ChannelGroupType.' + vm.channelGroup.channelGroupType}}">{{vm.channelGroup.channelGroupType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelGroup.name">Name</span></dt>
+        <dd>
+            <span>{{vm.channelGroup.name}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelGroup.point">Point</span></dt>
+        <dd>
+            <span>{{vm.channelGroup.point}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelGroup.description">Description</span></dt>
+        <dd>
+            <span>{{vm.channelGroup.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="channel-group-detail.edit({id:vm.channelGroup.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

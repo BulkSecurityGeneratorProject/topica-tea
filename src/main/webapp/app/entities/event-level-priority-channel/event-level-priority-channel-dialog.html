@@ -1,0 +1,40 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEventLevelPriorityChannelLabel" data-translate="topicaEventAmplifyApp.eventLevelPriorityChannel.home.createOrEditLabel">Create or edit a Event Level Priority Channel</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.eventLevelPriorityChannel.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.eventLevelPriorityChannel.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.eventLevelPriorityChannel.isMeatContent" for="field_isMeatContent">Is Meat Content</label>
+                <input type="checkbox" name="isMeatContent" id="field_isMeatContent"
+                          ng-model="vm.eventLevelPriorityChannel.isMeatContent"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.eventLevelPriorityChannel.eventLevel" for="field_eventLevel">Event Level</label>
+            <select class="form-control" name="eventLevel" ng-model="vm.eventLevelPriorityChannel.eventLevel" id="field_eventLevel">
+                <option value="E1" data-translate="topicaEventAmplifyApp.EventLevel.E1">E1</option>
+                <option value="E2" data-translate="topicaEventAmplifyApp.EventLevel.E2">E2</option>
+                <option value="E3" data-translate="topicaEventAmplifyApp.EventLevel.E3">E3</option>
+                <option value="E4" data-translate="topicaEventAmplifyApp.EventLevel.E4">E4</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
