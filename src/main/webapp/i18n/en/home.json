@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Welcome, Topica Event Amplify (TEA)!",
+        "subtitle": "This is your homepage",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        },
+        "question": "If you have any question on Topica Event Amplify (TEA):",
+        "link": {
+            "homepage": "Topica Event Amplify (TEA) homepage",
+            "stackoverflow": "Topica Event Amplify (TEA) on Stack Overflow",
+            "bugtracker": "Topica Event Amplify (TEA) bug tracker",
+            "chat": "Topica Event Amplify (TEA) public chat room",
+            "follow": "follow @java_hipster on Twitter"
+        },
+        "like": "If you like Topica Event Amplify (TEA), don't forget to give us a star on",
+        "github": "GitHub"
+    }
+}
