@@ -14,5 +14,28 @@
                                  referencedColumnNames="id"
                                  referencedTableName="question"/>
 
+        <addForeignKeyConstraint baseColumnNames="article_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_article_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="article"/>
+
+		<addForeignKeyConstraint baseColumnNames="created_user_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_created_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="approval_user_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_approval_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="manager_user_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_manager_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
     </changeSet>
 </databaseChangeLog>

@@ -132,6 +132,9 @@
                     resolve: {
                         entity: function () {
                             return {
+                                name: null,
+                                description: null,
+                                content: null,
                                 eventStatus: null,
                                 eventLevel: null,
                                 amplifyType: null,

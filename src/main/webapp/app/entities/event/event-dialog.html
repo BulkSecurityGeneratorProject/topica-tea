@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -12,6 +12,30 @@
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.event.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.event.name"
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.event.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.content" for="field_content">Content</label>
+            <input type="text" class="form-control" name="content" id="field_content"
+                    ng-model="vm.event.content"
+                    />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="topicaEventAmplifyApp.event.eventStatus" for="field_eventStatus">Event Status</label>
@@ -64,6 +88,12 @@
         <div class="form-group">
             <label data-translate="topicaEventAmplifyApp.event.question" for="field_question">Question</label>
             <select class="form-control" id="field_question" name="question" ng-model="vm.event.questionId" ng-options="question.id as question.id for question in vm.questions | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.event.article" for="field_article">Article</label>
+            <select class="form-control" id="field_article" name="article" ng-model="vm.event.articleId" ng-options="article.id as article.id for article in vm.articles | orderBy:'id'">
                 <option value=""></option>
             </select>
         </div>

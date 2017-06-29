@@ -49,6 +49,15 @@ import com.topica.tea.domain.enumeration.PriorityGroup;
 @SpringBootTest(classes = TopicaEventAmplifyApp.class)
 public class EventResourceIntTest {
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CONTENT = "AAAAAAAAAA";
+    private static final String UPDATED_CONTENT = "BBBBBBBBBB";
+
     private static final EventStatus DEFAULT_EVENT_STATUS = EventStatus.NEW;
     private static final EventStatus UPDATED_EVENT_STATUS = EventStatus.PROCESS;
 
@@ -107,6 +116,9 @@ public class EventResourceIntTest {
      */
     public static Event createEntity(EntityManager em) {
         Event event = new Event()
+            .name(DEFAULT_NAME)
+            .description(DEFAULT_DESCRIPTION)
+            .content(DEFAULT_CONTENT)
             .eventStatus(DEFAULT_EVENT_STATUS)
             .eventLevel(DEFAULT_EVENT_LEVEL)
             .amplifyType(DEFAULT_AMPLIFY_TYPE)
@@ -136,6 +148,9 @@ public class EventResourceIntTest {
         List<Event> eventList = eventRepository.findAll();
         assertThat(eventList).hasSize(databaseSizeBeforeCreate + 1);
         Event testEvent = eventList.get(eventList.size() - 1);
+        assertThat(testEvent.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testEvent.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testEvent.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testEvent.getEventStatus()).isEqualTo(DEFAULT_EVENT_STATUS);
         assertThat(testEvent.getEventLevel()).isEqualTo(DEFAULT_EVENT_LEVEL);
         assertThat(testEvent.getAmplifyType()).isEqualTo(DEFAULT_AMPLIFY_TYPE);
@@ -165,6 +180,25 @@ public class EventResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = eventRepository.findAll().size();
+        // set the field null
+        event.setName(null);
+
+        // Create the Event, which fails.
+        EventDTO eventDTO = eventMapper.toDto(event);
+
+        restEventMockMvc.perform(post("/api/events")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(eventDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Event> eventList = eventRepository.findAll();
+        assertThat(eventList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEvents() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
@@ -174,6 +208,9 @@ public class EventResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(event.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
             .andExpect(jsonPath("$.[*].eventStatus").value(hasItem(DEFAULT_EVENT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].eventLevel").value(hasItem(DEFAULT_EVENT_LEVEL.toString())))
             .andExpect(jsonPath("$.[*].amplifyType").value(hasItem(DEFAULT_AMPLIFY_TYPE.toString())))
@@ -192,6 +229,9 @@ public class EventResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(event.getId().intValue()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
             .andExpect(jsonPath("$.eventStatus").value(DEFAULT_EVENT_STATUS.toString()))
             .andExpect(jsonPath("$.eventLevel").value(DEFAULT_EVENT_LEVEL.toString()))
             .andExpect(jsonPath("$.amplifyType").value(DEFAULT_AMPLIFY_TYPE.toString()))
@@ -217,6 +257,9 @@ public class EventResourceIntTest {
         // Update the event
         Event updatedEvent = eventRepository.findOne(event.getId());
         updatedEvent
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION)
+            .content(UPDATED_CONTENT)
             .eventStatus(UPDATED_EVENT_STATUS)
             .eventLevel(UPDATED_EVENT_LEVEL)
             .amplifyType(UPDATED_AMPLIFY_TYPE)
@@ -233,6 +276,9 @@ public class EventResourceIntTest {
         List<Event> eventList = eventRepository.findAll();
         assertThat(eventList).hasSize(databaseSizeBeforeUpdate);
         Event testEvent = eventList.get(eventList.size() - 1);
+        assertThat(testEvent.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testEvent.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testEvent.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testEvent.getEventStatus()).isEqualTo(UPDATED_EVENT_STATUS);
         assertThat(testEvent.getEventLevel()).isEqualTo(UPDATED_EVENT_LEVEL);
         assertThat(testEvent.getAmplifyType()).isEqualTo(UPDATED_AMPLIFY_TYPE);

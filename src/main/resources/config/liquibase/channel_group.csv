@@ -1,0 +1,15 @@
+id;channel_group_type;name;point;description
+1;ROLE;Ban Tổ chức;70;
+2;ROLE;Nhà Tài Trợ;60;
+3;ROLE;Keynote;50;
+4;ROLE;Firesides;40;
+5;ROLE;Panelist;30;
+6;ROLE;bảo vệ chuyên môn;20;
+7;ROLE;tham dự;10;
+8;INVITEE;Các nguyên thủ quốc gia;40;
+9;INVITEE;Tổ chức lớn trên thế giới (Udacity, Cousera…);30;
+10;INVITEE;Lãnh đạo cấp cao của các tập đoàn lớn;20;
+11;INVITEE;GĐ, lãnh đạo công ty vừa và nhỏ;10;
+12;SCALE;Quốc tế;30;
+13;SCALE;Khu vực;20;
+14;SCALE;Trong nước;10;

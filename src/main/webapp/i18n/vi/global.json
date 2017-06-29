@@ -15,6 +15,20 @@
                 "channelGroup": "Channel Group",
                 "question": "Question",
                 "event": "Event",
+                "article": "Article",
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "category": {
+                "main": "Danh mục",
+                "product": "Sản phẩm",
+                "brandkey": "Từ khóa thương hiệu",
+                "eventLevelPriorityChannel": "Event Level - Kênh ưu tiên",
+                "eventLevelPriorityGroup": "Event Level - Nhóm ưu tiên",
+                "brandkeyProduct": "Thương hiệu - Sản phẩm",
+                "channelGroup": "Nhóm kênh",
+                "question": "Câu hỏi",
+                "event": "Sự kiện",
+                "article": "Bài viết",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

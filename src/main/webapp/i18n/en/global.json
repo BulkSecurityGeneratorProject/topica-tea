@@ -15,6 +15,20 @@
                 "channelGroup": "Channel Group",
                 "question": "Question",
                 "event": "Event",
+                "article": "Article",
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "category": {
+                "main": "Categories",
+                "product": "Product",
+                "brandkey": "Brandkey",
+                "eventLevelPriorityChannel": "Event Level Priority Channel",
+                "eventLevelPriorityGroup": "Event Level Priority Group",
+                "brandkeyProduct": "Brandkey Product",
+                "channelGroup": "Channel Group",
+                "question": "Question",
+                "event": "Event",
+                "article": "Article",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

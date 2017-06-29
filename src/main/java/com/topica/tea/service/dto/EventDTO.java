@@ -2,6 +2,7 @@ package com.topica.tea.service.dto;
 
 
 import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,13 @@ public class EventDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    private String name;
+
+    private String description;
+
+    private String content;
+
     private EventStatus eventStatus;
 
     private EventLevel eventLevel;
@@ -30,12 +38,38 @@ public class EventDTO implements Serializable {
 
     private Long questionId;
 
+    private Long articleId;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public EventStatus getEventStatus() {
@@ -86,6 +120,14 @@ public class EventDTO implements Serializable {
         this.questionId = questionId;
     }
 
+    public Long getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -111,6 +153,9 @@ public class EventDTO implements Serializable {
     public String toString() {
         return "EventDTO{" +
             "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", content='" + getContent() + "'" +
             ", eventStatus='" + getEventStatus() + "'" +
             ", eventLevel='" + getEventLevel() + "'" +
             ", amplifyType='" + getAmplifyType() + "'" +

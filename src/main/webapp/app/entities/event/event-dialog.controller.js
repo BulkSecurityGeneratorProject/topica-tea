@@ -5,9 +5,9 @@
         .module('topicaEventAmplifyApp')
         .controller('EventDialogController', EventDialogController);
 
-    EventDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Question'];
+    EventDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Question', 'Article'];
 
-    function EventDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Event, Question) {
+    function EventDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Event, Question, Article) {
         var vm = this;
 
         vm.event = entity;
@@ -23,6 +23,15 @@
             return Question.get({id : vm.event.questionId}).$promise;
         }).then(function(question) {
             vm.questions.push(question);
+        });
+        vm.articles = Article.query({filter: 'event-is-null'});
+        $q.all([vm.event.$promise, vm.articles.$promise]).then(function() {
+            if (!vm.event.articleId) {
+                return $q.reject();
+            }
+            return Article.get({id : vm.event.articleId}).$promise;
+        }).then(function(article) {
+            vm.articles.push(article);
         });
 
         $timeout(function (){

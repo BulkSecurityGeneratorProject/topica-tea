@@ -5,9 +5,9 @@
         .module('topicaEventAmplifyApp')
         .controller('EventDetailController', EventDetailController);
 
-    EventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Event', 'Question'];
+    EventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Event', 'Question', 'Article'];
 
-    function EventDetailController($scope, $rootScope, $stateParams, previousState, entity, Event, Question) {
+    function EventDetailController($scope, $rootScope, $stateParams, previousState, entity, Event, Question, Article) {
         var vm = this;
 
         vm.event = entity;

@@ -2,6 +2,7 @@ package com.topica.tea.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -27,6 +28,16 @@ public class Event implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "content")
+    private String content;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "event_status")
     private EventStatus eventStatus;
@@ -49,6 +60,22 @@ public class Event implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Question question;
+    
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User createdUser;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User approvalUser;
+    
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User managerUser;
+    
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Article article;
 
     public Long getId() {
         return id;
@@ -56,6 +83,45 @@ public class Event implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Event name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Event description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Event content(String content) {
+        this.content = content;
+        return this;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public EventStatus getEventStatus() {
@@ -136,6 +202,59 @@ public class Event implements Serializable {
         this.question = question;
     }
 
+    public Article getArticle() {
+        return article;
+    }
+
+    public Event article(Article article) {
+        this.article = article;
+        return this;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+    
+    // Custom
+    public User getCreatedUser() {
+        return createdUser;
+    }
+
+    public Event createdUser(User createdUser) {
+        this.createdUser = createdUser;
+        return this;
+    }
+
+    public void setCreatedUser(User createdUser) {
+        this.createdUser = createdUser;
+    }
+    
+    public User getApprovalUser() {
+        return approvalUser;
+    }
+
+    public Event approvalUser(User approvalUser) {
+        this.approvalUser = approvalUser;
+        return this;
+    }
+
+    public void setApprovalUser(User approvalUser) {
+        this.approvalUser = approvalUser;
+    }
+    
+    public User getManagerUser() {
+        return managerUser;
+    }
+
+    public Event managerUser(User managerUser) {
+        this.managerUser = managerUser;
+        return this;
+    }
+
+    public void setManagerUser(User managerUser) {
+        this.managerUser = managerUser;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -160,6 +279,9 @@ public class Event implements Serializable {
     public String toString() {
         return "Event{" +
             "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", content='" + getContent() + "'" +
             ", eventStatus='" + getEventStatus() + "'" +
             ", eventLevel='" + getEventLevel() + "'" +
             ", amplifyType='" + getAmplifyType() + "'" +

@@ -76,6 +76,9 @@ relationship ManyToMany {
 }
 
 entity Event {
+	name String required,
+    description String,
+    content String,
 	eventStatus EventStatus,
 	eventLevel EventLevel,
     amplifyType AmplifyType,
@@ -83,8 +86,16 @@ entity Event {
     schedule ZonedDateTime
 }
 
+entity Article {
+	title String required,
+    content String,
+    type Integer,
+	status Integer
+}
+
 relationship OneToOne {
 	Event{question} to Question
+    , Event{article} to Article
 }
 
 // Set pagination options

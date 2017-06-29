@@ -19,6 +19,5 @@
                                  constraintName="fk_brandkey_product_product_id"
                                  referencedColumnNames="id"
                                  referencedTableName="product"/>
-
     </changeSet>
 </databaseChangeLog>

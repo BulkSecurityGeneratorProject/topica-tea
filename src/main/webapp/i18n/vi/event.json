@@ -15,12 +15,16 @@
             "detail": {
                 "title": "Event"
             },
+            "name": "Name",
+            "description": "Description",
+            "content": "Content",
             "eventStatus": "Event Status",
             "eventLevel": "Event Level",
             "amplifyType": "Amplify Type",
             "priorityGroup": "Priority Group",
             "schedule": "Schedule",
-            "question": "Question"
+            "question": "Question",
+            "article": "Article"
         }
     }
 }

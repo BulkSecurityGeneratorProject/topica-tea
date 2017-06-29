@@ -8,9 +8,32 @@
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "event"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "article",
+            "otherEntityName": "article",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "event"
         }
     ],
     "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
         {
             "fieldName": "eventStatus",
             "fieldType": "EventStatus",

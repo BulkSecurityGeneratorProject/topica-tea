@@ -32,7 +32,7 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active">
+                        <!-- <li ui-sref-active="active">
                                 <a ui-sref="product" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.product">Product</span>
@@ -67,7 +67,7 @@
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.channelGroup">Channel Group</span>
                                 </a>
-                            </li>
+                            </li> -->
                         <li ui-sref-active="active">
                                 <a ui-sref="question" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
@@ -78,6 +78,12 @@
                                 <a ui-sref="event" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.event">Event</span>
+                                </a>
+                            </li>
+                        <li ui-sref-active="active">
+                                <a ui-sref="article" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.article">Article</span>
                                 </a>
                             </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
@@ -126,6 +132,55 @@
                         </li>
                     </ul>
                 </li>
+                <li ng-class="{active: vm.$state.includes('category')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
+					<a class="dropdown-toggle" uib-dropdown-toggle href="" id="category-menu">
+						<span>
+							<span class="glyphicon glyphicon-th-list"></span>
+							<span class="hidden-sm" data-translate="global.menu.category.main">
+								Categories
+							</span>
+							<b class="caret"></b>
+						</span>
+					</a>
+					<ul class="dropdown-menu" uib-dropdown-menu>
+						<li ui-sref-active="active">
+								<a ui-sref="product" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.product">Product</span>
+								</a>
+							</li>
+						<li ui-sref-active="active">
+								<a ui-sref="brandkey" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.brandkey">Brandkey</span>
+								</a>
+						</li>
+						<li ui-sref-active="active">
+								<a ui-sref="channel-group" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.channelGroup">Channel Group</span>
+								</a>
+						</li>
+						<!-- <li ui-sref-active="active">
+								<a ui-sref="event-level-priority-channel" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.eventLevelPriorityChannel">Event Level - Priority Channel</span>
+								</a>
+						</li> -->
+						<li ui-sref-active="active">
+								<a ui-sref="event-level-priority-group" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.eventLevelPriorityGroup">Event Level - Priority Group</span>
+								</a>
+						</li>
+						<li ui-sref-active="active">
+								<a ui-sref="brandkey-product" ng-click="vm.collapseNavbar()">
+									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+									<span data-translate="global.menu.category.brandkeyProduct">Brandkey Product</span>
+								</a>
+						</li>
+					</ul>
+				</li>
                 <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>

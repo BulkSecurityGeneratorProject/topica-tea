@@ -4,6 +4,18 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.event.name">Name</span></dt>
+        <dd>
+            <span>{{vm.event.name}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.description">Description</span></dt>
+        <dd>
+            <span>{{vm.event.description}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.content">Content</span></dt>
+        <dd>
+            <span>{{vm.event.content}}</span>
+        </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span></dt>
         <dd>
             <span data-translate="{{'topicaEventAmplifyApp.EventStatus.' + vm.event.eventStatus}}">{{vm.event.eventStatus}}</span>
@@ -27,6 +39,10 @@
         <dt><span data-translate="topicaEventAmplifyApp.event.question">Question</span></dt>
         <dd>
             <a ui-sref="question-detail({id:vm.event.questionId})">{{vm.event.questionId}}</a>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.article">Article</span></dt>
+        <dd>
+            <a ui-sref="article-detail({id:vm.event.articleId})">{{vm.event.articleId}}</a>
         </dd>
     </dl>
 
