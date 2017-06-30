@@ -5,6 +5,9 @@ import com.topica.tea.domain.BrandkeyProduct;
 import com.topica.tea.repository.BrandkeyProductRepository;
 import com.topica.tea.service.dto.BrandkeyProductDTO;
 import com.topica.tea.service.mapper.BrandkeyProductMapper;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -83,4 +86,19 @@ public class BrandkeyProductServiceImpl implements BrandkeyProductService{
         log.debug("Request to delete BrandkeyProduct : {}", id);
         brandkeyProductRepository.delete(id);
     }
+
+	@Override
+	public List<BrandkeyProductDTO> saveAll(List<BrandkeyProductDTO> brandkeyProductDTOs) {
+		log.debug("Request to saveAll list BrandkeyProduct : {}", brandkeyProductDTOs);
+		
+        List<BrandkeyProduct> brandkeyProducts = brandkeyProductMapper.toEntity(brandkeyProductDTOs);
+        brandkeyProducts = brandkeyProductRepository.save(brandkeyProducts);
+        return brandkeyProductMapper.toDto(brandkeyProducts);
+	}
+
+	@Override
+	public void deleteAll() {
+		log.debug("Request to deleteAll BrandkeyProducts");
+		brandkeyProductRepository.deleteAll();
+	}
 }

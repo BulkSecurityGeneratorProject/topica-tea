@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -13,19 +13,39 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.brandkeyProduct.id" readonly />
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.brandkeyProduct.brandkey_id" for="field_brandkey_id">Brandkey Id</label>
+            <input type="number" class="form-control" name="brandkey_id" id="field_brandkey_id"
+                    ng-model="vm.brandkeyProduct.brandkey_id"
+                    required/>
+            <div ng-show="editForm.brandkey_id.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.brandkey_id.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.brandkey_id.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.brandkeyProduct.product_id" for="field_product_id">Product Id</label>
+            <input type="number" class="form-control" name="product_id" id="field_product_id"
+                    ng-model="vm.brandkeyProduct.product_id"
+                    required/>
+            <div ng-show="editForm.product_id.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.product_id.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.product_id.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
 
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.brandkeyProduct.brandkey" for="field_brandkey">Brandkey</label>
-            <select class="form-control" id="field_brandkey" name="brandkey" ng-model="vm.brandkeyProduct.brandkeyId" ng-options="brandkey.id as brandkey.id for brandkey in vm.brandkeys | orderBy:'id'">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.brandkeyProduct.product" for="field_product">Product</label>
-            <select class="form-control" id="field_product" name="product" ng-model="vm.brandkeyProduct.productId" ng-options="product.id as product.id for product in vm.products | orderBy:'id'">
-                <option value=""></option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

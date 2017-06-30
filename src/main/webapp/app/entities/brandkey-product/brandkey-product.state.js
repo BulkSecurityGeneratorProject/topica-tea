@@ -124,6 +124,8 @@
                     resolve: {
                         entity: function () {
                             return {
+                                brandkey_id: null,
+                                product_id: null,
                                 id: null
                             };
                         }

@@ -20,7 +20,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'saveAll': {
+            	url : 'api/brandkey-products/save-all',
+            	method:'POST',
+            	isArray: true
+            },
         });
     }
 })();

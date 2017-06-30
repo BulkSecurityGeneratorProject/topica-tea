@@ -5,9 +5,9 @@
         .module('topicaEventAmplifyApp')
         .controller('BrandkeyProductDetailController', BrandkeyProductDetailController);
 
-    BrandkeyProductDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'BrandkeyProduct', 'Brandkey', 'Product'];
+    BrandkeyProductDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'BrandkeyProduct'];
 
-    function BrandkeyProductDetailController($scope, $rootScope, $stateParams, previousState, entity, BrandkeyProduct, Brandkey, Product) {
+    function BrandkeyProductDetailController($scope, $rootScope, $stateParams, previousState, entity, BrandkeyProduct) {
         var vm = this;
 
         vm.brandkeyProduct = entity;

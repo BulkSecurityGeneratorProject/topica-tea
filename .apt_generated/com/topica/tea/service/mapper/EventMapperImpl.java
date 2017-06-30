@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-06-29T10:40:29+0700",
+    date = "2017-06-30T09:10:40+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -24,28 +24,28 @@ public class EventMapperImpl implements EventMapper {
     private ArticleMapper articleMapper;
 
     @Override
-    public List<EventDTO> toDto(List<Event> arg0) {
-        if ( arg0 == null ) {
+    public List<Event> toEntity(List<EventDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<EventDTO> list = new ArrayList<EventDTO>();
-        for ( Event event : arg0 ) {
-            list.add( toDto( event ) );
+        List<Event> list = new ArrayList<Event>();
+        for ( EventDTO eventDTO : dtoList ) {
+            list.add( toEntity( eventDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public List<Event> toEntity(List<EventDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<EventDTO> toDto(List<Event> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<Event> list = new ArrayList<Event>();
-        for ( EventDTO eventDTO : arg0 ) {
-            list.add( toEntity( eventDTO ) );
+        List<EventDTO> list = new ArrayList<EventDTO>();
+        for ( Event event : entityList ) {
+            list.add( toDto( event ) );
         }
 
         return list;
@@ -61,13 +61,13 @@ public class EventMapperImpl implements EventMapper {
 
         eventDTO_.setArticleId( eventArticleId( event ) );
         eventDTO_.setQuestionId( eventQuestionId( event ) );
-        eventDTO_.setAmplifyType( event.getAmplifyType() );
-        eventDTO_.setContent( event.getContent() );
-        eventDTO_.setDescription( event.getDescription() );
-        eventDTO_.setEventLevel( event.getEventLevel() );
-        eventDTO_.setEventStatus( event.getEventStatus() );
         eventDTO_.setId( event.getId() );
         eventDTO_.setName( event.getName() );
+        eventDTO_.setDescription( event.getDescription() );
+        eventDTO_.setContent( event.getContent() );
+        eventDTO_.setEventStatus( event.getEventStatus() );
+        eventDTO_.setEventLevel( event.getEventLevel() );
+        eventDTO_.setAmplifyType( event.getAmplifyType() );
         eventDTO_.setPriorityGroup( event.getPriorityGroup() );
         eventDTO_.setSchedule( event.getSchedule() );
 
@@ -84,13 +84,13 @@ public class EventMapperImpl implements EventMapper {
 
         event_.setQuestion( questionMapper.fromId( eventDTO.getQuestionId() ) );
         event_.setArticle( articleMapper.fromId( eventDTO.getArticleId() ) );
-        event_.setAmplifyType( eventDTO.getAmplifyType() );
-        event_.setContent( eventDTO.getContent() );
-        event_.setDescription( eventDTO.getDescription() );
-        event_.setEventLevel( eventDTO.getEventLevel() );
-        event_.setEventStatus( eventDTO.getEventStatus() );
         event_.setId( eventDTO.getId() );
         event_.setName( eventDTO.getName() );
+        event_.setDescription( eventDTO.getDescription() );
+        event_.setContent( eventDTO.getContent() );
+        event_.setEventStatus( eventDTO.getEventStatus() );
+        event_.setEventLevel( eventDTO.getEventLevel() );
+        event_.setAmplifyType( eventDTO.getAmplifyType() );
         event_.setPriorityGroup( eventDTO.getPriorityGroup() );
         event_.setSchedule( eventDTO.getSchedule() );
 

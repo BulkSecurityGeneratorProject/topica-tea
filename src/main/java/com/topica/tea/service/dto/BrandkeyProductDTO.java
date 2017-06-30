@@ -1,9 +1,8 @@
 package com.topica.tea.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -13,9 +12,11 @@ public class BrandkeyProductDTO implements Serializable {
 
     private Long id;
 
-    private Long brandkeyId;
+    @NotNull
+    private Long brandkey_id;
 
-    private Long productId;
+    @NotNull
+    private Long product_id;
 
     public Long getId() {
         return id;
@@ -25,20 +26,20 @@ public class BrandkeyProductDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getBrandkeyId() {
-        return brandkeyId;
+    public Long getBrandkey_id() {
+        return brandkey_id;
     }
 
-    public void setBrandkeyId(Long brandkeyId) {
-        this.brandkeyId = brandkeyId;
+    public void setBrandkey_id(Long brandkey_id) {
+        this.brandkey_id = brandkey_id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getProduct_id() {
+        return product_id;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct_id(Long product_id) {
+        this.product_id = product_id;
     }
 
     @Override
@@ -66,6 +67,8 @@ public class BrandkeyProductDTO implements Serializable {
     public String toString() {
         return "BrandkeyProductDTO{" +
             "id=" + getId() +
+            ", brandkey_id='" + getBrandkey_id() + "'" +
+            ", product_id='" + getProduct_id() + "'" +
             "}";
     }
 }

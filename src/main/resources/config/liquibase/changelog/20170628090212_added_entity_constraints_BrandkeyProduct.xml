@@ -8,7 +8,7 @@
     -->
     <changeSet id="20170628090212-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="brandkey_id"
+        <!-- <addForeignKeyConstraint baseColumnNames="brandkey_id"
                                  baseTableName="brandkey_product"
                                  constraintName="fk_brandkey_product_brandkey_id"
                                  referencedColumnNames="id"
@@ -18,6 +18,6 @@
                                  baseTableName="brandkey_product"
                                  constraintName="fk_brandkey_product_product_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="product"/>
+                                 referencedTableName="product"/> -->
     </changeSet>
 </databaseChangeLog>

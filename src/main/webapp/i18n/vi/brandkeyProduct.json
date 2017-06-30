@@ -15,8 +15,9 @@
             "detail": {
                 "title": "Brandkey Product"
             },
-            "brandkey": "Brandkey",
-            "product": "Product"
+            "brandkey_id": "Brandkey Id",
+            "product_id": "Product Id",
+            "save-all": "Lưu cấu hình"
         }
     }
 }

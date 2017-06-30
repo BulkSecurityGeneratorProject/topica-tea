@@ -2,6 +2,7 @@ package com.topica.tea.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -18,13 +19,13 @@ public class BrandkeyProduct implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Brandkey brandkey;
+    @NotNull
+    @Column(name = "brandkey_id", nullable = false)
+    private Long brandkey_id;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Product product;
+    @NotNull
+    @Column(name = "product_id", nullable = false)
+    private Long product_id;
 
     public Long getId() {
         return id;
@@ -34,30 +35,30 @@ public class BrandkeyProduct implements Serializable {
         this.id = id;
     }
 
-    public Brandkey getBrandkey() {
-        return brandkey;
+    public Long getBrandkey_id() {
+        return brandkey_id;
     }
 
-    public BrandkeyProduct brandkey(Brandkey brandkey) {
-        this.brandkey = brandkey;
+    public BrandkeyProduct brandkey_id(Long brandkey_id) {
+        this.brandkey_id = brandkey_id;
         return this;
     }
 
-    public void setBrandkey(Brandkey brandkey) {
-        this.brandkey = brandkey;
+    public void setBrandkey_id(Long brandkey_id) {
+        this.brandkey_id = brandkey_id;
     }
 
-    public Product getProduct() {
-        return product;
+    public Long getProduct_id() {
+        return product_id;
     }
 
-    public BrandkeyProduct product(Product product) {
-        this.product = product;
+    public BrandkeyProduct product_id(Long product_id) {
+        this.product_id = product_id;
         return this;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct_id(Long product_id) {
+        this.product_id = product_id;
     }
 
     @Override
@@ -84,6 +85,8 @@ public class BrandkeyProduct implements Serializable {
     public String toString() {
         return "BrandkeyProduct{" +
             "id=" + getId() +
+            ", brandkey_id='" + getBrandkey_id() + "'" +
+            ", product_id='" + getProduct_id() + "'" +
             "}";
     }
 }

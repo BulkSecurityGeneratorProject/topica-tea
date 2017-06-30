@@ -1,27 +1,25 @@
 {
     "fluentMethods": true,
-    "relationships": [
+    "relationships": [],
+    "fields": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "brandkey",
-            "otherEntityName": "brandkey",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "brandkeyProduct"
+            "fieldName": "brandkey_id",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "product",
-            "otherEntityName": "product",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "brandkeyProduct"
+            "fieldName": "product_id",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "fields": [],
     "changelogDate": "20170628090212",
-    "entityTableName": "brandkey_product",
     "dto": "mapstruct",
-    "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "brandkey_product",
+    "pagination": "pagination"
 }

@@ -1,6 +1,9 @@
 package com.topica.tea.service;
 
 import com.topica.tea.service.dto.BrandkeyProductDTO;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,6 +12,14 @@ import org.springframework.data.domain.Pageable;
  */
 public interface BrandkeyProductService {
 
+	/**
+     * Save a list brandkeyProducts.
+     *
+     * @param List<brandkeyProductDTO> the entitys to save
+     * @return the persisted entity
+     */
+	List<BrandkeyProductDTO> saveAll(List<BrandkeyProductDTO> brandkeyProductDTOs);
+    
     /**
      * Save a brandkeyProduct.
      *
@@ -39,4 +50,10 @@ public interface BrandkeyProductService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    /**
+     *  Delete all brandkeyProducts.
+     *
+     */
+    void deleteAll();
 }

@@ -5,32 +5,14 @@
         .module('topicaEventAmplifyApp')
         .controller('BrandkeyProductDialogController', BrandkeyProductDialogController);
 
-    BrandkeyProductDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'BrandkeyProduct', 'Brandkey', 'Product'];
+    BrandkeyProductDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'BrandkeyProduct'];
 
-    function BrandkeyProductDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, BrandkeyProduct, Brandkey, Product) {
+    function BrandkeyProductDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, BrandkeyProduct) {
         var vm = this;
 
         vm.brandkeyProduct = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.brandkeys = Brandkey.query({filter: 'brandkeyproduct-is-null'});
-        $q.all([vm.brandkeyProduct.$promise, vm.brandkeys.$promise]).then(function() {
-            if (!vm.brandkeyProduct.brandkeyId) {
-                return $q.reject();
-            }
-            return Brandkey.get({id : vm.brandkeyProduct.brandkeyId}).$promise;
-        }).then(function(brandkey) {
-            vm.brandkeys.push(brandkey);
-        });
-        vm.products = Product.query({filter: 'brandkeyproduct-is-null'});
-        $q.all([vm.brandkeyProduct.$promise, vm.products.$promise]).then(function() {
-            if (!vm.brandkeyProduct.productId) {
-                return $q.reject();
-            }
-            return Product.get({id : vm.brandkeyProduct.productId}).$promise;
-        }).then(function(product) {
-            vm.products.push(product);
-        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

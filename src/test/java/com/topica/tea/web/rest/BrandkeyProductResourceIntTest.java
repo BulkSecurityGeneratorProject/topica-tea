@@ -40,6 +40,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TopicaEventAmplifyApp.class)
 public class BrandkeyProductResourceIntTest {
 
+    private static final Long DEFAULT_BRANDKEY_ID = 1L;
+    private static final Long UPDATED_BRANDKEY_ID = 2L;
+
+    private static final Long DEFAULT_PRODUCT_ID = 1L;
+    private static final Long UPDATED_PRODUCT_ID = 2L;
+
     @Autowired
     private BrandkeyProductRepository brandkeyProductRepository;
 
@@ -82,7 +88,9 @@ public class BrandkeyProductResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static BrandkeyProduct createEntity(EntityManager em) {
-        BrandkeyProduct brandkeyProduct = new BrandkeyProduct();
+        BrandkeyProduct brandkeyProduct = new BrandkeyProduct()
+            .brandkey_id(DEFAULT_BRANDKEY_ID)
+            .product_id(DEFAULT_PRODUCT_ID);
         return brandkeyProduct;
     }
 
@@ -107,6 +115,8 @@ public class BrandkeyProductResourceIntTest {
         List<BrandkeyProduct> brandkeyProductList = brandkeyProductRepository.findAll();
         assertThat(brandkeyProductList).hasSize(databaseSizeBeforeCreate + 1);
         BrandkeyProduct testBrandkeyProduct = brandkeyProductList.get(brandkeyProductList.size() - 1);
+        assertThat(testBrandkeyProduct.getBrandkey_id()).isEqualTo(DEFAULT_BRANDKEY_ID);
+        assertThat(testBrandkeyProduct.getProduct_id()).isEqualTo(DEFAULT_PRODUCT_ID);
     }
 
     @Test
@@ -131,6 +141,44 @@ public class BrandkeyProductResourceIntTest {
 
     @Test
     @Transactional
+    public void checkBrandkey_idIsRequired() throws Exception {
+        int databaseSizeBeforeTest = brandkeyProductRepository.findAll().size();
+        // set the field null
+        brandkeyProduct.setBrandkey_id(null);
+
+        // Create the BrandkeyProduct, which fails.
+        BrandkeyProductDTO brandkeyProductDTO = brandkeyProductMapper.toDto(brandkeyProduct);
+
+        restBrandkeyProductMockMvc.perform(post("/api/brandkey-products")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(brandkeyProductDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BrandkeyProduct> brandkeyProductList = brandkeyProductRepository.findAll();
+        assertThat(brandkeyProductList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkProduct_idIsRequired() throws Exception {
+        int databaseSizeBeforeTest = brandkeyProductRepository.findAll().size();
+        // set the field null
+        brandkeyProduct.setProduct_id(null);
+
+        // Create the BrandkeyProduct, which fails.
+        BrandkeyProductDTO brandkeyProductDTO = brandkeyProductMapper.toDto(brandkeyProduct);
+
+        restBrandkeyProductMockMvc.perform(post("/api/brandkey-products")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(brandkeyProductDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BrandkeyProduct> brandkeyProductList = brandkeyProductRepository.findAll();
+        assertThat(brandkeyProductList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBrandkeyProducts() throws Exception {
         // Initialize the database
         brandkeyProductRepository.saveAndFlush(brandkeyProduct);
@@ -139,7 +187,9 @@ public class BrandkeyProductResourceIntTest {
         restBrandkeyProductMockMvc.perform(get("/api/brandkey-products?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(brandkeyProduct.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(brandkeyProduct.getId().intValue())))
+            .andExpect(jsonPath("$.[*].brandkey_id").value(hasItem(DEFAULT_BRANDKEY_ID.intValue())))
+            .andExpect(jsonPath("$.[*].product_id").value(hasItem(DEFAULT_PRODUCT_ID.intValue())));
     }
 
     @Test
@@ -152,7 +202,9 @@ public class BrandkeyProductResourceIntTest {
         restBrandkeyProductMockMvc.perform(get("/api/brandkey-products/{id}", brandkeyProduct.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(brandkeyProduct.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(brandkeyProduct.getId().intValue()))
+            .andExpect(jsonPath("$.brandkey_id").value(DEFAULT_BRANDKEY_ID.intValue()))
+            .andExpect(jsonPath("$.product_id").value(DEFAULT_PRODUCT_ID.intValue()));
     }
 
     @Test
@@ -172,6 +224,9 @@ public class BrandkeyProductResourceIntTest {
 
         // Update the brandkeyProduct
         BrandkeyProduct updatedBrandkeyProduct = brandkeyProductRepository.findOne(brandkeyProduct.getId());
+        updatedBrandkeyProduct
+            .brandkey_id(UPDATED_BRANDKEY_ID)
+            .product_id(UPDATED_PRODUCT_ID);
         BrandkeyProductDTO brandkeyProductDTO = brandkeyProductMapper.toDto(updatedBrandkeyProduct);
 
         restBrandkeyProductMockMvc.perform(put("/api/brandkey-products")
@@ -183,6 +238,8 @@ public class BrandkeyProductResourceIntTest {
         List<BrandkeyProduct> brandkeyProductList = brandkeyProductRepository.findAll();
         assertThat(brandkeyProductList).hasSize(databaseSizeBeforeUpdate);
         BrandkeyProduct testBrandkeyProduct = brandkeyProductList.get(brandkeyProductList.size() - 1);
+        assertThat(testBrandkeyProduct.getBrandkey_id()).isEqualTo(UPDATED_BRANDKEY_ID);
+        assertThat(testBrandkeyProduct.getProduct_id()).isEqualTo(UPDATED_PRODUCT_ID);
     }
 
     @Test

@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -40,6 +41,30 @@ public class BrandkeyProductResource {
     }
 
     /**
+     * POST  /brandkey-products/save-all : Create all brandkeyProduct.
+     *
+     * @param List<brandkeyProductDTO> the list brandkeyProductDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new brandkeyProductDTO, or with status 400 (Bad Request) if the brandkeyProduct has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/brandkey-products/save-all")
+    @Timed
+    public ResponseEntity<List<BrandkeyProductDTO>> createAllBrandkeyProduct(@Valid @RequestBody List<BrandkeyProductDTO> brandkeyProductDTOs) throws URISyntaxException {
+        log.debug("REST request to save BrandkeyProduct : {}", brandkeyProductDTOs);
+        if (brandkeyProductDTOs == null || brandkeyProductDTOs.size() == 0) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "List brandkeyProduct cannot empty")).body(null);
+        }
+        // Remove all
+        brandkeyProductService.deleteAll();
+        
+        // Add all new
+        List<BrandkeyProductDTO> result = brandkeyProductService.saveAll(brandkeyProductDTOs);
+        return ResponseEntity.created(new URI("/api/brandkey-products/save-all"))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, ""))
+            .body(result);
+    }
+    
+    /**
      * POST  /brandkey-products : Create a new brandkeyProduct.
      *
      * @param brandkeyProductDTO the brandkeyProductDTO to create
@@ -48,7 +73,7 @@ public class BrandkeyProductResource {
      */
     @PostMapping("/brandkey-products")
     @Timed
-    public ResponseEntity<BrandkeyProductDTO> createBrandkeyProduct(@RequestBody BrandkeyProductDTO brandkeyProductDTO) throws URISyntaxException {
+    public ResponseEntity<BrandkeyProductDTO> createBrandkeyProduct(@Valid @RequestBody BrandkeyProductDTO brandkeyProductDTO) throws URISyntaxException {
         log.debug("REST request to save BrandkeyProduct : {}", brandkeyProductDTO);
         if (brandkeyProductDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new brandkeyProduct cannot already have an ID")).body(null);
@@ -70,7 +95,7 @@ public class BrandkeyProductResource {
      */
     @PutMapping("/brandkey-products")
     @Timed
-    public ResponseEntity<BrandkeyProductDTO> updateBrandkeyProduct(@RequestBody BrandkeyProductDTO brandkeyProductDTO) throws URISyntaxException {
+    public ResponseEntity<BrandkeyProductDTO> updateBrandkeyProduct(@Valid @RequestBody BrandkeyProductDTO brandkeyProductDTO) throws URISyntaxException {
         log.debug("REST request to update BrandkeyProduct : {}", brandkeyProductDTO);
         if (brandkeyProductDTO.getId() == null) {
             return createBrandkeyProduct(brandkeyProductDTO);
