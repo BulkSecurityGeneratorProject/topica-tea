@@ -26,7 +26,7 @@
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
                             <span class="hidden-sm" data-translate="global.menu.entities.main">
-                                Entities
+                                Event
                             </span>
                             <b class="caret"></b>
                         </span>
@@ -80,7 +80,7 @@
                                     <span data-translate="global.menu.entities.event">Event</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_WRITER">
                                 <a ui-sref="article" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.article">Article</span>
@@ -178,6 +178,12 @@
 									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
 									<span data-translate="global.menu.category.brandkeyProduct">Brandkey Product</span>
 								</a>
+						</li>
+						<li ui-sref-active="active">
+                                <a ui-sref="schedule" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.category.schedule">Schedule</span>
+                                </a>
 						</li>
 					</ul>
 				</li>

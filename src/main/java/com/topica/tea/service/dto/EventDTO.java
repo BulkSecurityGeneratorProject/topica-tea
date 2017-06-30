@@ -2,6 +2,9 @@ package com.topica.tea.service.dto;
 
 
 import java.time.ZonedDateTime;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -9,6 +12,7 @@ import java.util.Set;
 import java.util.Objects;
 import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.domain.enumeration.EventLevel;
+import com.topica.tea.domain.User;
 import com.topica.tea.domain.enumeration.AmplifyType;
 import com.topica.tea.domain.enumeration.PriorityGroup;
 
@@ -36,9 +40,17 @@ public class EventDTO implements Serializable {
 
     private ZonedDateTime schedule;
 
+    private QuestionDTO question;
+    
     private Long questionId;
 
     private Long articleId;
+    
+    private Long createdUserId;
+
+    private Long approvalUserId;
+    
+    private Long managerUserId;
 
     public Long getId() {
         return id;
@@ -163,4 +175,36 @@ public class EventDTO implements Serializable {
             ", schedule='" + getSchedule() + "'" +
             "}";
     }
+
+	public Long getCreatedUserId() {
+		return createdUserId;
+	}
+
+	public void setCreatedUserId(Long createdUserId) {
+		this.createdUserId = createdUserId;
+	}
+
+	public Long getApprovalUserId() {
+		return approvalUserId;
+	}
+
+	public void setApprovalUserId(Long approvalUserId) {
+		this.approvalUserId = approvalUserId;
+	}
+
+	public Long getManagerUserId() {
+		return managerUserId;
+	}
+
+	public void setManagerUserId(Long managerUserId) {
+		this.managerUserId = managerUserId;
+	}
+
+	public QuestionDTO getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(QuestionDTO question) {
+		this.question = question;
+	}
 }

@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myScheduleLabel" data-translate="topicaEventAmplifyApp.schedule.home.createOrEditLabel">Create or edit a Schedule</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.schedule.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.schedule.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.schedule.dayOfWeek" for="field_dayOfWeek">Day Of Week</label>
+            <select class="form-control" name="dayOfWeek" ng-model="vm.schedule.dayOfWeek" id="field_dayOfWeek" required>
+                <option value="MON" data-translate="topicaEventAmplifyApp.DayOfWeek.MON">MON</option>
+                <option value="TUE" data-translate="topicaEventAmplifyApp.DayOfWeek.TUE">TUE</option>
+                <option value="WED" data-translate="topicaEventAmplifyApp.DayOfWeek.WED">WED</option>
+                <option value="THU" data-translate="topicaEventAmplifyApp.DayOfWeek.THU">THU</option>
+                <option value="FRI" data-translate="topicaEventAmplifyApp.DayOfWeek.FRI">FRI</option>
+                <option value="SAT" data-translate="topicaEventAmplifyApp.DayOfWeek.SAT">SAT</option>
+                <option value="SUN" data-translate="topicaEventAmplifyApp.DayOfWeek.SUN">SUN</option>
+            </select>
+            <div ng-show="editForm.dayOfWeek.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dayOfWeek.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.schedule.timeZone" for="field_timeZone">Time Zone</label>
+            <input type="number" class="form-control" name="timeZone" id="field_timeZone"
+                    ng-model="vm.schedule.timeZone"
+                    required/>
+            <div ng-show="editForm.timeZone.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.timeZone.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.timeZone.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

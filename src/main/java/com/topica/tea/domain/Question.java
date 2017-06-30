@@ -36,15 +36,15 @@ public class Question implements Serializable {
     private AmplifyType amplifyType;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private ChannelGroup role;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private ChannelGroup invitee;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private ChannelGroup scale;
 
     @ManyToMany

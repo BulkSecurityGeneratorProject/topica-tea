@@ -1,9 +1,14 @@
 package com.topica.tea.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.topica.tea.domain.User;
+import com.topica.tea.security.SecurityUtils;
+import com.topica.tea.service.EventService;
 import com.topica.tea.service.QuestionService;
+import com.topica.tea.service.UserService;
 import com.topica.tea.web.rest.util.HeaderUtil;
 import com.topica.tea.web.rest.util.PaginationUtil;
+import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.dto.QuestionDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -34,9 +39,15 @@ public class QuestionResource {
     private static final String ENTITY_NAME = "question";
 
     private final QuestionService questionService;
+    
+    private final UserService userService;
+    
+    private final EventService eventService;
 
-    public QuestionResource(QuestionService questionService) {
+    public QuestionResource(QuestionService questionService, UserService userService, EventService eventService) {
         this.questionService = questionService;
+        this.userService = userService;
+        this.eventService = eventService;
     }
 
     /**
@@ -50,10 +61,22 @@ public class QuestionResource {
     @Timed
     public ResponseEntity<QuestionDTO> createQuestion(@RequestBody QuestionDTO questionDTO) throws URISyntaxException {
         log.debug("REST request to save Question : {}", questionDTO);
+        // Find user login
+        String username = SecurityUtils.getCurrentUserLogin();
+        Optional<User> userOpt = userService.getUserWithAuthoritiesByLogin(username);
+        User user = userOpt.get();
+        
         if (questionDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new question cannot already have an ID")).body(null);
         }
         QuestionDTO result = questionService.save(questionDTO);
+        
+        // Create event
+        EventDTO eventDTO = new EventDTO();
+        eventDTO.setQuestion(result);
+        eventDTO.setCreatedUserId(user.getId());
+        eventService.save(eventDTO);
+                
         return ResponseEntity.created(new URI("/api/questions/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

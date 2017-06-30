@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/question?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
                 pageTitle: 'topicaEventAmplifyApp.question.home.title'
             },
             views: {
@@ -57,7 +57,7 @@
             parent: 'question',
             url: '/question/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
                 pageTitle: 'topicaEventAmplifyApp.question.detail.title'
             },
             views: {
@@ -91,7 +91,7 @@
             parent: 'question-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -116,7 +116,7 @@
             parent: 'question',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -146,7 +146,7 @@
             parent: 'question',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -171,7 +171,7 @@
             parent: 'question',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

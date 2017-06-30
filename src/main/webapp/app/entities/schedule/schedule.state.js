@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('event', {
+        .state('schedule', {
             parent: 'entity',
-            url: '/event?page&sort&search',
+            url: '/schedule?page&sort&search',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
-                pageTitle: 'topicaEventAmplifyApp.event.home.title'
+                authorities: ['ROLE_USER'],
+                pageTitle: 'topicaEventAmplifyApp.schedule.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/event/events.html',
-                    controller: 'EventController',
+                    templateUrl: 'app/entities/schedule/schedules.html',
+                    controller: 'ScheduleController',
                     controllerAs: 'vm'
                 }
             },
@@ -45,45 +45,39 @@
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('event');
-                    $translatePartialLoader.addPart('eventStatus');
-                    $translatePartialLoader.addPart('eventLevel');
-                    $translatePartialLoader.addPart('amplifyType');
-                    $translatePartialLoader.addPart('priorityGroup');
+                    $translatePartialLoader.addPart('schedule');
+                    $translatePartialLoader.addPart('dayOfWeek');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('event-detail', {
-            parent: 'event',
-            url: '/event/{id}',
+        .state('schedule-detail', {
+            parent: 'schedule',
+            url: '/schedule/{id}',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
-                pageTitle: 'topicaEventAmplifyApp.event.detail.title'
+                authorities: ['ROLE_USER'],
+                pageTitle: 'topicaEventAmplifyApp.schedule.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/event/event-detail.html',
-                    controller: 'EventDetailController',
+                    templateUrl: 'app/entities/schedule/schedule-detail.html',
+                    controller: 'ScheduleDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('event');
-                    $translatePartialLoader.addPart('eventStatus');
-                    $translatePartialLoader.addPart('eventLevel');
-                    $translatePartialLoader.addPart('amplifyType');
-                    $translatePartialLoader.addPart('priorityGroup');
+                    $translatePartialLoader.addPart('schedule');
+                    $translatePartialLoader.addPart('dayOfWeek');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Event', function($stateParams, Event) {
-                    return Event.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Schedule', function($stateParams, Schedule) {
+                    return Schedule.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'event',
+                        name: $state.current.name || 'schedule',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -91,22 +85,22 @@
                 }]
             }
         })
-        .state('event-detail.edit', {
-            parent: 'event-detail',
+        .state('schedule-detail.edit', {
+            parent: 'schedule-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/event/event-dialog.html',
-                    controller: 'EventDialogController',
+                    templateUrl: 'app/entities/schedule/schedule-dialog.html',
+                    controller: 'ScheduleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Event', function(Event) {
-                            return Event.get({id : $stateParams.id}).$promise;
+                        entity: ['Schedule', function(Schedule) {
+                            return Schedule.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -116,85 +110,79 @@
                 });
             }]
         })
-        .state('event.new', {
-            parent: 'event',
+        .state('schedule.new', {
+            parent: 'schedule',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/event/event-dialog.html',
-                    controller: 'EventDialogController',
+                    templateUrl: 'app/entities/schedule/schedule-dialog.html',
+                    controller: 'ScheduleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                name: null,
-                                description: null,
-                                content: null,
-                                eventStatus: null,
-                                eventLevel: null,
-                                amplifyType: null,
-                                priorityGroup: null,
-                                schedule: null,
+                                dayOfWeek: null,
+                                timeZone: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('event', null, { reload: 'event' });
+                    $state.go('schedule', null, { reload: 'schedule' });
                 }, function() {
-                    $state.go('event');
+                    $state.go('schedule');
                 });
             }]
         })
-        .state('event.edit', {
-            parent: 'event',
+        .state('schedule.edit', {
+            parent: 'schedule',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/event/event-dialog.html',
-                    controller: 'EventDialogController',
+                    templateUrl: 'app/entities/schedule/schedule-dialog.html',
+                    controller: 'ScheduleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Event', function(Event) {
-                            return Event.get({id : $stateParams.id}).$promise;
+                        entity: ['Schedule', function(Schedule) {
+                            return Schedule.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('event', null, { reload: 'event' });
+                    $state.go('schedule', null, { reload: 'schedule' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('event.delete', {
-            parent: 'event',
+        .state('schedule.delete', {
+            parent: 'schedule',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/event/event-delete-dialog.html',
-                    controller: 'EventDeleteController',
+                    templateUrl: 'app/entities/schedule/schedule-delete-dialog.html',
+                    controller: 'ScheduleDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Event', function(Event) {
-                            return Event.get({id : $stateParams.id}).$promise;
+                        entity: ['Schedule', function(Schedule) {
+                            return Schedule.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('event', null, { reload: 'event' });
+                    $state.go('schedule', null, { reload: 'schedule' });
                 }, function() {
                     $state.go('^');
                 });

@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/article?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_WRITER'],
                 pageTitle: 'topicaEventAmplifyApp.article.home.title'
             },
             views: {
@@ -55,7 +55,7 @@
             parent: 'article',
             url: '/article/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_WRITER'],
                 pageTitle: 'topicaEventAmplifyApp.article.detail.title'
             },
             views: {
@@ -87,7 +87,7 @@
             parent: 'article-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -112,7 +112,7 @@
             parent: 'article',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -143,7 +143,7 @@
             parent: 'article',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -168,7 +168,7 @@
             parent: 'article',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

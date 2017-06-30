@@ -6,7 +6,7 @@
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entities",
+                "main": "Event",
                 "product": "Product",
                 "brandkey": "Brandkey",
                 "eventLevelPriorityChannel": "Event Level Priority Channel",
@@ -29,7 +29,7 @@
                 "question": "Question",
                 "event": "Event",
                 "article": "Article",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+                "schedule": "Schedule",
             },
             "account": {
                 "main": "Account",
