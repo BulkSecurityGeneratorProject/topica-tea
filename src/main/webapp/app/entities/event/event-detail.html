@@ -8,14 +8,6 @@
         <dd>
             <span>{{vm.event.name}}</span>
         </dd>
-        <dt><span data-translate="topicaEventAmplifyApp.event.description">Description</span></dt>
-        <dd>
-            <span>{{vm.event.description}}</span>
-        </dd>
-        <dt><span data-translate="topicaEventAmplifyApp.event.content">Content</span></dt>
-        <dd>
-            <span>{{vm.event.content}}</span>
-        </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span></dt>
         <dd>
             <span data-translate="{{'topicaEventAmplifyApp.EventStatus.' + vm.event.eventStatus}}">{{vm.event.eventStatus}}</span>
@@ -52,8 +44,18 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="event-detail.edit({id:vm.event.id})" class="btn btn-primary">
+    <button type="button" ui-sref="event-detail.edit({id:vm.event.id})" class="btn btn-primary" ng-show="['NEW', 'PROCESS', 'INVLAID'].indexOf(event.eventStatus)!=-1">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+    
+    <!-- Director approve -->
+    <button type="button" class="btn btn-warning" ng-disabled="editorForm.$invalid" ng-click="vm.directorDeny()" ng-show="['WAIT_DIRECTOR_APPROVE'].indexOf(vm.event.eventStatus)!=-1">
+        <span class="glyphicon glyphicon-remove"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.deny"> Từ chối</span>
+    </button>
+    <button type="button" class="btn btn-primary" ng-disabled="editorForm.$invalid" ng-click="vm.directorApprove()" ng-show="['WAIT_DIRECTOR_APPROVE'].indexOf(vm.event.eventStatus)!=-1">
+        <span class="glyphicon glyphicon-ok"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.approve"> Duyệt</span>
     </button>
 </div>

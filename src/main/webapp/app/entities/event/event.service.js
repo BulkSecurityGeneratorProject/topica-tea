@@ -21,7 +21,24 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'queryUserWithRole': {
+            	url : 'api/users/:role',
+            	method:'GET',
+            	isArray: true
+            },
+            'distribute': {
+            	url : resourceUrl + '/:userId',
+            	method:'GET'
+            },
+            'editor': {
+            	url : 'api/events/editor',
+            	method:'POST'
+            },
+            'updateStatus': {
+            	url : resourceUrl + '/updateStatus/:status/:type',
+            	method:'GET'
+            },
         });
     }
 })();

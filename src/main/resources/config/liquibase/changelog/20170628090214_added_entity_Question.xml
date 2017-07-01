@@ -33,6 +33,10 @@
             <column name="amplify_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+
+            <column name="extra_content" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="role_id" type="bigint">
                 <constraints nullable="true" />
             </column>            <column name="invitee_id" type="bigint">

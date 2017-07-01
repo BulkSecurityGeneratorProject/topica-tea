@@ -199,7 +199,91 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+        .state('event.distribute', {
+            parent: 'event',
+            url: '/{id}/distribute',
+            data: {
+                authorities: ['ROLE_COORDINATOR']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-distribute-dialog.html',
+                    controller: 'EventDistributeController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('event.editor', {
+            parent: 'event',
+            url: '/editor/{id}',
+            data: {
+                authorities: ['ROLE_WRITER'],
+                pageTitle: 'topicaEventAmplifyApp.event.detail.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/event/event-editor.html',
+                    controller: 'EventEditorController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('event');
+                    $translatePartialLoader.addPart('eventStatus');
+                    $translatePartialLoader.addPart('eventLevel');
+                    $translatePartialLoader.addPart('amplifyType');
+                    $translatePartialLoader.addPart('priorityGroup');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Event', function($stateParams, Event) {
+                    return Event.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'event',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
+        .state('event.publish', {
+            parent: 'event',
+            url: '/{id}/publish',
+            data: {
+                authorities: ['ROLE_MANAGER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-publish-dialog.html',
+                    controller: 'EventPublishController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
     }
 
 })();

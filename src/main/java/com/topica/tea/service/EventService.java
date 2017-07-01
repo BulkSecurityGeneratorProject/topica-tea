@@ -39,4 +39,28 @@ public interface EventService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    /**
+     * distribute a event.
+     *
+     * @param eventDTO the entity to distribute
+     * @return the persisted entity
+     */
+    EventDTO distribute(Long eventId, Long writeId);
+    
+    /**
+     * Editor a event.
+     *
+     * @param eventDTO the entity to editor
+     * @return the persisted entity
+     */
+    EventDTO editor(EventDTO eventDTO);
+    
+    /**
+     * updateStatus a event.
+     *
+     * @param eventDTO the entity to editor
+     * @return the persisted entity
+     */
+    EventDTO updateStatus(Long id, String status);
 }

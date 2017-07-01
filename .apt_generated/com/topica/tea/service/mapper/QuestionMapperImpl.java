@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-06-30T12:12:29+0700",
+    date = "2017-07-01T10:03:57+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -27,28 +27,28 @@ public class QuestionMapperImpl implements QuestionMapper {
     private BrandkeyMapper brandkeyMapper;
 
     @Override
-    public List<QuestionDTO> toDto(List<Question> arg0) {
-        if ( arg0 == null ) {
+    public List<Question> toEntity(List<QuestionDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<QuestionDTO> list = new ArrayList<QuestionDTO>();
-        for ( Question question : arg0 ) {
-            list.add( toDto( question ) );
+        List<Question> list = new ArrayList<Question>();
+        for ( QuestionDTO questionDTO : dtoList ) {
+            list.add( toEntity( questionDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public List<Question> toEntity(List<QuestionDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<QuestionDTO> toDto(List<Question> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<Question> list = new ArrayList<Question>();
-        for ( QuestionDTO questionDTO : arg0 ) {
-            list.add( toEntity( questionDTO ) );
+        List<QuestionDTO> list = new ArrayList<QuestionDTO>();
+        for ( Question question : entityList ) {
+            list.add( toDto( question ) );
         }
 
         return list;
@@ -65,14 +65,15 @@ public class QuestionMapperImpl implements QuestionMapper {
         questionDTO_.setScaleId( questionScaleId( question ) );
         questionDTO_.setRoleId( questionRoleId( question ) );
         questionDTO_.setInviteeId( questionInviteeId( question ) );
+        questionDTO_.setId( question.getId() );
+        questionDTO_.setIsMeatContent( question.isIsMeatContent() );
+        questionDTO_.setEventType( question.getEventType() );
         questionDTO_.setAmplifyType( question.getAmplifyType() );
+        questionDTO_.setExtraContent( question.getExtraContent() );
         Set<BrandkeyDTO> set = brandkeySetToBrandkeyDTOSet( question.getBrandkeys() );
         if ( set != null ) {
             questionDTO_.setBrandkeys( set );
         }
-        questionDTO_.setEventType( question.getEventType() );
-        questionDTO_.setId( question.getId() );
-        questionDTO_.setIsMeatContent( question.isIsMeatContent() );
 
         return questionDTO_;
     }
@@ -88,14 +89,15 @@ public class QuestionMapperImpl implements QuestionMapper {
         question_.setScale( channelGroupMapper.fromId( questionDTO.getScaleId() ) );
         question_.setRole( channelGroupMapper.fromId( questionDTO.getRoleId() ) );
         question_.setInvitee( channelGroupMapper.fromId( questionDTO.getInviteeId() ) );
+        question_.setId( questionDTO.getId() );
+        question_.setIsMeatContent( questionDTO.isIsMeatContent() );
+        question_.setEventType( questionDTO.getEventType() );
         question_.setAmplifyType( questionDTO.getAmplifyType() );
+        question_.setExtraContent( questionDTO.getExtraContent() );
         Set<Brandkey> set = brandkeyDTOSetToBrandkeySet( questionDTO.getBrandkeys() );
         if ( set != null ) {
             question_.setBrandkeys( set );
         }
-        question_.setEventType( questionDTO.getEventType() );
-        question_.setId( questionDTO.getId() );
-        question_.setIsMeatContent( questionDTO.isIsMeatContent() );
 
         return question_;
     }

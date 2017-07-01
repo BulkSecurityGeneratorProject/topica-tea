@@ -48,11 +48,15 @@
             "fieldName": "amplifyType",
             "fieldType": "AmplifyType",
             "fieldValues": "SHARE,SPONSOR,INJECT"
+        },
+        {
+            "fieldName": "extraContent",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170628090214",
-    "entityTableName": "question",
     "dto": "mapstruct",
-    "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "question",
+    "pagination": "pagination"
 }

@@ -21,6 +21,8 @@ public class QuestionDTO implements Serializable {
 
     private AmplifyType amplifyType;
 
+    private String extraContent;
+
     private Long roleId;
 
     private Long inviteeId;
@@ -59,6 +61,14 @@ public class QuestionDTO implements Serializable {
 
     public void setAmplifyType(AmplifyType amplifyType) {
         this.amplifyType = amplifyType;
+    }
+
+    public String getExtraContent() {
+        return extraContent;
+    }
+
+    public void setExtraContent(String extraContent) {
+        this.extraContent = extraContent;
     }
 
     public Long getRoleId() {
@@ -121,6 +131,7 @@ public class QuestionDTO implements Serializable {
             ", isMeatContent='" + isIsMeatContent() + "'" +
             ", eventType='" + getEventType() + "'" +
             ", amplifyType='" + getAmplifyType() + "'" +
+            ", extraContent='" + getExtraContent() + "'" +
             "}";
     }
 }

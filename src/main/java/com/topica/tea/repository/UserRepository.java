@@ -1,5 +1,6 @@
 package com.topica.tea.repository;
 
+import com.topica.tea.domain.Authority;
 import com.topica.tea.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,4 +32,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByLogin(String login);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+    
+    List<User> findAllByAuthorities(Authority authority);
 }

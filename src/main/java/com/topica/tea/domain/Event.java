@@ -5,7 +5,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.topica.tea.domain.enumeration.EventStatus;
 
@@ -50,34 +53,61 @@ public class Event implements Serializable {
     @Column(name = "amplify_type")
     private AmplifyType amplifyType;
 
+    @ElementCollection
     @Enumerated(EnumType.STRING)
     @Column(name = "priority_group")
-    private PriorityGroup priorityGroup;
+    private List<PriorityGroup> priorityGroup;
 
     @Column(name = "schedule")
     private ZonedDateTime schedule;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private Question question;
     
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private User createdUser;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private User approvalUser;
     
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private User managerUser;
     
     @OneToOne
-    @JoinColumn(unique = true)
-    private Article article;
+    @JoinColumn
+    private User writerUser;
+    
+    public User getWriterUser() {
+		return writerUser;
+	}
 
-    public Long getId() {
+	public void setWriterUser(User writerUser) {
+		this.writerUser = writerUser;
+	}
+
+	@OneToOne
+    @JoinColumn
+    private Article article;
+    
+    @ManyToMany
+    @JoinTable(name = "event_products",
+               joinColumns = @JoinColumn(name="event_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="products_id", referencedColumnName="id"))
+    private Set<Product> products = new HashSet<>();
+
+    public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -163,16 +193,16 @@ public class Event implements Serializable {
         this.amplifyType = amplifyType;
     }
 
-    public PriorityGroup getPriorityGroup() {
+    public List<PriorityGroup> getPriorityGroup() {
         return priorityGroup;
     }
 
-    public Event priorityGroup(PriorityGroup priorityGroup) {
+    public Event priorityGroup(List<PriorityGroup> priorityGroup) {
         this.priorityGroup = priorityGroup;
         return this;
     }
 
-    public void setPriorityGroup(PriorityGroup priorityGroup) {
+    public void setPriorityGroup(List<PriorityGroup> priorityGroup) {
         this.priorityGroup = priorityGroup;
     }
 

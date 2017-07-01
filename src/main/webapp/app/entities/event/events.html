@@ -1,8 +1,8 @@
 <div>
     <h2 data-translate="topicaEventAmplifyApp.event.home.title">Events</h2>
     <jhi-alert></jhi-alert>
-    <!-- <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid">
+        <!-- <div class="row">
             <div class="col-xs-4 no-padding-left">
                 <button class="btn btn-primary" ui-sref="event.new" >
                     <span class="glyphicon glyphicon-plus"></span>
@@ -11,17 +11,27 @@
                     </span>
                 </button>
             </div>
+        </div> -->
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="question.new" has-authority="ROLE_DIRECTOR">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="topicaEventAmplifyApp.event.home.createQuestionLabel">
+                        Create new Question
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
-    <br/> -->
+    <br/>
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="topicaEventAmplifyApp.event.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span data-translate="topicaEventAmplifyApp.event.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="content"><span data-translate="topicaEventAmplifyApp.event.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="description"><span data-translate="topicaEventAmplifyApp.event.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="content"><span data-translate="topicaEventAmplifyApp.event.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="eventStatus"><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="eventLevel"><span data-translate="topicaEventAmplifyApp.event.eventLevel">Event Level</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="amplifyType"><span data-translate="topicaEventAmplifyApp.event.amplifyType">Amplify Type</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -36,12 +46,12 @@
                 <tr ng-repeat="event in vm.events track by event.id">
                     <td><a ui-sref="event-detail({id:event.id})">{{event.id}}</a></td>
                     <td>{{event.name}}</td>
-                    <td>{{event.description}}</td>
-                    <td>{{event.content}}</td>
-                    <td data-translate="{{'topicaEventAmplifyApp.EventStatus.' + event.eventStatus}}">{{event.eventStatus}}</td>
+                    <!-- <td>{{event.description}}</td>
+                    <td>{{event.content}}</td> --> 
+                    <td><span class="label label-{{event.eventStatus == 'INVALID' ? 'danger' : 'info'}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
                     <td data-translate="{{'topicaEventAmplifyApp.EventLevel.' + event.eventLevel}}">{{event.eventLevel}}</td>
                     <td data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + event.amplifyType}}">{{event.amplifyType}}</td>
-                    <td data-translate="{{'topicaEventAmplifyApp.PriorityGroup.' + event.priorityGroup}}">{{event.priorityGroup}}</td>
+                    <td>{{event.priorityGroup}}</td>
                     <td>{{event.schedule | date:'medium'}}</td>
                     <td>
                         <a ui-sref="question-detail({id:event.questionId})">{{event.questionId}}</a>
@@ -49,6 +59,7 @@
                     <td>
                         <a ui-sref="article-detail({id:event.articleId})">{{event.articleId}}</a>
                     </td>
+                    <!-- Button -->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -59,15 +70,36 @@
                             </button>
                             <button type="submit"
                                     ui-sref="event.edit({id:event.id})"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="event.delete({id:event.id})"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                            <!-- Coordinator -->
+                            <button type="submit"
+                                    ui-sref="event.distribute({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_COORDINATOR" ng-show="event.eventStatus == 'COORDINATE'">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.distribute"></span>
+                            </button>
+                            <!-- writer -->
+                            <button type="submit"
+                                    ui-sref="event.editor({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_WRITER" ng-show="event.eventStatus == 'EDITOR'">
+                                <span class="glyphicon glyphicon-tasks"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.editor"></span>
+                            </button>
+                            <!-- Approve -->
+                            <button type="submit"
+                                    ui-sref="event.publish({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_MANAGER" ng-show="event.eventStatus == 'DIRECTOR_APPROVE'">
+                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.complete"></span>
                             </button>
                         </div>
                     </td>

@@ -4,6 +4,7 @@
             "home": {
                 "title": "Events",
                 "createLabel": "Thêm mới một Event",
+                "createQuestionLabel": "Thêm mới một Question",
                 "createOrEditLabel": "Thêm mới hoặc cập nhật Event"
             },
             "created": "Một Event mới được tạo với định danh {{ param }}",
@@ -12,19 +13,46 @@
             "delete": {
                 "question": "Bạn có chắc là muốn xóa Event {{ id }}?"
             },
+            "publish": {
+            	"title" : "Xác nhận xuất bản !",
+                "question": "Bạn có chắc là muốn xuất bản Event {{ id }}?"
+            },
+            "distribute": {
+                "chooseWriter": "Bạn hãy chọn người soạn thảo nội dung cho Event {{ id }} !",
+                "writer" : {
+                	"title" : "Người soạn thảo sự kiện",
+                	"name" : "Tên người soạn thảo",
+                	"email" : "Thư"
+                }
+            },
             "detail": {
                 "title": "Event"
             },
-            "name": "Name",
-            "description": "Description",
-            "content": "Content",
-            "eventStatus": "Event Status",
-            "eventLevel": "Event Level",
-            "amplifyType": "Amplify Type",
-            "priorityGroup": "Priority Group",
-            "schedule": "Schedule",
-            "question": "Question",
-            "article": "Article"
+            "name": "Tên",
+            "description": "Mô tả",
+            "content": "Nội dung",
+            "eventStatus": "Trạng thái",
+            "eventLevel": "Level sự kiện",
+            "amplifyType": "Loại khuyết đại",
+            "priorityGroup": "Nhóm ưu tiên",
+            "schedule": "Lịch",
+            "question": "Câu hỏi",
+            "article": "Bài viết",
+            "writecontent" : "Soạn nội dung"
+        }
+        , "status" : {
+        	"NEW" : "Mới"
+        	, "PROCESS" : "Đang xử lý"
+        	, "EDITOR" : "Soạn nội dung"
+        	, "APPROVAL" : "Đã chấp nhận"
+        	, "COORDINATE" : "Chờ phân phối"
+        	, "INVALID" : "Không hiệu lực"
+        	, "COMPLETED" : "Hoàn thành"
+        	, "WAIT_DIRECTOR_APPROVE" : "Đợi GĐ duyệt"
+        	, "DIRECTOR_DENY" : "GĐ từ chối"
+        	, "DIRECTOR_APPROVE" : "GĐ đã duyệt"
+        	, "MANAGER_DENY" : "Quản lý từ chối"
+        	, "MANAGER_APPROVE" : "Quản lý duyệt"
         }
     }
 }

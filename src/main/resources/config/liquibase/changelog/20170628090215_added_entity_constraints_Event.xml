@@ -37,5 +37,11 @@
                                  constraintName="fk_event_manager_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="writer_user_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_writer_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
     </changeSet>
 </databaseChangeLog>

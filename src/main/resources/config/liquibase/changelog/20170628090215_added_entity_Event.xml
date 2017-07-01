@@ -54,24 +54,46 @@
                 <constraints nullable="true" />
             </column>
             <column name="question_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+                <constraints nullable="true" />
             </column>            
             <column name="article_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+                <constraints nullable="true" />
             </column>
             <!-- Custom add -->
             <column name="created_user_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+                <constraints nullable="true" />
             </column>
             <column name="approval_user_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+                <constraints nullable="true" />
             </column>
             <column name="manager_user_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+                <constraints nullable="true" />
+            </column>
+            <column name="writer_user_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="event" columnName="schedule" columnDataType="datetime"/>
         
+        <createTable tableName="event_products">
+            <column name="event_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="products_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="event_id, products_id" tableName="event_products"/>
+        
+        <createTable tableName="event_priority_group">
+            <column name="event_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="priority_group" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="event_id, priority_group" tableName="event_priority_group"/>
     </changeSet>
 </databaseChangeLog>

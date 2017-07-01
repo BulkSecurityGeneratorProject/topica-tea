@@ -2,7 +2,7 @@
     "topicaEventAmplifyApp": {
         "question" : {
             "home": {
-                "title": "Questions",
+                "title": "Câu hỏi",
                 "createLabel": "Thêm mới một Question",
                 "createOrEditLabel": "Thêm mới hoặc cập nhật Question"
             },
@@ -13,15 +13,16 @@
                 "question": "Bạn có chắc là muốn xóa Question {{ id }}?"
             },
             "detail": {
-                "title": "Question"
+                "title": "Câu hỏi"
             },
-            "isMeatContent": "Is Meat Content",
-            "eventType": "Event Type",
-            "amplifyType": "Amplify Type",
-            "role": "Role",
-            "invitee": "Invitee",
-            "scale": "Scale",
-            "brandkeys": "Brandkeys"
+            "isMeatContent": "Nội dung Xôi thịt ?",
+            "eventType": "Loại sự kiện",
+            "amplifyType": "Loại khuếch đại",
+            "extraContent": "Nguyên liệu",
+            "role": "Vai trò của Topica trong sự kiện",
+            "invitee": "Khách mời",
+            "scale": "Phạm vi ảnh hưởng",
+            "brandkeys": "Từ khóa thương hiệu"
         }
     }
 }

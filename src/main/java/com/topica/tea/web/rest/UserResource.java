@@ -195,4 +195,19 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }
+    
+    /**
+     * GET  /users/:role : get the users with role.
+     *
+     * @param role the role of the user to find
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/users/{role}")
+    @Timed
+    public ResponseEntity<List<User>> getUserByRole(@PathVariable String role) {
+        log.debug("REST request to get getUserByRole : {}", role);
+        List<User> users = userService.getAllUsersByAuthority("ROLE_WRITER");
+        
+        return new ResponseEntity<>(users, null, HttpStatus.OK);
+    }
 }

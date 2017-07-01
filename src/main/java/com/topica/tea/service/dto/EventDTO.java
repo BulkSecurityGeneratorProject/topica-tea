@@ -7,7 +7,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 import com.topica.tea.domain.enumeration.EventStatus;
@@ -36,8 +38,6 @@ public class EventDTO implements Serializable {
 
     private AmplifyType amplifyType;
 
-    private PriorityGroup priorityGroup;
-
     private ZonedDateTime schedule;
 
     private QuestionDTO question;
@@ -51,6 +51,12 @@ public class EventDTO implements Serializable {
     private Long approvalUserId;
     
     private Long managerUserId;
+    
+    private Long writerUserId;
+    
+    private Set<ProductDTO> products = new HashSet<>();
+    
+    private Set<PriorityGroup> priorityGroup = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -106,14 +112,6 @@ public class EventDTO implements Serializable {
 
     public void setAmplifyType(AmplifyType amplifyType) {
         this.amplifyType = amplifyType;
-    }
-
-    public PriorityGroup getPriorityGroup() {
-        return priorityGroup;
-    }
-
-    public void setPriorityGroup(PriorityGroup priorityGroup) {
-        this.priorityGroup = priorityGroup;
     }
 
     public ZonedDateTime getSchedule() {
@@ -206,5 +204,29 @@ public class EventDTO implements Serializable {
 
 	public void setQuestion(QuestionDTO question) {
 		this.question = question;
+	}
+
+	public Set<ProductDTO> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<ProductDTO> products) {
+		this.products = products;
+	}
+
+	public Set<PriorityGroup> getPriorityGroup() {
+		return priorityGroup;
+	}
+
+	public void setPriorityGroup(Set<PriorityGroup> priorityGroup) {
+		this.priorityGroup = priorityGroup;
+	}
+
+	public Long getWriterUserId() {
+		return writerUserId;
+	}
+
+	public void setWriterUserId(Long writerUserId) {
+		this.writerUserId = writerUserId;
 	}
 }

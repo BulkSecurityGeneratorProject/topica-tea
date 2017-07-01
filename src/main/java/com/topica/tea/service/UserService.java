@@ -208,6 +208,16 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public List<User> getAllUsersByAuthority(String authorityName) {
+    	Authority auth = authorityRepository.findOneByName(authorityName);
+    	if (auth != null) {
+    		return userRepository.findAllByAuthorities(auth);
+    	}
+    	
+    	return null;
+    }
+    
+    @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthoritiesByLogin(String login) {
         return userRepository.findOneWithAuthoritiesByLogin(login);
     }

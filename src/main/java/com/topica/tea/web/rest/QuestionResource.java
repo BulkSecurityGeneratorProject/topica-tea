@@ -2,9 +2,12 @@ package com.topica.tea.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.topica.tea.domain.User;
+import com.topica.tea.domain.enumeration.EventLevel;
 import com.topica.tea.security.SecurityUtils;
 import com.topica.tea.service.EventService;
+import com.topica.tea.service.MailService;
 import com.topica.tea.service.QuestionService;
+import com.topica.tea.service.TEAProcessEventService;
 import com.topica.tea.service.UserService;
 import com.topica.tea.web.rest.util.HeaderUtil;
 import com.topica.tea.web.rest.util.PaginationUtil;
@@ -39,15 +42,25 @@ public class QuestionResource {
     private static final String ENTITY_NAME = "question";
 
     private final QuestionService questionService;
-    
+
     private final UserService userService;
     
     private final EventService eventService;
-
-    public QuestionResource(QuestionService questionService, UserService userService, EventService eventService) {
+    
+    private final TEAProcessEventService teaProcessEventService;
+    
+    private final MailService mailService;
+    
+    
+    public QuestionResource(QuestionService questionService, UserService userService
+    		, EventService eventService
+    		, TEAProcessEventService teaProcessEventService
+    		, MailService mailService) {
         this.questionService = questionService;
         this.userService = userService;
         this.eventService = eventService;
+        this.teaProcessEventService = teaProcessEventService;
+        this.mailService = mailService;
     }
 
     /**
@@ -60,7 +73,7 @@ public class QuestionResource {
     @PostMapping("/questions")
     @Timed
     public ResponseEntity<QuestionDTO> createQuestion(@RequestBody QuestionDTO questionDTO) throws URISyntaxException {
-        log.debug("REST request to save Question : {}", questionDTO);
+    	log.debug("REST request to save Question : {}", questionDTO);
         // Find user login
         String username = SecurityUtils.getCurrentUserLogin();
         Optional<User> userOpt = userService.getUserWithAuthoritiesByLogin(username);
@@ -75,13 +88,38 @@ public class QuestionResource {
         EventDTO eventDTO = new EventDTO();
         eventDTO.setQuestion(result);
         eventDTO.setCreatedUserId(user.getId());
-        eventService.save(eventDTO);
+        eventDTO.setName("Event-" + result.getId());
+        EventDTO classifyEventDto = teaProcessEventService.classify(eventDTO);
+        
+        // Save event
+        EventDTO resultEventDto = eventService.save(classifyEventDto);
+        
+        // Send mail
+        sendNotificationCreatedEventMail(user, resultEventDto);
                 
         return ResponseEntity.created(new URI("/api/questions/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
+    private void sendNotificationCreatedEventMail(User director, EventDTO eventDTO) {
+    	// Check level
+    	// E4 khong khech dai
+    	if (EventLevel.E4.equals(eventDTO.getEventLevel())) {
+    		mailService.sendNotificationCreatedEventFail(director);
+    	} else {
+    		mailService.sendNotificationCreatedEventSuccess(director);
+    		// Get user coordinate
+    		// Send mail to Director and Coordinator
+            List<User> coordinators = userService.getAllUsersByAuthority("ROLE_COORDINATOR");
+            if (null != coordinators && coordinators.size() > 0) {
+            	for (User user : coordinators) {
+            		mailService.sendNotificationCreatedEventSuccess(user);
+				}
+            }
+    	}
+    	
+    }
     /**
      * PUT  /questions : Updates an existing question.
      *

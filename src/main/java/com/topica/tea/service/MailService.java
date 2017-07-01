@@ -1,6 +1,8 @@
 package com.topica.tea.service;
 
 import com.topica.tea.domain.User;
+import com.topica.tea.domain.enumeration.EventLevel;
+import com.topica.tea.service.dto.EventDTO;
 
 import io.github.jhipster.config.JHipsterProperties;
 
@@ -41,6 +43,7 @@ public class MailService {
     private final MessageSource messageSource;
 
     private final SpringTemplateEngine templateEngine;
+    
 
     public MailService(JHipsterProperties jHipsterProperties, JavaMailSender javaMailSender,
             MessageSource messageSource, SpringTemplateEngine templateEngine) {
@@ -64,7 +67,7 @@ public class MailService {
             message.setFrom(jHipsterProperties.getMail().getFrom());
             message.setSubject(subject);
             message.setText(content, isHtml);
-            javaMailSender.send(mimeMessage);
+            //javaMailSender.send(mimeMessage);
             log.debug("Sent email to User '{}'", to);
         } catch (Exception e) {
             if (log.isDebugEnabled()) {
@@ -105,6 +108,18 @@ public class MailService {
         sendEmailFromTemplate(user, "passwordResetEmail", "email.reset.title");
     }
 
+    @Async
+    public void sendNotificationCreatedEventSuccess(User user) {
+        log.debug("Sending NotificationCreatedEventSuccess to '{}'", user.getEmail());
+        sendEmailFromTemplate(user, "newEventSuccess", "email.new.event.title");
+    }
+    
+    @Async
+    public void sendNotificationCreatedEventFail(User user) {
+        log.debug("Sending NotificationCreatedEventFaill to '{}'", user.getEmail());
+        sendEmailFromTemplate(user, "newEventFail", "email.new.event.title");
+    }
+    
     @Async
     public void sendSocialRegistrationValidationEmail(User user, String provider) {
         log.debug("Sending social registration validation email to '{}'", user.getEmail());

@@ -14,10 +14,28 @@
                     ng-model="vm.question.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.question.isMeatContent" for="field_isMeatContent">Is Meat Content</label>
-                <input type="checkbox" name="isMeatContent" id="field_isMeatContent"
-                          ng-model="vm.question.isMeatContent"/>
+            <label data-translate="topicaEventAmplifyApp.question.role" for="field_role">Role</label>
+            <select class="form-control" id="field_role" name="role" ng-model="vm.question.roleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.roles | filter:{channelGroupType:'ROLE'} | orderBy:'id'">
+                <option value=""></option>
+            </select>
         </div>
+        <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.question.invitee" for="field_invitee">Invitee</label>
+            <select class="form-control" id="field_invitee" name="invitee" ng-model="vm.question.inviteeId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.invitees | filter:{channelGroupType:'INVITEE'} | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.question.scale" for="field_scale">Scale</label>
+            <select class="form-control" id="field_scale" name="scale" ng-model="vm.question.scaleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.scales | filter:{channelGroupType:'SCALE'} | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.question.brandkeys" for="field_brandkeys">Brandkeys</label>
+            <select class="form-control" id="field_brandkeys" multiple name="brandkeys" ng-model="vm.question.brandkeys" ng-options="brandkey as brandkey.brandkeyName for brandkey in vm.brandkeys track by brandkey.id"></select>
+        </div>
+        
         <div class="form-group">
             <label class="control-label" data-translate="topicaEventAmplifyApp.question.eventType" for="field_eventType">Event Type</label>
             <select class="form-control" name="eventType" ng-model="vm.question.eventType" id="field_eventType">
@@ -28,6 +46,21 @@
                 <option value="PARTY" data-translate="topicaEventAmplifyApp.EventType.PARTY">PARTY</option>
             </select>
         </div>
+        
+        <!-- Nguyên liệu -->
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.question.extraContent" for="field_extraContent">Extra Content</label>
+            <input type="text" class="form-control" name="extraContent" id="field_extraContent"
+                    ng-model="vm.question.extraContent"
+                    />
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.question.isMeatContent" for="field_isMeatContent">Is Meat Content</label>
+                <input type="checkbox" name="isMeatContent" id="field_isMeatContent"
+                          ng-model="vm.question.isMeatContent"/>
+        </div>
+        
         <div class="form-group">
             <label class="control-label" data-translate="topicaEventAmplifyApp.question.amplifyType" for="field_amplifyType">Amplify Type</label>
             <select class="form-control" name="amplifyType" ng-model="vm.question.amplifyType" id="field_amplifyType">
@@ -37,28 +70,6 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.question.role" for="field_role">Role</label>
-            <select class="form-control" id="field_role" name="role" ng-model="vm.question.roleId" ng-options="channelGroup.id as channelGroup.id for channelGroup in vm.roles | orderBy:'id'">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.question.invitee" for="field_invitee">Invitee</label>
-            <select class="form-control" id="field_invitee" name="invitee" ng-model="vm.question.inviteeId" ng-options="channelGroup.id as channelGroup.id for channelGroup in vm.invitees | orderBy:'id'">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.question.scale" for="field_scale">Scale</label>
-            <select class="form-control" id="field_scale" name="scale" ng-model="vm.question.scaleId" ng-options="channelGroup.id as channelGroup.id for channelGroup in vm.scales | orderBy:'id'">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.question.brandkeys" for="field_brandkeys">Brandkeys</label>
-            <select class="form-control" id="field_brandkeys" multiple name="brandkeys" ng-model="vm.question.brandkeys" ng-options="brandkey as brandkey.id for brandkey in vm.brandkeys track by brandkey.id"></select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

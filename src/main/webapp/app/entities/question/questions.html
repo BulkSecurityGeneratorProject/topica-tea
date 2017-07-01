@@ -6,7 +6,7 @@
             <div class="col-xs-4 no-padding-left">
                 <button class="btn btn-primary" ui-sref="question.new" >
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="topicaEventAmplifyApp.question.home.createLabel">
+                    <span  data-translate="topicaEventAmplifyApp.event.home.createQuestionLabel">
                         Create new Question
                     </span>
                 </button>
@@ -22,6 +22,7 @@
                     <th jh-sort-by="isMeatContent"><span data-translate="topicaEventAmplifyApp.question.isMeatContent">Is Meat Content</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="eventType"><span data-translate="topicaEventAmplifyApp.question.eventType">Event Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="amplifyType"><span data-translate="topicaEventAmplifyApp.question.amplifyType">Amplify Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="extraContent"><span data-translate="topicaEventAmplifyApp.question.extraContent">Extra Content</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="roleId"><span data-translate="topicaEventAmplifyApp.question.role">Role</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="inviteeId"><span data-translate="topicaEventAmplifyApp.question.invitee">Invitee</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="scaleId"><span data-translate="topicaEventAmplifyApp.question.scale">Scale</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -34,6 +35,7 @@
                     <td>{{question.isMeatContent}}</td>
                     <td data-translate="{{'topicaEventAmplifyApp.EventType.' + question.eventType}}">{{question.eventType}}</td>
                     <td data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + question.amplifyType}}">{{question.amplifyType}}</td>
+                    <td>{{question.extraContent}}</td>
                     <td>
                         <a ui-sref="channel-group-detail({id:question.roleId})">{{question.roleId}}</a>
                     </td>

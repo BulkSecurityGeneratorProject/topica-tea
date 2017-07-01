@@ -18,6 +18,7 @@
             "isMeatContent": "Is Meat Content",
             "eventType": "Event Type",
             "amplifyType": "Amplify Type",
+            "extraContent": "Extra Content",
             "role": "Role",
             "invitee": "Invitee",
             "scale": "Scale",

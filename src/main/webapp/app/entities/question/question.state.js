@@ -131,14 +131,15 @@
                                 isMeatContent: null,
                                 eventType: null,
                                 amplifyType: null,
+                                extraContent: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('question', null, { reload: 'question' });
+                    $state.go('event', null, { reload: 'event' });
                 }, function() {
-                    $state.go('question');
+                    $state.go('event');
                 });
             }]
         })

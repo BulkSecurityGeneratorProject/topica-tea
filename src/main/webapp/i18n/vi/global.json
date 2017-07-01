@@ -16,6 +16,7 @@
                 "question": "Câu hỏi",
                 "event": "Event",
                 "article": "Article",
+                "question": "Question",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "category": {
@@ -111,7 +112,13 @@
             "edit": "Sửa",
             "open": "Mở",
             "save": "Lưu",
-            "view": "Xem"
+            "view": "Xem",
+            "distribute": "Phân phối",
+            "editor": "Soạn nội dung",
+            "approve": "Duyệt",
+            "complete": "Hoàn thành",
+            "deny": "Từ chối",
+            "ok" : "Đồng ý"
         },
         "detail": {
             "field": "Trường",
@@ -119,6 +126,9 @@
         },
         "delete": {
             "title": "Xác nhận hành động xóa"
+        },
+        "distribute": {
+            "title": "Xác nhận hành động phân phối"
         },
         "validation": {
             "required": "Trường này bắt buộc phải nhập.",

@@ -35,6 +35,9 @@ public class Question implements Serializable {
     @Column(name = "amplify_type")
     private AmplifyType amplifyType;
 
+    @Column(name = "extra_content")
+    private String extraContent;
+
     @OneToOne
     @JoinColumn
     private ChannelGroup role;
@@ -98,6 +101,19 @@ public class Question implements Serializable {
 
     public void setAmplifyType(AmplifyType amplifyType) {
         this.amplifyType = amplifyType;
+    }
+
+    public String getExtraContent() {
+        return extraContent;
+    }
+
+    public Question extraContent(String extraContent) {
+        this.extraContent = extraContent;
+        return this;
+    }
+
+    public void setExtraContent(String extraContent) {
+        this.extraContent = extraContent;
     }
 
     public ChannelGroup getRole() {
@@ -189,6 +205,7 @@ public class Question implements Serializable {
             ", isMeatContent='" + isIsMeatContent() + "'" +
             ", eventType='" + getEventType() + "'" +
             ", amplifyType='" + getAmplifyType() + "'" +
+            ", extraContent='" + getExtraContent() + "'" +
             "}";
     }
 }

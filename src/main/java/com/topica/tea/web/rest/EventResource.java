@@ -124,4 +124,47 @@ public class EventResource {
         eventService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    /**
+     * GET  /events/:id : get the "id" event.
+     *
+     * @param id the id of the eventDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the eventDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/events/{id}/{userId}")
+    @Timed
+    public ResponseEntity<EventDTO> distributeEvent(@PathVariable Long id, @PathVariable Long userId) {
+        log.debug("REST request to distribute Event : id {}, userId {}", id, userId);
+        EventDTO eventDTO = eventService.distribute(id, userId);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
+    }
+    
+    /**
+     * GET  /events/:id : get the "id" event.
+     *
+     * @param id the id of the eventDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the eventDTO, or with status 404 (Not Found)
+     */
+    @PostMapping("/events/editor")
+    @Timed
+    public ResponseEntity<EventDTO> editorEvent(@Valid @RequestBody EventDTO eventDTO) {
+        log.debug("REST request to editor Event : {}", eventDTO);
+        EventDTO result = eventService.editor(eventDTO);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
+    
+    /**
+     * GET  /events/:id : get the "id" event.
+     *
+     * @param id the id of the eventDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the eventDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/events/{id}/updateStatus/{status}/{type}")
+    @Timed
+    public ResponseEntity<EventDTO> updateStatus(@PathVariable Long id, @PathVariable String status, @PathVariable Long type) {
+    	// Type : 0 director, 1: manager
+        log.debug("REST request to updateStatus : id {}, status {}, type {}", id, status, type);
+        EventDTO eventDTO = eventService.updateStatus(id, status);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
+    }
 }
