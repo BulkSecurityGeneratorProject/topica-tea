@@ -18,11 +18,16 @@
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.amplifyType">Amplify Type</span></dt>
         <dd>
-            <span data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + vm.event.amplifyType}}">{{vm.event.amplifyType}}</span>
+        	<div ng-repeat="type in vm.event.amplifyType">
+				<label class="label label-success"><i class="fa " ng-class="{'fa-share-alt': type == 'SHARE' , 'fa-rss': type == 'SPONSOR',
+            					'fa-eyedropper': type == 'INJECT'} "></i> {{type}}</label>
+			</div>
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.priorityGroup">Priority Group</span></dt>
         <dd>
-            <span data-translate="{{'topicaEventAmplifyApp.PriorityGroup.' + vm.event.priorityGroup}}">{{vm.event.priorityGroup}}</span>
+            <div ng-repeat="type in vm.event.priorityGroup">
+            	<label class="label label-warning">{{type}}</label>
+            </div>
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.schedule">Schedule</span></dt>
         <dd>

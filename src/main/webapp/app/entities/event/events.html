@@ -51,8 +51,17 @@
                     <td>{{event.content}}</td> --> 
                     <td><span class="label label-{{event.eventStatus == 'INVALID' ? 'danger' : 'info'}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
                     <td data-translate="{{'topicaEventAmplifyApp.EventLevel.' + event.eventLevel}}">{{event.eventLevel}}</td>
-                    <td data-translate="{{'topicaEventAmplifyApp.AmplifyType.' + event.amplifyType}}">{{event.amplifyType}}</td>
-                    <td>{{event.priorityGroup}}</td>
+                    <td>
+                    	<div ng-repeat="type in event.amplifyType">
+                    		<label class="label label-success"><i class="fa " ng-class="{'fa-share-alt': type == 'SHARE' , 'fa-rss': type == 'SPONSOR',
+              					'fa-eyedropper': type == 'INJECT'} "></i> {{type}}</label>
+                    	</div>
+                    </td>
+                    <td>
+                    	<div ng-repeat="type in event.priorityGroup">
+                    		<label class="label label-warning">{{type}}</label>
+                    	</div>
+                    </td>
                     <td><span class="label label-info" ng-repeat="product in event.products">{{product.productName}}</span> </td>
                     <td>{{event.schedule | date:'medium'}}</td>
                     <td>

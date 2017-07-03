@@ -15,30 +15,40 @@
         </div>
         <div class="form-group">
             <label data-translate="topicaEventAmplifyApp.question.role" for="field_role">Role</label>
-            <select class="form-control" id="field_role" name="role" ng-model="vm.question.roleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.roles | filter:{channelGroupType:'ROLE'} | orderBy:'id'">
+            <select required class="form-control" id="field_role" name="role" ng-model="vm.question.roleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.roles | filter:{channelGroupType:'ROLE'} | orderBy:'id'">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="topicaEventAmplifyApp.question.invitee" for="field_invitee">Invitee</label>
-            <select class="form-control" id="field_invitee" name="invitee" ng-model="vm.question.inviteeId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.invitees | filter:{channelGroupType:'INVITEE'} | orderBy:'id'">
+            <select required class="form-control" id="field_invitee" name="invitee" ng-model="vm.question.inviteeId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.invitees | filter:{channelGroupType:'INVITEE'} | orderBy:'id'">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="topicaEventAmplifyApp.question.scale" for="field_scale">Scale</label>
-            <select class="form-control" id="field_scale" name="scale" ng-model="vm.question.scaleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.scales | filter:{channelGroupType:'SCALE'} | orderBy:'id'">
+            <select required class="form-control" id="field_scale" name="scale" ng-model="vm.question.scaleId" ng-options="channelGroup.id as channelGroup.name for channelGroup in vm.scales | filter:{channelGroupType:'SCALE'} | orderBy:'id'">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label data-translate="topicaEventAmplifyApp.question.brandkeys" for="field_brandkeys">Brandkeys</label>
-            <select class="form-control" id="field_brandkeys" multiple name="brandkeys" ng-model="vm.question.brandkeys" ng-options="brandkey as brandkey.brandkeyName for brandkey in vm.brandkeys track by brandkey.id"></select>
+            <label data-translate="topicaEventAmplifyApp.question.brandkeys" for="field_tmp1">Brandkeys</label>
+            <!-- <select required class="form-control" id="field_brandkeys" multiple name="brandkeys" ng-model="vm.question.brandkeys" ng-options="brandkey as brandkey.brandkeyName for brandkey in vm.brandkeys track by brandkey.id"></select> -->
+            <select class="form-control" id="field_tmp1" ng-show="false">
+            </select>
+        	</br>
+			
+			<input type="hidden" class="form-control" ng-model="vm.question.brandkeys" required />
+			<div ng-repeat="brandkey in vm.brandkeys">
+				<input type="checkbox" name="field_brandkey_{{brandkey.id}}" value="{{brandkey.id}}" id="field_brandkey_{{brandkey.id}}" ng-click="vm.changeBrandkeys()"/>            
+            	<label class="control-label" for="field_brandkey_{{brandkey.id}}">{{brandkey.brandkeyName}}</label>
+            	</br>			
+			</div>        	
         </div>
         
         <div class="form-group">
             <label class="control-label" data-translate="topicaEventAmplifyApp.question.eventType" for="field_eventType">Event Type</label>
-            <select class="form-control" name="eventType" ng-model="vm.question.eventType" id="field_eventType">
+            <select required class="form-control" name="eventType" ng-model="vm.question.eventType" id="field_eventType">
                 <option value="CONFERENCE" data-translate="topicaEventAmplifyApp.EventType.CONFERENCE">CONFERENCE</option>
                 <option value="WORKSHOP" data-translate="topicaEventAmplifyApp.EventType.WORKSHOP">WORKSHOP</option>
                 <option value="CONTEST" data-translate="topicaEventAmplifyApp.EventType.CONTEST">CONTEST</option>
@@ -62,12 +72,24 @@
         </div>
         
         <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.question.amplifyType" for="field_amplifyType">Amplify Type</label>
-            <select class="form-control" name="amplifyType" ng-model="vm.question.amplifyType" id="field_amplifyType">
-                <option value="SHARE" data-translate="topicaEventAmplifyApp.AmplifyType.SHARE">SHARE</option>
-                <option value="SPONSOR" data-translate="topicaEventAmplifyApp.AmplifyType.SPONSOR">SPONSOR</option>
-                <option value="INJECT" data-translate="topicaEventAmplifyApp.AmplifyType.INJECT">INJECT</option>
+        	<label data-translate="topicaEventAmplifyApp.question.amplifyType" for="field_tmp">Amplify Type</label>
+            <select class="form-control" id="field_tmp" ng-show="false">
+                <option value=""></option>
             </select>
+        	</br>
+        	<!-- Hidden -->
+        	<input type="hidden" class="form-control" ng-model="vm.question.amplifyType" required />
+        	
+			<input type="checkbox" name="field_amplifyType_SHARE" value="SHARE" id="field_amplifyType_SHARE" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_SHARE"><i class="fa fa-share-alt"></i> SHARE</label>
+            </br>
+            
+            <input type="checkbox" name="field_amplifyType_SPONSOR" value="SPONSOR" id="field_amplifyType_SPONSOR" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_SPONSOR"><i class="fa fa-rss"></i> SPONSOR</label>
+            </br>
+            
+            <input type="checkbox" name="field_amplifyType_INJECT" value="INJECT" id="field_amplifyType_INJECT" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_INJECT"><i class="fa fa-eyedropper"></i> INJECT</label>
         </div>
 
     </div>

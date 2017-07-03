@@ -55,8 +55,17 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-
         <addPrimaryKey columnNames="questions_id, brandkeys_id" tableName="question_brandkeys"/>
+        
+        <createTable tableName="question_amplify_type">
+            <column name="question_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amplify_type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="question_id, amplify_type" tableName="question_amplify_type"/>
         
     </changeSet>
 </databaseChangeLog>

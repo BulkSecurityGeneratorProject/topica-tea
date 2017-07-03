@@ -14,8 +14,8 @@
                 "brandkeyProduct": "Brandkey Product",
                 "channelGroup": "Channel Group",
                 "question": "Câu hỏi",
-                "event": "Event",
-                "article": "Article",
+                "event": "Quản lý sự kiện",
+                "article": "Quản lý bài viết",
                 "question": "Question",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },

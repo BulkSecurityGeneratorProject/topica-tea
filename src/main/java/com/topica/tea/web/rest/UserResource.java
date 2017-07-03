@@ -202,7 +202,7 @@ public class UserResource {
      * @param role the role of the user to find
      * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
      */
-    @GetMapping("/users/{role}")
+    @GetMapping("/users-role/{role}")
     @Timed
     public ResponseEntity<List<User>> getUserByRole(@PathVariable String role) {
         log.debug("REST request to get getUserByRole : {}", role);

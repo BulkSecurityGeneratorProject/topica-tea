@@ -3,6 +3,7 @@ package com.topica.tea.service.mapper;
 import com.topica.tea.domain.Brandkey;
 import com.topica.tea.domain.ChannelGroup;
 import com.topica.tea.domain.Question;
+import com.topica.tea.domain.enumeration.AmplifyType;
 import com.topica.tea.service.dto.BrandkeyDTO;
 import com.topica.tea.service.dto.QuestionDTO;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-02T11:05:07+0700",
+    date = "2017-07-03T11:28:43+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -27,28 +28,28 @@ public class QuestionMapperImpl implements QuestionMapper {
     private BrandkeyMapper brandkeyMapper;
 
     @Override
-    public List<Question> toEntity(List<QuestionDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<QuestionDTO> toDto(List<Question> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Question> list = new ArrayList<Question>();
-        for ( QuestionDTO questionDTO : dtoList ) {
-            list.add( toEntity( questionDTO ) );
+        List<QuestionDTO> list = new ArrayList<QuestionDTO>();
+        for ( Question question : arg0 ) {
+            list.add( toDto( question ) );
         }
 
         return list;
     }
 
     @Override
-    public List<QuestionDTO> toDto(List<Question> entityList) {
-        if ( entityList == null ) {
+    public List<Question> toEntity(List<QuestionDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<QuestionDTO> list = new ArrayList<QuestionDTO>();
-        for ( Question question : entityList ) {
-            list.add( toDto( question ) );
+        List<Question> list = new ArrayList<Question>();
+        for ( QuestionDTO questionDTO : arg0 ) {
+            list.add( toEntity( questionDTO ) );
         }
 
         return list;
@@ -65,15 +66,19 @@ public class QuestionMapperImpl implements QuestionMapper {
         questionDTO_.setScaleId( questionScaleId( question ) );
         questionDTO_.setRoleId( questionRoleId( question ) );
         questionDTO_.setInviteeId( questionInviteeId( question ) );
-        questionDTO_.setId( question.getId() );
-        questionDTO_.setIsMeatContent( question.isIsMeatContent() );
-        questionDTO_.setEventType( question.getEventType() );
-        questionDTO_.setAmplifyType( question.getAmplifyType() );
-        questionDTO_.setExtraContent( question.getExtraContent() );
+        List<AmplifyType> list = question.getAmplifyType();
+        if ( list != null ) {
+            questionDTO_.setAmplifyType(       new ArrayList<AmplifyType>( list )
+            );
+        }
         Set<BrandkeyDTO> set = brandkeySetToBrandkeyDTOSet( question.getBrandkeys() );
         if ( set != null ) {
             questionDTO_.setBrandkeys( set );
         }
+        questionDTO_.setEventType( question.getEventType() );
+        questionDTO_.setExtraContent( question.getExtraContent() );
+        questionDTO_.setId( question.getId() );
+        questionDTO_.setIsMeatContent( question.isIsMeatContent() );
 
         return questionDTO_;
     }
@@ -89,15 +94,19 @@ public class QuestionMapperImpl implements QuestionMapper {
         question_.setScale( channelGroupMapper.fromId( questionDTO.getScaleId() ) );
         question_.setRole( channelGroupMapper.fromId( questionDTO.getRoleId() ) );
         question_.setInvitee( channelGroupMapper.fromId( questionDTO.getInviteeId() ) );
-        question_.setId( questionDTO.getId() );
-        question_.setIsMeatContent( questionDTO.isIsMeatContent() );
-        question_.setEventType( questionDTO.getEventType() );
-        question_.setAmplifyType( questionDTO.getAmplifyType() );
-        question_.setExtraContent( questionDTO.getExtraContent() );
+        List<AmplifyType> list = questionDTO.getAmplifyType();
+        if ( list != null ) {
+            question_.setAmplifyType(       new ArrayList<AmplifyType>( list )
+            );
+        }
         Set<Brandkey> set = brandkeyDTOSetToBrandkeySet( questionDTO.getBrandkeys() );
         if ( set != null ) {
             question_.setBrandkeys( set );
         }
+        question_.setEventType( questionDTO.getEventType() );
+        question_.setExtraContent( questionDTO.getExtraContent() );
+        question_.setId( questionDTO.getId() );
+        question_.setIsMeatContent( questionDTO.isIsMeatContent() );
 
         return question_;
     }

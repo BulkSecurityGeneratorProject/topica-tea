@@ -9,11 +9,43 @@
 
     function QuestionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Question, ChannelGroup, Brandkey) {
         var vm = this;
-
+        
+        vm.amplifyTypes = ["SHARE", "SPONSOR", "INJECT"];
+        vm.changeAmplifyType = changeAmplifyType;
+        vm.changeBrandkeys = changeBrandkeys;
         vm.question = entity;
         vm.clear = clear;
         vm.save = save;
         vm.roles = ChannelGroup.query({filter: 'question-is-null'});
+        
+        function changeBrandkeys() {
+        	var lstBrandkeys = [];
+        	
+        	angular.forEach(vm.brandkeys, function (val, key) {
+        		if ($('#field_brandkey_' + val.id).is(":checked")) {
+        			lstBrandkeys.push(val);
+            	}
+            });
+        	
+        	vm.question.brandkeys = lstBrandkeys;
+        }
+        
+        function changeAmplifyType() {
+        	vm.question.amplifyType = [];
+        	if ($('#field_amplifyType_SHARE').is(":checked")) {
+        		vm.question.amplifyType.push('SHARE');
+        	}
+        	
+        	if ($('#field_amplifyType_SPONSOR').is(":checked")) {
+        		vm.question.amplifyType.push('SPONSOR');
+        	}
+        	
+        	if ($('#field_amplifyType_INJECT').is(":checked")) {
+        		vm.question.amplifyType.push('INJECT');
+        	}
+        }
+        
+        
         $q.all([vm.question.$promise, vm.roles.$promise]).then(function() {
             if (!vm.question.roleId) {
                 return $q.reject();

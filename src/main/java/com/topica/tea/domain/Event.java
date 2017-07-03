@@ -49,9 +49,10 @@ public class Event implements Serializable {
     @Column(name = "event_level")
     private EventLevel eventLevel;
 
+    @ElementCollection
     @Enumerated(EnumType.STRING)
     @Column(name = "amplify_type")
-    private AmplifyType amplifyType;
+    private List<AmplifyType> amplifyType;
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
@@ -180,16 +181,16 @@ public class Event implements Serializable {
         this.eventLevel = eventLevel;
     }
 
-    public AmplifyType getAmplifyType() {
+    public List<AmplifyType> getAmplifyType() {
         return amplifyType;
     }
 
-    public Event amplifyType(AmplifyType amplifyType) {
+    public Event amplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
         return this;
     }
 
-    public void setAmplifyType(AmplifyType amplifyType) {
+    public void setAmplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
     }
 

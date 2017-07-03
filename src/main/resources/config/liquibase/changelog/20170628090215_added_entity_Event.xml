@@ -95,5 +95,15 @@
             </column>
         </createTable>
         <addPrimaryKey columnNames="event_id, priority_group" tableName="event_priority_group"/>
+        
+        <createTable tableName="event_amplify_type">
+            <column name="event_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amplify_type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="event_id, amplify_type" tableName="event_amplify_type"/>
     </changeSet>
 </databaseChangeLog>

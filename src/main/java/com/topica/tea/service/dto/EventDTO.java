@@ -36,7 +36,7 @@ public class EventDTO implements Serializable {
 
     private EventLevel eventLevel;
 
-    private AmplifyType amplifyType;
+    private List<AmplifyType> amplifyType;
 
     private ZonedDateTime schedule;
 
@@ -106,11 +106,11 @@ public class EventDTO implements Serializable {
         this.eventLevel = eventLevel;
     }
 
-    public AmplifyType getAmplifyType() {
+    public List<AmplifyType> getAmplifyType() {
         return amplifyType;
     }
 
-    public void setAmplifyType(AmplifyType amplifyType) {
+    public void setAmplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
     }
 

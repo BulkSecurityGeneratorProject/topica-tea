@@ -4,6 +4,7 @@ import com.topica.tea.domain.Article;
 import com.topica.tea.domain.Event;
 import com.topica.tea.domain.Product;
 import com.topica.tea.domain.Question;
+import com.topica.tea.domain.enumeration.AmplifyType;
 import com.topica.tea.domain.enumeration.PriorityGroup;
 import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.dto.ProductDTO;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-02T11:05:06+0700",
+    date = "2017-07-03T11:28:43+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -31,28 +32,28 @@ public class EventMapperImpl implements EventMapper {
     private ProductMapper productMapper;
 
     @Override
-    public List<Event> toEntity(List<EventDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<EventDTO> toDto(List<Event> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Event> list = new ArrayList<Event>();
-        for ( EventDTO eventDTO : dtoList ) {
-            list.add( toEntity( eventDTO ) );
+        List<EventDTO> list = new ArrayList<EventDTO>();
+        for ( Event event : arg0 ) {
+            list.add( toDto( event ) );
         }
 
         return list;
     }
 
     @Override
-    public List<EventDTO> toDto(List<Event> entityList) {
-        if ( entityList == null ) {
+    public List<Event> toEntity(List<EventDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<EventDTO> list = new ArrayList<EventDTO>();
-        for ( Event event : entityList ) {
-            list.add( toDto( event ) );
+        List<Event> list = new ArrayList<Event>();
+        for ( EventDTO eventDTO : arg0 ) {
+            list.add( toEntity( eventDTO ) );
         }
 
         return list;
@@ -74,16 +75,20 @@ public class EventMapperImpl implements EventMapper {
         eventDTO_.setContent( event.getContent() );
         eventDTO_.setEventStatus( event.getEventStatus() );
         eventDTO_.setEventLevel( event.getEventLevel() );
-        eventDTO_.setAmplifyType( event.getAmplifyType() );
+        List<AmplifyType> list = event.getAmplifyType();
+        if ( list != null ) {
+            eventDTO_.setAmplifyType(       new ArrayList<AmplifyType>( list )
+            );
+        }
         eventDTO_.setSchedule( event.getSchedule() );
         eventDTO_.setQuestion( questionMapper.toDto( event.getQuestion() ) );
         Set<ProductDTO> set = productSetToProductDTOSet( event.getProducts() );
         if ( set != null ) {
             eventDTO_.setProducts( set );
         }
-        List<PriorityGroup> list = event.getPriorityGroup();
-        if ( list != null ) {
-            eventDTO_.setPriorityGroup(       new HashSet<PriorityGroup>( list )
+        List<PriorityGroup> list_ = event.getPriorityGroup();
+        if ( list_ != null ) {
+            eventDTO_.setPriorityGroup(       new HashSet<PriorityGroup>( list_ )
             );
         }
 
@@ -100,21 +105,25 @@ public class EventMapperImpl implements EventMapper {
 
         event_.setQuestion( questionMapper.fromId( eventDTO.getQuestionId() ) );
         event_.setArticle( articleMapper.fromId( eventDTO.getArticleId() ) );
-        Set<Product> set = productDTOSetToProductSet( eventDTO.getProducts() );
-        if ( set != null ) {
-            event_.setProducts( set );
+        List<AmplifyType> list = eventDTO.getAmplifyType();
+        if ( list != null ) {
+            event_.setAmplifyType(       new ArrayList<AmplifyType>( list )
+            );
         }
+        event_.setContent( eventDTO.getContent() );
+        event_.setDescription( eventDTO.getDescription() );
+        event_.setEventLevel( eventDTO.getEventLevel() );
+        event_.setEventStatus( eventDTO.getEventStatus() );
         event_.setId( eventDTO.getId() );
         event_.setName( eventDTO.getName() );
-        event_.setDescription( eventDTO.getDescription() );
-        event_.setContent( eventDTO.getContent() );
-        event_.setEventStatus( eventDTO.getEventStatus() );
-        event_.setEventLevel( eventDTO.getEventLevel() );
-        event_.setAmplifyType( eventDTO.getAmplifyType() );
-        Set<PriorityGroup> set_ = eventDTO.getPriorityGroup();
-        if ( set_ != null ) {
-            event_.setPriorityGroup(       new ArrayList<PriorityGroup>( set_ )
+        Set<PriorityGroup> set = eventDTO.getPriorityGroup();
+        if ( set != null ) {
+            event_.setPriorityGroup(       new ArrayList<PriorityGroup>( set )
             );
+        }
+        Set<Product> set_ = productDTOSetToProductSet( eventDTO.getProducts() );
+        if ( set_ != null ) {
+            event_.setProducts( set_ );
         }
         event_.setSchedule( eventDTO.getSchedule() );
 

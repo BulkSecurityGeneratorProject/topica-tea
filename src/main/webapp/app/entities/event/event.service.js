@@ -23,7 +23,7 @@
             },
             'update': { method:'PUT' },
             'queryUserWithRole': {
-            	url : 'api/users/:role',
+            	url : 'api/users-role/:role',
             	method:'GET',
             	isArray: true
             },

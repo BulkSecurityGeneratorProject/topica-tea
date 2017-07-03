@@ -3,6 +3,7 @@ package com.topica.tea.service.dto;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 import com.topica.tea.domain.enumeration.EventType;
@@ -19,7 +20,7 @@ public class QuestionDTO implements Serializable {
 
     private EventType eventType;
 
-    private AmplifyType amplifyType;
+    private List<AmplifyType> amplifyType;
 
     private String extraContent;
 
@@ -55,11 +56,19 @@ public class QuestionDTO implements Serializable {
         this.eventType = eventType;
     }
 
-    public AmplifyType getAmplifyType() {
+//    public AmplifyType getAmplifyType() {
+//        return amplifyType;
+//    }
+//
+//    public void setAmplifyType(AmplifyType amplifyType) {
+//        this.amplifyType = amplifyType;
+//    }
+    
+    public List<AmplifyType> getAmplifyType() {
         return amplifyType;
     }
 
-    public void setAmplifyType(AmplifyType amplifyType) {
+    public void setAmplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
     }
 

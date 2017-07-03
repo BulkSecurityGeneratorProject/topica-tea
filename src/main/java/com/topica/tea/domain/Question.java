@@ -4,11 +4,12 @@ package com.topica.tea.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 
 import com.topica.tea.domain.enumeration.EventType;
-
+import com.topica.tea.domain.enumeration.PriorityGroup;
 import com.topica.tea.domain.enumeration.AmplifyType;
 
 /**
@@ -31,9 +32,9 @@ public class Question implements Serializable {
     @Column(name = "event_type")
     private EventType eventType;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "amplify_type")
-    private AmplifyType amplifyType;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "amplify_type")
+//    private AmplifyType amplifyType;
 
     @Column(name = "extra_content")
     private String extraContent;
@@ -55,6 +56,11 @@ public class Question implements Serializable {
                joinColumns = @JoinColumn(name="questions_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="brandkeys_id", referencedColumnName="id"))
     private Set<Brandkey> brandkeys = new HashSet<>();
+    
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    @Column(name = "amplify_type")
+    private List<AmplifyType> amplifyType;
 
     public Long getId() {
         return id;
@@ -90,16 +96,29 @@ public class Question implements Serializable {
         this.eventType = eventType;
     }
 
-    public AmplifyType getAmplifyType() {
+//    public AmplifyType getAmplifyType() {
+//        return amplifyType;
+//    }
+//
+//    public Question amplifyType(AmplifyType amplifyType) {
+//        this.amplifyType = amplifyType;
+//        return this;
+//    }
+//
+//    public void setAmplifyType(AmplifyType amplifyType) {
+//        this.amplifyType = amplifyType;
+//    }
+    
+    public List<AmplifyType> getAmplifyType() {
         return amplifyType;
     }
 
-    public Question amplifyType(AmplifyType amplifyType) {
+    public Question amplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
         return this;
     }
 
-    public void setAmplifyType(AmplifyType amplifyType) {
+    public void setAmplifyType(List<AmplifyType> amplifyType) {
         this.amplifyType = amplifyType;
     }
 
