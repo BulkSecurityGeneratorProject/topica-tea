@@ -82,7 +82,7 @@ liquibase:
 #        keyAlias: TopicaEventAmplify
 # ===================================================================
 server:
-    port: 8777
+    port: 9301
 
 # ===================================================================
 # JHipster specific properties

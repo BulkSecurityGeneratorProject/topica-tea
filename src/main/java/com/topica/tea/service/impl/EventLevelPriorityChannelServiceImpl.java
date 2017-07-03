@@ -1,10 +1,15 @@
 package com.topica.tea.service.impl;
 
 import com.topica.tea.service.EventLevelPriorityChannelService;
+import com.topica.tea.domain.BrandkeyProduct;
 import com.topica.tea.domain.EventLevelPriorityChannel;
 import com.topica.tea.repository.EventLevelPriorityChannelRepository;
+import com.topica.tea.service.dto.BrandkeyProductDTO;
 import com.topica.tea.service.dto.EventLevelPriorityChannelDTO;
 import com.topica.tea.service.mapper.EventLevelPriorityChannelMapper;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -83,4 +88,20 @@ public class EventLevelPriorityChannelServiceImpl implements EventLevelPriorityC
         log.debug("Request to delete EventLevelPriorityChannel : {}", id);
         eventLevelPriorityChannelRepository.delete(id);
     }
+
+	@Override
+	public void deleteAll() {
+		log.debug("Request to deleteAll EventLevelPriorityChannel");
+		eventLevelPriorityChannelRepository.deleteAll();
+	}
+
+	@Override
+	public List<EventLevelPriorityChannelDTO> saveAll(
+			List<EventLevelPriorityChannelDTO> eventLevelPriorityChannelDTOs) {
+		log.debug("Request to saveAll list EventLevelPriorityChannel : {}", eventLevelPriorityChannelDTOs);
+		
+        List<EventLevelPriorityChannel> eventLevelPriorityChannels = eventLevelPriorityChannelMapper.toEntity(eventLevelPriorityChannelDTOs);
+        eventLevelPriorityChannels = eventLevelPriorityChannelRepository.save(eventLevelPriorityChannels);
+        return eventLevelPriorityChannelMapper.toDto(eventLevelPriorityChannels);
+	}
 }

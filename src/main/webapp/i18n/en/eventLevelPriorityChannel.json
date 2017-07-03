@@ -4,7 +4,10 @@
             "home": {
                 "title": "Event Level Priority Channels",
                 "createLabel": "Create a new Event Level Priority Channel",
-                "createOrEditLabel": "Create or edit a Event Level Priority Channel"
+                "createOrEditLabel": "Create or edit a Event Level Priority Channel",
+                "save-all": "Lưu cấu hình",
+                "createLabelXT": "Nội dung Xôi thịt",
+                "createLabelKoXT": "Nội dung Không Xôi thịt"
             },
             "created": "A new Event Level Priority Channel is created with identifier {{ param }}",
             "updated": "A Event Level Priority Channel is updated with identifier {{ param }}",

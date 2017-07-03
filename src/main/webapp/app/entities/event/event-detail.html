@@ -10,7 +10,7 @@
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span></dt>
         <dd>
-            <span data-translate="{{'topicaEventAmplifyApp.EventStatus.' + vm.event.eventStatus}}">{{vm.event.eventStatus}}</span>
+            <span class="label label-info" data-translate="{{'topicaEventAmplifyApp.status.' + vm.event.eventStatus}}">{{vm.event.eventStatus}}</span>
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.eventLevel">Event Level</span></dt>
         <dd>
@@ -27,6 +27,12 @@
         <dt><span data-translate="topicaEventAmplifyApp.event.schedule">Schedule</span></dt>
         <dd>
             <span>{{vm.event.schedule | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.event.products">Products</span></dt>
+        <dd>
+        	<div ng-repeat="product in vm.event.products">
+        		<span class="label label-info">{{product.productName}}</span>
+        	</div>
         </dd>
         <dt><span data-translate="topicaEventAmplifyApp.event.question">Question</span></dt>
         <dd>

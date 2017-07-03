@@ -1,6 +1,9 @@
 package com.topica.tea.service;
 
 import com.topica.tea.service.dto.EventLevelPriorityGroupDTO;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -39,4 +42,19 @@ public interface EventLevelPriorityGroupService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    /**
+     *  Delete the all eventLevelPriorityGroup.
+     *
+     *  @param id the id of the entity
+     */
+    void deleteAll();
+    
+    /**
+     * Save all eventLevelPriorityGroup.
+     *
+     * @param eventLevelPriorityGroupDTO the entity to save
+     * @return the persisted entity
+     */
+    List<EventLevelPriorityGroupDTO> saveAll(List<EventLevelPriorityGroupDTO> eventLevelPriorityGroupDTOs);
 }

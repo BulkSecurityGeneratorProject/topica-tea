@@ -41,6 +41,29 @@ public class EventLevelPriorityGroupResource {
     }
 
     /**
+     * POST  /event-level-priority-groups/save-all : Create all new eventLevelPriorityGroup.
+     *
+     * @param eventLevelPriorityGroupDTO the eventLevelPriorityGroupDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new eventLevelPriorityGroupDTO, or with status 400 (Bad Request) if the eventLevelPriorityGroup has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/event-level-priority-groups/save-all")
+    @Timed
+    public ResponseEntity<List<EventLevelPriorityGroupDTO>> createAllEventLevelPriorityGroup(@Valid @RequestBody List<EventLevelPriorityGroupDTO> eventLevelPriorityGroupDTOs) throws URISyntaxException {
+        log.debug("REST request to save EventLevelPriorityGroup : {}", eventLevelPriorityGroupDTOs);
+        if (eventLevelPriorityGroupDTOs == null || eventLevelPriorityGroupDTOs.size() == 0) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "List eventLevelPriorityGroup cannot null or empty")).body(null);
+        }
+        // Remove all
+        eventLevelPriorityGroupService.deleteAll();
+        
+        List<EventLevelPriorityGroupDTO> result = eventLevelPriorityGroupService.saveAll(eventLevelPriorityGroupDTOs);
+        return ResponseEntity.created(new URI("/api/event-level-priority-groups/save-all"))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, ""))
+            .body(result);
+    }
+    
+    /**
      * POST  /event-level-priority-groups : Create a new eventLevelPriorityGroup.
      *
      * @param eventLevelPriorityGroupDTO the eventLevelPriorityGroupDTO to create

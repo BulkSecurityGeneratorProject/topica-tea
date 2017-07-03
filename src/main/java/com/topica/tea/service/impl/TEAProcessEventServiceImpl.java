@@ -1,6 +1,5 @@
 package com.topica.tea.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,21 +9,29 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.topica.tea.domain.BrandkeyProduct;
 import com.topica.tea.domain.ChannelGroup;
-import com.topica.tea.domain.enumeration.ChannelGroupType;
+import com.topica.tea.domain.EventLevelPriorityGroup;
+import com.topica.tea.domain.Product;
 import com.topica.tea.domain.enumeration.EventLevel;
 import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.domain.enumeration.PriorityGroup;
+import com.topica.tea.repository.BrandkeyProductRepository;
 import com.topica.tea.repository.ChannelGroupRepository;
+import com.topica.tea.repository.EventLevelPriorityGroupRepository;
 import com.topica.tea.repository.EventRepository;
+import com.topica.tea.repository.ProductRepository;
 import com.topica.tea.repository.UserRepository;
 import com.topica.tea.service.TEAProcessEventService;
+import com.topica.tea.service.dto.BrandkeyDTO;
 import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.dto.ProductDTO;
 import com.topica.tea.service.dto.QuestionDTO;
 import com.topica.tea.service.dto.ScheduleDTO;
 import com.topica.tea.service.mapper.EventMapper;
+import com.topica.tea.service.mapper.ProductMapper;
 import com.topica.tea.service.mapper.QuestionMapper;
+
 
 
 /**
@@ -45,15 +52,31 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
     private final EventMapper eventMapper;
     
     private final QuestionMapper questionMapper;
+    
+    private final ProductMapper productMapper;
+    
+    private final EventLevelPriorityGroupRepository eventLevelPriorityGroupRepository;
+    
+    private final BrandkeyProductRepository brandkeyProductRepository;
+    
+    private final ProductRepository productRepository;
 
     public TEAProcessEventServiceImpl(EventRepository eventRepository, EventMapper eventMapper
     		, QuestionMapper questionMapper, UserRepository userRepository
+    		, EventLevelPriorityGroupRepository eventLevelPriorityGroupRepository
+    		, BrandkeyProductRepository brandkeyProductRepository
+    		, ProductRepository productRepository
+    		, ProductMapper productMapper
     		, ChannelGroupRepository channelGroupRepository) {
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
         this.questionMapper = questionMapper;
         this.userRepository = userRepository;
         this.channelGroupRepository = channelGroupRepository;
+        this.eventLevelPriorityGroupRepository = eventLevelPriorityGroupRepository;
+        this.brandkeyProductRepository = brandkeyProductRepository;
+        this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
 	@Override
@@ -141,7 +164,38 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
 	 * @return
 	 */
 	private Set<ProductDTO> calculateProduct(EventDTO eventDTO) {
-		return null;
+		Set<Product> lstProduct = new HashSet<>();
+		Set<BrandkeyDTO> brandkeys = eventDTO.getQuestion().getBrandkeys();
+		
+		// check null
+		if (brandkeys == null || brandkeys.size() == 0) {
+			return null;
+		}
+		
+		for (BrandkeyDTO brandkeyDTO : brandkeys) {
+			List<BrandkeyProduct> tmpBrandkeyProduct = brandkeyProductRepository.findAllByBrandkeyId(brandkeyDTO.getId());
+			if (tmpBrandkeyProduct != null && tmpBrandkeyProduct.size() > 0) {
+				for (BrandkeyProduct brandkeyProduct : tmpBrandkeyProduct) {
+					Product tmpProduct = productRepository.getOne(brandkeyProduct.getProduct_id());
+					if (null != tmpProduct) {
+						lstProduct.add(tmpProduct);
+					}
+				}
+			}
+		}
+		
+		if (null == lstProduct || lstProduct.size() == 0) {
+			return null;
+		}
+		
+		// Convert to DTO
+		Set<ProductDTO> lstProductDTO = new HashSet<>();
+		for (Product item : lstProduct) {
+			ProductDTO tmp = productMapper.toDto(item);
+			lstProductDTO.add(tmp);
+		}
+		
+		return lstProductDTO;
 	}
 	
 	/**
@@ -153,8 +207,17 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
 	 */
 	private Set<PriorityGroup> calculatePriorityChannelGroup(EventDTO eventDTO) {
 		Set<PriorityGroup> lstChannel = new HashSet<>();
-		lstChannel.add(PriorityGroup.K0A);
-		lstChannel.add(PriorityGroup.K0B);
+		boolean isMeatContent = Boolean.TRUE.equals(eventDTO.getQuestion().isIsMeatContent());
+		EventLevel eventLevel = eventDTO.getEventLevel();
+		
+		List<EventLevelPriorityGroup> eventLevelPriorityGroups = eventLevelPriorityGroupRepository.findAllByIsMeatContentAndEventLevel(isMeatContent, eventLevel);
+		
+		if (null != eventLevelPriorityGroups && eventLevelPriorityGroups.size() > 0) {
+			for (EventLevelPriorityGroup eventLevelPriorityGroup : eventLevelPriorityGroups) {
+				lstChannel.add(eventLevelPriorityGroup.getPriorityGroup());
+			}
+		}
+		
 		return lstChannel;
 	}
 	

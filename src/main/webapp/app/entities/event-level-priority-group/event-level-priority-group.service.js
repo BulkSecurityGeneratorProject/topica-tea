@@ -20,7 +20,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'saveAll': {
+            	url : 'api/event-level-priority-groups/save-all',
+            	method:'POST',
+            	isArray: true
+            },
         });
     }
 })();

@@ -4,7 +4,10 @@
             "home": {
                 "title": "Event Level Priority Groups",
                 "createLabel": "Thêm mới một Event Level Priority Group",
-                "createOrEditLabel": "Thêm mới hoặc cập nhật Event Level Priority Group"
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Event Level Priority Group",
+                "save-all": "Lưu cấu hình",
+                "createLabelXT": "Nội dung Xôi thịt",
+                "createLabelKoXT": "Nội dung Không Xôi thịt"
             },
             "created": "Một Event Level Priority Group mới được tạo với định danh {{ param }}",
             "updated": "Một Event Level Priority Group cập nhật với định danh {{ param }}",

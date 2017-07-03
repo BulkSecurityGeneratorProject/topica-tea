@@ -1,6 +1,9 @@
 package com.topica.tea.service;
 
 import com.topica.tea.service.dto.EventLevelPriorityChannelDTO;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -39,4 +42,19 @@ public interface EventLevelPriorityChannelService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    /**
+     *  Delete the "id" eventLevelPriorityChannel.
+     *
+     *  @param id the id of the entity
+     */
+    void deleteAll();
+    
+    /**
+     * Save a eventLevelPriorityChannel.
+     *
+     * @param eventLevelPriorityChannelDTO the entity to save
+     * @return the persisted entity
+     */
+    List<EventLevelPriorityChannelDTO> saveAll(List<EventLevelPriorityChannelDTO> eventLevelPriorityChannelDTOs);
 }

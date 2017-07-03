@@ -1,10 +1,15 @@
 package com.topica.tea.service.impl;
 
 import com.topica.tea.service.EventLevelPriorityGroupService;
+import com.topica.tea.domain.EventLevelPriorityChannel;
 import com.topica.tea.domain.EventLevelPriorityGroup;
 import com.topica.tea.repository.EventLevelPriorityGroupRepository;
+import com.topica.tea.service.dto.EventLevelPriorityChannelDTO;
 import com.topica.tea.service.dto.EventLevelPriorityGroupDTO;
 import com.topica.tea.service.mapper.EventLevelPriorityGroupMapper;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -83,4 +88,19 @@ public class EventLevelPriorityGroupServiceImpl implements EventLevelPriorityGro
         log.debug("Request to delete EventLevelPriorityGroup : {}", id);
         eventLevelPriorityGroupRepository.delete(id);
     }
+
+	@Override
+	public void deleteAll() {
+		log.debug("Request to deleteAll EventLevelPriorityGroup");
+		eventLevelPriorityGroupRepository.deleteAll();
+	}
+
+	@Override
+	public List<EventLevelPriorityGroupDTO> saveAll(List<EventLevelPriorityGroupDTO> eventLevelPriorityGroupDTOs) {
+		log.debug("Request to saveAll list EventLevelPriorityGroup : {}", eventLevelPriorityGroupDTOs);
+		
+        List<EventLevelPriorityGroup> eventLevelPriorityGroups = eventLevelPriorityGroupMapper.toEntity(eventLevelPriorityGroupDTOs);
+        eventLevelPriorityGroups = eventLevelPriorityGroupRepository.save(eventLevelPriorityGroups);
+        return eventLevelPriorityGroupMapper.toDto(eventLevelPriorityGroups);
+	}
 }

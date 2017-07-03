@@ -2,7 +2,73 @@
     <h2 data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.home.title">Event Level Priority Groups</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
+    	<!-- Implement -->
+    	<div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ng-click="vm.saveAll()">
+                	<span class="glyphicon glyphicon-save"></span>
+                	<span data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.home.save-all">Save config</span>
+            	</button>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="event-level-priority-group.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.home.createLabel">
+                        Create new Event Level Priority Group
+                    </span>
+                </button>
+            </div>
+        </div> -->
         <div class="row">
+            <div class="col-xs-6 no-padding-left">
+            	<h5 data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.home.createLabelXT">Nội dung Xôi thịt</h5>
+                <table class="jh-table table table-striped table-bordered">
+		            <thead>
+		                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+		                	<th></th>
+		                    <th ng-repeat="channel in vm.priorityChannels">
+		                    	<span>{{channel.name}}</span>
+		                    </th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="level in vm.eventLevels">
+		                	<td>{{level.name}}</td>
+		                	<td ng-repeat="channel in vm.priorityChannels" class="text-center">
+		                		<input type="checkbox" name="chk_xt_{{level.name}}_{{channel.name}}" id="chk_xt_{{level.name}}_{{channel.name}}">
+		                	</td>
+		                </tr>
+		            </tbody>
+		        </table>
+            </div>
+            <div class="col-xs-6 no-padding-left">
+            	<h5 data-translate="topicaEventAmplifyApp.eventLevelPriorityGroup.home.createLabelKoXT">Nội dung Xôi thịt</h5>
+                <table class="jh-table table table-striped table-bordered">
+		            <thead>
+		                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+		                	<th></th>
+		                    <th ng-repeat="channel in vm.priorityChannels">
+		                    	<span>{{channel.name}}</span>
+		                    </th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="level in vm.eventLevels">
+		                	<td>{{level.name}}</td>
+		                	<td ng-repeat="channel in vm.priorityChannels" class="text-center">
+		                		<input type="checkbox" name="chk_koxt_{{level.name}}_{{channel.name}}" id="chk_koxt_{{level.name}}_{{channel.name}}">
+		                	</td>
+		                </tr>
+		            </tbody>
+		        </table>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <!-- 
+    <div class="row">
             <div class="col-xs-4 no-padding-left">
                 <button class="btn btn-primary" ui-sref="event-level-priority-group.new" >
                     <span class="glyphicon glyphicon-plus"></span>
@@ -12,8 +78,6 @@
                 </button>
             </div>
         </div>
-    </div>
-    <br/>
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
@@ -60,5 +124,5 @@
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div>
+    </div> -->
 </div>
