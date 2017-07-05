@@ -1,9 +1,13 @@
 package com.topica.tea.repository;
 
 import com.topica.tea.domain.Event;
+import com.topica.tea.domain.Question;
+import com.topica.tea.domain.enumeration.EventStatus;
+
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 
 
 /**
@@ -11,6 +15,7 @@ import org.springframework.data.jpa.repository.*;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface EventRepository extends JpaRepository<Event,Long> {
+public interface EventRepository extends JpaRepository<Event,Long>, EventRepositoryExtend {
 
+	Event findOneByEventStatus(EventStatus status);
 }

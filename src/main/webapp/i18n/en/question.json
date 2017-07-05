@@ -15,7 +15,9 @@
             "detail": {
                 "title": "Question"
             },
-            "isMeatContent": "Is Meat Content",
+            "content": "Nội dung",
+            "isMeatContent": "Trực tiếp (Xôi thịt)",
+            "isNoMeatContent": "Gián tiếp (Không xôi thịt)",
             "eventType": "Event Type",
             "amplifyType": "Amplify Type",
             "extraContent": "Extra Content",

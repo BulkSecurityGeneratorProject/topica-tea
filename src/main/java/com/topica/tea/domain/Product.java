@@ -22,10 +22,22 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "product_name", nullable = false)
     private String productName;
+    
+    @NotNull
+    @Column(name = "product_code", nullable = false, unique=true)
+    private String productCode;
 
-    @Column(name = "description")
+	@Column(name = "description")
     private String description;
 
+    public String getProductCode() {
+		return productCode;
+	}
+
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
+	
     public Long getId() {
         return id;
     }

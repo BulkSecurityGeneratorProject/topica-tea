@@ -15,7 +15,9 @@
             "detail": {
                 "title": "Câu hỏi"
             },
-            "isMeatContent": "Nội dung Xôi thịt ?",
+            "content": "Nội dung",
+            "isMeatContent": "Trực tiếp (Xôi thịt)",
+            "isNoMeatContent": "Gián tiếp (Không xôi thịt)",
             "eventType": "Loại sự kiện",
             "amplifyType": "Loại khuếch đại",
             "extraContent": "Nguyên liệu",

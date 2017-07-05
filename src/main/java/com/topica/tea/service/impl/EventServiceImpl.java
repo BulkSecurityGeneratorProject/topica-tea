@@ -3,11 +3,13 @@ package com.topica.tea.service.impl;
 import com.topica.tea.service.EventService;
 import com.topica.tea.domain.Article;
 import com.topica.tea.domain.Event;
+import com.topica.tea.domain.Product;
 import com.topica.tea.domain.Question;
 import com.topica.tea.domain.User;
 import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.repository.ArticleRepository;
 import com.topica.tea.repository.EventRepository;
+import com.topica.tea.repository.ProductRepository;
 import com.topica.tea.repository.UserRepository;
 import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.mapper.EventMapper;
@@ -31,6 +33,8 @@ public class EventServiceImpl implements EventService{
     private final Logger log = LoggerFactory.getLogger(EventServiceImpl.class);
 
     private final EventRepository eventRepository;
+    
+    private final ProductRepository productRepository;
 
     private final UserRepository userRepository;
     
@@ -41,12 +45,14 @@ public class EventServiceImpl implements EventService{
     private final QuestionMapper questionMapper;
 
     public EventServiceImpl(EventRepository eventRepository, EventMapper eventMapper, QuestionMapper questionMapper
-    		, UserRepository userRepository, ArticleRepository articleRepository) {
+    		, UserRepository userRepository, ArticleRepository articleRepository,
+    		ProductRepository productRepository) {
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
         this.questionMapper = questionMapper;
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
+        this.productRepository = productRepository;
     }
 
     /**
@@ -167,5 +173,15 @@ public class EventServiceImpl implements EventService{
 			return eventMapper.toDto(eventResult);
 		}
 		return null;
+	}
+
+	@Override
+	public EventDTO getPublishInjectEventByProductCode(String productCode) {
+		Event event = eventRepository.findPublishInjectOneByProductCode(productCode);
+		
+		if (null == event) {
+			return null;
+		}
+		return eventMapper.toDto(event);
 	}
 }

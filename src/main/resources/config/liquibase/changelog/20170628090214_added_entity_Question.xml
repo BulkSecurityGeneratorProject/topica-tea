@@ -25,6 +25,9 @@
             <column name="is_meat_content" type="bit">
                 <constraints nullable="true" />
             </column>
+            <column name="is_no_meat_content" type="bit">
+                <constraints nullable="true" />
+            </column>
 
             <column name="event_type" type="varchar(255)">
                 <constraints nullable="true" />
@@ -67,5 +70,22 @@
         </createTable>
         <addPrimaryKey columnNames="question_id, amplify_type" tableName="question_amplify_type"/>
         
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/question.csv"
+                  separator=";"
+                  tableName="question">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/question_brandkeys.csv"
+                  separator=";"
+                  tableName="question_brandkeys">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/question_amplify_type.csv"
+                  separator=";"
+                  tableName="question_amplify_type">
+        </loadData>
     </changeSet>
 </databaseChangeLog>

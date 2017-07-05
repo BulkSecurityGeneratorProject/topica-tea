@@ -63,4 +63,12 @@ public interface EventService {
      * @return the persisted entity
      */
     EventDTO updateStatus(Long id, String status);
+    
+    /**
+     * getPublishEventByProductCode a event.
+     *
+     * @param eventDTO the entity to editor
+     * @return the persisted entity
+     */
+    EventDTO getPublishInjectEventByProductCode(String productCode);
 }

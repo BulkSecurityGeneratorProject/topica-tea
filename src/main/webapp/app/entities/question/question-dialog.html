@@ -66,9 +66,19 @@
         </div>
         
         <div class="form-group">
+            <label data-translate="topicaEventAmplifyApp.question.content" for="field_tmp_content">Nội dung</label>
+            <select class="form-control" id="field_tmp_content" ng-show="false">
+            </select>
+			</br>
+			<!-- Hidden -->
+        	<input type="hidden" class="form-control" ng-model="vm.checkMeatContent" required />
+        	
+			<input type="checkbox" name="isMeatContent" id="field_isMeatContent" ng-click="vm.changeMeatContent()" ng-model="vm.question.isMeatContent" />
             <label class="control-label" data-translate="topicaEventAmplifyApp.question.isMeatContent" for="field_isMeatContent">Is Meat Content</label>
-                <input type="checkbox" name="isMeatContent" id="field_isMeatContent"
-                          ng-model="vm.question.isMeatContent"/>
+            </br>
+            
+            <input type="checkbox" name="isNoMeatContent" id="field_isNoMeatContent" ng-click="vm.changeMeatContent()" ng-model="vm.question.isNoMeatContent"/>
+            <label class="control-label" data-translate="topicaEventAmplifyApp.question.isNoMeatContent" for="field_isNoMeatContent">Is No Meat Content</label>
         </div>
         
         <div class="form-group">

@@ -26,7 +26,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="content" type="varchar(255)">
+            <column name="content" type="text">
                 <constraints nullable="true" />
             </column>
 
@@ -41,5 +41,10 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/article.csv"
+                  separator="@"
+                  tableName="article">
+        </loadData>
     </changeSet>
 </databaseChangeLog>

@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title th:text="#{email.activation.title}">TEA Một sự kiện mới đã tạo thành công</title>
+        <title>Event creation</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" href="${baseUrl}/favicon.ico" />
     </head>
     <body>
-        <p th:text="#{email.new.event.greeting(${user.login})}">
+        <p th:text="#{email.activation.greeting(${user.login})}">
             Dear
         </p>
-        <p th:text="#{email.new.event.text1}">
-            Một sự kiện mới đã được tạo trên hệ thống <br>Nếu bạn là người điều phối hãy chuyển công việc cho người soạn thảo
-        </p>
         <p>
-            <a th:href="@{|${baseUrl}/#/event|}"
-               th:text="#{email.new.event.name}">Event Link</a>
+            Một sự kiện mới đã được tạo trên hệ thống
         </p>
         <p>
             <span th:text="#{email.activation.text2}">Regards, </span>

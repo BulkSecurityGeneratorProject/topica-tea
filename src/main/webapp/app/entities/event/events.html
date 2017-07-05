@@ -65,10 +65,10 @@
                     <td><span class="label label-info" ng-repeat="product in event.products">{{product.productName}}</span> </td>
                     <td>{{event.schedule | date:'medium'}}</td>
                     <td>
-                        <a ui-sref="question-detail({id:event.questionId})">{{event.questionId}}</a>
+                        <a ui-sref="question-detail({id:event.questionId})" ng-show="event.questionId"><span class="glyphicon glyphicon-question-sign"></span></a>
                     </td>
                     <td>
-                        <a ui-sref="article-detail({id:event.articleId})">{{event.articleId}}</a>
+                        <a ui-sref="article-detail({id:event.articleId})" ng-show="event.articleId"><span class="	glyphicon glyphicon-list-alt"></span></a>
                     </td>
                     <!-- Button -->
                     <td class="text-right">

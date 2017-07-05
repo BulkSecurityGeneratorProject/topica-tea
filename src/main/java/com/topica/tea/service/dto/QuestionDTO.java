@@ -17,6 +17,8 @@ public class QuestionDTO implements Serializable {
     private Long id;
 
     private Boolean isMeatContent;
+    
+    private Boolean isNoMeatContent;
 
     private EventType eventType;
 
@@ -143,4 +145,12 @@ public class QuestionDTO implements Serializable {
             ", extraContent='" + getExtraContent() + "'" +
             "}";
     }
+
+	public Boolean isIsNoMeatContent() {
+		return isNoMeatContent;
+	}
+
+	public void setIsNoMeatContent(Boolean isNoMeatContent) {
+		this.isNoMeatContent = isNoMeatContent;
+	}
 }

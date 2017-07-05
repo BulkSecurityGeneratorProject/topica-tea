@@ -15,6 +15,8 @@ public class ProductDTO implements Serializable {
     @NotNull
     private String productName;
 
+    private String productCode;
+    
     private String description;
 
     public Long getId() {
@@ -70,4 +72,12 @@ public class ProductDTO implements Serializable {
             ", description='" + getDescription() + "'" +
             "}";
     }
+
+	public String getProductCode() {
+		return productCode;
+	}
+
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
 }

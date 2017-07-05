@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-03T11:28:43+0700",
+    date = "2017-07-05T12:44:44+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -69,28 +69,29 @@ public class EventMapperImpl implements EventMapper {
 
         eventDTO_.setArticleId( eventArticleId( event ) );
         eventDTO_.setQuestionId( eventQuestionId( event ) );
-        eventDTO_.setId( event.getId() );
-        eventDTO_.setName( event.getName() );
-        eventDTO_.setDescription( event.getDescription() );
-        eventDTO_.setContent( event.getContent() );
-        eventDTO_.setEventStatus( event.getEventStatus() );
-        eventDTO_.setEventLevel( event.getEventLevel() );
         List<AmplifyType> list = event.getAmplifyType();
         if ( list != null ) {
             eventDTO_.setAmplifyType(       new ArrayList<AmplifyType>( list )
             );
         }
-        eventDTO_.setSchedule( event.getSchedule() );
-        eventDTO_.setQuestion( questionMapper.toDto( event.getQuestion() ) );
-        Set<ProductDTO> set = productSetToProductDTOSet( event.getProducts() );
-        if ( set != null ) {
-            eventDTO_.setProducts( set );
-        }
+        eventDTO_.setArticle( articleMapper.toDto( event.getArticle() ) );
+        eventDTO_.setContent( event.getContent() );
+        eventDTO_.setDescription( event.getDescription() );
+        eventDTO_.setEventLevel( event.getEventLevel() );
+        eventDTO_.setEventStatus( event.getEventStatus() );
+        eventDTO_.setId( event.getId() );
+        eventDTO_.setName( event.getName() );
         List<PriorityGroup> list_ = event.getPriorityGroup();
         if ( list_ != null ) {
             eventDTO_.setPriorityGroup(       new HashSet<PriorityGroup>( list_ )
             );
         }
+        Set<ProductDTO> set = productSetToProductDTOSet( event.getProducts() );
+        if ( set != null ) {
+            eventDTO_.setProducts( set );
+        }
+        eventDTO_.setQuestion( questionMapper.toDto( event.getQuestion() ) );
+        eventDTO_.setSchedule( event.getSchedule() );
 
         return eventDTO_;
     }

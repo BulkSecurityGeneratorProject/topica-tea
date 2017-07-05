@@ -105,5 +105,30 @@
             </column>
         </createTable>
         <addPrimaryKey columnNames="event_id, amplify_type" tableName="event_amplify_type"/>
+        
+        <!-- Load data -->
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/event.csv"
+                  separator=";"
+                  tableName="event">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/event_products.csv"
+                  separator=";"
+                  tableName="event_products">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/event_priority_group.csv"
+                  separator=";"
+                  tableName="event_priority_group">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/event_amplify_type.csv"
+                  separator=";"
+                  tableName="event_amplify_type">
+        </loadData>
     </changeSet>
 </databaseChangeLog>

@@ -68,6 +68,16 @@ public class Event implements Serializable {
     
     @OneToOne
     @JoinColumn
+    private Article article;
+    
+    @ManyToMany
+    @JoinTable(name = "event_products",
+               joinColumns = @JoinColumn(name="event_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="products_id", referencedColumnName="id"))
+    private Set<Product> products = new HashSet<>();
+    
+    @OneToOne
+    @JoinColumn
     private User createdUser;
 
     @OneToOne
@@ -89,16 +99,6 @@ public class Event implements Serializable {
 	public void setWriterUser(User writerUser) {
 		this.writerUser = writerUser;
 	}
-
-	@OneToOne
-    @JoinColumn
-    private Article article;
-    
-    @ManyToMany
-    @JoinTable(name = "event_products",
-               joinColumns = @JoinColumn(name="event_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="products_id", referencedColumnName="id"))
-    private Set<Product> products = new HashSet<>();
 
     public Set<Product> getProducts() {
 		return products;

@@ -1,10 +1,10 @@
-id;product_name;description
-1;TEG;
-2;Tuyển dụng;
-3;Uni;
-4;Native;
-5;Edumall;
-6;TFI;
-7;AILab;
-8;IVY;
+id;product_name;product_code;description
+1;TEG;T001;
+2;Tuyển dụng;T002;
+3;Uni;T003;
+4;Native;T004;
+5;Edumall;T005;
+6;TFI;T006;
+7;AILab;T007;
+8;IVY;T008;
 

@@ -2,7 +2,7 @@
     "topicaEventAmplifyApp": {
         "event" : {
             "home": {
-                "title": "Events",
+                "title": "Danh sách Sự kiện",
                 "createLabel": "Thêm mới một Event",
                 "createQuestionLabel": "Thêm mới một Question",
                 "createOrEditLabel": "Thêm mới hoặc cập nhật Event"
@@ -18,7 +18,7 @@
                 "question": "Bạn có chắc là muốn xuất bản Event {{ id }}?"
             },
             "distribute": {
-                "chooseWriter": "Bạn hãy chọn người soạn thảo nội dung cho Event {{ id }} !",
+                "chooseWriter": "Bạn hãy chọn người soạn thảo nội dung cho Sự kiện {{ id }} !",
                 "writer" : {
                 	"title" : "Người soạn thảo sự kiện",
                 	"name" : "Tên người soạn thảo",

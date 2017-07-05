@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-03T11:28:43+0700",
+    date = "2017-07-04T09:20:18+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -79,6 +79,7 @@ public class QuestionMapperImpl implements QuestionMapper {
         questionDTO_.setExtraContent( question.getExtraContent() );
         questionDTO_.setId( question.getId() );
         questionDTO_.setIsMeatContent( question.isIsMeatContent() );
+        questionDTO_.setIsNoMeatContent( question.isIsNoMeatContent() );
 
         return questionDTO_;
     }
@@ -107,6 +108,7 @@ public class QuestionMapperImpl implements QuestionMapper {
         question_.setExtraContent( questionDTO.getExtraContent() );
         question_.setId( questionDTO.getId() );
         question_.setIsMeatContent( questionDTO.isIsMeatContent() );
+        question_.setIsNoMeatContent( questionDTO.isIsNoMeatContent() );
 
         return question_;
     }

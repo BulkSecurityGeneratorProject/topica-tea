@@ -13,10 +13,22 @@
         vm.amplifyTypes = ["SHARE", "SPONSOR", "INJECT"];
         vm.changeAmplifyType = changeAmplifyType;
         vm.changeBrandkeys = changeBrandkeys;
+        vm.changeMeatContent = changeMeatContent;
         vm.question = entity;
         vm.clear = clear;
         vm.save = save;
         vm.roles = ChannelGroup.query({filter: 'question-is-null'});
+        
+        function changeMeatContent() {
+        	vm.checkMeatContent = [];
+        	if ($('#field_isMeatContent').is(":checked")) {
+        		vm.checkMeatContent.push('true');
+        	}
+        	
+        	if ($('#field_isNoMeatContent').is(":checked")) {
+        		vm.checkMeatContent.push('true');
+        	}
+        }
         
         function changeBrandkeys() {
         	var lstBrandkeys = [];

@@ -207,14 +207,30 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
 	 */
 	private Set<PriorityGroup> calculatePriorityChannelGroup(EventDTO eventDTO) {
 		Set<PriorityGroup> lstChannel = new HashSet<>();
-		boolean isMeatContent = Boolean.TRUE.equals(eventDTO.getQuestion().isIsMeatContent());
+		
 		EventLevel eventLevel = eventDTO.getEventLevel();
+		boolean isMeatContent = Boolean.TRUE.equals(eventDTO.getQuestion().isIsMeatContent());
+		boolean isNoMeatContent = Boolean.TRUE.equals(eventDTO.getQuestion().isIsNoMeatContent());
+
+		// Process isMeatContent
+		if (isMeatContent) {
+			List<EventLevelPriorityGroup> eventLevelPriorityGroups = eventLevelPriorityGroupRepository.findAllByIsMeatContentAndEventLevel(true, eventLevel);
+			
+			if (null != eventLevelPriorityGroups && eventLevelPriorityGroups.size() > 0) {
+				for (EventLevelPriorityGroup eventLevelPriorityGroup : eventLevelPriorityGroups) {
+					lstChannel.add(eventLevelPriorityGroup.getPriorityGroup());
+				}
+			}
+		}
 		
-		List<EventLevelPriorityGroup> eventLevelPriorityGroups = eventLevelPriorityGroupRepository.findAllByIsMeatContentAndEventLevel(isMeatContent, eventLevel);
-		
-		if (null != eventLevelPriorityGroups && eventLevelPriorityGroups.size() > 0) {
-			for (EventLevelPriorityGroup eventLevelPriorityGroup : eventLevelPriorityGroups) {
-				lstChannel.add(eventLevelPriorityGroup.getPriorityGroup());
+		// Process is No meat content
+		if (isNoMeatContent) {
+			List<EventLevelPriorityGroup> eventLevelPriorityGroups = eventLevelPriorityGroupRepository.findAllByIsMeatContentAndEventLevel(false, eventLevel);
+			
+			if (null != eventLevelPriorityGroups && eventLevelPriorityGroups.size() > 0) {
+				for (EventLevelPriorityGroup eventLevelPriorityGroup : eventLevelPriorityGroups) {
+					lstChannel.add(eventLevelPriorityGroup.getPriorityGroup());
+				}
 			}
 		}
 		

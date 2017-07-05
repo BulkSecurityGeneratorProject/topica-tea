@@ -167,4 +167,18 @@ public class EventResource {
         EventDTO eventDTO = eventService.updateStatus(id, status);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
     }
+    
+    /**
+     * GET  /events/:id : get the event inject by ProductCode.
+     *
+     * @param id the id of the eventDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the eventDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/inject-event")
+    @Timed
+    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="product", required = false) String product) {
+        log.debug("REST request to getInjectEventByProductCode : product {}", product);
+        EventDTO eventDTO = eventService.getPublishInjectEventByProductCode(product);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
+    }
 }

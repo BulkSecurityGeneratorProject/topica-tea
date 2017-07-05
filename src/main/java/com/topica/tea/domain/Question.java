@@ -28,6 +28,9 @@ public class Question implements Serializable {
     @Column(name = "is_meat_content")
     private Boolean isMeatContent;
 
+    @Column(name = "is_no_meat_content")
+    private Boolean isNoMeatContent;
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "event_type")
     private EventType eventType;
@@ -83,6 +86,19 @@ public class Question implements Serializable {
         this.isMeatContent = isMeatContent;
     }
 
+    public Boolean isIsNoMeatContent() {
+        return isNoMeatContent;
+    }
+
+    public Question isNoMeatContent(Boolean isNoMeatContent) {
+        this.isNoMeatContent = isNoMeatContent;
+        return this;
+    }
+
+    public void setIsNoMeatContent(Boolean isNoMeatContent) {
+        this.isNoMeatContent = isNoMeatContent;
+    }
+    
     public EventType getEventType() {
         return eventType;
     }

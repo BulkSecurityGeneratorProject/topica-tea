@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.Objects;
 import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.domain.enumeration.EventLevel;
+import com.topica.tea.domain.Article;
 import com.topica.tea.domain.User;
 import com.topica.tea.domain.enumeration.AmplifyType;
 import com.topica.tea.domain.enumeration.PriorityGroup;
@@ -41,6 +42,8 @@ public class EventDTO implements Serializable {
     private ZonedDateTime schedule;
 
     private QuestionDTO question;
+    
+    private ArticleDTO article;
     
     private Long questionId;
 
@@ -228,5 +231,13 @@ public class EventDTO implements Serializable {
 
 	public void setWriterUserId(Long writerUserId) {
 		this.writerUserId = writerUserId;
+	}
+
+	public ArticleDTO getArticle() {
+		return article;
+	}
+
+	public void setArticle(ArticleDTO article) {
+		this.article = article;
 	}
 }
