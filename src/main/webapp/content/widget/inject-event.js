@@ -47,7 +47,8 @@ function main() {
         css_link.appendTo('head');          
 
         /******* Load HTML *******/
-        var jsonp_url = "http://localhost:9301/api/inject-event?product=T001";
+        var product = $("#topica-widget-script").attr('data-product');
+        var jsonp_url = "http://52.221.188.76:9301/api/inject-event?product=" + product;
         $.getJSON(jsonp_url, function(data) {
         	$('#topica-widget-container').html(data.article.content);
         });

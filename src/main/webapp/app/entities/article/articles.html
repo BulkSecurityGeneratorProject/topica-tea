@@ -30,7 +30,7 @@
                 <tr ng-repeat="article in vm.articles track by article.id">
                     <td><a ui-sref="article-detail({id:article.id})">{{article.id}}</a></td>
                     <td>{{article.title}}</td>
-                    <td>{{article.content}}</td>
+                    <td><div ng-bind-html="article.content"></div></td>
                     <td>{{article.type}}</td>
                     <td>{{article.status}}</td>
                     <td class="text-right">
