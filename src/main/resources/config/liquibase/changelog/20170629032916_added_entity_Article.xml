@@ -26,10 +26,6 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="content" type="text">
-                <constraints nullable="true" />
-            </column>
-
             <column name="jhi_type" type="integer">
                 <constraints nullable="true" />
             </column>
@@ -38,6 +34,56 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="image_filename" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="video_link" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="video_caption" type="text">
+                <constraints nullable="true" />
+            </column>
+
+			<column name="subject1" type="text">
+                <constraints nullable="true" />
+            </column>
+			<column name="content1" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_link1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+			<column name="image_link1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="subject2" type="text">
+                <constraints nullable="true" />
+            </column>
+			<column name="content2" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_link2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+			<column name="image_link2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="subject3" type="text">
+                <constraints nullable="true" />
+            </column>
+			<column name="content3" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_link3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+			<column name="image_link3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

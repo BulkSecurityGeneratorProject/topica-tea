@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="topicaEventAmplifyApp.htmlTemplate.home.title">Html Templates</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="html-template.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="topicaEventAmplifyApp.htmlTemplate.home.createLabel">
+                        Create new Html Template
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="topicaEventAmplifyApp.htmlTemplate.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="layoutType"><span data-translate="topicaEventAmplifyApp.htmlTemplate.layoutType">Layout Type</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="cssContent"><span data-translate="topicaEventAmplifyApp.htmlTemplate.cssContent">Css Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="templateContent"><span data-translate="topicaEventAmplifyApp.htmlTemplate.templateContent">Template Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="description"><span data-translate="topicaEventAmplifyApp.htmlTemplate.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="htmlTemplate in vm.htmlTemplates track by htmlTemplate.id">
+                    <td><a ui-sref="html-template-detail({id:htmlTemplate.id})">{{htmlTemplate.id}}</a></td>
+                    <td>{{htmlTemplate.name}}</td>
+                    <!-- <td data-translate="{{'topicaEventAmplifyApp.LayoutType.' + htmlTemplate.layoutType}}">{{htmlTemplate.layoutType}}</td> -->
+                    <td>{{htmlTemplate.cssContent}}</td>
+                    <td>{{htmlTemplate.templateContent}}</td>
+                    <!-- <td>{{htmlTemplate.description}}</td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="html-template.preview({id:htmlTemplate.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.preview"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="html-template.edit({id:htmlTemplate.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="html-template.delete({id:htmlTemplate.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

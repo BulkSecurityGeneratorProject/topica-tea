@@ -284,6 +284,41 @@
                 });
             }]
         })
+        .state('event.hot', {
+            parent: 'event',
+            url: '/hot',
+            data: {
+                authorities: ['ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-hot-dialog.html',
+                    controller: 'EventHotDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                name: null,
+                                description: null,
+                                content: null,
+                                eventStatus: null,
+                                eventLevel: null,
+                                amplifyType: null,
+                                priorityGroup: null,
+                                schedule: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('event');
+                });
+            }]
+        });
     }
 
 })();

@@ -71,4 +71,6 @@ public interface EventService {
      * @return the persisted entity
      */
     EventDTO getPublishInjectEventByProductCode(String productCode);
+    
+    EventDTO getPublishInjectEventByProductId(Long productId);
 }

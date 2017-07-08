@@ -1,0 +1,26 @@
+{
+    "topicaEventAmplifyApp": {
+        "htmlTemplate" : {
+            "home": {
+                "title": "Html Templates",
+                "createLabel": "Thêm mới một Html Template",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Html Template"
+            },
+            "created": "Một Html Template mới được tạo với định danh {{ param }}",
+            "updated": "Một Html Template cập nhật với định danh {{ param }}",
+            "deleted": "Một Html Template đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Html Template {{ id }}?"
+            },
+            "detail": {
+                "title": "Html Template"
+            },
+            "name": "Name",
+            "layoutType": "Layout Type",
+            "cssContent": "Css Content",
+            "templateContent": "Template Content",
+            "description": "Description",
+            "upload" : "Tải ảnh"
+        }
+    }
+}

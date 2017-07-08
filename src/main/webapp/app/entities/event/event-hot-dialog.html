@@ -1,0 +1,94 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEventLabel">Thêm mới sự kiện nóng</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" data-translate="topicaEventAmplifyApp.event.eventLevel" for="field_eventLevel">Event Level</label>
+            <select required class="form-control" name="eventLevel" ng-model="vm.event.eventLevel" id="field_eventLevel">
+                <option value="E1" data-translate="topicaEventAmplifyApp.EventLevel.E1">E1</option>
+                <option value="E2" data-translate="topicaEventAmplifyApp.EventLevel.E2">E2</option>
+                <option value="E3" data-translate="topicaEventAmplifyApp.EventLevel.E3">E3</option>
+                <option value="E4" data-translate="topicaEventAmplifyApp.EventLevel.E4">E4</option>
+            </select>
+        </div>
+        <div class="form-group">
+        	<label for="field_tmp">Loại khếch đại</label>
+            <select class="form-control" id="field_tmp" ng-show="false">
+                <option value=""></option>
+            </select>
+        	</br>
+        	<!-- Hidden -->
+        	<input type="hidden" class="form-control" ng-model="vm.event.amplifyType" required />
+        	
+			<input type="checkbox" name="field_amplifyType_SHARE" value="SHARE" id="field_amplifyType_SHARE" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_SHARE"><i class="fa fa-share-alt"></i> SHARE</label>
+            </br>
+            
+            <input type="checkbox" name="field_amplifyType_SPONSOR" value="SPONSOR" id="field_amplifyType_SPONSOR" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_SPONSOR"><i class="fa fa-rss"></i> SPONSOR</label>
+            </br>
+            
+            <input type="checkbox" name="field_amplifyType_INJECT" value="INJECT" id="field_amplifyType_INJECT" ng-click="vm.changeAmplifyType()"/>            
+            <label class="control-label" for="field_amplifyType_INJECT"><i class="fa fa-eyedropper"></i> INJECT</label>
+        </div>
+        <div class="form-group">
+            <label for="field_tmp1">Sản phẩm</label>
+            <select class="form-control" id="field_tmp1" ng-show="false">
+            </select>
+        	</br>
+			
+			<input type="hidden" class="form-control" ng-model="vm.event.products" required />
+			<div ng-repeat="product in vm.products">
+				<input type="checkbox" name="field_product_{{product.id}}" value="{{product.id}}" id="field_product_{{product.id}}" ng-click="vm.changeProducts()"/>            
+            	<label class="control-label" for="field_product_{{product.id}}">{{product.productName}}</label>
+            	</br>			
+			</div>        	
+        </div>
+		<div class="form-group">
+            <label class="control-label" for="field_title">Tiêu đề</label>
+            <input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject1" />
+            <input required type="text" class="form-control" name="title2" id="field_title" ng-model="vm.event.article.subject2" />
+            <input required type="text" class="form-control" name="title3" id="field_title" ng-model="vm.event.article.subject3" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_content">Nội dung</label>
+            <input required type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content1" />
+            <input required type="text" class="form-control" name="content2" id="field_content" ng-model="vm.event.article.content2" />
+            <input required type="text" class="form-control" name="content3" id="field_content" ng-model="vm.event.article.content3" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_image">Ảnh minh họa</label>
+            <input required type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink1" />
+            <input required type="text" class="form-control" name="image2" id="field_image" ng-model="vm.event.article.imageLink2" />
+            <input required type="text" class="form-control" name="image3" id="field_image" ng-model="vm.event.article.imageLink3" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_url">Đường dẫn URL</label>
+            <input required type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink1" />
+            <input required type="text" class="form-control" name="url2" id="field_url" ng-model="vm.event.article.urlLink2" />
+            <input required type="text" class="form-control" name="url3" id="field_url" ng-model="vm.event.article.urlLink3" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_video_link">Link video</label>
+            <input required type="text" class="form-control" name="video_link" id="field_video_link" ng-model="vm.event.article.videoLink" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_video_caption">Video caption</label>
+            <input type="text" class="form-control" name="video_caption" id="field_video_caption" ng-model="vm.event.article.videoCaption" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

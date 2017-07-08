@@ -1,10 +1,17 @@
 package com.topica.tea.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.topica.tea.domain.enumeration.EventStatus;
+import com.topica.tea.service.ArticleService;
+import com.topica.tea.service.ContentService;
 import com.topica.tea.service.EventService;
+import com.topica.tea.service.ProductHtmlTemplateService;
 import com.topica.tea.web.rest.util.HeaderUtil;
 import com.topica.tea.web.rest.util.PaginationUtil;
+import com.topica.tea.service.dto.ArticleDTO;
 import com.topica.tea.service.dto.EventDTO;
+import com.topica.tea.service.dto.ProductHtmlTemplateDTO;
+
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -35,11 +42,46 @@ public class EventResource {
     private static final String ENTITY_NAME = "event";
 
     private final EventService eventService;
+    
+    private final ArticleService articleService;
+    
+    private final ContentService contentService;
+    
+    private final ProductHtmlTemplateService productHtmlTemplateService;
 
-    public EventResource(EventService eventService) {
+    public EventResource(EventService eventService, ContentService contentService, ProductHtmlTemplateService productHtmlTemplateService, ArticleService articleService) {
         this.eventService = eventService;
+        this.articleService = articleService;
+        this.contentService = contentService;
+        this.productHtmlTemplateService = productHtmlTemplateService;
     }
 
+    /**
+     * POST  /events : Create a new event.
+     *
+     * @param eventDTO the eventDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new eventDTO, or with status 400 (Bad Request) if the event has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/event-hot")
+    @Timed
+    public ResponseEntity<EventDTO> createHotEvent(@Valid @RequestBody EventDTO eventDTO) throws URISyntaxException {
+        log.debug("REST request to save Hot Event : {}", eventDTO);
+        if (eventDTO.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new event cannot already have an ID")).body(null);
+        }
+        // Save article
+        ArticleDTO articleResultDTO = articleService.save(eventDTO.getArticle());
+        eventDTO.setArticle(articleResultDTO);
+        
+        // Set event publish
+        eventDTO.setEventStatus(EventStatus.MANAGER_APPROVE);
+        EventDTO result = eventService.save(eventDTO);
+        return ResponseEntity.created(new URI("/api/event-hot/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+    
     /**
      * POST  /events : Create a new event.
      *
@@ -176,9 +218,22 @@ public class EventResource {
      */
     @GetMapping("/inject-event")
     @Timed
-    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="product", required = false) String product) {
-        log.debug("REST request to getInjectEventByProductCode : product {}", product);
-        EventDTO eventDTO = eventService.getPublishInjectEventByProductCode(product);
+    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="productId", required = false) Long productId,
+    		@RequestParam(name="templateId", required = false) Long templateId) {
+        log.debug("REST request to getInjectEventByProductCode : productId {}, templateId {}", productId, templateId);
+        
+        // Find relation between product and template
+        ProductHtmlTemplateDTO ptDTO = productHtmlTemplateService.findOneByProductIdAndHtmlTemplateId(productId, templateId);
+        if (null == ptDTO) {
+        	return ResponseUtil.wrapOrNotFound(Optional.ofNullable(null));
+        }
+        
+        EventDTO eventDTO = eventService.getPublishInjectEventByProductId(productId);
+        
+        // Process content
+        String content = contentService.process(eventDTO, templateId);
+        eventDTO.setContent(content);
+        
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
     }
 }

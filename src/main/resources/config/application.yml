@@ -75,6 +75,10 @@ server:
 info:
     project:
         version: #project.version#
+        
+directory:
+    upload : /home/ec2-user/upload
+    
 
 # ===================================================================
 # JHipster specific properties
@@ -123,3 +127,4 @@ jhipster:
 # ===================================================================
 
 application:
+        

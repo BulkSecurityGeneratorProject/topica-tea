@@ -1,16 +1,26 @@
 package com.topica.tea.domain;
 
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * A Article.
  */
 @Entity
 @Table(name = "article")
+@Setter
+@Getter
 public class Article implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,51 +33,63 @@ public class Article implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "content")
-    private String content;
+    // 1
+    @Column(name = "subject1")
+    private String subject1;
+    
+    @Column(name = "content1")
+    private String content1;
+    
+    @Column(name = "url_link1")
+    private String urlLink1;
+    
+    @Column(name = "image_link1")
+    private String imageLink1;
+    
+    // 2
+    @Column(name = "subject2")
+    private String subject2;
+    
+    @Column(name = "content2")
+    private String content2;
+    
+    @Column(name = "url_link2")
+    private String urlLink2;
+    
+    @Column(name = "image_link2")
+    private String imageLink2;
+    
+    // 3
+    @Column(name = "subject3")
+    private String subject3;
+    
+    @Column(name = "content3")
+    private String content3;
+    
+    @Column(name = "url_link3")
+    private String urlLink3;
+    
+    @Column(name = "image_link3")
+    private String imageLink3;
 
+    @Column(name = "image_filename")
+    private String imageFilename;
+    
+    @Column(name = "video_link")
+    private String videoLink;
+    
+    @Column(name = "video_caption")
+    private String videoCaption;
+    
     @Column(name = "jhi_type")
     private Integer type;
 
     @Column(name = "status")
     private Integer status;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
     public Article title(String title) {
         this.title = title;
         return this;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public Article content(String content) {
-        this.content = content;
-        return this;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getType() {
-        return type;
     }
 
     public Article type(Integer type) {
@@ -75,41 +97,9 @@ public class Article implements Serializable {
         return this;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
     public Article status(Integer status) {
         this.status = status;
         return this;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Article article = (Article) o;
-        if (article.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), article.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
     }
 
     @Override
@@ -117,7 +107,7 @@ public class Article implements Serializable {
         return "Article{" +
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
-            ", content='" + getContent() + "'" +
+            ", content1='" + getContent1() + "'" +
             ", type='" + getType() + "'" +
             ", status='" + getStatus() + "'" +
             "}";

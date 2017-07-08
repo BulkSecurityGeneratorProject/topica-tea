@@ -47,10 +47,13 @@ function main() {
         css_link.appendTo('head');          
 
         /******* Load HTML *******/
-        var product = $("#topica-widget-script").attr('data-product');
-        var jsonp_url = "http://52.221.188.76:9301/api/inject-event?product=" + product;
+        var productId = $("#topica-widget-script").attr('data-productId');
+        var templateId = $("#topica-widget-script").attr('data-templateId');
+        var src = $("#topica-widget-script").attr('src');
+        var contextPath = src.substr(0, src.indexOf('/', 7));
+        var jsonp_url = contextPath + "/api/inject-event?productId=" + productId + "&templateId=" + templateId;
         $.getJSON(jsonp_url, function(data) {
-        	$('#topica-widget-container').html(data.article.content);
+        	$('#topica-widget-container').html(data.content);
         });
     });
 }

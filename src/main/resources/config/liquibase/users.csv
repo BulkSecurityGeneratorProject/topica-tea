@@ -8,3 +8,4 @@ id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;c
 7;writer1;$2a$10$hnjfQS7Wr7BbaSBp2kI72u68ixJHlfecy1tVDK8NLw/Z8Arl9Jo0G;Writer;Writer;caf3sua@gmail.com;;TRUE;vi;system;system
 8;approval1;$2a$10$hnjfQS7Wr7BbaSBp2kI72u68ixJHlfecy1tVDK8NLw/Z8Arl9Jo0G;Approval;Approval;namnh3@itsol.vn;;TRUE;vi;system;system
 9;manager1;$2a$10$hnjfQS7Wr7BbaSBp2kI72u68ixJHlfecy1tVDK8NLw/Z8Arl9Jo0G;Manager;Manager;namnh4@itsol.vn;;TRUE;vi;system;system
+10;boss;$2a$10$hnjfQS7Wr7BbaSBp2kI72u68ixJHlfecy1tVDK8NLw/Z8Arl9Jo0G;Big;boss;boss@localhost;;TRUE;vi;system;system

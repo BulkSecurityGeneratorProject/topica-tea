@@ -1,0 +1,23 @@
+{
+    "topicaEventAmplifyApp": {
+        "fanpage" : {
+            "home": {
+                "title": "Fanpages",
+                "createLabel": "Create a new Fanpage",
+                "createOrEditLabel": "Create or edit a Fanpage"
+            },
+            "created": "A new Fanpage is created with identifier {{ param }}",
+            "updated": "A Fanpage is updated with identifier {{ param }}",
+            "deleted": "A Fanpage is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fanpage {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpage"
+            },
+            "socialNetworkType": "Social Network Type",
+            "apiKey": "Api Key",
+            "description": "Description"
+        }
+    }
+}

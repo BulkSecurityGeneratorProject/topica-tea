@@ -32,12 +32,6 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <!-- <li ui-sref-active="active">
-                                <a ui-sref="question.new" ng-click="vm.collapseNavbar()">
-                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                    <span data-translate="global.menu.entities.question">Question</span>
-                                </a>
-                        </li> -->
                         <li ui-sref-active="active">
                                 <a ui-sref="event" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
@@ -96,6 +90,37 @@
                         </li>
                     </ul>
                 </li>
+                <li ng-class="{active: vm.$state.includes('tool')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
+					<a class="dropdown-toggle" uib-dropdown-toggle href="" id="category-menu">
+						<span>
+							<span class="glyphicon glyphicon-th-list"></span>
+							<span class="hidden-sm" data-translate="global.menu.tool.main">
+								Tool
+							</span>
+							<b class="caret"></b>
+						</span>
+					</a>
+					<ul class="dropdown-menu" uib-dropdown-menu>
+						<li ui-sref-active="active">
+                                <a ui-sref="html-template" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.htmlTemplate">Html Template</span>
+                                </a>
+                            </li>
+                        <li ui-sref-active="active">
+                                <a ui-sref="fanpage" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.fanpage">Fanpage</span>
+                                </a>
+                            </li>
+                        <li ui-sref-active="active">
+                                <a ui-sref="product-html-template" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.productHtmlTemplate">Product Html Template</span>
+                                </a>
+						</li>
+					</ul>
+				</li>
                 <li ng-class="{active: vm.$state.includes('category')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
 					<a class="dropdown-toggle" uib-dropdown-toggle href="" id="category-menu">
 						<span>
@@ -211,6 +236,7 @@
                         </li>
                     </ul>
                 </li>
+                <!-- 
                 <li ui-sref-active="active" uib-dropdown dropdown ng-controller="JhiLanguageController as languageVm">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-if="languageVm.languages.length > 1">
                         <span>
@@ -225,6 +251,7 @@
                         </li>
                     </ul>
                 </li>
+                 -->
             </ul>
         </div>
     </div>

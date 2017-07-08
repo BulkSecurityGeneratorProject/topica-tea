@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "layoutType",
+            "fieldType": "LayoutType",
+            "fieldValues": "ONECOLUMN,TWOCOLUMN,THREECOLUMN"
+        },
+        {
+            "fieldName": "cssContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "templateContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170707151743",
+    "entityTableName": "html_template",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

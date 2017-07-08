@@ -73,4 +73,33 @@ public class EventRepositoryImpl implements EventRepositoryExtend {
 		}
 		return null;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Event findPublishInjectOneByProductId(Long productId) {
+		try {
+			String sql = "select * from event e"
+					+ " inner join event_products ep on e.id = ep.event_id"
+					+ " inner join product p on ep.products_id = p.id"
+					+ " inner join event_amplify_type eat on eat.event_id = e.id"
+					+ " where p.id = :productId"
+					+ " and eat.amplify_type = :amplifyType"
+					+ " and e.event_status = :eventStatus"
+					+ " order by e.id desc";
+			javax.persistence.Query query = entityManager.createNativeQuery(sql, Event.class);
+			query.setParameter("productId", productId);
+			query.setParameter("amplifyType", AmplifyType.INJECT.toString());
+			query.setParameter("eventStatus", EventStatus.MANAGER_APPROVE.toString());
+			
+			List<Event> events = query.getResultList();
+			if (events == null || events.size() == 0) {
+				return null;
+			}
+			
+			return events.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

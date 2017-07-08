@@ -1,0 +1,20 @@
+<form name="deleteForm">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" data-translate="topicaEventAmplifyApp.productHtmlTemplate.widget-title">Lấy mã Widget và đặt vào trang của bạn</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label for="field_widgetCode" data-translate="topicaEventAmplifyApp.productHtmlTemplate.widget-code">widget-code</label>
+            <textarea class="form-control" rows="5" name="widgetCode" id="field_widgetCode"
+                    ng-model="vm.widgetCode"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.ok">Đóng</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.productHtmlTemplate.detail.title">Product Html Template</span> {{vm.productHtmlTemplate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.productHtmlTemplate.name">Name</span></dt>
+        <dd>
+            <span>{{vm.productHtmlTemplate.name}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.productHtmlTemplate.productId">Product Id</span></dt>
+        <dd>
+            <span>{{vm.productHtmlTemplate.productId}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.productHtmlTemplate.htmlTemplateId">Html Template Id</span></dt>
+        <dd>
+            <span>{{vm.productHtmlTemplate.htmlTemplateId}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.productHtmlTemplate.description">Description</span></dt>
+        <dd>
+            <span>{{vm.productHtmlTemplate.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="product-html-template-detail.edit({id:vm.productHtmlTemplate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

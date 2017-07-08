@@ -1,0 +1,28 @@
+{
+    "topicaEventAmplifyApp": {
+        "productHtmlTemplate" : {
+            "home": {
+                "title": "Product Html Templates",
+                "createLabel": "Create a new Product Html Template",
+                "createOrEditLabel": "Create or edit a Product Html Template"
+            },
+            "created": "A new Product Html Template is created with identifier {{ param }}",
+            "updated": "A Product Html Template is updated with identifier {{ param }}",
+            "deleted": "A Product Html Template is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Html Template {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Html Template"
+            },
+            "name": "Name",
+            "productId": "Product Id",
+            "htmlTemplateId": "Html Template Id",
+            "description": "Description",
+            "preview": "Xem trước",
+            "getWidget": "Lấy mã widget",
+            "widget-title" : "Lấy mã Widget và đặt vào trang web của bạn",
+            "widget-code" : "Mã Widget"
+        }
+    }
+}

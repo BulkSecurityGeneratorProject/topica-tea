@@ -1,0 +1,10 @@
+{
+    "topicaEventAmplifyApp": {
+        "LayoutType" : {
+            "null": "",
+            "ONECOLUMN": "ONECOLUMN",
+            "TWOCOLUMN": "TWOCOLUMN",
+            "THREECOLUMN": "THREECOLUMN"
+        }
+    }
+}

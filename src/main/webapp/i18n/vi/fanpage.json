@@ -1,0 +1,23 @@
+{
+    "topicaEventAmplifyApp": {
+        "fanpage" : {
+            "home": {
+                "title": "Fanpages",
+                "createLabel": "Thêm mới một Fanpage",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Fanpage"
+            },
+            "created": "Một Fanpage mới được tạo với định danh {{ param }}",
+            "updated": "Một Fanpage cập nhật với định danh {{ param }}",
+            "deleted": "Một Fanpage đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Fanpage {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpage"
+            },
+            "socialNetworkType": "Social Network Type",
+            "apiKey": "Api Key",
+            "description": "Description"
+        }
+    }
+}

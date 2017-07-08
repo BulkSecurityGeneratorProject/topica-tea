@@ -35,6 +35,10 @@
             	url : 'api/events/editor',
             	method:'POST'
             },
+            'saveHotEvent': {
+            	url : 'api/event-hot',
+            	method:'POST'
+            },
             'updateStatus': {
             	url : resourceUrl + '/updateStatus/:status/:type',
             	method:'GET'

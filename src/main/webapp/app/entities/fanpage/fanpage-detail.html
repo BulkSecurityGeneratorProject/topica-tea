@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.fanpage.detail.title">Fanpage</span> {{vm.fanpage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.fanpage.socialNetworkType">Social Network Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.SocialNetworkType.' + vm.fanpage.socialNetworkType}}">{{vm.fanpage.socialNetworkType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.fanpage.apiKey">Api Key</span></dt>
+        <dd>
+            <span>{{vm.fanpage.apiKey}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.fanpage.description">Description</span></dt>
+        <dd>
+            <span>{{vm.fanpage.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="fanpage-detail.edit({id:vm.fanpage.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

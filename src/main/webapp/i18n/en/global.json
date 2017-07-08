@@ -17,6 +17,10 @@
                 "event": "Event",
                 "article": "Article",
                 "question": "Question",
+                "schedule": "Schedule",
+                "htmlTemplate": "Html Template",
+                "fanpage": "Fanpage",
+                "productHtmlTemplate": "Product Html Template",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "category": {
@@ -53,6 +57,10 @@
                 "apidocs": "API",
                 "database": "Cơ sở dữ liệu",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+            },
+            "tool": {
+                "main": "Công cụ",
+                "jhipster-needle-menu-add-tool-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "language": "Ngôn ngữ"
         },
@@ -118,7 +126,9 @@
             "approve": "Duyệt",
             "complete": "Hoàn thành",
             "deny": "Từ chối",
-            "ok" : "Đồng ý"
+            "ok" : "Đồng ý",
+            "preview": "Xem trước",
+            "getWidget": "Lấy mã widget"
         },
         "detail": {
             "field": "Trường",

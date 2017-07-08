@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "socialNetworkType",
+            "fieldType": "SocialNetworkType",
+            "fieldValues": "FACEBOOK,TWITTER"
+        },
+        {
+            "fieldName": "apiKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170707151744",
+    "entityTableName": "fanpage",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

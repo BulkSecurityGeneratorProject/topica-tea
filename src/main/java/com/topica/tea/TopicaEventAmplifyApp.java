@@ -2,6 +2,7 @@ package com.topica.tea;
 
 import com.topica.tea.config.ApplicationProperties;
 import com.topica.tea.config.DefaultProfileUtil;
+import com.topica.tea.servlet.FileUpload;
 
 import io.github.jhipster.config.JHipsterConstants;
 
@@ -12,6 +13,8 @@ import org.springframework.boot.actuate.autoconfigure.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
@@ -80,5 +83,13 @@ public class TopicaEventAmplifyApp {
             InetAddress.getLocalHost().getHostAddress(),
             env.getProperty("server.port"),
             env.getActiveProfiles());
+    }
+    
+    @Bean
+    ServletRegistrationBean myServletRegistration () {
+        ServletRegistrationBean srb = new ServletRegistrationBean();
+        srb.setServlet(new FileUpload(env));
+        srb.setUrlMappings(Arrays.asList("/upload"));
+        return srb;
     }
 }

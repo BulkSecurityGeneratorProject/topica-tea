@@ -18,4 +18,6 @@ import org.springframework.data.repository.query.Param;
 public interface EventRepositoryExtend {
 	
 	Event findPublishInjectOneByProductCode(String productCode);
+	
+	Event findPublishInjectOneByProductId(Long productId);
 }

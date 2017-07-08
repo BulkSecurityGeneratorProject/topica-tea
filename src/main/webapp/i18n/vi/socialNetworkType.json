@@ -1,0 +1,9 @@
+{
+    "topicaEventAmplifyApp": {
+        "SocialNetworkType" : {
+            "null": "",
+            "FACEBOOK": "FACEBOOK",
+            "TWITTER": "TWITTER"
+        }
+    }
+}

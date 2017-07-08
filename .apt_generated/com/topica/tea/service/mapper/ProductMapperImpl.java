@@ -9,67 +9,67 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-05T10:09:51+0700",
+    date = "2017-07-08T13:44:49+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {
 
     @Override
-    public ProductDTO toDto(Product arg0) {
-        if ( arg0 == null ) {
+    public Product toEntity(ProductDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Product product = new Product();
+
+        product.setProductCode( dto.getProductCode() );
+        product.setId( dto.getId() );
+        product.setProductName( dto.getProductName() );
+        product.setDescription( dto.getDescription() );
+
+        return product;
+    }
+
+    @Override
+    public ProductDTO toDto(Product entity) {
+        if ( entity == null ) {
             return null;
         }
 
         ProductDTO productDTO = new ProductDTO();
 
-        productDTO.setDescription( arg0.getDescription() );
-        productDTO.setId( arg0.getId() );
-        productDTO.setProductCode( arg0.getProductCode() );
-        productDTO.setProductName( arg0.getProductName() );
+        productDTO.setId( entity.getId() );
+        productDTO.setProductName( entity.getProductName() );
+        productDTO.setDescription( entity.getDescription() );
+        productDTO.setProductCode( entity.getProductCode() );
 
         return productDTO;
     }
 
     @Override
-    public List<ProductDTO> toDto(List<Product> arg0) {
-        if ( arg0 == null ) {
+    public List<Product> toEntity(List<ProductDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<ProductDTO> list = new ArrayList<ProductDTO>();
-        for ( Product product : arg0 ) {
-            list.add( toDto( product ) );
+        List<Product> list = new ArrayList<Product>();
+        for ( ProductDTO productDTO : dtoList ) {
+            list.add( toEntity( productDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public Product toEntity(ProductDTO arg0) {
-        if ( arg0 == null ) {
+    public List<ProductDTO> toDto(List<Product> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        Product product = new Product();
-
-        product.setDescription( arg0.getDescription() );
-        product.setId( arg0.getId() );
-        product.setProductCode( arg0.getProductCode() );
-        product.setProductName( arg0.getProductName() );
-
-        return product;
-    }
-
-    @Override
-    public List<Product> toEntity(List<ProductDTO> arg0) {
-        if ( arg0 == null ) {
-            return null;
-        }
-
-        List<Product> list = new ArrayList<Product>();
-        for ( ProductDTO productDTO : arg0 ) {
-            list.add( toEntity( productDTO ) );
+        List<ProductDTO> list = new ArrayList<ProductDTO>();
+        for ( Product product : entityList ) {
+            list.add( toDto( product ) );
         }
 
         return list;

@@ -14,10 +14,18 @@
         </div> -->
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="question.new" has-authority="ROLE_DIRECTOR">
+                <button class="btn btn-primary" ui-sref="question.new" has-any-authority="ROLE_DIRECTOR,ROLE_BOSS">
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="topicaEventAmplifyApp.event.home.createQuestionLabel">
                         Create new Question
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-danger" ui-sref="event.hot" has-authority="ROLE_BOSS">
+                    <span class="glyphicon glyphicon-fire"></span>
+                    <span>
+                        Tạo sự kiện nóng
                     </span>
                 </button>
             </div>

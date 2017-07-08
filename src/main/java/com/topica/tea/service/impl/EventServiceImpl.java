@@ -12,6 +12,7 @@ import com.topica.tea.repository.EventRepository;
 import com.topica.tea.repository.ProductRepository;
 import com.topica.tea.repository.UserRepository;
 import com.topica.tea.service.dto.EventDTO;
+import com.topica.tea.service.mapper.ArticleMapper;
 import com.topica.tea.service.mapper.EventMapper;
 import com.topica.tea.service.mapper.QuestionMapper;
 
@@ -43,12 +44,16 @@ public class EventServiceImpl implements EventService{
     private final EventMapper eventMapper;
     
     private final QuestionMapper questionMapper;
+    
+    private final ArticleMapper articleMapper;
 
     public EventServiceImpl(EventRepository eventRepository, EventMapper eventMapper, QuestionMapper questionMapper
     		, UserRepository userRepository, ArticleRepository articleRepository,
+    		ArticleMapper articleMapper,
     		ProductRepository productRepository) {
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
+        this.articleMapper = articleMapper;
         this.questionMapper = questionMapper;
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
@@ -65,10 +70,12 @@ public class EventServiceImpl implements EventService{
     public EventDTO save(EventDTO eventDTO) {
         log.debug("Request to save Event : {}", eventDTO);
         Question question = questionMapper.toEntity(eventDTO.getQuestion());
+        Article article = articleMapper.toEntity(eventDTO.getArticle());
         Event event = eventMapper.toEntity(eventDTO);
         
         // Set extra info
         event.setQuestion(question);
+        event.setArticle(article);
         
         // Set user
         if (eventDTO.getCreatedUserId() != null && eventDTO.getCreatedUserId() > 0) {
@@ -150,7 +157,7 @@ public class EventServiceImpl implements EventService{
 			Article article = new Article();
 			article.setTitle("Article for event: " + eventDTO.getId());
 			article.setType(0);
-			article.setContent(eventDTO.getContent());
+			article.setContent1(eventDTO.getContent());
 			Article articleResult = articleRepository.save(article);
 			
 			event.setArticle(articleResult);
@@ -178,6 +185,16 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public EventDTO getPublishInjectEventByProductCode(String productCode) {
 		Event event = eventRepository.findPublishInjectOneByProductCode(productCode);
+		
+		if (null == event) {
+			return null;
+		}
+		return eventMapper.toDto(event);
+	}
+	
+	@Override
+	public EventDTO getPublishInjectEventByProductId(Long productId) {
+		Event event = eventRepository.findPublishInjectOneByProductId(productId);
 		
 		if (null == event) {
 			return null;
