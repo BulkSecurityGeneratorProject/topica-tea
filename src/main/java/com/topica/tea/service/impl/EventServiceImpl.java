@@ -201,4 +201,14 @@ public class EventServiceImpl implements EventService{
 		}
 		return eventMapper.toDto(event);
 	}
+
+	@Override
+	public EventDTO getPublishInjectEventByChannelProductId(Long productId) {
+		Event event = eventRepository.findPublishInjectOneByChannelProductId(productId);
+		
+		if (null == event) {
+			return null;
+		}
+		return eventMapper.toDto(event);
+	}
 }

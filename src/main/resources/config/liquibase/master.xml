@@ -18,9 +18,12 @@
     <include file="classpath:config/liquibase/changelog/20170707151743_added_entity_HtmlTemplate.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170707151744_added_entity_Fanpage.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170707151745_added_entity_ProductHtmlTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170709155858_added_entity_ChannelProduct.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170709165458_added_entity_AdsType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170628090212_added_entity_constraints_BrandkeyProduct.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170628090214_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170628090215_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170709155858_added_entity_constraints_ChannelProduct.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

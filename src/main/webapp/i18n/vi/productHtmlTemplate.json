@@ -15,14 +15,11 @@
             "detail": {
                 "title": "Product Html Template"
             },
-            "name": "Tên",
+            "name": "Name",
             "productId": "Product Id",
             "htmlTemplateId": "Html Template Id",
             "description": "Description",
-            "preview": "Xem trước",
-            "getWidget": "Lấy mã widget",
-            "widget-title" : "Lấy mã Widget và đặt vào trang web của bạn",
-            "widget-code" : "Mã Widget"
+            "channelProductId": "Channel Product Id"
         }
     }
 }

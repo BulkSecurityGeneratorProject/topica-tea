@@ -59,6 +59,9 @@
             <column name="article_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="is_hot_event" type="boolean">
+                <constraints nullable="true" />
+            </column>
             <!-- Custom add -->
             <column name="created_user_id" type="bigint">
                 <constraints nullable="true" />
@@ -106,6 +109,16 @@
         </createTable>
         <addPrimaryKey columnNames="event_id, amplify_type" tableName="event_amplify_type"/>
         
+        <createTable tableName="event_channel_products">
+            <column name="event_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="channel_products_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="event_id, channel_products_id" tableName="event_channel_products"/>
+        
         <!-- Load data -->
         <loadData encoding="UTF-8"
                   file="config/liquibase/event.csv"
@@ -129,6 +142,12 @@
                   file="config/liquibase/event_amplify_type.csv"
                   separator=";"
                   tableName="event_amplify_type">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/event_channel_products.csv"
+                  separator=";"
+                  tableName="event_channel_products">
         </loadData>
     </changeSet>
 </databaseChangeLog>

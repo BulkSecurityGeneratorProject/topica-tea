@@ -39,6 +39,10 @@
             	url : 'api/event-hot',
             	method:'POST'
             },
+            'saveInitHotEvent': {
+            	url : 'api/init-event-hot',
+            	method:'POST'
+            },
             'updateStatus': {
             	url : resourceUrl + '/updateStatus/:status/:type',
             	method:'GET'

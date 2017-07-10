@@ -66,9 +66,12 @@ public class Event implements Serializable {
     @JoinColumn
     private Question question;
     
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn
     private Article article;
+    
+    @Column(name = "is_hot_event")
+    private Boolean isHotEvent;
     
     @ManyToMany
     @JoinTable(name = "event_products",
@@ -76,7 +79,13 @@ public class Event implements Serializable {
                inverseJoinColumns = @JoinColumn(name="products_id", referencedColumnName="id"))
     private Set<Product> products = new HashSet<>();
     
-    @OneToOne
+    @ManyToMany
+    @JoinTable(name = "event_channel_products",
+               joinColumns = @JoinColumn(name="event_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="channel_products_id", referencedColumnName="id"))
+    private Set<ChannelProduct> channelProducts = new HashSet<>();
+
+	@OneToOne
     @JoinColumn
     private User createdUser;
 
@@ -91,7 +100,15 @@ public class Event implements Serializable {
     @OneToOne
     @JoinColumn
     private User writerUser;
-    
+
+    public Set<ChannelProduct> getChannelProducts() {
+		return channelProducts;
+	}
+
+	public void setChannelProducts(Set<ChannelProduct> channelProducts) {
+		this.channelProducts = channelProducts;
+	}
+	
     public User getWriterUser() {
 		return writerUser;
 	}
@@ -244,6 +261,19 @@ public class Event implements Serializable {
 
     public void setArticle(Article article) {
         this.article = article;
+    }
+    
+    public Boolean getIsHotEvent() {
+        return isHotEvent;
+    }
+
+    public Event isHotEvent(Boolean isHotEvent) {
+        this.isHotEvent = isHotEvent;
+        return this;
+    }
+
+    public void setIsHotEvent(Boolean isHotEvent) {
+        this.isHotEvent = isHotEvent;
     }
     
     // Custom

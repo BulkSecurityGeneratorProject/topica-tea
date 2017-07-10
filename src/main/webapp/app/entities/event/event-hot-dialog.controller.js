@@ -98,13 +98,13 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.event.id !== null) {
-                Event.update(vm.event, onSaveSuccess, onSaveError);
-            } else {
-            	vm.event.name = 'Hot event';
-            	vm.event.article.title = 'Hot event';
+//            if (vm.event.id !== null) {
+//                Event.update(vm.event, onSaveSuccess, onSaveError);
+//            } else {
+//            	vm.event.name = 'Hot event';
+//            	vm.event.article.title = 'Hot event';
                 Event.saveHotEvent(vm.event, onSaveSuccess, onSaveError);
-            }
+//            }
         }
 
         function onSaveSuccess (result) {

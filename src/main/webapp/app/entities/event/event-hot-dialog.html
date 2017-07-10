@@ -4,52 +4,10 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myEventLabel">Thêm mới sự kiện nóng</h4>
+        <h4 class="modal-title" id="myEventLabel">Thêm dữ liệu cho sự kiện nóng</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.event.eventLevel" for="field_eventLevel">Event Level</label>
-            <select required class="form-control" name="eventLevel" ng-model="vm.event.eventLevel" id="field_eventLevel">
-                <option value="E1" data-translate="topicaEventAmplifyApp.EventLevel.E1">E1</option>
-                <option value="E2" data-translate="topicaEventAmplifyApp.EventLevel.E2">E2</option>
-                <option value="E3" data-translate="topicaEventAmplifyApp.EventLevel.E3">E3</option>
-                <option value="E4" data-translate="topicaEventAmplifyApp.EventLevel.E4">E4</option>
-            </select>
-        </div>
-        <div class="form-group">
-        	<label for="field_tmp">Loại khếch đại</label>
-            <select class="form-control" id="field_tmp" ng-show="false">
-                <option value=""></option>
-            </select>
-        	</br>
-        	<!-- Hidden -->
-        	<input type="hidden" class="form-control" ng-model="vm.event.amplifyType" required />
-        	
-			<input type="checkbox" name="field_amplifyType_SHARE" value="SHARE" id="field_amplifyType_SHARE" ng-click="vm.changeAmplifyType()"/>            
-            <label class="control-label" for="field_amplifyType_SHARE"><i class="fa fa-share-alt"></i> SHARE</label>
-            </br>
-            
-            <input type="checkbox" name="field_amplifyType_SPONSOR" value="SPONSOR" id="field_amplifyType_SPONSOR" ng-click="vm.changeAmplifyType()"/>            
-            <label class="control-label" for="field_amplifyType_SPONSOR"><i class="fa fa-rss"></i> SPONSOR</label>
-            </br>
-            
-            <input type="checkbox" name="field_amplifyType_INJECT" value="INJECT" id="field_amplifyType_INJECT" ng-click="vm.changeAmplifyType()"/>            
-            <label class="control-label" for="field_amplifyType_INJECT"><i class="fa fa-eyedropper"></i> INJECT</label>
-        </div>
-        <div class="form-group">
-            <label for="field_tmp1">Sản phẩm</label>
-            <select class="form-control" id="field_tmp1" ng-show="false">
-            </select>
-        	</br>
-			
-			<input type="hidden" class="form-control" ng-model="vm.event.products" required />
-			<div ng-repeat="product in vm.products">
-				<input type="checkbox" name="field_product_{{product.id}}" value="{{product.id}}" id="field_product_{{product.id}}" ng-click="vm.changeProducts()"/>            
-            	<label class="control-label" for="field_product_{{product.id}}">{{product.productName}}</label>
-            	</br>			
-			</div>        	
-        </div>
 		<div class="form-group">
             <label class="control-label" for="field_title">Tiêu đề</label>
             <input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject1" />

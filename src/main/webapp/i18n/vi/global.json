@@ -21,6 +21,9 @@
                 "htmlTemplate": "Html Template",
                 "fanpage": "Fanpage",
                 "productHtmlTemplate": "Product Html Template",
+                "channelProduct" : "Kênh sản phẩm",
+                "adsType": "Ads Type",
+                "channelProduct": "Channel Product",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "category": {
@@ -34,7 +37,8 @@
                 "question": "Câu hỏi",
                 "event": "Sự kiện",
                 "article": "Bài viết",
-                "schedule": "Lịch"
+                "schedule": "Lịch",
+                "channelProduct" : "Kênh sản phẩm"
             },
             "account": {
                 "main": "Tài khoản",

@@ -9,7 +9,7 @@ import com.topica.tea.service.dto.EventDTO;
 /**
  * Mapper for the entity Event and its DTO EventDTO.
  */
-@Mapper(componentModel = "spring", uses = {QuestionMapper.class, ArticleMapper.class, ProductMapper.class, })
+@Mapper(componentModel = "spring", uses = {QuestionMapper.class, ArticleMapper.class, ProductMapper.class, ChannelProductMapper.class })
 public interface EventMapper extends EntityMapper <EventDTO, Event> {
 
     @Mapping(source = "question.id", target = "questionId")

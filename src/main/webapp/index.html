@@ -37,6 +37,12 @@
             <div ng-include="'view/partial/footer.html'"></div>
         </div>
     </div>
+    
+    <!-- Template test -->
+	<div class="row">
+      	<script id="topica-widget-script" src="http://localhost:9301/content/widget/inject-event.js" data-channelProductId="1" data-templateId="1" type="text/javascript"></script>
+		<div id="topica-widget-container"></div>
+    </div>
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
@@ -114,10 +120,10 @@
     <script src="app/entities/question/question.state.js"></script>
     <script src="app/entities/question/question.service.js"></script>
     <script src="app/entities/question/question.controller.js"></script>
+    <script src="app/entities/product-html-template/product-html-template-widget-dialog.controller.js"></script>
     <script src="app/entities/product-html-template/product-html-template-dialog.controller.js"></script>
     <script src="app/entities/product-html-template/product-html-template-detail.controller.js"></script>
     <script src="app/entities/product-html-template/product-html-template-delete-dialog.controller.js"></script>
-    <script src="app/entities/product-html-template/product-html-template-widget-dialog.controller.js"></script>
     <script src="app/entities/product-html-template/product-html-template.state.js"></script>
     <script src="app/entities/product-html-template/product-html-template.service.js"></script>
     <script src="app/entities/product-html-template/product-html-template.controller.js"></script>
@@ -127,10 +133,10 @@
     <script src="app/entities/product/product.state.js"></script>
     <script src="app/entities/product/product.service.js"></script>
     <script src="app/entities/product/product.controller.js"></script>
+    <script src="app/entities/html-template/html-template-preview-dialog.controller.js"></script>
     <script src="app/entities/html-template/html-template-dialog.controller.js"></script>
     <script src="app/entities/html-template/html-template-detail.controller.js"></script>
     <script src="app/entities/html-template/html-template-delete-dialog.controller.js"></script>
-    <script src="app/entities/html-template/html-template-preview-dialog.controller.js"></script>
     <script src="app/entities/html-template/html-template.state.js"></script>
     <script src="app/entities/html-template/html-template.service.js"></script>
     <script src="app/entities/html-template/html-template.controller.js"></script>
@@ -153,16 +159,23 @@
     <script src="app/entities/event-level-priority-channel/event-level-priority-channel.service.js"></script>
     <script src="app/entities/event-level-priority-channel/event-level-priority-channel.controller.js"></script>
     <script src="app/entities/event/event-publish-dialog.controller.js"></script>
+    <script src="app/entities/event/event-hot-dialog.controller.js"></script>
+    <script src="app/entities/event/event-init-hot-dialog.controller.js"></script>
     <script src="app/entities/event/event-editor.controller.js"></script>
     <script src="app/entities/event/event-distribute-dialog.controller.js"></script>
     <script src="app/entities/event/event-dialog.controller.js"></script>
-    <script src="app/entities/event/event-hot-dialog.controller.js"></script>
     <script src="app/entities/event/event-detail.controller.js"></script>
     <script src="app/entities/event/event-delete-dialog.controller.js"></script>
     <script src="app/entities/event/event.state.js"></script>
     <script src="app/entities/event/event.service.js"></script>
     <script src="app/entities/event/event.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/channel-product/channel-product-dialog.controller.js"></script>
+    <script src="app/entities/channel-product/channel-product-detail.controller.js"></script>
+    <script src="app/entities/channel-product/channel-product-delete-dialog.controller.js"></script>
+    <script src="app/entities/channel-product/channel-product.state.js"></script>
+    <script src="app/entities/channel-product/channel-product.service.js"></script>
+    <script src="app/entities/channel-product/channel-product.controller.js"></script>
     <script src="app/entities/channel-group/channel-group-dialog.controller.js"></script>
     <script src="app/entities/channel-group/channel-group-detail.controller.js"></script>
     <script src="app/entities/channel-group/channel-group-delete-dialog.controller.js"></script>
@@ -187,16 +200,22 @@
     <script src="app/entities/article/article.state.js"></script>
     <script src="app/entities/article/article.service.js"></script>
     <script src="app/entities/article/article.controller.js"></script>
+    <script src="app/entities/ads-type/ads-type-dialog.controller.js"></script>
+    <script src="app/entities/ads-type/ads-type-detail.controller.js"></script>
+    <script src="app/entities/ads-type/ads-type-delete-dialog.controller.js"></script>
+    <script src="app/entities/ads-type/ads-type.state.js"></script>
+    <script src="app/entities/ads-type/ads-type.service.js"></script>
+    <script src="app/entities/ads-type/ads-type.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>
     <script src="app/components/util/sort.directive.js"></script>
-    <script src="app/components/util/check-image.directive.js"></script>
     <script src="app/components/util/parse-links.service.js"></script>
     <script src="app/components/util/pagination-util.service.js"></script>
     <script src="app/components/util/jhi-item-count.directive.js"></script>
     <script src="app/components/util/date-util.service.js"></script>
     <script src="app/components/util/data-util.service.js"></script>
+    <script src="app/components/util/check-image.directive.js"></script>
     <script src="app/components/util/capitalize.filter.js"></script>
     <script src="app/components/util/base64.service.js"></script>
     <script src="app/components/login/login.service.js"></script>

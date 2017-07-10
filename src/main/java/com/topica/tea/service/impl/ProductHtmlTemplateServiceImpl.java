@@ -90,4 +90,12 @@ public class ProductHtmlTemplateServiceImpl implements ProductHtmlTemplateServic
 		ProductHtmlTemplate productHtmlTemplate = productHtmlTemplateRepository.findOneByProductIdAndHtmlTemplateId(productId, htmlTemplateId);
 		return productHtmlTemplateMapper.toDto(productHtmlTemplate);
 	}
+
+	@Override
+	public ProductHtmlTemplateDTO findOneByChannelProductIdAndHtmlTemplateId(Long channelProductId,
+			Long htmlTemplateId) {
+		log.debug("Request to findOneByChannelProductIdAndHtmlTemplateId : channelProductId {}, templateId {}", channelProductId, htmlTemplateId);
+		ProductHtmlTemplate productHtmlTemplate = productHtmlTemplateRepository.findOneByChannelProductIdAndHtmlTemplateId(channelProductId, htmlTemplateId);
+		return productHtmlTemplateMapper.toDto(productHtmlTemplate);
+	}
 }

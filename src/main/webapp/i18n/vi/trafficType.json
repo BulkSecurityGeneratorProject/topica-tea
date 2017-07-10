@@ -1,0 +1,11 @@
+{
+    "topicaEventAmplifyApp": {
+        "TrafficType" : {
+            "null": "",
+            "VIEW": "VIEW",
+            "REACH": "REACH",
+            "C2": "C2",
+            "EMAIL": "EMAIL"
+        }
+    }
+}

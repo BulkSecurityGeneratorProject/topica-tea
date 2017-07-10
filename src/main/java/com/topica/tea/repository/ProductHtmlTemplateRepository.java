@@ -14,4 +14,6 @@ import org.springframework.data.jpa.repository.*;
 public interface ProductHtmlTemplateRepository extends JpaRepository<ProductHtmlTemplate,Long> {
 
 	ProductHtmlTemplate findOneByProductIdAndHtmlTemplateId(Long productId, Long htmlTemplateId);
+	
+	ProductHtmlTemplate findOneByChannelProductIdAndHtmlTemplateId(Long channelProductId, Long htmlTemplateId);
 }

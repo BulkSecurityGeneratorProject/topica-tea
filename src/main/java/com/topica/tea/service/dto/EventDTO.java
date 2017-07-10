@@ -41,13 +41,13 @@ public class EventDTO implements Serializable {
 
     private ZonedDateTime schedule;
 
-    private QuestionDTO question;
-    
-    private ArticleDTO article;
-    
     private Long questionId;
+    
+    private QuestionDTO question;
 
     private Long articleId;
+    
+    private ArticleDTO article;
     
     private Long createdUserId;
 
@@ -57,10 +57,14 @@ public class EventDTO implements Serializable {
     
     private Long writerUserId;
     
+    private Boolean isHotEvent;
+    
     private Set<ProductDTO> products = new HashSet<>();
     
     private Set<PriorityGroup> priorityGroup = new HashSet<>();
 
+    private Set<ChannelProductDTO> channelProducts = new HashSet<>();
+    
     public Long getId() {
         return id;
     }
@@ -239,5 +243,21 @@ public class EventDTO implements Serializable {
 
 	public void setArticle(ArticleDTO article) {
 		this.article = article;
+	}
+
+	public Set<ChannelProductDTO> getChannelProducts() {
+		return channelProducts;
+	}
+
+	public void setChannelProducts(Set<ChannelProductDTO> channelProducts) {
+		this.channelProducts = channelProducts;
+	}
+
+	public Boolean getIsHotEvent() {
+		return isHotEvent;
+	}
+
+	public void setIsHotEvent(Boolean isHotEvent) {
+		this.isHotEvent = isHotEvent;
 	}
 }

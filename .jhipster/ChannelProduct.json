@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "channelProduct"
+        },
+        {
+            "relationshipName": "adsType",
+            "otherEntityName": "adsType",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "channelProduct"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "link",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "traffic",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "trafficType",
+            "fieldType": "TrafficType",
+            "fieldValues": "VIEW,REACH,C2,EMAIL"
+        },
+        {
+            "fieldName": "productId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170709155858",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "channel_product",
+    "pagination": "pager"
+}

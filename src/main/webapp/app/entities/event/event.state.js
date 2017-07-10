@@ -264,7 +264,7 @@
             parent: 'event',
             url: '/{id}/publish',
             data: {
-                authorities: ['ROLE_MANAGER']
+                authorities: ['ROLE_MANAGER','ROLE_BOSS']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -286,14 +286,39 @@
         })
         .state('event.hot', {
             parent: 'event',
-            url: '/hot',
+            url: '/{id}/hot',
             data: {
-                authorities: ['ROLE_BOSS']
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/event/event-hot-dialog.html',
                     controller: 'EventHotDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                    	entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('event');
+                });
+            }]
+        })
+        .state('event.inithot', {
+            parent: 'event',
+            url: '/inithot',
+            data: {
+                authorities: ['ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-init-hot-dialog.html',
+                    controller: 'EventInitHotDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',

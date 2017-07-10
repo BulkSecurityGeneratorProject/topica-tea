@@ -41,4 +41,6 @@ public interface ProductHtmlTemplateService {
     void delete(Long id);
     
     ProductHtmlTemplateDTO findOneByProductIdAndHtmlTemplateId(Long productId, Long htmlTemplateId);
+    
+    ProductHtmlTemplateDTO findOneByChannelProductIdAndHtmlTemplateId(Long channelProductId, Long htmlTemplateId);
 }

@@ -22,7 +22,7 @@
                 </button>
             </div>
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-danger" ui-sref="event.hot" has-authority="ROLE_BOSS">
+                <button class="btn btn-danger" ui-sref="event.inithot" has-authority="ROLE_BOSS">
                     <span class="glyphicon glyphicon-fire"></span>
                     <span>
                         Tạo sự kiện nóng
@@ -54,7 +54,7 @@
             <tbody>
                 <tr ng-repeat="event in vm.events track by event.id">
                     <td><a ui-sref="event-detail({id:event.id})">{{event.id}}</a></td>
-                    <td>{{event.name}}</td>
+                    <td><span class="glyphicon glyphicon-fire text-danger" ng-show="{{event.isHotEvent}}"></span> {{event.name}}</td>
                     <!-- <td>{{event.description}}</td>
                     <td>{{event.content}}</td> --> 
                     <td><span class="label label-{{event.eventStatus == 'INVALID' ? 'danger' : 'info'}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
@@ -95,7 +95,7 @@
                             </button>
                             <button type="submit"
                                     ui-sref="event.delete({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
                             </button>
@@ -113,10 +113,17 @@
                                 <span class="glyphicon glyphicon-tasks"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.editor"></span>
                             </button>
+                            <!-- Write Hot Event -->
+                            <button type="submit"
+                                    ui-sref="event.hot({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="event.eventStatus == 'EDITOR'">
+                                <span class="glyphicon glyphicon-tasks"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.editor"></span>
+                            </button>
                             <!-- Approve -->
                             <button type="submit"
                                     ui-sref="event.publish({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-authority="ROLE_MANAGER" ng-show="event.eventStatus == 'DIRECTOR_APPROVE'">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_MANAGER,ROLE_BOSS" ng-show="['DIRECTOR_APPROVE', 'WAIT_BOSS_APPROVE'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-thumbs-up"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.complete"></span>
                             </button>

@@ -22,7 +22,7 @@
         	var host = $location.host();
         	var port = $location.port();
         	var code = "<script id=\"topica-widget-script\" src=\"http://" + host + ":" + port + "/content/widget/inject-event.js\" " +
-        				"data-productId=\"" + entity.productId + "\" data-templateId=\"" + entity.htmlTemplateId + "\" type=\"text/javascript\">" +
+        				"data-channelProductId=\"" + entity.channelProductId + "\" data-templateId=\"" + entity.htmlTemplateId + "\" type=\"text/javascript\">" +
         				"</script>\n"
         				+ "<div id=\"topica-widget-container\"></div>";
         	vm.widgetCode = code;

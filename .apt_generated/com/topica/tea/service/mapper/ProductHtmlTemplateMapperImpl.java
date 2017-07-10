@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-08T17:36:13+0700",
+    date = "2017-07-10T00:51:32+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -23,6 +23,7 @@ public class ProductHtmlTemplateMapperImpl implements ProductHtmlTemplateMapper 
 
         ProductHtmlTemplateDTO productHtmlTemplateDTO = new ProductHtmlTemplateDTO();
 
+        productHtmlTemplateDTO.setChannelProductId( arg0.getChannelProductId() );
         productHtmlTemplateDTO.setDescription( arg0.getDescription() );
         productHtmlTemplateDTO.setHtmlTemplateId( arg0.getHtmlTemplateId() );
         productHtmlTemplateDTO.setId( arg0.getId() );
@@ -54,6 +55,7 @@ public class ProductHtmlTemplateMapperImpl implements ProductHtmlTemplateMapper 
 
         ProductHtmlTemplate productHtmlTemplate = new ProductHtmlTemplate();
 
+        productHtmlTemplate.setChannelProductId( arg0.getChannelProductId() );
         productHtmlTemplate.setDescription( arg0.getDescription() );
         productHtmlTemplate.setHtmlTemplateId( arg0.getHtmlTemplateId() );
         productHtmlTemplate.setId( arg0.getId() );

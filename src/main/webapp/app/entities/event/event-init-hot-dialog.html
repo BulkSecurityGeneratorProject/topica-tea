@@ -1,0 +1,57 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEventLabel">Thêm mới sự kiện nóng</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="panel-group" id="accordion">
+		    <div class="panel panel-default" id="panel1" ng-repeat="product in vm.products">
+		        <div class="panel-heading">
+					<h4 class="panel-title">
+				        <a data-toggle="collapse" data-target="#collapse-{{product.id}}" class="collapsed">
+				          	{{product.productName}}
+				        </a>
+			      	</h4>
+				</div>
+		        <div id="collapse-{{product.id}}" class="panel-collapse collapse">
+		            <div class="panel-body">
+		            	<div class="table-responsive">
+        					<table class="jh-table table table-striped">
+        						<thead>
+        							<tr>
+        								<th></th>
+						                <th><span>Kênh</span></th>
+						                <th><span>Traffic</span></th>
+						                <th></th>
+						            </tr>
+        						</thead>
+        						<tbody>
+        							<tr ng-repeat="adsType in vm.adsTypes">
+        								<td>{{adsType.name}}</td>
+        								<td>
+        									<div ng-repeat="channel in vm.channelProducts | filter:{productId: product.id} | filter:{adsTypeId: adsType.id} ">{{channel.link}}</div>
+        								</td>
+        								<td><div ng-repeat="channel in vm.channelProducts | filter:{productId: product.id} | filter:{adsTypeId: adsType.id} ">{{channel.traffic}}</div></td>
+        								<td><div ng-repeat="channel in vm.channelProducts | filter:{productId: product.id} | filter:{adsTypeId: adsType.id} "><input type="checkbox" name="chk_channel_{{channel.id}}" id="chk_channel_{{channel.id}}" ng-click="vm.changeChannelProduct()"></div></td>
+        							</tr>
+        						</tbody>
+        					</table>
+        				</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

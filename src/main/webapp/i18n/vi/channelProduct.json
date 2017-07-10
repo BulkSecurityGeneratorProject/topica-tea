@@ -1,0 +1,26 @@
+{
+    "topicaEventAmplifyApp": {
+        "channelProduct" : {
+            "home": {
+                "title": "Channel Products",
+                "createLabel": "Thêm mới một Channel Product",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Channel Product"
+            },
+            "created": "Một Channel Product mới được tạo với định danh {{ param }}",
+            "updated": "Một Channel Product cập nhật với định danh {{ param }}",
+            "deleted": "Một Channel Product đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Channel Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Channel Product"
+            },
+            "link": "Link",
+            "traffic": "Traffic",
+            "trafficType": "Traffic Type",
+            "productId": "Product Id",
+            "product": "Product",
+            "adsType": "Ads Type"
+        }
+    }
+}

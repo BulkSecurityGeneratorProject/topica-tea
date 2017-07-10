@@ -56,6 +56,9 @@ public class ContentService {
 
     public String process(EventDTO eventDTO, Long templateId) {
     	ArticleDTO article = eventDTO.getArticle();
+    	if (null == article) {
+    		return null;
+    	}
     	HtmlTemplate templateEntity = htmlTemplateRepository.findOne(templateId);
     	if (null == templateEntity) {
     		return null;

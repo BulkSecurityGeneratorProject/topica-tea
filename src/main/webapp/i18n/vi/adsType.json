@@ -1,0 +1,22 @@
+{
+    "topicaEventAmplifyApp": {
+        "adsType" : {
+            "home": {
+                "title": "Ads Types",
+                "createLabel": "Thêm mới một Ads Type",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Ads Type"
+            },
+            "created": "Một Ads Type mới được tạo với định danh {{ param }}",
+            "updated": "Một Ads Type cập nhật với định danh {{ param }}",
+            "deleted": "Một Ads Type đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Ads Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Ads Type"
+            },
+            "name": "Name",
+            "description": "Description"
+        }
+    }
+}

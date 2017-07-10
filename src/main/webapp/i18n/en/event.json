@@ -54,6 +54,7 @@
         	, "DIRECTOR_APPROVE" : "GĐ đã duyệt"
         	, "MANAGER_DENY" : "Quản lý từ chối"
         	, "MANAGER_APPROVE" : "Quản lý duyệt"
+        	, "WAIT_BOSS_APPROVE" : "Chờ BigBoss duyệt"
         }
     }
 }

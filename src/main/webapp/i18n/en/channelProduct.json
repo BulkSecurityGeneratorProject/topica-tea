@@ -1,0 +1,26 @@
+{
+    "topicaEventAmplifyApp": {
+        "channelProduct" : {
+            "home": {
+                "title": "Channel Products",
+                "createLabel": "Create a new Channel Product",
+                "createOrEditLabel": "Create or edit a Channel Product"
+            },
+            "created": "A new Channel Product is created with identifier {{ param }}",
+            "updated": "A Channel Product is updated with identifier {{ param }}",
+            "deleted": "A Channel Product is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Channel Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Channel Product"
+            },
+            "link": "Link",
+            "traffic": "Traffic",
+            "trafficType": "Traffic Type",
+            "productId": "Product Id",
+            "product": "Product",
+            "adsType": "Ads Type"
+        }
+    }
+}

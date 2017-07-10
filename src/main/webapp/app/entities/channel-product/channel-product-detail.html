@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="topicaEventAmplifyApp.channelProduct.detail.title">Channel Product</span> {{vm.channelProduct.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.link">Link</span></dt>
+        <dd>
+            <span>{{vm.channelProduct.link}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.traffic">Traffic</span></dt>
+        <dd>
+            <span>{{vm.channelProduct.traffic}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.trafficType">Traffic Type</span></dt>
+        <dd>
+            <span data-translate="{{'topicaEventAmplifyApp.TrafficType.' + vm.channelProduct.trafficType}}">{{vm.channelProduct.trafficType}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.productId">Product Id</span></dt>
+        <dd>
+            <span>{{vm.channelProduct.productId}}</span>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.product">Product</span></dt>
+        <dd>
+            <a ui-sref="product-detail({id:vm.channelProduct.productId})">{{vm.channelProduct.productId}}</a>
+        </dd>
+        <dt><span data-translate="topicaEventAmplifyApp.channelProduct.adsType">Ads Type</span></dt>
+        <dd>
+            <a ui-sref="ads-type-detail({id:vm.channelProduct.adsTypeId})">{{vm.channelProduct.adsTypeId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="channel-product-detail.edit({id:vm.channelProduct.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

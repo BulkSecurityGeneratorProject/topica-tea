@@ -1,0 +1,72 @@
+<div>
+    <h2 data-translate="topicaEventAmplifyApp.channelProduct.home.title">Channel Products</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="channel-product.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="topicaEventAmplifyApp.channelProduct.home.createLabel">
+                        Create new Channel Product
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="link"><span data-translate="topicaEventAmplifyApp.channelProduct.link">Link</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="traffic"><span data-translate="topicaEventAmplifyApp.channelProduct.traffic">Traffic</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trafficType"><span data-translate="topicaEventAmplifyApp.channelProduct.trafficType">Traffic Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="productId"><span data-translate="topicaEventAmplifyApp.channelProduct.product">Product</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="adsTypeId"><span data-translate="topicaEventAmplifyApp.channelProduct.adsType">Ads Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="channelProduct in vm.channelProducts track by channelProduct.id">
+                    <td><a ui-sref="channel-product-detail({id:channelProduct.id})">{{channelProduct.id}}</a></td>
+                    <td>{{channelProduct.link}}</td>
+                    <td>{{channelProduct.traffic}}</td>
+                    <td data-translate="{{'topicaEventAmplifyApp.TrafficType.' + channelProduct.trafficType}}">{{channelProduct.trafficType}}</td>
+                    <td>
+                        <a ui-sref="product-detail({id:channelProduct.productId})">{{channelProduct.product.productName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="ads-type-detail({id:channelProduct.adsTypeId})">{{channelProduct.adsType.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="channel-product-detail({id:channelProduct.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="channel-product.edit({id:channelProduct.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="channel-product.delete({id:channelProduct.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

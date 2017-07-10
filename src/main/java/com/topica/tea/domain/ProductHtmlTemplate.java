@@ -30,6 +30,9 @@ public class ProductHtmlTemplate implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "channel_product_id")
+    private Long channelProductId;
+
     public Long getId() {
         return id;
     }
@@ -90,6 +93,19 @@ public class ProductHtmlTemplate implements Serializable {
         this.description = description;
     }
 
+    public Long getChannelProductId() {
+        return channelProductId;
+    }
+
+    public ProductHtmlTemplate channelProductId(Long channelProductId) {
+        this.channelProductId = channelProductId;
+        return this;
+    }
+
+    public void setChannelProductId(Long channelProductId) {
+        this.channelProductId = channelProductId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -118,6 +134,7 @@ public class ProductHtmlTemplate implements Serializable {
             ", productId='" + getProductId() + "'" +
             ", htmlTemplateId='" + getHtmlTemplateId() + "'" +
             ", description='" + getDescription() + "'" +
+            ", channelProductId='" + getChannelProductId() + "'" +
             "}";
     }
 }

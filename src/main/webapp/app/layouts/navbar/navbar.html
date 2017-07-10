@@ -132,12 +132,24 @@
 						</span>
 					</a>
 					<ul class="dropdown-menu" uib-dropdown-menu>
+					 	<li ui-sref-active="active">
+                                <a ui-sref="ads-type" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.adsType">Ads Type</span>
+                                </a>
+                            </li>
 						<li ui-sref-active="active">
 								<a ui-sref="product" ng-click="vm.collapseNavbar()">
 									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;
 									<span data-translate="global.menu.category.product">Product</span>
 								</a>
 							</li>
+						<li ui-sref-active="active">
+                                <a ui-sref="channel-product" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span data-translate="global.menu.entities.channelProduct">Channel Product</span>
+                                </a>
+                            </li>
 						<li ui-sref-active="active">
 								<a ui-sref="brandkey" ng-click="vm.collapseNavbar()">
 									<span class="glyphicon glyphicon-asterisk"></span>&nbsp;

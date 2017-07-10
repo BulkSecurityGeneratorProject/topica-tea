@@ -73,4 +73,6 @@ public interface EventService {
     EventDTO getPublishInjectEventByProductCode(String productCode);
     
     EventDTO getPublishInjectEventByProductId(Long productId);
+    
+    EventDTO getPublishInjectEventByChannelProductId(Long productId);
 }

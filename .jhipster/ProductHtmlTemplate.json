@@ -17,11 +17,15 @@
         {
             "fieldName": "description",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "channelProductId",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20170707151745",
-    "entityTableName": "product_html_template",
     "dto": "mapstruct",
-    "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "product_html_template",
+    "pagination": "pagination"
 }

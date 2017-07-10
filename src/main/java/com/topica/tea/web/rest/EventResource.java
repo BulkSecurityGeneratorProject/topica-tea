@@ -55,6 +55,35 @@ public class EventResource {
         this.contentService = contentService;
         this.productHtmlTemplateService = productHtmlTemplateService;
     }
+    
+    /**
+     * POST  /events : Create a new event.
+     *
+     * @param eventDTO the eventDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new eventDTO, or with status 400 (Bad Request) if the event has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/init-event-hot")
+    @Timed
+    public ResponseEntity<EventDTO> createInitHotEvent(@Valid @RequestBody EventDTO eventDTO) throws URISyntaxException {
+        log.debug("REST request to save Hot Event : {}", eventDTO);
+        if (eventDTO.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new event cannot already have an ID")).body(null);
+        }
+        // Save article
+        if (eventDTO.getArticle() != null) {
+            ArticleDTO articleResultDTO = articleService.save(eventDTO.getArticle());
+            eventDTO.setArticle(articleResultDTO);
+        }
+        
+        // Set event publish
+        eventDTO.setEventStatus(EventStatus.EDITOR);
+        eventDTO.setIsHotEvent(true);
+        EventDTO result = eventService.save(eventDTO);
+        return ResponseEntity.created(new URI("/api/init-event-hot/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
 
     /**
      * POST  /events : Create a new event.
@@ -65,18 +94,21 @@ public class EventResource {
      */
     @PostMapping("/event-hot")
     @Timed
-    public ResponseEntity<EventDTO> createHotEvent(@Valid @RequestBody EventDTO eventDTO) throws URISyntaxException {
+    public ResponseEntity<EventDTO> editorHotEvent(@Valid @RequestBody EventDTO eventDTO) throws URISyntaxException {
         log.debug("REST request to save Hot Event : {}", eventDTO);
-        if (eventDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new event cannot already have an ID")).body(null);
+        if (eventDTO.getId() == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new event cannot already have an empty ID")).body(null);
         }
         // Save article
+        eventDTO.getArticle().setTitle("Article for Hot event " + eventDTO.getId());
         ArticleDTO articleResultDTO = articleService.save(eventDTO.getArticle());
-        eventDTO.setArticle(articleResultDTO);
         
         // Set event publish
-        eventDTO.setEventStatus(EventStatus.MANAGER_APPROVE);
-        EventDTO result = eventService.save(eventDTO);
+        EventDTO eventDTOResult = eventService.findOne(eventDTO.getId());
+        eventDTOResult.setEventStatus(EventStatus.WAIT_BOSS_APPROVE);
+        eventDTOResult.setArticle(articleResultDTO);
+        
+        EventDTO result = eventService.save(eventDTOResult);
         return ResponseEntity.created(new URI("/api/event-hot/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -218,21 +250,23 @@ public class EventResource {
      */
     @GetMapping("/inject-event")
     @Timed
-    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="productId", required = false) Long productId,
+    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,
     		@RequestParam(name="templateId", required = false) Long templateId) {
-        log.debug("REST request to getInjectEventByProductCode : productId {}, templateId {}", productId, templateId);
+        log.debug("REST request to getInjectEventByProductCode : channelProductId {}, templateId {}", channelProductId, templateId);
         
         // Find relation between product and template
-        ProductHtmlTemplateDTO ptDTO = productHtmlTemplateService.findOneByProductIdAndHtmlTemplateId(productId, templateId);
+        ProductHtmlTemplateDTO ptDTO = productHtmlTemplateService.findOneByChannelProductIdAndHtmlTemplateId(channelProductId, templateId);
         if (null == ptDTO) {
         	return ResponseUtil.wrapOrNotFound(Optional.ofNullable(null));
         }
         
-        EventDTO eventDTO = eventService.getPublishInjectEventByProductId(productId);
+        EventDTO eventDTO = eventService.getPublishInjectEventByChannelProductId(channelProductId);
         
         // Process content
-        String content = contentService.process(eventDTO, templateId);
-        eventDTO.setContent(content);
+        if (null != eventDTO) {
+        	String content = contentService.process(eventDTO, templateId);
+            eventDTO.setContent(content);
+        }
         
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
     }

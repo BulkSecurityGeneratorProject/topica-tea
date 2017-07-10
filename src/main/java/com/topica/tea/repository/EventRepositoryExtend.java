@@ -20,4 +20,6 @@ public interface EventRepositoryExtend {
 	Event findPublishInjectOneByProductCode(String productCode);
 	
 	Event findPublishInjectOneByProductId(Long productId);
+	
+	Event findPublishInjectOneByChannelProductId(Long productId);
 }

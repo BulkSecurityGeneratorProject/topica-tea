@@ -1,0 +1,22 @@
+{
+    "topicaEventAmplifyApp": {
+        "adsType" : {
+            "home": {
+                "title": "Ads Types",
+                "createLabel": "Create a new Ads Type",
+                "createOrEditLabel": "Create or edit a Ads Type"
+            },
+            "created": "A new Ads Type is created with identifier {{ param }}",
+            "updated": "A Ads Type is updated with identifier {{ param }}",
+            "deleted": "A Ads Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ads Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Ads Type"
+            },
+            "name": "Name",
+            "description": "Description"
+        }
+    }
+}
