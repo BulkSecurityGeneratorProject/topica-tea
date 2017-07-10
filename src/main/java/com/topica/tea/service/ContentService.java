@@ -86,6 +86,7 @@ public class ContentService {
     	template = template.replaceAll("@@content3@@", article.getContent3());
     	
     	template = template.replaceAll("@@videoLink@@", article.getVideoLink());
+    	template = template.replaceAll("@@videoCaption@@", article.getVideoCaption());
     	// Build content
     	StringBuffer sb = new StringBuffer();
     	// Append CSS Inline

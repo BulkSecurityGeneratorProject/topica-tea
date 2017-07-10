@@ -50,7 +50,7 @@
         
         <loadData encoding="UTF-8"
                   file="config/liquibase/html_template.csv"
-                  separator="*"
+                  separator="^"
                   tableName="html_template">
         </loadData>
     </changeSet>
