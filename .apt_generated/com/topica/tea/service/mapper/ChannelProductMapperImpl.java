@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-10T00:03:37+0700",
+    date = "2017-07-10T22:12:13+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -62,6 +62,8 @@ public class ChannelProductMapperImpl implements ChannelProductMapper {
         channelProductDTO_.setProductId( channelProductProductId( channelProduct ) );
         channelProductDTO_.setAdsTypeId( channelProductAdsTypeId( channelProduct ) );
         channelProductDTO_.setAdsType( adsTypeMapper.toDto( channelProduct.getAdsType() ) );
+        channelProductDTO_.setAppId( channelProduct.getAppId() );
+        channelProductDTO_.setAppSecret( channelProduct.getAppSecret() );
         channelProductDTO_.setId( channelProduct.getId() );
         channelProductDTO_.setLink( channelProduct.getLink() );
         channelProductDTO_.setProduct( productMapper.toDto( channelProduct.getProduct() ) );
@@ -81,6 +83,8 @@ public class ChannelProductMapperImpl implements ChannelProductMapper {
 
         channelProduct_.setProduct( productMapper.fromId( channelProductDTO.getProductId() ) );
         channelProduct_.setAdsType( adsTypeMapper.fromId( channelProductDTO.getAdsTypeId() ) );
+        channelProduct_.setAppId( channelProductDTO.getAppId() );
+        channelProduct_.setAppSecret( channelProductDTO.getAppSecret() );
         channelProduct_.setId( channelProductDTO.getId() );
         channelProduct_.setLink( channelProductDTO.getLink() );
         channelProduct_.setTraffic( channelProductDTO.getTraffic() );

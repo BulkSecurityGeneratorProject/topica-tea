@@ -37,6 +37,20 @@
                 </p>
             </div>
         </div>
+        
+        <!-- AppID and AppSecret -->
+        <div class="form-group" ng-show="vm.channelProduct.adsTypeId == 3">
+            <label class="control-label" for="field_appid">AppID</label>
+            <input type="text" class="form-control" name="appId" id="field_appid"
+                    ng-model="vm.channelProduct.appId"/>
+        </div>
+        <div class="form-group" ng-show="vm.channelProduct.adsTypeId == 3">
+            <label class="control-label" for="field_appsecret">AppSecret</label>
+            <input type="text" class="form-control" name="appsecret" id="field_appsecret"
+                    ng-model="vm.channelProduct.appSecret"/>
+        </div>
+        
+        
         <div class="form-group">
             <label class="control-label" data-translate="topicaEventAmplifyApp.channelProduct.traffic" for="field_traffic">Traffic</label>
             <input type="number" class="form-control" name="traffic" id="field_traffic"

@@ -1,11 +1,11 @@
 package com.topica.tea.service.dto;
 
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
+
 import com.topica.tea.domain.enumeration.TrafficType;
 
 /**
@@ -25,6 +25,10 @@ public class ChannelProductDTO implements Serializable {
     private Long productId;
 
     private Long adsTypeId;
+    
+    private String appId;
+    
+    private String appSecret;
     
     private ProductDTO product;
     
@@ -124,5 +128,21 @@ public class ChannelProductDTO implements Serializable {
 
 	public void setAdsType(AdsTypeDTO adsType) {
 		this.adsType = adsType;
+	}
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
+	public String getAppSecret() {
+		return appSecret;
+	}
+
+	public void setAppSecret(String appSecret) {
+		this.appSecret = appSecret;
 	}
 }

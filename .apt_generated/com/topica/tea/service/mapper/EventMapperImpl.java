@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-10T14:55:24+0700",
+    date = "2017-07-10T22:02:26+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
@@ -36,28 +36,28 @@ public class EventMapperImpl implements EventMapper {
     private ChannelProductMapper channelProductMapper;
 
     @Override
-    public List<EventDTO> toDto(List<Event> arg0) {
-        if ( arg0 == null ) {
+    public List<Event> toEntity(List<EventDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<EventDTO> list = new ArrayList<EventDTO>();
-        for ( Event event : arg0 ) {
-            list.add( toDto( event ) );
+        List<Event> list = new ArrayList<Event>();
+        for ( EventDTO eventDTO : dtoList ) {
+            list.add( toEntity( eventDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public List<Event> toEntity(List<EventDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<EventDTO> toDto(List<Event> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<Event> list = new ArrayList<Event>();
-        for ( EventDTO eventDTO : arg0 ) {
-            list.add( toEntity( eventDTO ) );
+        List<EventDTO> list = new ArrayList<EventDTO>();
+        for ( Event event : entityList ) {
+            list.add( toDto( event ) );
         }
 
         return list;
@@ -73,34 +73,34 @@ public class EventMapperImpl implements EventMapper {
 
         eventDTO_.setArticleId( eventArticleId( event ) );
         eventDTO_.setQuestionId( eventQuestionId( event ) );
+        eventDTO_.setId( event.getId() );
+        eventDTO_.setName( event.getName() );
+        eventDTO_.setDescription( event.getDescription() );
+        eventDTO_.setContent( event.getContent() );
+        eventDTO_.setEventStatus( event.getEventStatus() );
+        eventDTO_.setEventLevel( event.getEventLevel() );
         List<AmplifyType> list = event.getAmplifyType();
         if ( list != null ) {
             eventDTO_.setAmplifyType(       new ArrayList<AmplifyType>( list )
             );
         }
-        eventDTO_.setArticle( articleMapper.toDto( event.getArticle() ) );
-        Set<ChannelProductDTO> set = channelProductSetToChannelProductDTOSet( event.getChannelProducts() );
+        eventDTO_.setSchedule( event.getSchedule() );
+        eventDTO_.setQuestion( questionMapper.toDto( event.getQuestion() ) );
+        Set<ProductDTO> set = productSetToProductDTOSet( event.getProducts() );
         if ( set != null ) {
-            eventDTO_.setChannelProducts( set );
+            eventDTO_.setProducts( set );
         }
-        eventDTO_.setContent( event.getContent() );
-        eventDTO_.setDescription( event.getDescription() );
-        eventDTO_.setEventLevel( event.getEventLevel() );
-        eventDTO_.setEventStatus( event.getEventStatus() );
-        eventDTO_.setId( event.getId() );
-        eventDTO_.setIsHotEvent( event.getIsHotEvent() );
-        eventDTO_.setName( event.getName() );
         List<PriorityGroup> list_ = event.getPriorityGroup();
         if ( list_ != null ) {
             eventDTO_.setPriorityGroup(       new HashSet<PriorityGroup>( list_ )
             );
         }
-        Set<ProductDTO> set_ = productSetToProductDTOSet( event.getProducts() );
+        eventDTO_.setArticle( articleMapper.toDto( event.getArticle() ) );
+        Set<ChannelProductDTO> set_ = channelProductSetToChannelProductDTOSet( event.getChannelProducts() );
         if ( set_ != null ) {
-            eventDTO_.setProducts( set_ );
+            eventDTO_.setChannelProducts( set_ );
         }
-        eventDTO_.setQuestion( questionMapper.toDto( event.getQuestion() ) );
-        eventDTO_.setSchedule( event.getSchedule() );
+        eventDTO_.setIsHotEvent( event.getIsHotEvent() );
 
         return eventDTO_;
     }
@@ -115,32 +115,32 @@ public class EventMapperImpl implements EventMapper {
 
         event_.setQuestion( questionMapper.fromId( eventDTO.getQuestionId() ) );
         event_.setArticle( articleMapper.fromId( eventDTO.getArticleId() ) );
+        Set<ChannelProduct> set = channelProductDTOSetToChannelProductSet( eventDTO.getChannelProducts() );
+        if ( set != null ) {
+            event_.setChannelProducts( set );
+        }
+        Set<Product> set_ = productDTOSetToProductSet( eventDTO.getProducts() );
+        if ( set_ != null ) {
+            event_.setProducts( set_ );
+        }
+        event_.setId( eventDTO.getId() );
+        event_.setName( eventDTO.getName() );
+        event_.setDescription( eventDTO.getDescription() );
+        event_.setContent( eventDTO.getContent() );
+        event_.setEventStatus( eventDTO.getEventStatus() );
+        event_.setEventLevel( eventDTO.getEventLevel() );
         List<AmplifyType> list = eventDTO.getAmplifyType();
         if ( list != null ) {
             event_.setAmplifyType(       new ArrayList<AmplifyType>( list )
             );
         }
-        Set<ChannelProduct> set = channelProductDTOSetToChannelProductSet( eventDTO.getChannelProducts() );
-        if ( set != null ) {
-            event_.setChannelProducts( set );
-        }
-        event_.setContent( eventDTO.getContent() );
-        event_.setDescription( eventDTO.getDescription() );
-        event_.setEventLevel( eventDTO.getEventLevel() );
-        event_.setEventStatus( eventDTO.getEventStatus() );
-        event_.setId( eventDTO.getId() );
-        event_.setIsHotEvent( eventDTO.getIsHotEvent() );
-        event_.setName( eventDTO.getName() );
-        Set<PriorityGroup> set_ = eventDTO.getPriorityGroup();
-        if ( set_ != null ) {
-            event_.setPriorityGroup(       new ArrayList<PriorityGroup>( set_ )
+        Set<PriorityGroup> set__ = eventDTO.getPriorityGroup();
+        if ( set__ != null ) {
+            event_.setPriorityGroup(       new ArrayList<PriorityGroup>( set__ )
             );
         }
-        Set<Product> set__ = productDTOSetToProductSet( eventDTO.getProducts() );
-        if ( set__ != null ) {
-            event_.setProducts( set__ );
-        }
         event_.setSchedule( eventDTO.getSchedule() );
+        event_.setIsHotEvent( eventDTO.getIsHotEvent() );
 
         return event_;
     }
@@ -177,19 +177,6 @@ public class EventMapperImpl implements EventMapper {
         return id;
     }
 
-    protected Set<ChannelProductDTO> channelProductSetToChannelProductDTOSet(Set<ChannelProduct> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<ChannelProductDTO> set_ = new HashSet<ChannelProductDTO>();
-        for ( ChannelProduct channelProduct : set ) {
-            set_.add( channelProductMapper.toDto( channelProduct ) );
-        }
-
-        return set_;
-    }
-
     protected Set<ProductDTO> productSetToProductDTOSet(Set<Product> set) {
         if ( set == null ) {
             return null;
@@ -198,6 +185,19 @@ public class EventMapperImpl implements EventMapper {
         Set<ProductDTO> set_ = new HashSet<ProductDTO>();
         for ( Product product : set ) {
             set_.add( productMapper.toDto( product ) );
+        }
+
+        return set_;
+    }
+
+    protected Set<ChannelProductDTO> channelProductSetToChannelProductDTOSet(Set<ChannelProduct> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        Set<ChannelProductDTO> set_ = new HashSet<ChannelProductDTO>();
+        for ( ChannelProduct channelProduct : set ) {
+            set_.add( channelProductMapper.toDto( channelProduct ) );
         }
 
         return set_;

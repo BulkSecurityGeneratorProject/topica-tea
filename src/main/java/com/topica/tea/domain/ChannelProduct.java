@@ -32,6 +32,13 @@ public class ChannelProduct implements Serializable {
     @Column(name = "traffic_type")
     private TrafficType trafficType;
 
+    @Column(name = "app_id", nullable = true)
+    private String appId;
+    
+    @NotNull
+    @Column(name = "app_secret", nullable = true)
+    private String appSecret;
+    
     @OneToOne
     @JoinColumn
     private Product product;
@@ -111,6 +118,32 @@ public class ChannelProduct implements Serializable {
 
     public void setAdsType(AdsType adsType) {
         this.adsType = adsType;
+    }
+    
+    public String getAppId() {
+        return appId;
+    }
+
+    public ChannelProduct appId(String appId) {
+        this.appId = appId;
+        return this;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+    
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    public ChannelProduct appSecret(String appSecret) {
+        this.appSecret = appSecret;
+        return this;
+    }
+
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
     }
 
     @Override
