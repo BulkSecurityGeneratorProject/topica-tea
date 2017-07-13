@@ -8,7 +8,7 @@
         <dd>
             <span>{{vm.article.title}}</span>
         </dd>
-        <dt><span data-translate="topicaEventAmplifyApp.article.content">Content</span></dt>
+        <!-- <dt><span data-translate="topicaEventAmplifyApp.article.content">Content</span></dt>
         <dd>
             <span><div ng-bind-html="vm.article.content"></div></span>
         </dd>
@@ -19,17 +19,88 @@
         <dt><span data-translate="topicaEventAmplifyApp.article.status">Status</span></dt>
         <dd>
             <span>{{vm.article.status}}</span>
+        </dd> -->
+    	<dt><span>Chủ đề 1</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.subject1"></div></span>
+        </dd>
+        <dt><span>Nội dung 1</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.content1"></div></span>
+        </dd>
+        <dt><span>Link 1</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.urlLink1"></div></span>
+        </dd>
+        <dt><span>Ảnh minh họa 1</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.imageLink1"></div></span>
+        </dd>
+        
+		<dt><span>Chủ đề 2</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.subject2"></div></span>
+        </dd>
+        <dt><span>Nội dung 2</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.content2"></div></span>
+        </dd>
+        <dt><span>Link 2</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.urlLink2"></div></span>
+        </dd>
+        <dt><span>Ảnh minh họa 2</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.imageLink2"></div></span>
+        </dd>
+        
+        <dt><span>Chủ đề 3</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.subject3"></div></span>
+        </dd>
+        <dt><span>Nội dung 3</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.content3"></div></span>
+        </dd>
+        <dt><span>Link 3</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.urlLink3"></div></span>
+        </dd>
+        <dt><span>Ảnh minh họa 3</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.imageLink3"></div></span>
+        </dd>
+        
+        <dt><span>Link video</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.videoLink"></div></span>
+        </dd>
+        <dt><span>Mô tả video</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.videoCaption"></div></span>
+        </dd>
+        
+        <dt><span>Nội dung Fanpage</span></dt>
+        <dd>
+            <span><div ng-bind-html="vm.article.fanpageContent"></div></span>
         </dd>
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Quay lại</span>
     </button>
 
-    <button type="button" ui-sref="article-detail.edit({id:vm.article.id})" class="btn btn-primary">
+    <!-- <button type="button" ui-sref="article-detail.edit({id:vm.article.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button> -->
+    
+    <button type="submit"
+            ui-sref="article.edit({id:vm.article.id})"
+            class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER">
+        <span class="glyphicon glyphicon-tasks"></span>
+        <span class="hidden-sm-down">Sửa</span>
     </button>
 </div>

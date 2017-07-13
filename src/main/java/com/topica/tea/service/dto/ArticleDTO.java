@@ -3,6 +3,7 @@ package com.topica.tea.service.dto;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -27,6 +28,12 @@ public class ArticleDTO implements Serializable {
     private String videoLink;
     
     private String videoCaption;
+    
+    private String fanpageContent;
+    
+    private String fanpageImage;
+    
+    private String fanpageLink;
     
     // 1
     private String content1;
@@ -162,6 +169,24 @@ public class ArticleDTO implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getFanpageContent() {
+		return fanpageContent;
+	}
+	public void setFanpageContent(String fanpageContent) {
+		this.fanpageContent = fanpageContent;
+	}
+	public String getFanpageImage() {
+		return fanpageImage;
+	}
+	public void setFanpageImage(String fanpageImage) {
+		this.fanpageImage = fanpageImage;
+	}
+	public String getFanpageLink() {
+		return fanpageLink;
+	}
+	public void setFanpageLink(String fanpageLink) {
+		this.fanpageLink = fanpageLink;
 	}
 	private static final long serialVersionUID = 1L;
 }

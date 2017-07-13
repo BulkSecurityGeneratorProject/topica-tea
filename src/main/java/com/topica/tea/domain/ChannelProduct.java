@@ -35,9 +35,11 @@ public class ChannelProduct implements Serializable {
     @Column(name = "app_id", nullable = true)
     private String appId;
     
-    @NotNull
     @Column(name = "app_secret", nullable = true)
     private String appSecret;
+    
+    @Column(name = "app_access_token", nullable = true)
+    private String appAccessToken;
     
     @OneToOne
     @JoinColumn
@@ -144,6 +146,19 @@ public class ChannelProduct implements Serializable {
 
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
+    }
+    
+    public String getAppAccessToken() {
+        return appAccessToken;
+    }
+
+    public ChannelProduct appAccessToken(String appAccessToken) {
+        this.appAccessToken = appAccessToken;
+        return this;
+    }
+
+    public void setAppAccessToken(String appAccessToken) {
+        this.appAccessToken = appAccessToken;
     }
 
     @Override

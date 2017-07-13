@@ -1,49 +1,62 @@
 
 <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myArticleLabel" data-translate="topicaEventAmplifyApp.article.home.createOrEditLabel">Create or edit a Article</h4>
+        <h4 class="modal-title" id="myEventLabel">Thêm dữ liệu cho sự kiện nóng</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.article.id">
-            <label for="id" data-translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.article.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.article.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                    ng-model="vm.article.title"
-                    required/>
-            <div ng-show="editForm.title.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.title.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.article.content" for="field_content">Content</label>
-            <input type="text" class="form-control" name="content" id="field_content"
-                    ng-model="vm.article.content"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.article.type" for="field_type">Type</label>
-            <input type="number" class="form-control" name="type" id="field_type"
-                    ng-model="vm.article.type"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="topicaEventAmplifyApp.article.status" for="field_status">Status</label>
-            <input type="number" class="form-control" name="status" id="field_status"
-                    ng-model="vm.article.status"
-                    />
-        </div>
+        <pre>aa {{vm.event}}</pre>
+        <ul class="nav nav-tabs" id="myTab">
+			  <li class="active"><a data-target="#home" data-toggle="tab">Landing page</a></li>
+			  <li><a data-target="#profile" data-toggle="tab">Fanpage</a></li>
+			  <li class="disabled"><a data-target="#messages" data-toggle="tab">Email</a></li>
+		</ul>
 
+		<div class="tab-content">
+			<div class="tab-pane active" id="home">
+			  	<div class="form-group">
+		            <label class="control-label" for="field_title">Tiêu đề</label>
+		            <input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject1" />
+		            <input required type="text" class="form-control" name="title2" id="field_title" ng-model="vm.event.article.subject2" />
+		            <input required type="text" class="form-control" name="title3" id="field_title" ng-model="vm.event.article.subject3" />
+		        </div>
+		        <div class="form-group">
+		            <label class="control-label" for="field_content">Nội dung</label>
+		            <input required type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content1" />
+		            <input required type="text" class="form-control" name="content2" id="field_content" ng-model="vm.event.article.content2" />
+		            <input required type="text" class="form-control" name="content3" id="field_content" ng-model="vm.event.article.content3" />
+		        </div>
+		        <div class="form-group">
+		            <label class="control-label" for="field_image">Ảnh minh họa</label>
+		            <input required type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink1" />
+		            <input required type="text" class="form-control" name="image2" id="field_image" ng-model="vm.event.article.imageLink2" />
+		            <input required type="text" class="form-control" name="image3" id="field_image" ng-model="vm.event.article.imageLink3" />
+		        </div>
+		        <div class="form-group">
+		            <label class="control-label" for="field_url">Đường dẫn URL</label>
+		            <input required type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink1" />
+		            <input required type="text" class="form-control" name="url2" id="field_url" ng-model="vm.event.article.urlLink2" />
+		            <input required type="text" class="form-control" name="url3" id="field_url" ng-model="vm.event.article.urlLink3" />
+		        </div>
+		        <div class="form-group">
+		            <label class="control-label" for="field_video_link">Link video</label>
+		            <input required type="text" class="form-control" name="video_link" id="field_video_link" ng-model="vm.event.article.videoLink" />
+		        </div>
+		        <div class="form-group">
+		            <label class="control-label" for="field_video_caption">Video caption</label>
+		            <input type="text" class="form-control" name="video_caption" id="field_video_caption" ng-model="vm.event.article.videoCaption" />
+		        </div>
+			</div>
+			<div class="tab-pane" id="profile">
+				<div class="form-group">
+            		<label class="control-label" for="field_fanpage">Nội dung Fanpage</label>
+            		<input type="text" class="form-control" name="fanpage" id="field_fanpage" ng-model="vm.event.article.fanpageContent" />
+       			</div>
+  			</div>
+			<div class="tab-pane" id="messages"></div>
+		</div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

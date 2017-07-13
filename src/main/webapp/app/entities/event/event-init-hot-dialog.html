@@ -8,6 +8,17 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Tên sự kiện</label>
+            <input required type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.event.name"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
         <div class="panel-group" id="accordion">
 		    <div class="panel panel-default" id="panel1" ng-repeat="product in vm.products">
 		        <div class="panel-heading">

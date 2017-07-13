@@ -1,6 +1,7 @@
 package com.topica.tea.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.topica.tea.domain.enumeration.AmplifyType;
 import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.service.ArticleService;
 import com.topica.tea.service.ContentService;
@@ -9,11 +10,14 @@ import com.topica.tea.service.ProductHtmlTemplateService;
 import com.topica.tea.web.rest.util.HeaderUtil;
 import com.topica.tea.web.rest.util.PaginationUtil;
 import com.topica.tea.service.dto.ArticleDTO;
+import com.topica.tea.service.dto.ChannelProductDTO;
 import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.dto.ProductHtmlTemplateDTO;
 
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -26,9 +30,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Event.
@@ -76,8 +82,11 @@ public class EventResource {
             eventDTO.setArticle(articleResultDTO);
         }
         
+        // Update more info
+        updateAmplifyTypeForHotEvent(eventDTO);
+        
         // Set event publish
-        eventDTO.setEventStatus(EventStatus.EDITOR);
+        eventDTO.setEventStatus(EventStatus.NOT_YET_ORDER);
         eventDTO.setIsHotEvent(true);
         EventDTO result = eventService.save(eventDTO);
         return ResponseEntity.created(new URI("/api/init-event-hot/" + result.getId()))
@@ -105,7 +114,7 @@ public class EventResource {
         
         // Set event publish
         EventDTO eventDTOResult = eventService.findOne(eventDTO.getId());
-        eventDTOResult.setEventStatus(EventStatus.WAIT_BOSS_APPROVE);
+        eventDTOResult.setEventStatus(EventStatus.WAIT_SEND_BOSS);
         eventDTOResult.setArticle(articleResultDTO);
         
         EventDTO result = eventService.save(eventDTOResult);
@@ -250,14 +259,15 @@ public class EventResource {
      */
     @GetMapping("/inject-event")
     @Timed
-    public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,
+    //public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,
+    public String getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,	
     		@RequestParam(name="templateId", required = false) Long templateId) {
         log.debug("REST request to getInjectEventByProductCode : channelProductId {}, templateId {}", channelProductId, templateId);
         
         // Find relation between product and template
         ProductHtmlTemplateDTO ptDTO = productHtmlTemplateService.findOneByChannelProductIdAndHtmlTemplateId(channelProductId, templateId);
         if (null == ptDTO) {
-        	return ResponseUtil.wrapOrNotFound(Optional.ofNullable(null));
+        	return StringUtils.EMPTY;
         }
         
         EventDTO eventDTO = eventService.getPublishInjectEventByChannelProductId(channelProductId);
@@ -268,6 +278,26 @@ public class EventResource {
             eventDTO.setContent(content);
         }
         
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(eventDTO));
+        return StringUtils.isNotEmpty(eventDTO.getContent()) ? eventDTO.getContent() : StringUtils.EMPTY;
     }
+    
+    private void updateAmplifyTypeForHotEvent(EventDTO eventDTO) {
+    	Set<AmplifyType> setAmplifyTye = new HashSet<>();
+//    	List<AmplifyType> lstAmplifyTye = new ArrayList<>();
+    	
+    	// Landing page, mail -> INJECT
+    	// Fanpage -> SHARE
+    	for (ChannelProductDTO channel : eventDTO.getChannelProducts()) {
+			if (StringUtils.equals(channel.getAdsType().getName(), "Landing page") 
+					|| StringUtils.equals(channel.getAdsType().getName(), "Email") ) {
+				setAmplifyTye.add(AmplifyType.INJECT);
+			} else if (StringUtils.equals(channel.getAdsType().getName(), "Fanpage") ) {
+				setAmplifyTye.add(AmplifyType.SHARE); 
+			}
+		}
+    	
+    	eventDTO.setAmplifyType(new ArrayList<>(setAmplifyTye));
+    	
+    }
+    
 }

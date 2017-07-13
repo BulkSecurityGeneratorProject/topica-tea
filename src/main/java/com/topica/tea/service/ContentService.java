@@ -69,24 +69,24 @@ public class ContentService {
     	String template = templateEntity.getTemplateContent();
     	
     	// Repalce @@xx@@
-    	template = template.replaceAll("@@urlLink1@@", article.getUrlLink1());
-    	template = template.replaceAll("@@urlLink2@@", article.getUrlLink2());
-    	template = template.replaceAll("@@urlLink3@@", article.getUrlLink3());
+    	template = template.replaceAll("@@urlLink1@@", StringUtils.isNotEmpty(article.getUrlLink1()) ? article.getUrlLink1() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@urlLink2@@", StringUtils.isNotEmpty(article.getUrlLink2()) ? article.getUrlLink2() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@urlLink3@@", StringUtils.isNotEmpty(article.getUrlLink3()) ? article.getUrlLink3() : StringUtils.EMPTY);
     	
-    	template = template.replaceAll("@@subject1@@", article.getSubject1());
-    	template = template.replaceAll("@@subject2@@", article.getSubject2());
-    	template = template.replaceAll("@@subject3@@", article.getSubject3());
+    	template = template.replaceAll("@@subject1@@", StringUtils.isNotEmpty(article.getSubject1()) ? article.getSubject1() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@subject2@@", StringUtils.isNotEmpty(article.getSubject2()) ? article.getSubject2() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@subject3@@", StringUtils.isNotEmpty(article.getSubject3()) ? article.getSubject3() : StringUtils.EMPTY);
     	
-    	template = template.replaceAll("@@imageLink1@@", article.getImageLink1());
-    	template = template.replaceAll("@@imageLink2@@", article.getImageLink2());
-    	template = template.replaceAll("@@imageLink3@@", article.getImageLink3());
+    	template = template.replaceAll("@@imageLink1@@", StringUtils.isNotEmpty(article.getImageLink1()) ? article.getImageLink1() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@imageLink2@@", StringUtils.isNotEmpty(article.getImageLink2()) ? article.getImageLink2() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@imageLink3@@", StringUtils.isNotEmpty(article.getImageLink3()) ? article.getImageLink3() : StringUtils.EMPTY);
     	
-    	template = template.replaceAll("@@content1@@", article.getContent1());
-    	template = template.replaceAll("@@content2@@", article.getContent2());
-    	template = template.replaceAll("@@content3@@", article.getContent3());
+    	template = template.replaceAll("@@content1@@", StringUtils.isNotEmpty(article.getContent1()) ? article.getContent1() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@content2@@", StringUtils.isNotEmpty(article.getContent2()) ? article.getContent2() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@content3@@", StringUtils.isNotEmpty(article.getContent3()) ? article.getContent3() : StringUtils.EMPTY);
     	
-    	template = template.replaceAll("@@videoLink@@", article.getVideoLink());
-    	template = template.replaceAll("@@videoCaption@@", article.getVideoCaption());
+    	template = template.replaceAll("@@videoLink@@", StringUtils.isNotEmpty(article.getVideoLink()) ? article.getVideoLink() : StringUtils.EMPTY);
+    	template = template.replaceAll("@@videoCaption@@", StringUtils.isNotEmpty(article.getVideoCaption()) ? article.getVideoCaption() : StringUtils.EMPTY);
     	// Build content
     	StringBuffer sb = new StringBuffer();
     	// Append CSS Inline

@@ -1,3 +1,7 @@
 ID;NAME;PRODUCT_ID;HTML_TEMPLATE_ID;CHANNEL_PRODUCT_ID
 1;TEG_Edu;1;1;1
 2;TEG_Asian;1;1;2
+3;Theme_edumall_tronbotienganhgiaotiep;5;2;6
+4;Theme_edumall_luyenthiielts;5;2;7
+5;Theme_edumall_writingtask;5;2;8
+6;Theme_TEG_mail;1;3;5

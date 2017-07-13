@@ -284,6 +284,30 @@
                 });
             }]
         })
+        .state('event.cancelPublish', {
+            parent: 'event',
+            url: '/{id}/cancelPublish',
+            data: {
+                authorities: ['ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-init-hot-cancel-publish-dialog.html',
+                    controller: 'EventInitHotCancelPublishController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('event.hot', {
             parent: 'event',
             url: '/{id}/hot',
@@ -341,6 +365,104 @@
                     $state.go('event', null, { reload: 'event' });
                 }, function() {
                     $state.go('event');
+                });
+            }]
+        })
+        .state('event.inithotview', {
+            parent: 'event',
+            url: '/{id}/inithot-view',
+            data: {
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-init-hot-view-dialog.html',
+                    controller: 'EventInitHotViewDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                    	entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('event');
+                });
+            }]
+        })
+        .state('event.inithotedit', {
+            parent: 'event',
+            url: '/{id}/inithot-edit',
+            data: {
+                authorities: ['ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-init-hot-dialog.html',
+                    controller: 'EventInitHotDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                    	entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('event');
+                });
+            }]
+        })
+        .state('event.material', {
+            parent: 'event',
+            url: '/{id}/material',
+            data: {
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-init-hot-material-dialog.html',
+                    controller: 'EventInitHotMaterialController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('event.previewContent', {
+            parent: 'event',
+            url: '/{id}/previewContent',
+            data: {
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/event-preview-content-dialog.html',
+                    controller: 'EventPreviewContentController',
+                    controllerAs: 'vm',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
                 });
             }]
         });

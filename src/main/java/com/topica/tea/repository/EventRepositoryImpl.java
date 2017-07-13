@@ -60,7 +60,7 @@ public class EventRepositoryImpl implements EventRepositoryExtend {
 			javax.persistence.Query query = entityManager.createNativeQuery(sql, Event.class);
 			query.setParameter("productCode", productCode);
 			query.setParameter("amplifyType", AmplifyType.INJECT.toString());
-			query.setParameter("eventStatus", EventStatus.MANAGER_APPROVE.toString());
+			query.setParameter("eventStatus", EventStatus.PUBLISHED.toString());
 			
 			List<Event> events = query.getResultList();
 			if (events == null || events.size() == 0) {
@@ -89,7 +89,7 @@ public class EventRepositoryImpl implements EventRepositoryExtend {
 			javax.persistence.Query query = entityManager.createNativeQuery(sql, Event.class);
 			query.setParameter("productId", productId);
 			query.setParameter("amplifyType", AmplifyType.INJECT.toString());
-			query.setParameter("eventStatus", EventStatus.MANAGER_APPROVE.toString());
+			query.setParameter("eventStatus", EventStatus.PUBLISHED.toString());
 			
 			List<Event> events = query.getResultList();
 			if (events == null || events.size() == 0) {
@@ -116,7 +116,7 @@ public class EventRepositoryImpl implements EventRepositoryExtend {
 			javax.persistence.Query query = entityManager.createNativeQuery(sql, Event.class);
 			query.setParameter("channelProductId", channelProductId);
 //			query.setParameter("amplifyType", AmplifyType.INJECT.toString());
-			query.setParameter("eventStatus", EventStatus.MANAGER_APPROVE.toString());
+			query.setParameter("eventStatus", EventStatus.PUBLISHED.toString());
 			
 			List<Event> events = query.getResultList();
 			if (events == null || events.size() == 0) {

@@ -45,6 +45,16 @@
             <column name="video_caption" type="text">
                 <constraints nullable="true" />
             </column>
+            
+            <column name="fanpage_content" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="fanpage_image" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fanpage_link" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
 
 			<column name="subject1" type="text">
                 <constraints nullable="true" />

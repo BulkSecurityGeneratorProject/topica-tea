@@ -1,0 +1,38 @@
+<form name="deleteForm" ng-submit="vm.confirmDelete(vm.event.id)">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title">Xem trước nội dung</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+        	<div class="col-md-6">
+        		<iframe width="360" height="215" src="{{vm.event.article.videoLink | trusted}}" frameborder="0" allowfullscreen></iframe>
+        		<div>{{vm.event.article.videoCaption}}</div>
+    		</div>
+    		<div class="col-md-6">
+    			<div class="well">
+    				<div class="pull-left"><img width="150px" src="{{vm.event.article.imageLink1}}"></div>
+   					<div>{{vm.event.article.urlLink1}}</div>
+   					<div>{{vm.event.article.content1}}</div>
+    			</div>
+    			<div class="well">
+    				<div class="pull-left"><img width="150px" src="{{vm.event.article.imageLink2}}"></div>
+    					<div>{{vm.event.article.urlLink2}}</div>
+    					<div>{{vm.event.article.content2}}</div>
+    			</div>
+    			<div class="well">
+    				<div class="pull-left"><img width="150px" src="{{vm.event.article.imageLink3}}"></div>
+    					<div>{{vm.event.article.urlLink3}}</div>
+    					<div>{{vm.event.article.content3}}</div>
+    			</div>
+    		</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;<span data-translate="entity.action.ok">Đồng ý</span>
+        </button>
+    </div>
+</form>

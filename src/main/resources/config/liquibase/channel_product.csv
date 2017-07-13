@@ -1,6 +1,9 @@
-ID;JHI_LINK;TRAFFIC;TRAFFIC_TYPE;PRODUCT_ID;ADS_TYPE_ID  
-1;https://topica.edu.vn/;4000;VIEW;1;1
-2;https://topica.asia/;5000;VIEW;1;1
-3;https://topica.vn/;6000;VIEW;1;1
-4;http://uni.topica.edu.vn/;5000;REACH;3;1
-5;https://pro.beefree.io/login;3000;EMAIL;1;2
+ID;JHI_LINK;TRAFFIC;TRAFFIC_TYPE;PRODUCT_ID;ADS_TYPE_ID;app_id;app_secret;app_access_token
+1;https://topica.edu.vn/;4000;VIEW;1;1;;;
+2;https://topica.asia/;5000;VIEW;1;1;;;
+3;https://topica.vn/;6000;VIEW;1;1;;;
+4;http://uni.topica.edu.vn/;5000;REACH;3;1;2065752006785957;22147d0b3170cacd2212c55a77d80773;EAAdWyl6OZB6UBAGi6WuZC43xux10WHdTbWPeF0ofcFL0kAIDL8ZCOBy7Ay1OPEZBN3ckDWFJe6kewWL3sgNDkclnBCJpw5OG07WOQio1TTUkw83uHdWpb5Hh8M6RK2RQ7EwnLnBYqWuTLeemrAFlzhZCFDPRM1oAZD
+5;https://pro.beefree.io/login;3000;EMAIL;1;2;;;
+6;http://tronbotienganhgiaotiepcdtet.edumall.vn;222222;VIEW;5;1;;;
+7;http://luyenthiielts01cdtet.edumall.vn;33333333;VIEW;5;1;;;
+8;http://writingtask2.edumall.vn;44444444;VIEW;5;1;;;

@@ -53,7 +53,7 @@ function main() {
         var contextPath = src.substr(0, src.indexOf('/', 7));
         var jsonp_url = contextPath + "/api/inject-event?channelProductId=" + channelProductId + "&templateId=" + templateId;
         $.getJSON(jsonp_url, function(data) {
-        	$('#topica-widget-container').html(data.content);
+        	$('#topica-widget-container').html(data);
         });
     });
 }

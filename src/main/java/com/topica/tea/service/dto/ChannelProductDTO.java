@@ -30,6 +30,8 @@ public class ChannelProductDTO implements Serializable {
     
     private String appSecret;
     
+    private String appAccessToken;
+    
     private ProductDTO product;
     
     private AdsTypeDTO adsType;
@@ -144,5 +146,13 @@ public class ChannelProductDTO implements Serializable {
 
 	public void setAppSecret(String appSecret) {
 		this.appSecret = appSecret;
+	}
+
+	public String getAppAccessToken() {
+		return appAccessToken;
+	}
+
+	public void setAppAccessToken(String appAccessToken) {
+		this.appAccessToken = appAccessToken;
 	}
 }

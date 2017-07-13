@@ -62,6 +62,21 @@
             <column name="is_hot_event" type="boolean">
                 <constraints nullable="true" />
             </column>
+            <column name="is_fanpage_published" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="material_landingpage" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="material_fanpage" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="material_mail" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="reason" type="text">
+                <constraints nullable="true" />
+            </column>
             <!-- Custom add -->
             <column name="created_user_id" type="bigint">
                 <constraints nullable="true" />

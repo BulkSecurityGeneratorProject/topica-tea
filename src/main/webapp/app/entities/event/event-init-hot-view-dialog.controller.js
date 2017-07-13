@@ -3,11 +3,11 @@
 
     angular
         .module('topicaEventAmplifyApp')
-        .controller('EventInitHotDialogController', EventInitHotDialogController);
+        .controller('EventInitHotViewDialogController', EventInitHotViewDialogController);
 
-    EventInitHotDialogController.$inject = ['AlertService', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Question', 'Article', 'Product', 'AdsType', 'ChannelProduct'];
+    EventInitHotViewDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Question', 'Article', 'Product', 'AdsType', 'ChannelProduct'];
 
-    function EventInitHotDialogController (AlertService, $timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Event, Question, Article, Product, AdsType, ChannelProduct) {
+    function EventInitHotViewDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Event, Question, Article, Product, AdsType, ChannelProduct) {
         var vm = this;
 
         vm.amplifyTypes = ["SHARE", "SPONSOR", "INJECT"];
@@ -19,8 +19,9 @@
         vm.questions = Question.query({filter: 'event-is-null'});
         vm.changeAmplifyType = changeAmplifyType;
         vm.loadAllProduct = loadAllProduct;
-//        vm.changeProducts = changeProducts;
+        vm.changeProducts = changeProducts;
         vm.changeChannelProduct = changeChannelProduct;
+        
     	vm.products = [];
     	vm.adsTypes = [];
     	vm.channelProducts = [];
@@ -29,29 +30,53 @@
         loadAllAdsType();
         loadAllChannelProduct();
         
-        $timeout(initData, 1000);
+        $timeout(showHideProductPannel, 500);
+        $timeout(isShowAdsType, 1000);
         
-        function initData() {
-        	if (vm.event.id == null) {
-        		return;
-        	}
-        	
-        	angular.forEach(vm.event.channelProducts, function (val, key) {
-        		$('#chk_channel_' + val.id).prop('checked', true);
-            });
+        function isShowAdsType() {
+        	angular.forEach(vm.products, function (product, key) {
+        		angular.forEach(vm.adsTypes, function (adsType, key) {
+        			var isShow = false;
+        			
+        			angular.forEach(vm.event.channelProducts, function (val, key) {
+        				if (product.id == val.productId && adsType.id == val.adsTypeId) {
+        					isShow = true;
+        				}
+                	});
+            		
+            		if (isShow == false) {
+            			$("#div-adsType-" + product.id + '-' + adsType.id).hide();
+            		}
+                });
+        	});
         }
         
-//        function changeProducts() {
-//        	var lstProducts = [];
-//        	
-//        	angular.forEach(vm.products, function (val, key) {
-//        		if ($('#field_product_' + val.id).is(":checked")) {
-//        			lstProducts.push(val);
-//            	}
-//            });
-//        	
-//        	vm.event.products = lstProducts;
-//        }
+        function showHideProductPannel() {
+        	angular.forEach(vm.products, function (product, key) {
+        		var isShow = false;
+        		angular.forEach(vm.event.channelProducts, function (val, key) {
+            		if (product.id === val.productId) {
+            			isShow = true;
+                	}
+                });
+        		
+        		if (isShow == false) {
+        			$("#panel-product-" + product.id).hide();
+        		}
+        	});
+        }
+        
+        function changeProducts() {
+        	var lstProducts = [];
+        	
+        	angular.forEach(vm.products, function (val, key) {
+        		if ($('#field_product_' + val.id).is(":checked")) {
+        			lstProducts.push(val);
+            	}
+            });
+        	
+        	vm.event.products = lstProducts;
+        }
 
         function loadAllProduct() {
             Product.query({

@@ -562,3 +562,7 @@ Footer
 .dragover {
     border: 5px dashed blue;
 }
+
+li.active {
+	background: #337ab7;
+}

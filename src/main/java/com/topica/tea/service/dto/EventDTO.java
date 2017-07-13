@@ -59,6 +59,16 @@ public class EventDTO implements Serializable {
     
     private Boolean isHotEvent;
     
+    private Boolean isFanpagePublished;
+    
+    private String materialLandingpage;
+    
+    private String materialFanpage;
+    
+    private String materialMail;
+    
+    private String reason;
+    
     private Set<ProductDTO> products = new HashSet<>();
     
     private Set<PriorityGroup> priorityGroup = new HashSet<>();
@@ -259,5 +269,45 @@ public class EventDTO implements Serializable {
 
 	public void setIsHotEvent(Boolean isHotEvent) {
 		this.isHotEvent = isHotEvent;
+	}
+
+	public Boolean getIsFanpagePublished() {
+		return isFanpagePublished;
+	}
+
+	public void setIsFanpagePublished(Boolean isFanpagePublished) {
+		this.isFanpagePublished = isFanpagePublished;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getMaterialLandingpage() {
+		return materialLandingpage;
+	}
+
+	public void setMaterialLandingpage(String materialLandingpage) {
+		this.materialLandingpage = materialLandingpage;
+	}
+
+	public String getMaterialFanpage() {
+		return materialFanpage;
+	}
+
+	public void setMaterialFanpage(String materialFanpage) {
+		this.materialFanpage = materialFanpage;
+	}
+
+	public String getMaterialMail() {
+		return materialMail;
+	}
+
+	public void setMaterialMail(String materialMail) {
+		this.materialMail = materialMail;
 	}
 }

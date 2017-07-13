@@ -41,6 +41,10 @@
             <column name="app_secret" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            
+            <column name="app_access_token" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
 
             <column name="product_id" type="bigint">
                 <constraints nullable="true" />

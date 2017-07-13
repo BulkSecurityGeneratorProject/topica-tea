@@ -55,7 +55,7 @@
             parent: 'article',
             url: '/article/{id}',
             data: {
-                authorities: ['ROLE_WRITER'],
+                authorities: ['ROLE_WRITER','ROLE_SUPER_WRITER','ROLE_BOSS'],
                 pageTitle: 'topicaEventAmplifyApp.article.detail.title'
             },
             views: {
@@ -143,7 +143,7 @@
             parent: 'article',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_WRITER']
+                authorities: ['ROLE_WRITER','ROLE_SUPER_WRITER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

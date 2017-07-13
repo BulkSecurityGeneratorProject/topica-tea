@@ -1,5 +1,7 @@
 package com.topica.tea.service;
 
+import com.topica.tea.domain.Event;
+import com.topica.tea.domain.enumeration.EventStatus;
 import com.topica.tea.service.dto.EventDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -75,4 +77,6 @@ public interface EventService {
     EventDTO getPublishInjectEventByProductId(Long productId);
     
     EventDTO getPublishInjectEventByChannelProductId(Long productId);
+    
+    EventDTO findOneByEventStatus(EventStatus status);
 }

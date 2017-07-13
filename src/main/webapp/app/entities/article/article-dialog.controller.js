@@ -5,14 +5,21 @@
         .module('topicaEventAmplifyApp')
         .controller('ArticleDialogController', ArticleDialogController);
 
-    ArticleDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Article'];
+    ArticleDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Article', 'Event'];
 
-    function ArticleDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Article) {
+    function ArticleDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Article, Event) {
         var vm = this;
 
         vm.article = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.event = null;
+        
+        loadEvent();
+        
+        function loadEvent() {
+        	vm.event = Event.get({id : 5});
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -211,4 +211,14 @@ public class EventServiceImpl implements EventService{
 		}
 		return eventMapper.toDto(event);
 	}
+
+	@Override
+	public EventDTO findOneByEventStatus(EventStatus status) {
+		Event event = eventRepository.findOneByEventStatus(status);
+		
+		if (null == event) {
+			return null;
+		}
+		return eventMapper.toDto(event);
+	}
 }

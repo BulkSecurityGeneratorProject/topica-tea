@@ -79,7 +79,7 @@ jhipster:
     logging:
         logstash:
             enabled: true
-            host: localhost
+            host: 52.221.188.76
             port: 5000
             queue-size: 512
     mail:

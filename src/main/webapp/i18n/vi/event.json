@@ -33,7 +33,7 @@
             "content": "Nội dung",
             "eventStatus": "Trạng thái",
             "eventLevel": "Level sự kiện",
-            "amplifyType": "Loại khuyết đại",
+            "amplifyType": "Loại khếch đại",
             "priorityGroup": "Nhóm ưu tiên",
             "schedule": "Lịch",
             "question": "Câu hỏi",
@@ -55,6 +55,9 @@
         	, "MANAGER_DENY" : "Quản lý từ chối"
         	, "MANAGER_APPROVE" : "Quản lý duyệt"
         	, "WAIT_BOSS_APPROVE" : "Chờ BigBoss duyệt"
+        	, "NOT_YET_ORDER" : "Chưa đặt hàng"
+        	, "PUBLISHED" : "Xuất bản"
+        	, "WAIT_SEND_BOSS" : "Chờ gửi đi"
         }
     }
 }

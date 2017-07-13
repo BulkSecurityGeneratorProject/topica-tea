@@ -5,12 +5,14 @@
         .module('topicaEventAmplifyApp')
         .controller('EventController', EventController);
 
-    EventController.$inject = ['$state', 'Event', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    EventController.$inject = ['$scope', '$state', 'Event', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function EventController($state, Event, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function EventController($scope, $state, Event, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
+        vm.sendToApproval = sendToApproval;
+        vm.orderEditor = orderEditor;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -18,7 +20,37 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
 
         loadAll();
+        
+        function sendToApproval(id) {
+            Event.updateStatus({id : id, status: 'WAIT_BOSS_APPROVE', type: 0}, onSaveSuccess, onSaveError);
+            
+            function onSaveSuccess (result) {
+                $scope.$emit('topicaEventAmplifyApp:eventUpdate', result);
+                vm.isSaving = false;
+                $state.go('event', null, { reload: 'event' });
+            }
 
+            function onSaveError () {
+                vm.isSaving = false;
+            }
+        }
+        
+        function orderEditor(id) {
+            Event.updateStatus({id : id, status: 'EDITOR', type: 0}, onSaveSuccess, onSaveError);
+            
+            function onSaveSuccess (result) {
+                $scope.$emit('topicaEventAmplifyApp:eventUpdate', result);
+                vm.isSaving = false;
+                $state.go('event', null, { reload: 'event' });
+            }
+
+            function onSaveError () {
+                vm.isSaving = false;
+            }
+        }
+
+        
+        
         function loadAll () {
             Event.query({
                 page: pagingParams.page - 1,

@@ -13,7 +13,7 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
+            <div class="col-xs-4 no-padding-left" ng-show="false">
                 <button class="btn btn-primary" ui-sref="question.new" has-any-authority="ROLE_DIRECTOR,ROLE_BOSS">
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="topicaEventAmplifyApp.event.home.createQuestionLabel">
@@ -41,13 +41,14 @@
                     <!-- <th jh-sort-by="description"><span data-translate="topicaEventAmplifyApp.event.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="content"><span data-translate="topicaEventAmplifyApp.event.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="eventStatus"><span data-translate="topicaEventAmplifyApp.event.eventStatus">Event Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="eventLevel"><span data-translate="topicaEventAmplifyApp.event.eventLevel">Event Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="eventLevel"><span data-translate="topicaEventAmplifyApp.event.eventLevel">Event Level</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="amplifyType"><span data-translate="topicaEventAmplifyApp.event.amplifyType">Amplify Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="priorityGroup"><span data-translate="topicaEventAmplifyApp.event.priorityGroup">Priority Group</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="products"><span data-translate="topicaEventAmplifyApp.event.products">Products</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="schedule"><span data-translate="topicaEventAmplifyApp.event.schedule">Schedule</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="questionId"><span data-translate="topicaEventAmplifyApp.event.question">Question</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="priorityGroup"><span data-translate="topicaEventAmplifyApp.event.priorityGroup">Priority Group</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="products"><span data-translate="topicaEventAmplifyApp.event.products">Products</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="schedule"><span data-translate="topicaEventAmplifyApp.event.schedule">Schedule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="questionId"><span data-translate="topicaEventAmplifyApp.event.question">Question</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="articleId"><span data-translate="topicaEventAmplifyApp.event.article">Article</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span>Kênh khếch đại</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -58,25 +59,28 @@
                     <!-- <td>{{event.description}}</td>
                     <td>{{event.content}}</td> --> 
                     <td><span class="label label-{{event.eventStatus == 'INVALID' ? 'danger' : 'info'}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
-                    <td data-translate="{{'topicaEventAmplifyApp.EventLevel.' + event.eventLevel}}">{{event.eventLevel}}</td>
+                    <!-- <td data-translate="{{'topicaEventAmplifyApp.EventLevel.' + event.eventLevel}}">{{event.eventLevel}}</td> -->
                     <td>
                     	<div ng-repeat="type in event.amplifyType">
                     		<label class="label label-success"><i class="fa " ng-class="{'fa-share-alt': type == 'SHARE' , 'fa-rss': type == 'SPONSOR',
               					'fa-eyedropper': type == 'INJECT'} "></i> {{type}}</label>
                     	</div>
                     </td>
-                    <td>
+                    <!-- <td>
                     	<div ng-repeat="type in event.priorityGroup">
                     		<label class="label label-warning">{{type}}</label>
                     	</div>
                     </td>
-                    <td><span class="label label-info" ng-repeat="product in event.products">{{product.productName}}</span> </td>
-                    <td>{{event.schedule | date:'medium'}}</td>
+                    <td><span class="label label-info" ng-repeat="product in event.products">{{product.productName}}</span> </td> -->
+                    <!-- <td>{{event.schedule | date:'medium'}}</td>
                     <td>
                         <a ui-sref="question-detail({id:event.questionId})" ng-show="event.questionId"><span class="glyphicon glyphicon-question-sign"></span></a>
-                    </td>
+                    </td> -->
                     <td>
                         <a ui-sref="article-detail({id:event.articleId})" ng-show="event.articleId"><span class="	glyphicon glyphicon-list-alt"></span></a>
+                    </td>
+                    <td>
+                        <a ui-sref="event.inithotview({id:event.id})"><span class="glyphicon glyphicon-film"></span></a>
                     </td>
                     <!-- Button -->
                     <td class="text-right">
@@ -94,11 +98,36 @@
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
+                                    ui-sref="event.inithotedit({id:event.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_BOSS" ng-show="['NOT_YET_ORDER'].indexOf(event.eventStatus)!=-1">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
                                     ui-sref="event.delete({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID','NOT_YET_ORDER'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
                             </button>
+                            <!-- wait Order editor -->
+                            <button type="submit"
+                                    ui-sref="event.previewContent({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['WAIT_BOSS_APPROVE','WAIT_SEND_BOSS'].indexOf(event.eventStatus)!=-1">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                <span class="hidden-sm-down">Xem trước nội dung</span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="event.material({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['NOT_YET_ORDER','EDITOR'].indexOf(event.eventStatus)!=-1">
+                                <span class="glyphicon glyphicon-cutlery"></span>
+                                <span class="hidden-sm-down">Nguyên liệu</span>
+                            </button>
+                            <button type="button" ng-click="vm.orderEditor(event.id)"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_BOSS" ng-show="event.eventStatus == 'NOT_YET_ORDER'">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                                <span class="hidden-sm-down">Đặt hàng</span>
+                            </button>
+                            
                             <!-- Coordinator -->
                             <button type="submit"
                                     ui-sref="event.distribute({id:event.id})"
@@ -116,14 +145,26 @@
                             <!-- Write Hot Event -->
                             <button type="submit"
                                     ui-sref="event.hot({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="event.eventStatus == 'EDITOR'">
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="['EDITOR', 'WAIT_SEND_BOSS'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-tasks"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.editor"></span>
+                            </button>
+                            <button type="button" ng-click="vm.sendToApproval(event.id)"
+                                    class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="event.eventStatus == 'WAIT_SEND_BOSS'">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                                <span class="hidden-sm-down">Gửi đi</span>
+                            </button>
+                            <!-- Cancel approval -->
+                            <button type="submit"
+                                    ui-sref="event.cancelPublish({id:event.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS" ng-show="['DIRECTOR_APPROVE', 'WAIT_BOSS_APPROVE'].indexOf(event.eventStatus)!=-1">
+                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                <span class="hidden-sm-down">Hủy duyệt</span>
                             </button>
                             <!-- Approve -->
                             <button type="submit"
                                     ui-sref="event.publish({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_MANAGER,ROLE_BOSS" ng-show="['DIRECTOR_APPROVE', 'WAIT_BOSS_APPROVE'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_MANAGER,ROLE_BOSS" ng-show="['DIRECTOR_APPROVE', 'WAIT_BOSS_APPROVE'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-thumbs-up"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.complete"></span>
                             </button>

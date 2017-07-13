@@ -73,6 +73,21 @@ public class Event implements Serializable {
     @Column(name = "is_hot_event")
     private Boolean isHotEvent;
     
+    @Column(name = "is_fanpage_published")
+    private Boolean isFanpagePublished;
+    
+    @Column(name = "material_landingpage")
+    private String materialLandingpage;
+    
+    @Column(name = "material_fanpage")
+    private String materialFanpage;
+    
+    @Column(name = "material_mail")
+    private String materialMail;
+    
+    @Column(name = "reason")
+    private String reason;
+    
     @ManyToMany
     @JoinTable(name = "event_products",
                joinColumns = @JoinColumn(name="event_id", referencedColumnName="id"),
@@ -314,6 +329,71 @@ public class Event implements Serializable {
 
     public void setManagerUser(User managerUser) {
         this.managerUser = managerUser;
+    }
+
+    public Boolean getIsFanpagePublished() {
+        return isFanpagePublished;
+    }
+
+    public Event isFanpagePublished(Boolean isFanpagePublished) {
+        this.isFanpagePublished = isFanpagePublished;
+        return this;
+    }
+
+    public void setIsFanpagePublished(Boolean isFanpagePublished) {
+        this.isFanpagePublished = isFanpagePublished;
+    }
+    
+    public String getMaterialLandingpage() {
+        return materialLandingpage;
+    }
+
+    public Event materialLandingpage(String materialLandingpage) {
+        this.materialLandingpage = materialLandingpage;
+        return this;
+    }
+
+    public void setMaterialLandingpage(String materialLandingpage) {
+        this.materialLandingpage = materialLandingpage;
+    }
+    
+    public String getMaterialFanpage() {
+        return materialFanpage;
+    }
+
+    public Event materialFanpage(String materialFanpage) {
+        this.materialFanpage = materialFanpage;
+        return this;
+    }
+
+    public void setMaterialFanpage(String materialFanpage) {
+        this.materialFanpage = materialFanpage;
+    }
+    
+    public String getMaterialMail() {
+        return materialMail;
+    }
+
+    public Event materialMail(String materialMail) {
+        this.materialMail = materialMail;
+        return this;
+    }
+
+    public void setMaterialMail(String materialMail) {
+        this.materialMail = materialMail;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public Event reason(String reason) {
+        this.reason = reason;
+        return this;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
     
     @Override

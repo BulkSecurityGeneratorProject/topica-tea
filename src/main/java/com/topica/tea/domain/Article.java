@@ -31,7 +31,17 @@ public class Article implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
-    // 1
+    // Fanpage
+    @Column(name = "fanpage_content")
+    private String fanpageContent;
+    
+    @Column(name = "fanpage_image")
+    private String fanpageImage;
+    
+    @Column(name = "fanpage_link")
+    private String fanpageLink;
+    
+	// 1
     @Column(name = "subject1")
     private String subject1;
     
@@ -237,5 +247,27 @@ public class Article implements Serializable {
 		this.status = status;
 	}
 
+	public String getFanpageContent() {
+		return fanpageContent;
+	}
 
+	public void setFanpageContent(String fanpageContent) {
+		this.fanpageContent = fanpageContent;
+	}
+	
+	public String getFanpageImage() {
+		return fanpageImage;
+	}
+
+	public void setFanpageImage(String fanpageImage) {
+		this.fanpageImage = fanpageImage;
+	}
+
+	public String getFanpageLink() {
+		return fanpageLink;
+	}
+
+	public void setFanpageLink(String fanpageLink) {
+		this.fanpageLink = fanpageLink;
+	}
 }
