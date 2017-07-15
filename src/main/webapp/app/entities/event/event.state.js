@@ -453,7 +453,7 @@
                     templateUrl: 'app/entities/event/event-preview-content-dialog.html',
                     controller: 'EventPreviewContentController',
                     controllerAs: 'vm',
-                    size: 'lg',
+                    size: 'max',
                     resolve: {
                         entity: ['Event', function(Event) {
                             return Event.get({id : $stateParams.id}).$promise;

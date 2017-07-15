@@ -5,6 +5,9 @@ import com.topica.tea.domain.ChannelProduct;
 import com.topica.tea.repository.ChannelProductRepository;
 import com.topica.tea.service.dto.ChannelProductDTO;
 import com.topica.tea.service.mapper.ChannelProductMapper;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -83,4 +86,11 @@ public class ChannelProductServiceImpl implements ChannelProductService{
         log.debug("Request to delete ChannelProduct : {}", id);
         channelProductRepository.delete(id);
     }
+
+	@Override
+	public List<ChannelProductDTO> findAll() {
+		log.debug("Request to findAll ChannelProduct");
+		List<ChannelProduct> lstEntity = channelProductRepository.findAll();
+		return channelProductMapper.toDto(lstEntity);
+	}
 }

@@ -1,6 +1,9 @@
 package com.topica.tea.service;
 
 import com.topica.tea.service.dto.ChannelProductDTO;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,6 +20,8 @@ public interface ChannelProductService {
      */
     ChannelProductDTO save(ChannelProductDTO channelProductDTO);
 
+    List<ChannelProductDTO> findAll();
+    
     /**
      *  Get all the channelProducts.
      *

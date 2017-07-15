@@ -52,7 +52,7 @@ function main() {
         var src = $("#topica-widget-script").attr('src');
         var contextPath = src.substr(0, src.indexOf('/', 7));
         var jsonp_url = contextPath + "/api/inject-event?channelProductId=" + channelProductId + "&templateId=" + templateId;
-        $.getJSON(jsonp_url, function(data) {
+        $.get( jsonp_url, function( data ) {
         	$('#topica-widget-container').html(data);
         });
     });

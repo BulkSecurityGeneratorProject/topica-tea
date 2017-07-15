@@ -566,3 +566,33 @@ Footer
 li.active {
 	background: #337ab7;
 }
+
+.modal-max {
+	width: 1110px;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*Lable*/
+.label.label-PUBLISHED {
+    background-color: #00ffff;
+    color: black;
+}
+.label.label-NOT_YET_ORDER {
+    background-color: #ffffff;
+    color: red;
+}
+.label.label-EDITOR {
+    background-color: #ffffff;
+    color: 	#0000ff;
+}
+.label.label-WAIT_BOSS_APPROVE {
+    background-color: red;
+    color: 	black;
+}
+

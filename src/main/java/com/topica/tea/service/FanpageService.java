@@ -1,10 +1,13 @@
 package com.topica.tea.service;
 
+import java.net.URL;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.topica.tea.service.dto.ArticleDTO;
 import com.topica.tea.service.dto.ChannelProductDTO;
 import com.topica.tea.service.dto.EventDTO;
 
@@ -33,22 +36,21 @@ public class FanpageService {
         	return;
         }
         
-        String fanpageContent = eventDTO.getArticle().getFanpageContent();
-        if (StringUtils.isEmpty(fanpageContent)) {
+        if (StringUtils.isEmpty(eventDTO.getArticle().getFanpageContent())) {
         	log.warn("Method postToFacebook, fanpageContent is emplty");
         	return;
         }
         
         for (ChannelProductDTO item : eventDTO.getChannelProducts()) {
 			if (StringUtils.equals(item.getAdsType().getName(), "Fanpage")) {
-				log.debug("Post to facebook, item={}, content={}", eventDTO, fanpageContent);
-				postToFacebook(item, fanpageContent);
+				log.debug("Post to facebook, item={}, Article={}", eventDTO, eventDTO.getArticle());
+				postToFacebook(item, eventDTO.getArticle());
 			}
 		}
         
     }
     
-    private void postToFacebook(ChannelProductDTO item, String content) {
+    private void postToFacebook(ChannelProductDTO item, ArticleDTO articleDTO) {
     	try {
         	String appId = item.getAppId(); // 120769275152754
             String appSecret = item.getAppSecret();
@@ -58,10 +60,13 @@ public class FanpageService {
             facebook.setOAuthAppId(appId, appSecret);
             facebook.setOAuthPermissions("user_friends,email,publish_actions,public_profile");
             facebook.setOAuthAccessToken(new AccessToken(accessToken, null));
-			facebook.postStatusMessage(content);
+            
+            
+			//facebook.postStatusMessage(content);
 			
-//			PostUpdate post = new 
-//			facebook.postFeed()
+			PostUpdate post = new PostUpdate(new URL(articleDTO.getFanpageLink()))
+                    .message(articleDTO.getFanpageContent());
+			facebook.postFeed(post);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}

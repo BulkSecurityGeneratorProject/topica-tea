@@ -10,31 +10,31 @@
         <jhi-alert-error></jhi-alert-error>
         
         <ul class="nav nav-tabs" id="myTab">
-			  <li class="active"><a data-target="#home" data-toggle="tab">Landing page</a></li>
-			  <li><a data-target="#profile" data-toggle="tab">Fanpage</a></li>
-			  <li class="disabled"><a data-target="#messages" data-toggle="tab">Email</a></li>
+			  <li id="landingPageTab" class="active" ng-show="vm.showLpForm"><a data-target="#landingpage" data-toggle="tab">Landing page/Email</a></li>
+			  <li id="fanpageTab" ng-show="vm.showFanpageForm"><a data-target="#fanpage" data-toggle="tab">Fanpage</a></li>
+			  <li id="mailTab" class="disabled" ng-show="vm.showMailForm"><a data-target="#messages" data-toggle="tab">Email</a></li>
 		</ul>
 
 		<div class="tab-content">
-			<div class="tab-pane active" id="home">
+			<div class="tab-pane active" id="landingpage" ng-show="vm.showLpForm">
 			  	<div class="form-group">
 		            <label class="text-info">Sector #1</label>
 		            <table class="jh-table table table-striped">
 		            	<tr>
 		            		<td>Tiêu đề</td>
-		            		<td><input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject1" /></td>
+		            		<td><input type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject1" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Nội dung</td>
-		            		<td><input required type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content1" /></td>
+		            		<td><input type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content1" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Link ảnh</td>
-		            		<td><input required type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink1" /></td>
+		            		<td><input type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink1" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>URL</td>
-		            		<td><input required type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink1" /></td>
+		            		<td><input type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink1" /></td>
 		            	</tr>
 		            </table>
 		        </div>
@@ -43,19 +43,19 @@
 		            <table class="jh-table table table-striped">
 		            	<tr>
 		            		<td>Tiêu đề</td>
-		            		<td><input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject2" /></td>
+		            		<td><input type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject2" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Nội dung</td>
-		            		<td><input required type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content2" /></td>
+		            		<td><input type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content2" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Link ảnh</td>
-		            		<td><input required type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink2" /></td>
+		            		<td><input type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink2" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>URL</td>
-		            		<td><input required type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink2" /></td>
+		            		<td><input type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink2" /></td>
 		            	</tr>
 		            </table>
 		        </div>
@@ -64,40 +64,40 @@
 		            <table class="jh-table table table-striped">
 		            	<tr>
 		            		<td>Tiêu đề</td>
-		            		<td><input required type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject3" /></td>
+		            		<td><input type="text" class="form-control" name="title1" id="field_title" ng-model="vm.event.article.subject3" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Nội dung</td>
-		            		<td><input required type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content3" /></td>
+		            		<td><input type="text" class="form-control" name="content1" id="field_content" ng-model="vm.event.article.content3" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>Link ảnh</td>
-		            		<td><input required type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink3" /></td>
+		            		<td><input type="text" class="form-control" name="image1" id="field_image" ng-model="vm.event.article.imageLink3" /></td>
 		            	</tr>
 		            	<tr>
 		            		<td>URL</td>
-		            		<td><input required type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink3" /></td>
+		            		<td><input type="text" class="form-control" name="url1" id="field_url" ng-model="vm.event.article.urlLink3" /></td>
 		            	</tr>
 		            </table>
 		        </div>
 		        <div class="form-group">
 		            <label class="control-label" for="field_video_link">Link video</label>
-		            <input required type="text" class="form-control" name="video_link" id="field_video_link" ng-model="vm.event.article.videoLink" />
+		            <input type="text" class="form-control" name="video_link" id="field_video_link" ng-model="vm.event.article.videoLink" />
 		        </div>
 		        <div class="form-group">
 		            <label class="control-label" for="field_video_caption">Video caption</label>
 		            <input type="text" class="form-control" name="video_caption" id="field_video_caption" ng-model="vm.event.article.videoCaption" />
 		        </div>
 			</div>
-			<div class="tab-pane" id="profile">
+			<div class="tab-pane" id="fanpage" ng-show="vm.showFanpageForm">
 				<div class="form-group">
             		<label class="control-label" for="field_fanpage">Nội dung Fanpage</label>
             		<input type="text" class="form-control" name="fanpageContent" id="field_fanpage" ng-model="vm.event.article.fanpageContent" />
        			</div>
-       			<div class="form-group">
+       			<!-- <div class="form-group">
             		<label class="control-label" for="field_fanpage">Ảnh</label>
             		<input type="text" class="form-control" name="fanpageImage" id="field_fanpage" ng-model="vm.event.article.fanpageImage" />
-       			</div>
+       			</div> -->
        			<div class="form-group">
             		<label class="control-label" for="field_fanpage">URL</label>
             		<input type="text" class="form-control" name="fanpageLink" id="field_fanpage" ng-model="vm.event.article.fanpageLink" />

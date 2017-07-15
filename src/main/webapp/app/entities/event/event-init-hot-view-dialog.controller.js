@@ -99,7 +99,7 @@
         
         
         function loadAllChannelProduct() {
-        	ChannelProduct.query({
+        	ChannelProduct.queryAll({
             }, onSuccess, onError);
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];

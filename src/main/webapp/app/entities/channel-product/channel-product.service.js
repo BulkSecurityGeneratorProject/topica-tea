@@ -20,7 +20,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'queryAll': {
+            	url : 'api/all-channel-products',
+            	method:'GET',
+            	isArray: true
+            }
         });
     }
 })();

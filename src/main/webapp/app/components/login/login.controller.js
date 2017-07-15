@@ -5,9 +5,9 @@
         .module('topicaEventAmplifyApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
+    LoginController.$inject = ['$window', '$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
 
-    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance) {
+    function LoginController ($window, $rootScope, $state, $timeout, Auth, $uibModalInstance) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -47,6 +47,8 @@
                 }
 
                 $rootScope.$broadcast('authenticationSuccess');
+                // NamNH: reload page
+                $window.location.reload();
 
                 // previousState was set in the authExpiredInterceptor before being redirected to login modal.
                 // since login is successful, go to stored previousState and clear previousState

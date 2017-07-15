@@ -202,7 +202,7 @@
                     templateUrl: 'app/entities/html-template/html-template-preview-dialog.html',
                     controller: 'HtmlTemplatePreviewController',
                     controllerAs: 'vm',
-                    size: 'lg',
+                    size: 'max',
                     resolve: {
                         entity: ['HtmlTemplate', function(HtmlTemplate) {
                             return HtmlTemplate.get({id : $stateParams.id}).$promise;

@@ -272,6 +272,10 @@ public class EventResource {
         
         EventDTO eventDTO = eventService.getPublishInjectEventByChannelProductId(channelProductId);
         
+        if (null == eventDTO) {
+        	return StringUtils.EMPTY;
+        }
+        
         // Process content
         if (null != eventDTO) {
         	String content = contentService.process(eventDTO, templateId);

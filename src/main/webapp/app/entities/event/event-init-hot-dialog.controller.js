@@ -16,11 +16,12 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.questions = Question.query({filter: 'event-is-null'});
-        vm.changeAmplifyType = changeAmplifyType;
+//        vm.questions = Question.query({filter: 'event-is-null'});
+//        vm.changeAmplifyType = changeAmplifyType;
         vm.loadAllProduct = loadAllProduct;
 //        vm.changeProducts = changeProducts;
         vm.changeChannelProduct = changeChannelProduct;
+        vm.changeAllChannelProduct = changeAllChannelProduct;
     	vm.products = [];
     	vm.adsTypes = [];
     	vm.channelProducts = [];
@@ -52,6 +53,25 @@
 //        	
 //        	vm.event.products = lstProducts;
 //        }
+        
+        function changeAllChannelProduct(id) {
+        	if ($('#chk_product_all_' + id).is(":checked")) {
+        		angular.forEach(vm.channelProducts, function (val,key) {
+            		if (val.productId == id) {
+            			$('#chk_channel_' + val.id).prop('checked', true);
+            		}
+            	});
+        	} else {
+        		angular.forEach(vm.channelProducts, function (val,key) {
+            		if (val.productId == id) {
+            			$('#chk_channel_' + val.id).prop('checked', false);
+            		}
+            	});
+        	}
+        	
+        	// Trigger
+        	changeChannelProduct();
+        }
 
         function loadAllProduct() {
             Product.query({
@@ -64,7 +84,6 @@
                 return result;
             }
             function onSuccess(data, headers) {
-            	console.log('product data:' + JSON.stringify(data));
                 vm.products = data;
             }
             function onError(error) {
@@ -74,7 +93,8 @@
         
         
         function loadAllChannelProduct() {
-        	ChannelProduct.query({
+        	console.log('loadAllChannelProduct');
+        	ChannelProduct.queryAll({
             }, onSuccess, onError);
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
@@ -84,7 +104,6 @@
                 return result;
             }
             function onSuccess(data, headers) {
-            	console.log('product data:' + JSON.stringify(data));
                 vm.channelProducts = data;
             }
             function onError(error) {
@@ -103,7 +122,6 @@
                 return result;
             }
             function onSuccess(data, headers) {
-            	console.log('product data:' + JSON.stringify(data));
                 vm.adsTypes = data;
             }
             function onError(error) {
@@ -111,42 +129,42 @@
             }
         }
         
-        $q.all([vm.event.$promise, vm.questions.$promise]).then(function() {
-            if (!vm.event.questionId) {
-                return $q.reject();
-            }
-            return Question.get({id : vm.event.questionId}).$promise;
-        }).then(function(question) {
-            vm.questions.push(question);
-        });
-        vm.articles = Article.query({filter: 'event-is-null'});
-        $q.all([vm.event.$promise, vm.articles.$promise]).then(function() {
-            if (!vm.event.articleId) {
-                return $q.reject();
-            }
-            return Article.get({id : vm.event.articleId}).$promise;
-        }).then(function(article) {
-            vm.articles.push(article);
-        });
+//        $q.all([vm.event.$promise, vm.questions.$promise]).then(function() {
+//            if (!vm.event.questionId) {
+//                return $q.reject();
+//            }
+//            return Question.get({id : vm.event.questionId}).$promise;
+//        }).then(function(question) {
+//            vm.questions.push(question);
+//        });
+//        vm.articles = Article.query({filter: 'event-is-null'});
+//        $q.all([vm.event.$promise, vm.articles.$promise]).then(function() {
+//            if (!vm.event.articleId) {
+//                return $q.reject();
+//            }
+//            return Article.get({id : vm.event.articleId}).$promise;
+//        }).then(function(article) {
+//            vm.articles.push(article);
+//        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
         
-        function changeAmplifyType() {
-        	vm.event.amplifyType = [];
-        	if ($('#field_amplifyType_SHARE').is(":checked")) {
-        		vm.event.amplifyType.push('SHARE');
-        	}
-        	
-        	if ($('#field_amplifyType_SPONSOR').is(":checked")) {
-        		vm.event.amplifyType.push('SPONSOR');
-        	}
-        	
-        	if ($('#field_amplifyType_INJECT').is(":checked")) {
-        		vm.event.amplifyType.push('INJECT');
-        	}
-        }
+//        function changeAmplifyType() {
+//        	vm.event.amplifyType = [];
+//        	if ($('#field_amplifyType_SHARE').is(":checked")) {
+//        		vm.event.amplifyType.push('SHARE');
+//        	}
+//        	
+//        	if ($('#field_amplifyType_SPONSOR').is(":checked")) {
+//        		vm.event.amplifyType.push('SPONSOR');
+//        	}
+//        	
+//        	if ($('#field_amplifyType_INJECT').is(":checked")) {
+//        		vm.event.amplifyType.push('INJECT');
+//        	}
+//        }
         
         function changeChannelProduct() {
         	vm.event.channelProducts = [];

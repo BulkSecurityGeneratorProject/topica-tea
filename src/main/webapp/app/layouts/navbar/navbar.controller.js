@@ -17,7 +17,12 @@
             vm.inProduction = response.inProduction;
             vm.swaggerEnabled = response.swaggerEnabled;
         });
-
+        
+        vm.account = null;
+        Principal.identity().then(function(account) {
+            vm.account = account;
+        });
+        
         vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;

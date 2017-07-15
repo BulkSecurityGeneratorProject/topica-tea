@@ -85,7 +85,13 @@ public class ContentService {
     	template = template.replaceAll("@@content2@@", StringUtils.isNotEmpty(article.getContent2()) ? article.getContent2() : StringUtils.EMPTY);
     	template = template.replaceAll("@@content3@@", StringUtils.isNotEmpty(article.getContent3()) ? article.getContent3() : StringUtils.EMPTY);
     	
-    	template = template.replaceAll("@@videoLink@@", StringUtils.isNotEmpty(article.getVideoLink()) ? article.getVideoLink() : StringUtils.EMPTY);
+    	String videoLink = StringUtils.isNotEmpty(article.getVideoLink()) ? article.getVideoLink() : StringUtils.EMPTY;
+    	if (!StringUtils.contains(videoLink, "embed")) {
+    		String video_id = videoLink.split("v=")[1].split("&")[0];
+    		videoLink = "https://www.youtube.com/embed/" + video_id;
+    	}
+    	
+    	template = template.replaceAll("@@videoLink@@", videoLink);
     	template = template.replaceAll("@@videoCaption@@", StringUtils.isNotEmpty(article.getVideoCaption()) ? article.getVideoCaption() : StringUtils.EMPTY);
     	// Build content
     	StringBuffer sb = new StringBuffer();

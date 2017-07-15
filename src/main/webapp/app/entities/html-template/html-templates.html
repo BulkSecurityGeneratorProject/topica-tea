@@ -32,8 +32,8 @@
                     <td><a ui-sref="html-template-detail({id:htmlTemplate.id})">{{htmlTemplate.id}}</a></td>
                     <td>{{htmlTemplate.name}}</td>
                     <!-- <td data-translate="{{'topicaEventAmplifyApp.LayoutType.' + htmlTemplate.layoutType}}">{{htmlTemplate.layoutType}}</td> -->
-                    <td>{{htmlTemplate.cssContent}}</td>
-                    <td>{{htmlTemplate.templateContent}}</td>
+                    <td><div class="truncate">{{htmlTemplate.cssContent}}</div></td>
+                    <td><div class="truncate">{{htmlTemplate.templateContent}}</div></td>
                     <!-- <td>{{htmlTemplate.description}}</td> -->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -36,7 +36,7 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id"><span>STT</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="topicaEventAmplifyApp.event.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <!-- <th jh-sort-by="description"><span data-translate="topicaEventAmplifyApp.event.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="content"><span data-translate="topicaEventAmplifyApp.event.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th> -->
@@ -58,12 +58,12 @@
                     <td><span class="glyphicon glyphicon-fire text-danger" ng-show="{{event.isHotEvent}}"></span> {{event.name}}</td>
                     <!-- <td>{{event.description}}</td>
                     <td>{{event.content}}</td> --> 
-                    <td><span class="label label-{{event.eventStatus == 'INVALID' ? 'danger' : 'info'}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
+                    <td><span class="label label-{{event.eventStatus}} ng-binding" data-translate="{{'topicaEventAmplifyApp.status.' + event.eventStatus}}">{{event.eventStatus}}</span></td>
                     <!-- <td data-translate="{{'topicaEventAmplifyApp.EventLevel.' + event.eventLevel}}">{{event.eventLevel}}</td> -->
                     <td>
                     	<div ng-repeat="type in event.amplifyType">
-                    		<label class="label label-success"><i class="fa " ng-class="{'fa-share-alt': type == 'SHARE' , 'fa-rss': type == 'SPONSOR',
-              					'fa-eyedropper': type == 'INJECT'} "></i> {{type}}</label>
+                    		<i class="fa " ng-class="{'fa-share-alt': type == 'SHARE' , 'fa-rss': type == 'SPONSOR',
+              					'fa-eyedropper': type == 'INJECT'} "></i> {{type}}
                     	</div>
                     </td>
                     <!-- <td>
@@ -85,12 +85,12 @@
                     <!-- Button -->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
+                            <!-- <button type="submit"
                                     ui-sref="event-detail({id:event.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                            </button>
+                            </button> -->
                             <button type="submit"
                                     ui-sref="event.edit({id:event.id})"
                                     class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID'].indexOf(event.eventStatus)!=-1">
@@ -112,9 +112,9 @@
                             <!-- wait Order editor -->
                             <button type="submit"
                                     ui-sref="event.previewContent({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['WAIT_BOSS_APPROVE','WAIT_SEND_BOSS'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['WAIT_BOSS_APPROVE','WAIT_SEND_BOSS','MANAGER_APPROVE','PUBLISHED'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
-                                <span class="hidden-sm-down">Xem trước nội dung</span>
+                                <span class="hidden-sm-down">Preview nội dung</span>
                             </button>
                             <button type="submit"
                                     ui-sref="event.material({id:event.id})"

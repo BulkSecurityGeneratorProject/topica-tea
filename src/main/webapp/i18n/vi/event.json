@@ -44,7 +44,7 @@
         , "status" : {
         	"NEW" : "Mới"
         	, "PROCESS" : "Đang xử lý"
-        	, "EDITOR" : "Soạn nội dung"
+        	, "EDITOR" : "Đang soạn nội dung"
         	, "APPROVAL" : "Đã chấp nhận"
         	, "COORDINATE" : "Chờ phân phối"
         	, "INVALID" : "Không hiệu lực"
@@ -56,7 +56,7 @@
         	, "MANAGER_APPROVE" : "Quản lý duyệt"
         	, "WAIT_BOSS_APPROVE" : "Chờ BigBoss duyệt"
         	, "NOT_YET_ORDER" : "Chưa đặt hàng"
-        	, "PUBLISHED" : "Xuất bản"
+        	, "PUBLISHED" : "Khuếch đại"
         	, "WAIT_SEND_BOSS" : "Chờ gửi đi"
         }
     }

@@ -129,4 +129,26 @@ public class EventRepositoryImpl implements EventRepositoryExtend {
 		}
 		return null;
 	}
+
+	@Override
+	public Event findOneByEventStatus(EventStatus status) {
+		try {
+			String sql = "select * from event e"
+					+ " where 1 = 1"
+					+ " and e.event_status = :eventStatus"
+					+ " order by e.id desc";
+			javax.persistence.Query query = entityManager.createNativeQuery(sql, Event.class);
+			query.setParameter("eventStatus", status.toString());
+			
+			List<Event> events = query.getResultList();
+			if (events == null || events.size() == 0) {
+				return null;
+			}
+			
+			return events.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

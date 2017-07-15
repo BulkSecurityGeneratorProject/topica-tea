@@ -74,6 +74,8 @@
                   file="config/liquibase/question.csv"
                   separator=";"
                   tableName="question">
+                  <column name="is_meat_content" type="boolean"/>
+                  <column name="is_no_meat_content" type="boolean"/>
         </loadData>
         
         <loadData encoding="UTF-8"

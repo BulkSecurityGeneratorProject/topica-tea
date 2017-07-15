@@ -90,11 +90,19 @@ public class ChannelProductResource {
      */
     @GetMapping("/channel-products")
     @Timed
-    public ResponseEntity<List<ChannelProductDTO>> getAllChannelProducts(@ApiParam Pageable pageable) {
-        log.debug("REST request to get a page of ChannelProducts");
-        Page<ChannelProductDTO> page = channelProductService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/channel-products");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    public ResponseEntity<List<ChannelProductDTO>> getAllChannelProductsByPage(@ApiParam Pageable pageable) {
+    	log.debug("REST request to get a page of ChannelProducts, page {}", pageable);
+    	Page<ChannelProductDTO> page = channelProductService.findAll(pageable);
+    	HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/channel-products");
+    	return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
+    @GetMapping("/all-channel-products")
+    @Timed
+    public ResponseEntity<List<ChannelProductDTO>> getAllChannelProducts() {
+    	log.debug("REST request to get a page of ChannelProducts");
+    	List<ChannelProductDTO> page = channelProductService.findAll();
+    	return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**

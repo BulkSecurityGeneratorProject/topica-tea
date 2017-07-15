@@ -31,8 +31,8 @@ public class FacebookScheduledTasks {
         try {
 //        	String appId = "2065752006785957"; // 120769275152754
 //            String appSecret = "22147d0b3170cacd2212c55a77d80773";
-//        	String accessToken = "EAAdWyl6OZB6UBAGi6WuZC43xux10WHdTbWPeF0ofcFL0kAIDL8ZCOBy7Ay1OPEZBN3ckDWFJe6kewWL3sgNDkclnBCJpw5OG07WOQio1TTUkw83uHdWpb5Hh8M6RK2RQ7EwnLnBYqWuTLeemrAFlzhZCFDPRM1oAZD";
-//            Facebook facebook = new FacebookFactory().getInstance();
+        	String accessToken = "EAAdWyl6OZB6UBAGi6WuZC43xux10WHdTbWPeF0ofcFL0kAIDL8ZCOBy7Ay1OPEZBN3ckDWFJe6kewWL3sgNDkclnBCJpw5OG07WOQio1TTUkw83uHdWpb5Hh8M6RK2RQ7EwnLnBYqWuTLeemrAFlzhZCFDPRM1oAZD";
+            Facebook facebook = new FacebookFactory().getInstance();
 //            
 //          facebook.setOAuthAppId(appId, appSecret);
 //          facebook.setOAuthPermissions("user_friends,email,publish_actions,public_profile");
@@ -50,7 +50,6 @@ public class FacebookScheduledTasks {
 //            	facebook.postPhoto(photo);
 //			facebook.postStatusMessage("Hello");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

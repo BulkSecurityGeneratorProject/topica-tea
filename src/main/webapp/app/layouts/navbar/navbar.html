@@ -51,9 +51,13 @@
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm" data-translate="global.menu.account.main">
-                                Account
+                            <span class="hidden-sm" ng-show="vm.isAuthenticated()">
+                                Chào, {{vm.account.login}}
                             </span>
+                            <span class="hidden-sm" ng-show="!vm.isAuthenticated()">
+                                Tài khoản
+                            </span>
+                            
                             <b class="caret"></b>
                         </span>
                     </a>

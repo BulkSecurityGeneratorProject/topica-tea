@@ -16,13 +16,40 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.questions = Question.query({filter: 'event-is-null'});
-        vm.changeAmplifyType = changeAmplifyType;
+        //vm.questions = Question.query({filter: 'event-is-null'});
+        //vm.changeAmplifyType = changeAmplifyType;
         vm.loadAllProduct = loadAllProduct;
         vm.changeProducts = changeProducts;
     	vm.products = [];
+    	
+    	vm.showLpForm = false;
+    	vm.showFanpageForm = false;
+    	vm.showMailForm = false;
         
         loadAllProduct();
+        $timeout(initTabContent, 500);
+        
+        function initTabContent() {
+        	angular.forEach(vm.event.channelProducts, function (val, key) {
+        		// Landingpage or Mail
+        		if (val.adsTypeId == 1 || val.adsTypeId == 2) {
+        			vm.showLpForm = true;
+            	}
+        		// Fanpage
+        		if (val.adsTypeId == 3) {
+        			vm.showFanpageForm = true;
+            	}
+            });
+        	
+        	// active fanpage tab
+        	if (vm.showLpForm == false) {
+        		$('#landingPageTab').removeClass('active');
+        		$('#fanpageTab').addClass('active');
+        		
+        		$('#landingpage').removeClass('active');
+        		$('#fanpage').addClass('active');
+        	}
+        }
         
         function changeProducts() {
         	var lstProducts = [];
@@ -55,43 +82,10 @@
             }
         }
         
-        $q.all([vm.event.$promise, vm.questions.$promise]).then(function() {
-            if (!vm.event.questionId) {
-                return $q.reject();
-            }
-            return Question.get({id : vm.event.questionId}).$promise;
-        }).then(function(question) {
-            vm.questions.push(question);
-        });
-        vm.articles = Article.query({filter: 'event-is-null'});
-        $q.all([vm.event.$promise, vm.articles.$promise]).then(function() {
-            if (!vm.event.articleId) {
-                return $q.reject();
-            }
-            return Article.get({id : vm.event.articleId}).$promise;
-        }).then(function(article) {
-            vm.articles.push(article);
-        });
-
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
         
-        function changeAmplifyType() {
-        	vm.event.amplifyType = [];
-        	if ($('#field_amplifyType_SHARE').is(":checked")) {
-        		vm.event.amplifyType.push('SHARE');
-        	}
-        	
-        	if ($('#field_amplifyType_SPONSOR').is(":checked")) {
-        		vm.event.amplifyType.push('SPONSOR');
-        	}
-        	
-        	if ($('#field_amplifyType_INJECT').is(":checked")) {
-        		vm.event.amplifyType.push('INJECT');
-        	}
-        }
-
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }

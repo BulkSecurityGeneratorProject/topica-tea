@@ -17,5 +17,4 @@ import org.springframework.data.repository.query.Param;
 @Repository
 public interface EventRepository extends JpaRepository<Event,Long>, EventRepositoryExtend {
 
-	Event findOneByEventStatus(EventStatus status);
 }

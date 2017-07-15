@@ -41,6 +41,7 @@
                   file="config/liquibase/event_level_priority_group.csv"
                   separator=";"
                   tableName="event_level_priority_group">
+			<column name="is_meat_content" type="boolean"/>
         </loadData>      
         
     </changeSet>

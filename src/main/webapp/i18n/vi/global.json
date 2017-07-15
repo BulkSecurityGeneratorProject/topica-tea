@@ -22,7 +22,7 @@
                 "fanpage": "Fanpage",
                 "productHtmlTemplate": "Product Html Template",
                 "channelProduct" : "Kênh sản phẩm",
-                "adsType": "Ads Type",
+                "adsType": "Loại kênh",
                 "channelProduct": "Channel Product",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
@@ -33,7 +33,7 @@
                 "eventLevelPriorityChannel": "Event Level - Kênh ưu tiên",
                 "eventLevelPriorityGroup": "Event Level - Nhóm ưu tiên",
                 "brandkeyProduct": "Thương hiệu - Sản phẩm",
-                "channelGroup": "Nhóm kênh",
+                "channelGroup": "Rules sự kiện",
                 "question": "Câu hỏi",
                 "event": "Sự kiện",
                 "article": "Bài viết",

@@ -92,7 +92,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="event" columnName="schedule" columnDataType="datetime"/>
+        <!-- <dropDefaultValue tableName="event" columnName="schedule" columnDataType="datetime"/> -->
         
         <createTable tableName="event_products">
             <column name="event_id" type="bigint">
@@ -139,6 +139,7 @@
                   file="config/liquibase/event.csv"
                   separator=";"
                   tableName="event">
+			<column name="is_hot_event" type="boolean"/>
         </loadData>
         
         <loadData encoding="UTF-8"
