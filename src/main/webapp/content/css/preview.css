@@ -1,0 +1,334 @@
+*,
+*:before,
+*:after{
+  box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'Myriad Pro 600';
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Semibold.eot');
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Semibold.eot?#iefix') format('embedded-opentype'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Semibold.woff') format('woff'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Semibold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Myriad Pro normal';
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Regular.eot');
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Regular.eot?#iefix') format('embedded-opentype'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Regular.woff') format('woff'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Myriad Pro bold';
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Bold.eot');
+	src: url('http://171.244.9.9:9301/content/fonts/MyriadPro-Bold.eot?#iefix') format('embedded-opentype'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Bold.woff') format('woff'),
+		url('http://171.244.9.9:9301/content/fonts/MyriadPro-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+@media (min-width:320px) and (max-width:768px){
+    .wdg_paddingRight{
+        padding-right: 0;
+    }
+    .wdg_content{
+        padding: 10px 0px;
+    }
+    .wdg_iconTitle{
+        float: left;
+    }
+     .wdg_titleContent h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Myriad Pro bold';
+        font-size: 20px;
+        color: #810c15;
+        margin-top: 0;
+    }
+    .wdg_titleContent{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Myriad Pro bold';
+        color: #810c15;
+        margin-top: 0;
+        font-size: 20px;
+        padding-left: 75px;
+    }
+    .wdg_titleContent h3 span{
+        font-weight: 100;
+        font-size: 20px;
+        color: #202020;
+        font-family: 'Myriad Pro 600';
+    }
+    .wdg_titleContent p{
+        border: 1px solid #810c15;
+        margin-top: 21px;
+        width: 28%;
+    }
+    .wdg_video{
+        padding-top: 60px;
+    }
+    .wdg_video iframe{
+        width: 100%;
+        height: 315px;
+    }
+    .wdg_contenRight{
+        padding-top: 20px;
+        padding-left: 0;
+    }
+    .wdg_contentRight_row{
+        padding-top: 20px;
+    }
+    .wdg_img_right img{
+        width: 170px;
+        height: 120px;
+    }
+    .wdg_right_textContent a{
+        font-size: 15px;
+        color: #810c15;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .wdg_right_textContent p{
+        font-size: 15px;
+        font-family: 'Myriad Pro Normal';
+        font-weight: 300;
+    }
+    
+    .wdg_title_video{
+        font-size: 17px;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+    }
+ }
+/* Small devices (tablets, 768px and up) */
+@media (min-width:768px) { 
+   .wdg_paddingRight{
+        padding-right: 0;
+    }
+    .wdg_content{
+        padding: 0px 0px;
+    }
+    .wdg_iconTitle{
+        float: left;
+    }
+     .wdg_titleContent h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 22px;
+        font-family: 'Myriad Pro bold';
+        color: #810c15;
+        margin-top: 0;
+    }
+    .wdg_titleContent{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Myriad Pro bold';
+        color: #810c15;
+        margin-top: 0;
+        font-size: 22px;
+        padding-left: 75px;
+    }
+    .wdg_titleContent h3 span{
+        font-weight: 100;
+        font-size: 22px;
+        font-family: 'Myriad Pro 600';
+        color: #202020;
+    }
+    .wdg_titleContent p{
+        border: 1px solid #810c15;
+        margin-top: 21px;
+        width: 28%;
+    }
+    .wdg_video{
+        padding-top: 60px;
+    }
+    .wdg_video iframe{
+        width: 100%;
+        height: 315px;
+    }
+    .wdg_img_right img{
+        width: 170px;
+        height: 120px;
+    }
+    .wdg_right_textContent a{
+        font-size: 15px;
+        color: #810c15;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .wdg_right_textContent p{
+        font-size: 15px;
+        font-family: 'Myriad Pro Normal';
+        font-weight: 300;
+    }
+   
+    .wdg_title_video{
+        font-size: 17px;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+    }
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .wdg_paddingRight{
+        padding-right: 0;
+    }
+    .wdg_content{
+        /* padding: 25px 25px; */
+    }
+    .wdg_iconTitle{
+        float: left;
+    }
+    .wdg_titleContent h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 23px;
+        font-family: 'Myriad Pro bold';
+        color: #810c15;
+        margin-top: 0;
+    }
+    .wdg_titleContent{
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #810c15;
+        font-family: 'Myriad Pro bold';
+        margin-top: 0;
+        font-size: 23px;
+        padding-left: 75px;
+    }
+    .wdg_titleContent h3 span{
+        font-weight: 100;
+        font-size: 23px;
+        font-family: 'Myriad Pro 600';
+        color: #202020;
+    }
+    .wdg_titleContent p{
+        border: 1px solid #810c15;
+        margin-top: 21px;
+        width: 28%;
+    }
+    .wdg_video{
+        padding-top: 60px;
+    }
+    .wdg_video iframe{
+        width: 100%;
+        height: 315px;
+    }
+    .wdg_contenRight{
+        padding-top: 113px;
+    }
+    .wdg_contentRight_row{
+        padding-top: 20px;
+    }
+    .wdg_img_right img{
+        width: 170px;
+        height: 120px;
+    }
+    .wdg_right_textContent a{
+        font-size: 15px;
+        color: #810c15;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .wdg_right_textContent p{
+        font-size: 15px;
+        font-family: 'Myriad Pro Normal';
+        font-weight: 300;
+    }
+    
+    .wdg_title_video{
+        font-size: 17px;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+    }
+ }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .wdg_paddingRight{
+        padding-right: 0;
+    }
+    .wdg_content{
+        /* padding: 60px 130px; */
+    }
+    .wdg_iconTitle{
+        float: left;
+    }
+    .wdg_titleContent h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 25px;
+        font-family: 'Myriad Pro bold';
+        color: #810c15;
+        margin-top: 0;
+    }
+    .wdg_titleContent{
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #810c15;
+        font-family: 'Myriad Pro bold';
+        margin-top: 0;
+        font-size: 25px;
+        padding-left: 75px;
+    }
+    .wdg_titleContent h3 span{
+        font-weight: 100;
+        font-size: 25px;
+         font-family: 'Myriad Pro 600';
+        color: #202020;
+    }
+    .wdg_titleContent p{
+        border: 1px solid #810c15;
+        margin-top: 21px;
+        width: 28%;
+    }
+    .wdg_video{
+        padding-top: 60px;
+    }
+    .wdg_video iframe{
+        width: 100%;
+        height: 315px;
+    }
+    .wdg_contenRight{
+        padding-top: 113px;
+    }
+    .wdg_contentRight_row{
+        padding-top: 20px;
+    }
+    .wdg_img_right img{
+        width: 170px;
+        height: 120px;
+    }
+    .wdg_right_textContent a{
+        font-size: 15px;
+        color: #810c15;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .wdg_right_textContent p{
+        font-size: 15px;
+        font-family: 'Myriad Pro Normal';
+        font-weight: 300;
+    }
+  
+    .wdg_title_video{
+        font-size: 17px;
+        font-family: 'Myriad Pro 600';
+        font-weight: 600;
+    }
+ }

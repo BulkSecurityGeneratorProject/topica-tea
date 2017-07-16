@@ -105,25 +105,25 @@
                             </button>
                             <button type="submit"
                                     ui-sref="event.delete({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN,ROLE_DIRECTOR" ng-show="['NEW', 'PROCESS','INVALID','NOT_YET_ORDER'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_ADMIN,ROLE_DIRECTOR" ng-show="event.eventStatus != 'CANCEL'">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                <span class="hidden-sm-down">Hủy đơn hàng</span>
                             </button>
                             <!-- wait Order editor -->
                             <button type="submit"
                                     ui-sref="event.previewContent({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['WAIT_BOSS_APPROVE','WAIT_SEND_BOSS','MANAGER_APPROVE','PUBLISHED'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['WAIT_BOSS_APPROVE','WAIT_SEND_BOSS','MANAGER_APPROVE','PUBLISHED'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                                 <span class="hidden-sm-down">Preview nội dung</span>
                             </button>
                             <button type="submit"
                                     ui-sref="event.material({id:event.id})"
-                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['NOT_YET_ORDER','EDITOR'].indexOf(event.eventStatus)!=-1">
+                                    class="btn btn-sm" has-any-authority="ROLE_BOSS,ROLE_SUPER_WRITER" ng-show="['NOT_YET_ORDER','EDITOR'].indexOf(event.eventStatus)!=-1">
                                 <span class="glyphicon glyphicon-cutlery"></span>
                                 <span class="hidden-sm-down">Nguyên liệu</span>
                             </button>
-                            <button type="button" ng-click="vm.orderEditor(event.id)"
-                                    class="btn btn-danger btn-sm" has-authority="ROLE_BOSS" ng-show="event.eventStatus == 'NOT_YET_ORDER'">
+                            <button type="submit" ui-sref="event.order({id:event.id})"
+                                    class="btn btn-success btn-sm" has-authority="ROLE_BOSS" ng-show="event.eventStatus == 'NOT_YET_ORDER'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
                                 <span class="hidden-sm-down">Đặt hàng</span>
                             </button>
@@ -149,8 +149,8 @@
                                 <span class="glyphicon glyphicon-tasks"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.editor"></span>
                             </button>
-                            <button type="button" ng-click="vm.sendToApproval(event.id)"
-                                    class="btn btn-danger btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="event.eventStatus == 'WAIT_SEND_BOSS'">
+                            <button type="submit" ui-sref="event.confirmDialog({id:event.id, type: 0})"
+                                    class="btn btn-success btn-sm" has-authority="ROLE_SUPER_WRITER" ng-show="event.eventStatus == 'WAIT_SEND_BOSS'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
                                 <span class="hidden-sm-down">Gửi đi</span>
                             </button>
@@ -158,7 +158,7 @@
                             <button type="submit"
                                     ui-sref="event.cancelPublish({id:event.id})"
                                     class="btn btn-danger btn-sm" has-any-authority="ROLE_BOSS" ng-show="['DIRECTOR_APPROVE', 'WAIT_BOSS_APPROVE'].indexOf(event.eventStatus)!=-1">
-                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                <span class="glyphicon glyphicon-thumbs-down"></span>
                                 <span class="hidden-sm-down">Hủy duyệt</span>
                             </button>
                             <!-- Approve -->

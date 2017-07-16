@@ -59,7 +59,7 @@ public class Event implements Serializable {
     @Column(name = "priority_group")
     private List<PriorityGroup> priorityGroup;
 
-    @Column(name = "schedule")
+    @Column(name = "schedule", nullable = true)
     private ZonedDateTime schedule;
 
     @OneToOne

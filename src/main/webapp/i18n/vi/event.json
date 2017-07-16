@@ -58,6 +58,7 @@
         	, "NOT_YET_ORDER" : "Chưa đặt hàng"
         	, "PUBLISHED" : "Khuếch đại"
         	, "WAIT_SEND_BOSS" : "Chờ gửi đi"
+        	, "CANCEL" : "Đơn hàng bị hủy"
         }
     }
 }

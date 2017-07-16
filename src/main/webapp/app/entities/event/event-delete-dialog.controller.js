@@ -19,10 +19,14 @@
         }
 
         function confirmDelete (id) {
-            Event.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
+//            Event.delete({id: id},
+//                function () {
+//                    $uibModalInstance.close(true);
+//                });
+        	Event.updateStatus({id : id, status: 'CANCEL', type: 0},
+                    function () {
+                        $uibModalInstance.close(true);
+                    });
         }
     }
 })();

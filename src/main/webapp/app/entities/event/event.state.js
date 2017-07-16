@@ -200,6 +200,30 @@
                 });
             }]
         })
+        .state('event.confirmDialog', {
+            parent: 'event',
+            url: '/{id}/confirmDialog?type',
+            data: {
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/dialog/event-confirm-dialog.html',
+                    controller: 'EventConfirmDialogController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('event.distribute', {
             parent: 'event',
             url: '/{id}/distribute',
@@ -210,6 +234,30 @@
                 $uibModal.open({
                     templateUrl: 'app/entities/event/event-distribute-dialog.html',
                     controller: 'EventDistributeController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('event.order', {
+            parent: 'event',
+            url: '/{id}/order',
+            data: {
+                authorities: ['ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/dialog/event-order-dialog.html',
+                    controller: 'EventOrderController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {

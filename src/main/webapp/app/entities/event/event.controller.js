@@ -11,7 +11,7 @@
 
         var vm = this;
 
-        vm.sendToApproval = sendToApproval;
+        //vm.sendToApproval = sendToApproval;
         vm.orderEditor = orderEditor;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
@@ -21,19 +21,19 @@
 
         loadAll();
         
-        function sendToApproval(id) {
-            Event.updateStatus({id : id, status: 'WAIT_BOSS_APPROVE', type: 0}, onSaveSuccess, onSaveError);
-            
-            function onSaveSuccess (result) {
-                $scope.$emit('topicaEventAmplifyApp:eventUpdate', result);
-                vm.isSaving = false;
-                $state.go('event', null, { reload: 'event' });
-            }
-
-            function onSaveError () {
-                vm.isSaving = false;
-            }
-        }
+//        function sendToApproval(id) {
+//            Event.updateStatus({id : id, status: 'WAIT_BOSS_APPROVE', type: 0}, onSaveSuccess, onSaveError);
+//            
+//            function onSaveSuccess (result) {
+//                $scope.$emit('topicaEventAmplifyApp:eventUpdate', result);
+//                vm.isSaving = false;
+//                $state.go('event', null, { reload: 'event' });
+//            }
+//
+//            function onSaveError () {
+//                vm.isSaving = false;
+//            }
+//        }
         
         function orderEditor(id) {
             Event.updateStatus({id : id, status: 'EDITOR', type: 0}, onSaveSuccess, onSaveError);
