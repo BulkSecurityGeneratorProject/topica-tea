@@ -189,6 +189,30 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('channel-product.widget', {
+            parent: 'channel-product',
+            url: '/{id}/widget',
+            data: {
+                authorities: ['ROLE_ADMIN','ROLE_BOSS']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/channel-product/channel-product-widget-dialog.html',
+                    controller: 'ChannelProductWidgetController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['ChannelProduct', function(ChannelProduct) {
+                            return ChannelProduct.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('channel-product', null, { reload: 'channel-product' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 

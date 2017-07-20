@@ -6,8 +6,9 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div ng-bind-html="vm.previewContent">
-        </div>
+        <script type="text/css" id="append-css"></script>
+        <div ng-bind-html="vm.previewContent"></div>
+        <div id="css-content" style="display: none">{{vm.cssContent}}</div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
@@ -15,3 +16,11 @@
         </button>
     </div>
 </form>
+<script>
+$(document).ready(function() {
+    console.log( "dialog ready!" );
+    var css = $('#css-content').html();
+    //alert(css);
+    $('#append-css').html(css);
+});
+</script>

@@ -22,8 +22,10 @@ import com.topica.tea.repository.EventLevelPriorityGroupRepository;
 import com.topica.tea.repository.EventRepository;
 import com.topica.tea.repository.ProductRepository;
 import com.topica.tea.repository.UserRepository;
+import com.topica.tea.service.ChannelProductService;
 import com.topica.tea.service.TEAProcessEventService;
 import com.topica.tea.service.dto.BrandkeyDTO;
+import com.topica.tea.service.dto.ChannelProductDTO;
 import com.topica.tea.service.dto.EventDTO;
 import com.topica.tea.service.dto.ProductDTO;
 import com.topica.tea.service.dto.QuestionDTO;
@@ -60,6 +62,8 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
     private final BrandkeyProductRepository brandkeyProductRepository;
     
     private final ProductRepository productRepository;
+    
+    private final ChannelProductService channelProductService;
 
     public TEAProcessEventServiceImpl(EventRepository eventRepository, EventMapper eventMapper
     		, QuestionMapper questionMapper, UserRepository userRepository
@@ -67,6 +71,7 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
     		, BrandkeyProductRepository brandkeyProductRepository
     		, ProductRepository productRepository
     		, ProductMapper productMapper
+    		, ChannelProductService channelProductService
     		, ChannelGroupRepository channelGroupRepository) {
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
@@ -77,6 +82,7 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
         this.brandkeyProductRepository = brandkeyProductRepository;
         this.productRepository = productRepository;
         this.productMapper = productMapper;
+        this.channelProductService = channelProductService;
     }
 
 	@Override
@@ -93,6 +99,9 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
 		// Rule #2: Xác định sản phẩm (Product)
 		Set<ProductDTO> productDTOs = calculateProduct(eventDTO);
 		eventDTO.setProducts(productDTOs);
+		
+		// ChannelProduct
+		setChannelProducts(eventDTO);
 		
 		// Rule #3: Xác định ưu tiên nhóm kênh (K0a, K0b, K1, K2, K3, K4)
 		Set<PriorityGroup> priorityGroups = calculatePriorityChannelGroup(eventDTO);
@@ -113,6 +122,17 @@ public class TEAProcessEventServiceImpl implements TEAProcessEventService {
 		}
 		
 		return eventDTO;
+	}
+	
+	private void setChannelProducts(EventDTO eventDTO) {
+		Set<ProductDTO> productDTOs = eventDTO.getProducts();
+		
+		Set<ChannelProductDTO> channels = new HashSet<>();
+		for (ProductDTO productDTO : productDTOs) {
+			List<ChannelProductDTO> temp = channelProductService.findAllByProductId(productDTO.getId());
+			channels.addAll(temp);
+		}
+		eventDTO.setChannelProducts(channels);
 	}
 	
 	/**

@@ -21,7 +21,9 @@ public class ChannelProduct implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column(name = "name")
+    private String name;
+    
     @Column(name = "jhi_link", nullable = false)
     private String link;
 
@@ -41,6 +43,9 @@ public class ChannelProduct implements Serializable {
     @Column(name = "app_access_token", nullable = true)
     private String appAccessToken;
     
+    @Column(name = "page_id", nullable = true)
+    private String pageId;
+    
     @OneToOne
     @JoinColumn
     private Product product;
@@ -49,14 +54,57 @@ public class ChannelProduct implements Serializable {
     @JoinColumn
     private AdsType adsType;
 
+    @OneToOne
+    @JoinColumn
+    private HtmlTemplate htmlTemplate;
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getPageId() {
+        return pageId;
+    }
 
+    public ChannelProduct pageId(String pageId) {
+        this.pageId = pageId;
+        return this;
+    }
+
+    public void setPageId(String pageId) {
+        this.pageId = pageId;
+    }
+
+    public HtmlTemplate getHtmlTemplate() {
+        return htmlTemplate;
+    }
+
+    public ChannelProduct htmlTemplate(HtmlTemplate htmlTemplate) {
+        this.htmlTemplate = htmlTemplate;
+        return this;
+    }
+
+    public void setHtmlTemplate(HtmlTemplate htmlTemplate) {
+        this.htmlTemplate = htmlTemplate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ChannelProduct name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getLink() {
         return link;
     }

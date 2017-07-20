@@ -53,10 +53,10 @@
         	, "DIRECTOR_DENY" : "GĐ từ chối"
         	, "DIRECTOR_APPROVE" : "GĐ đã duyệt"
         	, "MANAGER_DENY" : "Quản lý từ chối"
-        	, "MANAGER_APPROVE" : "Quản lý duyệt"
+        	, "MANAGER_APPROVE" : "Loading..."
         	, "WAIT_BOSS_APPROVE" : "Chờ BigBoss duyệt"
         	, "NOT_YET_ORDER" : "Chưa đặt hàng"
-        	, "PUBLISHED" : "Khuếch đại"
+        	, "PUBLISHED" : "Hoàn thành"
         	, "WAIT_SEND_BOSS" : "Chờ gửi đi"
         	, "CANCEL" : "Đơn hàng bị hủy"
         }

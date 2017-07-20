@@ -9,103 +9,103 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-13T22:34:49+0700",
+    date = "2017-07-19T13:59:48+0700",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.12.3.v20170228-1205, environment: Java 1.8.0_101 (Oracle Corporation)"
 )
 @Component
 public class ArticleMapperImpl implements ArticleMapper {
 
     @Override
-    public ArticleDTO toDto(Article arg0) {
-        if ( arg0 == null ) {
+    public Article toEntity(ArticleDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Article article = new Article();
+
+        article.setId( dto.getId() );
+        article.setTitle( dto.getTitle() );
+        article.setSubject1( dto.getSubject1() );
+        article.setContent1( dto.getContent1() );
+        article.setUrlLink1( dto.getUrlLink1() );
+        article.setImageLink1( dto.getImageLink1() );
+        article.setSubject2( dto.getSubject2() );
+        article.setContent2( dto.getContent2() );
+        article.setUrlLink2( dto.getUrlLink2() );
+        article.setImageLink2( dto.getImageLink2() );
+        article.setSubject3( dto.getSubject3() );
+        article.setContent3( dto.getContent3() );
+        article.setUrlLink3( dto.getUrlLink3() );
+        article.setImageLink3( dto.getImageLink3() );
+        article.setImageFilename( dto.getImageFilename() );
+        article.setVideoLink( dto.getVideoLink() );
+        article.setVideoCaption( dto.getVideoCaption() );
+        article.setType( dto.getType() );
+        article.setStatus( dto.getStatus() );
+        article.setFanpageContent( dto.getFanpageContent() );
+        article.setFanpageImage( dto.getFanpageImage() );
+        article.setFanpageLink( dto.getFanpageLink() );
+
+        return article;
+    }
+
+    @Override
+    public ArticleDTO toDto(Article entity) {
+        if ( entity == null ) {
             return null;
         }
 
         ArticleDTO articleDTO = new ArticleDTO();
 
-        articleDTO.setContent1( arg0.getContent1() );
-        articleDTO.setContent2( arg0.getContent2() );
-        articleDTO.setContent3( arg0.getContent3() );
-        articleDTO.setFanpageContent( arg0.getFanpageContent() );
-        articleDTO.setFanpageImage( arg0.getFanpageImage() );
-        articleDTO.setFanpageLink( arg0.getFanpageLink() );
-        articleDTO.setId( arg0.getId() );
-        articleDTO.setImageFilename( arg0.getImageFilename() );
-        articleDTO.setImageLink1( arg0.getImageLink1() );
-        articleDTO.setImageLink2( arg0.getImageLink2() );
-        articleDTO.setImageLink3( arg0.getImageLink3() );
-        articleDTO.setStatus( arg0.getStatus() );
-        articleDTO.setSubject1( arg0.getSubject1() );
-        articleDTO.setSubject2( arg0.getSubject2() );
-        articleDTO.setSubject3( arg0.getSubject3() );
-        articleDTO.setTitle( arg0.getTitle() );
-        articleDTO.setType( arg0.getType() );
-        articleDTO.setUrlLink1( arg0.getUrlLink1() );
-        articleDTO.setUrlLink2( arg0.getUrlLink2() );
-        articleDTO.setUrlLink3( arg0.getUrlLink3() );
-        articleDTO.setVideoCaption( arg0.getVideoCaption() );
-        articleDTO.setVideoLink( arg0.getVideoLink() );
+        articleDTO.setId( entity.getId() );
+        articleDTO.setTitle( entity.getTitle() );
+        articleDTO.setType( entity.getType() );
+        articleDTO.setStatus( entity.getStatus() );
+        articleDTO.setImageFilename( entity.getImageFilename() );
+        articleDTO.setVideoLink( entity.getVideoLink() );
+        articleDTO.setVideoCaption( entity.getVideoCaption() );
+        articleDTO.setContent1( entity.getContent1() );
+        articleDTO.setSubject1( entity.getSubject1() );
+        articleDTO.setUrlLink1( entity.getUrlLink1() );
+        articleDTO.setImageLink1( entity.getImageLink1() );
+        articleDTO.setContent2( entity.getContent2() );
+        articleDTO.setSubject2( entity.getSubject2() );
+        articleDTO.setUrlLink2( entity.getUrlLink2() );
+        articleDTO.setImageLink2( entity.getImageLink2() );
+        articleDTO.setContent3( entity.getContent3() );
+        articleDTO.setSubject3( entity.getSubject3() );
+        articleDTO.setUrlLink3( entity.getUrlLink3() );
+        articleDTO.setImageLink3( entity.getImageLink3() );
+        articleDTO.setFanpageContent( entity.getFanpageContent() );
+        articleDTO.setFanpageImage( entity.getFanpageImage() );
+        articleDTO.setFanpageLink( entity.getFanpageLink() );
 
         return articleDTO;
     }
 
     @Override
-    public List<ArticleDTO> toDto(List<Article> arg0) {
-        if ( arg0 == null ) {
+    public List<Article> toEntity(List<ArticleDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<ArticleDTO> list = new ArrayList<ArticleDTO>();
-        for ( Article article : arg0 ) {
-            list.add( toDto( article ) );
+        List<Article> list = new ArrayList<Article>();
+        for ( ArticleDTO articleDTO : dtoList ) {
+            list.add( toEntity( articleDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public Article toEntity(ArticleDTO arg0) {
-        if ( arg0 == null ) {
+    public List<ArticleDTO> toDto(List<Article> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        Article article = new Article();
-
-        article.setContent1( arg0.getContent1() );
-        article.setContent2( arg0.getContent2() );
-        article.setContent3( arg0.getContent3() );
-        article.setFanpageContent( arg0.getFanpageContent() );
-        article.setFanpageImage( arg0.getFanpageImage() );
-        article.setFanpageLink( arg0.getFanpageLink() );
-        article.setId( arg0.getId() );
-        article.setImageFilename( arg0.getImageFilename() );
-        article.setImageLink1( arg0.getImageLink1() );
-        article.setImageLink2( arg0.getImageLink2() );
-        article.setImageLink3( arg0.getImageLink3() );
-        article.setStatus( arg0.getStatus() );
-        article.setSubject1( arg0.getSubject1() );
-        article.setSubject2( arg0.getSubject2() );
-        article.setSubject3( arg0.getSubject3() );
-        article.setTitle( arg0.getTitle() );
-        article.setType( arg0.getType() );
-        article.setUrlLink1( arg0.getUrlLink1() );
-        article.setUrlLink2( arg0.getUrlLink2() );
-        article.setUrlLink3( arg0.getUrlLink3() );
-        article.setVideoCaption( arg0.getVideoCaption() );
-        article.setVideoLink( arg0.getVideoLink() );
-
-        return article;
-    }
-
-    @Override
-    public List<Article> toEntity(List<ArticleDTO> arg0) {
-        if ( arg0 == null ) {
-            return null;
-        }
-
-        List<Article> list = new ArrayList<Article>();
-        for ( ArticleDTO articleDTO : arg0 ) {
-            list.add( toEntity( articleDTO ) );
+        List<ArticleDTO> list = new ArrayList<ArticleDTO>();
+        for ( Article article : entityList ) {
+            list.add( toDto( article ) );
         }
 
         return list;

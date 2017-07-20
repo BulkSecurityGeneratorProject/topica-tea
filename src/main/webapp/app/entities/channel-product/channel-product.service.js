@@ -25,6 +25,10 @@
             	url : 'api/all-channel-products',
             	method:'GET',
             	isArray: true
+            },
+            'downloadCSV': {
+            	url : 'api/download/csv',
+            	method:'GET'
             }
         });
     }

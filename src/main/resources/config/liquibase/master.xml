@@ -17,7 +17,6 @@
     <include file="classpath:config/liquibase/changelog/20170630040909_added_entity_Schedule.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170707151743_added_entity_HtmlTemplate.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170707151744_added_entity_Fanpage.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170707151745_added_entity_ProductHtmlTemplate.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170709155858_added_entity_ChannelProduct.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170709165458_added_entity_AdsType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->

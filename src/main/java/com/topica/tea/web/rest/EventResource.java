@@ -1,21 +1,14 @@
 package com.topica.tea.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.topica.tea.domain.enumeration.AmplifyType;
-import com.topica.tea.domain.enumeration.EventStatus;
-import com.topica.tea.service.ArticleService;
-import com.topica.tea.service.ContentService;
-import com.topica.tea.service.EventService;
-import com.topica.tea.service.ProductHtmlTemplateService;
-import com.topica.tea.web.rest.util.HeaderUtil;
-import com.topica.tea.web.rest.util.PaginationUtil;
-import com.topica.tea.service.dto.ArticleDTO;
-import com.topica.tea.service.dto.ChannelProductDTO;
-import com.topica.tea.service.dto.EventDTO;
-import com.topica.tea.service.dto.ProductHtmlTemplateDTO;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,16 +18,31 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.codahale.metrics.annotation.Timed;
+import com.topica.tea.domain.enumeration.AmplifyType;
+import com.topica.tea.domain.enumeration.EventStatus;
+import com.topica.tea.service.ArticleService;
+import com.topica.tea.service.ChannelProductService;
+import com.topica.tea.service.ContentService;
+import com.topica.tea.service.EventService;
+import com.topica.tea.service.dto.ArticleDTO;
+import com.topica.tea.service.dto.ChannelProductDTO;
+import com.topica.tea.service.dto.EventDTO;
+import com.topica.tea.web.rest.util.HeaderUtil;
+import com.topica.tea.web.rest.util.PaginationUtil;
+
+import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 
 /**
  * REST controller for managing Event.
@@ -53,13 +61,13 @@ public class EventResource {
     
     private final ContentService contentService;
     
-    private final ProductHtmlTemplateService productHtmlTemplateService;
+    private final ChannelProductService channelProductService;
 
-    public EventResource(EventService eventService, ContentService contentService, ProductHtmlTemplateService productHtmlTemplateService, ArticleService articleService) {
+    public EventResource(EventService eventService, ContentService contentService, ChannelProductService channelProductService, ArticleService articleService) {
         this.eventService = eventService;
         this.articleService = articleService;
         this.contentService = contentService;
-        this.productHtmlTemplateService = productHtmlTemplateService;
+        this.channelProductService = channelProductService;
     }
     
     /**
@@ -260,13 +268,12 @@ public class EventResource {
     @GetMapping("/inject-event")
     @Timed
     //public ResponseEntity<EventDTO> getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,
-    public String getInjectEventByProductCode(@RequestParam(name="channelProductId", required = false) Long channelProductId,	
-    		@RequestParam(name="templateId", required = false) Long templateId) {
-        log.debug("REST request to getInjectEventByProductCode : channelProductId {}, templateId {}", channelProductId, templateId);
+    public String getInjectEventByChannelProductId(@RequestParam(name="channelProductId", required = false) Long channelProductId) {
+        log.debug("REST request to getInjectEventByChannelProductId : channelProductId {}", channelProductId);
         
         // Find relation between product and template
-        ProductHtmlTemplateDTO ptDTO = productHtmlTemplateService.findOneByChannelProductIdAndHtmlTemplateId(channelProductId, templateId);
-        if (null == ptDTO) {
+        ChannelProductDTO channelDTO = channelProductService.findOne(channelProductId);
+        if (null == channelDTO || channelDTO.getHtmlTemplateId() == null) {
         	return StringUtils.EMPTY;
         }
         
@@ -278,7 +285,7 @@ public class EventResource {
         
         // Process content
         if (null != eventDTO) {
-        	String content = contentService.process(eventDTO, templateId);
+        	String content = contentService.process(eventDTO, channelDTO.getHtmlTemplateId());
             eventDTO.setContent(content);
         }
         

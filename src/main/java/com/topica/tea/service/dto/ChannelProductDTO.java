@@ -15,9 +15,12 @@ public class ChannelProductDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+    private String name;
+    
     private String link;
 
+    private Long htmlTemplateId;
+    
     private Long traffic;
 
     private TrafficType trafficType;
@@ -32,10 +35,14 @@ public class ChannelProductDTO implements Serializable {
     
     private String appAccessToken;
     
+    private String pageId;
+    
     private ProductDTO product;
     
     private AdsTypeDTO adsType;
 
+    private HtmlTemplateDTO htmlTemplate;
+    
     public Long getId() {
         return id;
     }
@@ -154,5 +161,37 @@ public class ChannelProductDTO implements Serializable {
 
 	public void setAppAccessToken(String appAccessToken) {
 		this.appAccessToken = appAccessToken;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getHtmlTemplateId() {
+		return htmlTemplateId;
+	}
+
+	public void setHtmlTemplateId(Long htmlTemplateId) {
+		this.htmlTemplateId = htmlTemplateId;
+	}
+
+	public HtmlTemplateDTO getHtmlTemplate() {
+		return htmlTemplate;
+	}
+
+	public void setHtmlTemplate(HtmlTemplateDTO htmlTemplate) {
+		this.htmlTemplate = htmlTemplate;
+	}
+
+	public String getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
 	}
 }

@@ -9,11 +9,57 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
+        .state('event-flow', {
+            parent: 'entity',
+            url: '/event-flow?page&sort&search',
+            data: {
+                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
+                pageTitle: 'topicaEventAmplifyApp.event.home.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/event/events-flow.html',
+                    controller: 'EventController',
+                    controllerAs: 'vm'
+                }
+            },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('event');
+                    $translatePartialLoader.addPart('eventStatus');
+                    $translatePartialLoader.addPart('eventLevel');
+                    $translatePartialLoader.addPart('amplifyType');
+                    $translatePartialLoader.addPart('priorityGroup');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }]
+            }
+        })
         .state('event', {
             parent: 'entity',
             url: '/event?page&sort&search',
             data: {
-                authorities: ['ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
+                authorities: ['ROLE_BOSS','ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER'],
                 pageTitle: 'topicaEventAmplifyApp.event.home.title'
             },
             views: {
@@ -204,7 +250,31 @@
             parent: 'event',
             url: '/{id}/confirmDialog?type',
             data: {
-                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER','ROLE_DIRECTOR','ROLE_MANAGER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/event/dialog/event-confirm-dialog.html',
+                    controller: 'EventConfirmDialogController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Event', function(Event) {
+                            return Event.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('event', null, { reload: 'event' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('event.confirmDialogFlow', {
+            parent: 'event-flow',
+            url: '/{id}/confirmDialogFlow?type',
+            data: {
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER','ROLE_DIRECTOR','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -242,7 +312,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('event', null, { reload: 'event' });
+                    $state.go('event-flow', null, { reload: 'event-flow' });
                 }, function() {
                     $state.go('^');
                 });
@@ -300,7 +370,7 @@
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'event',
+                        name: $state.current.name || 'event-flow',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -420,7 +490,7 @@
             parent: 'event',
             url: '/{id}/inithot-view',
             data: {
-                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER']
+                authorities: ['ROLE_BOSS','ROLE_SUPER_WRITER','ROLE_USER','ROLE_DIRECTOR','ROLE_COORDINATOR','ROLE_WRITER','ROLE_APPROVAL','ROLE_MANAGER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

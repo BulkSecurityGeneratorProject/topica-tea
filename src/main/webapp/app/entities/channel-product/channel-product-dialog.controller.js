@@ -5,14 +5,15 @@
         .module('topicaEventAmplifyApp')
         .controller('ChannelProductDialogController', ChannelProductDialogController);
 
-    ChannelProductDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'ChannelProduct', 'Product', 'AdsType'];
+    ChannelProductDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'ChannelProduct', 'Product', 'AdsType', 'HtmlTemplate'];
 
-    function ChannelProductDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, ChannelProduct, Product, AdsType) {
+    function ChannelProductDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, ChannelProduct, Product, AdsType, HtmlTemplate) {
         var vm = this;
 
         vm.channelProduct = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.htmlTemplates;
         vm.products = Product.query({filter: 'channelproduct-is-null'});
         $q.all([vm.channelProduct.$promise, vm.products.$promise]).then(function() {
             if (!vm.channelProduct.productId) {
@@ -35,6 +36,19 @@
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
+        
+        loadAllHtmlTemplate();
+        
+        function loadAllHtmlTemplate () {
+        	HtmlTemplate.query({
+            }, onSuccess, onError);
+            function onSuccess(data, headers) {
+                vm.htmlTemplates = data;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
 
         function clear () {
             $uibModalInstance.dismiss('cancel');

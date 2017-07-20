@@ -44,4 +44,6 @@ public interface ChannelProductService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    List<ChannelProductDTO> findAllByProductId(Long productId);
 }

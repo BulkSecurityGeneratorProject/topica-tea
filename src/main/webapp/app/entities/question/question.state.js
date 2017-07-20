@@ -137,9 +137,9 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('event', null, { reload: 'event' });
+                    $state.go('event-flow', null, { reload: 'event-flow' });
                 }, function() {
-                    $state.go('event');
+                    $state.go('event-flow');
                 });
             }]
         })

@@ -93,4 +93,12 @@ public class ChannelProductServiceImpl implements ChannelProductService{
 		List<ChannelProduct> lstEntity = channelProductRepository.findAll();
 		return channelProductMapper.toDto(lstEntity);
 	}
+
+	@Override
+	public List<ChannelProductDTO> findAllByProductId(Long productId) {
+		log.debug("Request to findAllByProductId, productId {}", productId);
+		List<ChannelProduct> lstEntity = channelProductRepository.findAllByProductId(productId);
+		return channelProductMapper.toDto(lstEntity);
+		
+	}
 }

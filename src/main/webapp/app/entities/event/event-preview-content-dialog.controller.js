@@ -23,6 +23,7 @@
         vm.showLpForm = false;
     	vm.showFanpageForm = false;
     	vm.showMailForm = false;
+    	vm.isLoadling = true;
     	
         $timeout(initTabContent, 500);
         $timeout(initPreview, 1000);
@@ -50,20 +51,43 @@
         }
         
         function initPreview() {
+        	vm.isLoadling = true;
+        	
         	if (vm.event.article.fanpageContent != "" && vm.event.article.fanpageContent != null) {
         		vm.previewFanpage.message = vm.event.article.fanpageContent; 
         	}
         	
         	if (vm.event.article.fanpageLink != "" && vm.event.article.fanpageLink != null) {
-        		$.get("https://cors-anywhere.herokuapp.com/" + vm.event.article.fanpageLink, function(data) {
-        		    var metaDescription = $(data).filter("meta[property='og:description']").attr("content");
-        		    var metaImage = $(data).filter("meta[property='og:image']").attr("content");
-        		    vm.previewFanpage.description = metaDescription;
-        		    vm.previewFanpage.image = metaImage;
-        		    console.log(metaDescription);
-        		    console.log(metaImage);
-        		    $scope.$digest()
-        		}); 
+        		var target = vm.event.article.fanpageLink;
+        		var key    = "596f04288ae9102c29fad5f164d62227212fbb95e02f1";
+
+        		$.ajax({
+        			url: "http://api.linkpreview.net",
+        			dataType: 'jsonp',
+        			data: {q: target, key: key},
+        			success: function (response) {
+        				console.log(response);
+        				// description
+        				// image
+        				// title
+        				// url
+            		    vm.previewFanpage.description = response.description;
+            		    vm.previewFanpage.image = response.image;
+            		    vm.previewFanpage.title = response.title;
+            		    vm.isLoadling = false;
+            		    $scope.$digest();
+        			}
+        		});
+        		
+//        		$.get("https://cors-anywhere.herokuapp.com/" + vm.event.article.fanpageLink, function(data) {
+//        		    var metaDescription = $(data).filter("meta[property='og:description']").attr("content");
+//        		    var metaImage = $(data).filter("meta[property='og:image']").attr("content");
+//        		    vm.previewFanpage.description = metaDescription;
+//        		    vm.previewFanpage.image = metaImage;
+//        		    console.log(metaDescription);
+//        		    console.log(metaImage);
+//        		    $scope.$digest()
+//        		}); 
         	}
         }
 

@@ -1,29 +1,18 @@
 package com.topica.tea.service;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+
 import com.topica.tea.domain.HtmlTemplate;
-import com.topica.tea.domain.User;
-import com.topica.tea.domain.enumeration.EventLevel;
 import com.topica.tea.repository.HtmlTemplateRepository;
-import com.topica.tea.repository.ProductHtmlTemplateRepository;
 import com.topica.tea.service.dto.ArticleDTO;
 import com.topica.tea.service.dto.EventDTO;
 
 import io.github.jhipster.config.JHipsterProperties;
-
-import org.apache.commons.lang3.CharEncoding;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.mail.internet.MimeMessage;
-import java.util.Locale;
 
 /**
  * Service for sending emails.

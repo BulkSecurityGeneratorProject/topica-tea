@@ -1,10 +1,414 @@
-ID;JHI_LINK;TRAFFIC;TRAFFIC_TYPE;PRODUCT_ID;ADS_TYPE_ID;app_id;app_secret;app_access_token
-1;https://topica.edu.vn/;4000;VIEW;1;1;;;
-2;https://topica.asia/;5000;VIEW;1;1;;;
-3;https://topica.vn/;6000;VIEW;1;1;;;
-4;http://uni.topica.edu.vn/;5000;REACH;3;1;2065752006785957;22147d0b3170cacd2212c55a77d80773;EAAdWyl6OZB6UBAGi6WuZC43xux10WHdTbWPeF0ofcFL0kAIDL8ZCOBy7Ay1OPEZBN3ckDWFJe6kewWL3sgNDkclnBCJpw5OG07WOQio1TTUkw83uHdWpb5Hh8M6RK2RQ7EwnLnBYqWuTLeemrAFlzhZCFDPRM1oAZD
-5;https://pro.beefree.io/login;3000;EMAIL;1;2;;;
-6;http://tronbotienganhgiaotiepcdtet.edumall.vn;222222;VIEW;5;1;;;
-7;http://luyenthiielts01cdtet.edumall.vn;33333333;VIEW;5;1;;;
-8;http://writingtask2.edumall.vn;44444444;VIEW;5;1;;;
-9;https://www.facebook.com/le.vietdung.2016;76543;VIEW;1;3;2065752006785957;22147d0b3170cacd2212c55a77d80773;EAAdWyl6OZB6UBAGi6WuZC43xux10WHdTbWPeF0ofcFL0kAIDL8ZCOBy7Ay1OPEZBN3ckDWFJe6kewWL3sgNDkclnBCJpw5OG07WOQio1TTUkw83uHdWpb5Hh8M6RK2RQ7EwnLnBYqWuTLeemrAFlzhZCFDPRM1oAZD
+ID;NAME;JHI_LINK;TRAFFIC;TRAFFIC_TYPE;PRODUCT_ID;ADS_TYPE_ID;page_id
+1;TEG_WEB_100;https://topica.edu.vn/;null;VIEW;1;4;
+2;TEG_WEB_100;https://topica.vn/;null;VIEW;1;4;
+3;TEG_WEB_101;https://topica.asia/;null;VIEW;1;4;
+4;NVN_WEB_100;http://nativevip.topica.vn/;null;VIEW;4;4;
+5;NVN_WEB_101;http://native.edu.vn/;null;VIEW;4;4;
+6;NVN_LP_100;nativevip1.topicanative.edu.vn;null;C2;4;1;
+7;NVN_LP_101;m.nativepremier1.topicanative.edu.vn;null;C2;4;1;
+8;NVN_LP_102;aitest.topicanative.edu.vn;null;C2;4;1;
+9;NVN_LP_103;noitienganh.topicanative.edu.vn;null;C2;4;1;
+10;NVN_LP_104;autotest.topicanative.edu.vn;null;C2;4;1;
+11;NVN_LP_105;speak.topicanative.edu.vn;null;C2;4;1;
+12;NVN_LP_106;b2bsale.topicanative.edu.vn;null;C2;4;1;
+13;NVN_LP_107;onetalk.topicanative.edu.vn;null;C2;4;1;
+14;NVN_LP_108;booking.topicanative.edu.vn;null;C2;4;1;
+15;NVN_LP_109;br16.topicanative.edu.vn;null;C2;4;1;
+16;NVN_LP_110;br1.topicanative.edu.vn;92746;C2;4;1;
+17;NVN_LP_111;br2.topicanative.edu.vn;7719;C2;4;1;
+18;NVN_LP_112;tienganhvip.topicanative.edu.vn;null;C2;4;1;
+19;NVN_LP_113;br4.topicanative.edu.vn;4;C2;4;1;
+20;NVN_LP_114;br.topicanative.edu.vn;null;C2;4;1;
+21;NVN_LP_115;www.english.topicanative.edu.vn;null;C2;4;1;
+22;NVN_LP_116;lms.giang.topicanative.edu.vn;null;C2;4;1;
+23;NVN_LP_117;cashierdev.topicanative.edu.vn;null;C2;4;1;
+24;NVN_LP_118;m.topicanative.edu.vn;null;C2;4;1;
+25;NVN_LP_119;premium.topicanative.edu.vn;null;C2;4;1;
+26;NVN_LP_120;teachercontest.topicanative.edu.vn;null;C2;4;1;
+27;NVN_LP_121;tienganhdoanhnghiep.topicanative.edu.vn;null;C2;4;1;
+28;NVN_LP_122;dangky.topicanative.edu.vn;null;C2;4;1;
+29;NVN_LP_123;dangkyvip.topicanative.edu.vn;null;C2;4;1;
+30;NVN_LP_124;english.autosale.topicanative.edu.vn;null;C2;4;1;
+31;NVN_LP_125;english.topicanative.edu.vn;null;C2;4;1;
+32;NVN_LP_126;ga.topicanative.edu.vn;null;C2;4;1;
+33;NVN_LP_127;giahan.topicanative.edu.vn;null;C2;4;1;
+34;NVN_LP_128;m1.topicanative.edu.vn;null;C2;4;1;
+35;NVN_LP_129;m3.topicanative.edu.vn;null;C2;4;1;
+36;NVN_LP_130;m.ga.topicanative.edu.vn;null;C2;4;1;
+37;NVN_LP_131;m.nativevip2.topicanative.edu.vn;null;C2;4;1;
+38;NVN_LP_132;hn21.topicanative.edu.vn;null;C2;4;1;
+39;NVN_LP_133;m.tienganhvip.topicanative.edu.vn;null;C2;4;1;
+40;NVN_LP_134;nativeplus.topicanative.edu.vn;null;C2;4;1;
+41;NVN_LP_135;nativevip2.topicanative.edu.vn;183359;C2;4;1;
+42;NVN_LP_136;nativevip.topicanative.edu.vn;null;C2;4;1;
+43;NVN_LP_137;news.topicanative.edu.vn;null;C2;4;1;
+44;NVN_LP_138;hn4vcr.topicanative.edu.vn;null;C2;4;1;
+45;NVN_LP_139;soidongtienganh.topicanative.edu.vn;null;C2;4;1;
+46;NVN_LP_140;talk.topicanative.edu.vn;null;C2;4;1;
+47;NVN_LP_141;tienganh.topicanative.edu.vn;null;C2;4;1;
+48;NVN_LP_142;tompayment.topicanative.edu.vn;null;C2;4;1;
+49;NVN_LP_143;www.talk.topicanative.edu.vn;null;C2;4;1;
+50;NVN_LP_144;www.speak.topicanative.edu.vn;null;C2;4;1;
+51;NVN_LP_145;www.topicanative.edu.vn;null;C2;4;1;
+52;NVN_LP_146;advantage.topicanative.edu.vn;null;C2;4;1;
+53;NVN_LP_147;native.topica.vn;null;C2;4;1;
+54;NVN_LP_148;test.lms.ivy.topica.vn;null;C2;4;1;
+55;NVN_LP_149;m.marketing.ivy.topica.vn;null;C2;4;1;
+56;NVN_LP_150;marketing.ivy.topica.vn;null;C2;4;1;
+57;NVN_LP_151;native.topica.edu.vn;null;C2;4;1;
+58;NVN_LP_152;tienganhtop.topica.edu.vn;null;C2;4;1;
+59;NVN_LP_153;nativevip.topica.edu.vn;null;C2;4;1;
+60;NVN_LP_154;nativevip1.topica.edu.vn;183;C2;4;1;
+61;NVN_LP_155;nativevip2.topica.edu.vn;183359;C2;4;1;
+62;NVN_LP_156;ivyenglish.topica.edu.vn;null;C2;4;1;
+63;NVN_LP_157;cunhan.topmito.edu.vn;null;C2;4;1;
+64;NVN_LP_158;cunhan1.topmito.edu.vn;null;C2;4;1;
+65;NVN_LP_159;googleglass.topmito.edu.vn;null;C2;4;1;
+66;NVN_LP_160;hoctienganh.topmito.edu.vn;null;C2;4;1;
+67;NVN_LP_161;hoctienganhgiaotiep.topmito.edu.vn;null;C2;4;1;
+68;NVN_LP_162;landingpage.topmito.edu.vn;null;C2;4;1;
+69;NVN_LP_163;luyennoitienganh.topmito.edu.vn;null;C2;4;1;
+70;NVN_LP_164;m.hoctienganhgiaotiep.topmito.edu.vn;null;C2;4;1;
+71;NVN_LP_165;m.tienganhchonguoidilam.topmito.edu.vn;null;C2;4;1;
+72;NVN_LP_166;m.tienganhgiaotiep.topmito.edu.vn;null;C2;4;1;
+73;NVN_LP_167;m.tienganhonline.topmito.edu.vn;null;C2;4;1;
+74;NVN_LP_168;m.tienganhtructuyen.topmito.edu.vn;null;C2;4;1;
+75;NVN_LP_169;m1.tienganhtructuyen.topmito.edu.vn;null;C2;4;1;
+76;NVN_LP_170;m2.tienganhgiaotiep.topmito.edu.vn;null;C2;4;1;
+77;NVN_LP_171;m2.tienganhtructuyen.topmito.edu.vn;null;C2;4;1;
+78;NVN_LP_172;m3.tienganhtructuyen.topmito.edu.vn;null;C2;4;1;
+79;NVN_LP_173;nghetienganh.topmito.edu.vn;null;C2;4;1;
+80;NVN_LP_174;noitienganh.topmito.edu.vn;null;C2;4;1;
+81;NVN_LP_175;serverda.topmito.edu.vn;null;C2;4;1;
+82;NVN_LP_176;tienganhgiaotiep.topmito.edu.vn;null;C2;4;1;
+83;NVN_LP_177;tienganhonline.topmito.edu.vn;null;C2;4;1;
+84;NVN_LP_178;tienganhthanhcong.topmito.edu.vn;null;C2;4;1;
+85;NVN_LP_179;tienganhthanhcong2.topmito.edu.vn;null;C2;4;1;
+86;NVN_LP_180;tienganhtructuyen.topmito.edu.vn;null;C2;4;1;
+87;NVN_LP_181;tienganhvanphong.topmito.edu.vn;null;C2;4;1;
+88;NVN_LP_182;http://tvtsnative.topica.edu.vn/;null;C2;4;1;
+89;NVN_LP_183;http://hr.topica.edu.vn/;null;C2;4;1;
+90;NVN_LP_184;http://tvtsnative.topica.edu.vn/;null;C2;4;1;
+91;NVN_LP_185;http://marketing.native.topica.edu.vn/;null;C2;4;1;
+92;NVN_LP_186;anhngutructuyen.native.edu.vn;963831;C2;4;1;
+93;UVN_WEB_101;http://www.neu-edutop.edu.vn/;null;VIEW;3;4;
+94;UVN_WEB_102;http://hou.topica.edu.vn/;null;VIEW;3;4;
+95;UVN_WEB_103;http://tvu.topica.edu.vn/;null;VIEW;3;4;
+96;UVN_WEB_104;http://tnu.topica.edu.vn/;null;VIEW;3;4;
+97;UVN_WEB_105;http://vinhuni.topica.edu.vn/;null;VIEW;3;4;
+98;UVN_LP_100;tuyensinh.topica.vn;null;C2;3;1;
+99;UVN_LP_101;testmysql.topica.vn;null;C2;3;1;
+100;UVN_LP_102;uni.topica.vn;null;C2;3;1;
+101;UVN_LP_103;m1.uni.topica.vn;null;C2;3;1;
+102;UVN_LP_104;m2.uni.topica.vn;null;C2;3;1;
+103;UVN_LP_105;m3.uni.topica.vn;null;C2;3;1;
+104;UVN_LP_106;uni1.topica.vn;null;C2;3;1;
+105;UVN_LP_107;uni3.topica.vn;null;C2;3;1;
+106;UVN_LP_108;uni4.topica.vn;null;C2;3;1;
+107;UVN_LP_109;gdnuni.topica.vn;null;C2;3;1;
+108;UVN_LP_110;tuyensinh.topica.edu.vn;null;C2;3;1;
+109;UVN_LP_111;hou.tuyensinh.topica.edu.vn;null;C2;3;1;
+110;UVN_LP_112;tvu.tuyensinh.topica.edu.vn;null;C2;3;1;
+111;UVN_LP_113;tnu.tuyensinh.topica.edu.vn;null;C2;3;1;
+112;UVN_LP_114;it.tuyensinh.topica.edu.vn;null;C2;3;1;
+113;UVN_LP_115;ba.tuyensinh.topica.edu.vn;null;C2;3;1;
+114;UVN_LP_116;fa.tuyensinh.topica.edu.vn;null;C2;3;1;
+115;UVN_LP_117;fb.tuyensinh.topica.edu.vn;null;C2;3;1;
+116;UVN_LP_118;law.tuyensinh.topica.edu.vn;null;C2;3;1;
+117;UVN_LP_119;luat.tuyensinh.topica.edu.vn;null;C2;3;1;
+118;UVN_LP_120;hanu.tuyensinh.topica.edu.vn;null;C2;3;1;
+119;UVN_LP_121;uni.topica.edu.vn;null;C2;3;1;
+120;UVN_LP_122;tuyensinh.uni.topica.edu.vn;null;C2;3;1;
+121;UVN_LP_123;hocbonguni.topica.edu.vn;null;C2;3;1;
+122;UVN_LP_124;daihoctructuyen.topica.edu.vn;null;C2;3;1;
+123;UVN_LP_125;tuvanuni.topica.edu.vn;null;C2;3;1;
+124;UVN_LP_126;galash.topica.edu.vn;null;C2;3;1;
+125;UVN_LP_127;http://gvdn.topica.edu.vn/;null;C2;3;1;
+126;UVN_LP_128;http://tvts.topica.vn/;null;C2;3;1;
+127;UVN_LP_129;http://marketing.truyenthong.topica.edu.vn/;null;C2;3;1;
+128;UVN_LP_130;http://marketing.uni.topica.edu.vn/;null;C2;3;1;
+129;UVN_LP_131;http://uni.topica.vn/qtkd-h4/;null;C2;3;1;
+130;UVN_LP_132;http://uni.topica.vn/d-v1-luat/;null;C2;3;1;
+131;UVN_LP_133;http://uni.topica.vn/ketoan;null;C2;3;1;
+132;UVN_LP_134;http://careers.uni.topica.edu.vn/mkt/;null;C2;3;1;
+133;UVN_LP_135;http://appmob.uni.topica.edu.vn/tvts-uni;null;C2;3;1;
+134;FISEVN_LP_100;http://fise.topica.asia/v2/?;144386;C2;2;1;
+135;FISEVN_LP_101;http://fise.topica.asia/mkt/;14367;C2;2;1;
+136;FISEVN_LP_102;http://fise.topica.asia/cskhqt/;28561;C2;2;1;
+137;FISEVN_LP_103;http://fise.topica.asia/vhhtqt/;202;C2;2;1;
+138;FISEVN_LP_104;http://fise.topica.asia/tcqt/;148;C2;2;1;
+139;FISEVN_LP_105;http://fise.topica.asia/m.mkt.v3/;97071;C2;2;1;
+140;22CEOVN_LP_100;22ceo.topica.vn;null;C2;2;1;
+141;22CEOVN_LP_101;22ceoprogram.topica.asia;null;C2;2;1;
+142;22CEOVN_LP_102;careers.topica.edu.vn;null;C2;2;1;
+143;22CEOVN_LP_103;22ceo.topica.asia;null;C2;2;1;
+144;12CFOVN_LP_100;http://12cfo.topica.edu.vn/;null;C2;2;1;
+145;EVN_WEB_100;https://edumall.vn/;null;VIEW;5;4;
+146;EVN_LP_100;chinhphucphotoshopchuyensau1.edumall.vn;null;C2;5;1;
+147;EVN_LP_101;chinhphucphotoshopchuyensau8.edumall.vn;null;C2;5;1;
+148;EVN_LP_102;http://giongnoiquyenru03b.edumall.vn/;5393;C2;5;1;
+149;EVN_LP_103;chinhphucphotoshopchuyensau1a.edumall.vn;null;C2;5;1;
+150;EVN_LP_104;http://hocphotoshoponline02.edumall.vn/;1456;C2;5;1;
+151;EVN_LP_105;http://lamwebsieutoc8.edumall.vn;null;C2;5;1;
+152;EVN_LP_106;http://excelketoan01.edumall.vn/;6116;C2;5;1;
+153;EVN_LP_107;http://thanhthaovbaexcel01.edumall.vn/;3918;C2;5;1;
+154;EVN_LP_108;http://thanhthaoexcel01.edumall.vn/;null;C2;5;1;
+155;EVN_LP_109;http://thanhthaoexceltrong3h.edumall.vn/;null;C2;5;1;
+156;EVN_LP_110;http://phuongphaponline.edumall.vn/;null;C2;5;1;
+157;EVN_LP_111;laptrinhdidong05.edumall.vn;null;C2;5;1;
+158;EVN_LP_112;laptrinhdidong02.edumall.vn;null;C2;5;1;
+159;EVN_LP_113;laptrinhdidong06.edumall.vn;1488;C2;5;1;
+160;EVN_LP_114;http://lamchuexcel8.edumall.vn/;12658;C2;5;1;
+161;EVN_LP_115;http://lamchuexcel20.edumall.vn/;null;C2;5;1;
+162;EVN_LP_116;http://tuyetdinhexcel5.edumall.vn/;4768;C2;5;1;
+163;EVN_LP_117;http://hocdankhongkho09.edumall.vn/;5273;C2;5;1;
+164;EVN_LP_118;http://hocdankhongkho1.edumall.vn/;null;C2;5;1;
+165;EVN_LP_119;http://hocdankhongkho06.edumall.vn/;null;C2;5;1;
+166;EVN_LP_120;http://ketoanexcel.edumall.vn/;15737;C2;5;1;
+167;EVN_LP_121;http://excelungdungketoan8.edumall.vn/;39675;C2;5;1;
+168;EVN_LP_122;http://excelungdung19.edumall.vn/;1303;C2;5;1;
+169;EVN_LP_123;http://hocvectorchuyennghiep07.edumall.vn;2559;C2;5;1;
+170;EVN_LP_124;http://adobeillustrator.edumall.vn/;2;C2;5;1;
+171;EVN_LP_125;http://chinhphucdinhcaoai.edumall.vn;5167;C2;5;1;
+172;EVN_LP_126;http://excelungdung5.edumall.vn/;26198;C2;5;1;
+173;EVN_LP_127;http://hocyogatainha.edumall.vn/;null;C2;5;1;
+174;EVN_LP_128;http://hocyogatainha1.edumall.vn/;null;C2;5;1;
+175;EVN_LP_129;http://hocyogatainha3.edumall.vn/;null;C2;5;1;
+176;EVN_LP_130;http://hocyogatainha4.edumall.vn/;null;C2;5;1;
+177;EVN_LP_131;http://hocyogatainha5.edumall.vn/;null;C2;5;1;
+178;EVN_LP_132;http://hocyogatainha6.edumall.vn/;0;C2;5;1;
+179;EVN_LP_133;http://hocyogatainha8.edumall.vn/;null;C2;5;1;
+180;EVN_LP_134;http://hocyogatainha9.edumall.vn;0;C2;5;1;
+181;EVN_LP_135;http://tienganhgiaotiepcongso2.edumall.vn/;null;C2;5;1;
+182;EVN_LP_136;http://chuyengiaexcel100.edumall.vn/;null;C2;5;1;
+183;EVN_LP_137;http://excelbaocao.edumall.vn/;null;C2;5;1;
+184;EVN_LP_138;http://excelbaocao07.edumall.vn/;null;C2;5;1;
+185;EVN_LP_139;http://hocvectorchuyennghiep.edumall.vn/;null;C2;5;1;
+186;EVN_LP_140;http://nhiepanhchomoinguoi3.edumall.vn/;23117;C2;5;1;
+187;EVN_LP_141;http://nhiepanhchomoinguoi2.edumall.vn/;null;C2;5;1;
+188;EVN_LP_142;http://kynangbanhangchuyennghiep.edumall.vn/;null;C2;5;1;
+189;EVN_LP_143;http://tuxemtuvi01.edumall.vn/;null;C2;5;1;
+190;EVN_LP_144;http://toeicforbeginner02.edumall.vn/;null;C2;5;1;
+191;EVN_LP_145;http://yogagiudanggiamcan.edumall.vn/;null;C2;5;1;
+192;EVN_LP_146;http://kinhdoanhfacebook.edumall.vn/;null;C2;5;1;
+193;EVN_LP_147;facebookmarketingchuyennghiep.edumall.vn;null;C2;5;1;
+194;EVN_LP_148;http://bartender01.edumall.vn/;null;C2;5;1;
+195;EVN_LP_149;http://yogagiudanggiamcan02.edumall.vn/;null;C2;5;1;
+196;EVN_LP_150;http://tuxemtuvi.edumall.vn/;null;C2;5;1;
+197;EVN_LP_151;http://kinhdoanhtrenfacebook.edumall.vn/;29788;C2;5;1;
+198;EVN_LP_152;http://kinhdoanhfacebook.edumall.vn/;null;C2;5;1;
+199;EVN_LP_153;http://dotphakinhdoanhfacebook2.edumall.vn/;null;C2;5;1;
+200;EVN_LP_154;http://nhiepanhchomoinguoi.edumall.vn/;null;C2;5;1;
+201;EVN_LP_155;http://aothuatcungj.edumall.vn/;null;C2;5;1;
+202;EVN_LP_156;http://aothuatcungj02.edumall.vn/;null;C2;5;1;
+203;EVN_LP_157;hocaothuatduongpho.edumall.vn;5509;C2;5;1;
+204;EVN_LP_158;http://giaoducsom.edumall.vn/;5176;C2;5;1;
+205;EVN_LP_159;http://lapkehoachkinhdoanh1.edumall.vn/;1772;C2;5;1;
+206;EVN_LP_160;3dsmaxonline.edumall.vn;1649;C2;5;1;
+207;EVN_LP_161;hoc3dsmaxonline.edumall.vn;null;C2;5;1;
+208;EVN_LP_162;http://facebookchuyensau08.edumall.vn/;60217;C2;5;1;
+209;EVN_LP_163;http://facebookchuyensau01.edumall.vn/;null;C2;5;1;
+210;EVN_LP_164;http://bartender02.edumall.vn/;null;C2;5;1;
+211;EVN_LP_165;phongthuy01.edumall.vn;18;C2;5;1;
+212;EVN_LP_166;http://toeiccaptoc.edumall.vn/;3060;C2;5;1;
+213;EVN_LP_167;mindmap.edumall.vn;12777;C2;5;1;
+214;EVN_LP_168;http://hoclambanhchuyennghiep.edumall.vn;2964;C2;5;1;
+215;EVN_LP_169;http://excelungdung.edumall.vn/;9622;C2;5;1;
+216;EVN_LP_170;http://luyenthiielts01.edumall.vn/;6605;C2;5;1;
+217;EVN_LP_171;http://ieltsvietcoban01.edumall.vn/;null;C2;5;1;
+218;EVN_LP_172;http://exceldinhcao09.edumall.vn/;12469;C2;5;1;
+219;EVN_LP_173;http://exceldinhcao07.edumall.vn/;4109;C2;5;1;
+220;EVN_LP_174;http://khoinghiepduoi50trieu.edumall.vn/;null;C2;5;1;
+221;EVN_LP_175;http://pianobeginner01.edumall.vn/;8197;C2;5;1;
+222;EVN_LP_176;http://taohinh3dsmax8gio.edumall.vn/;null;C2;5;1;
+223;EVN_LP_177;http://thietke3d.edumall.vn/;null;C2;5;1;
+224;EVN_LP_178;http://chuamatgoctienganh.edumall.vn;212;C2;5;1;
+225;EVN_LP_179;khoinghiepduoi50trieu01.edumall.vn;null;C2;5;1;
+226;EVN_LP_180;http://fitnesscaithienvocdang.edumall.vn/;null;C2;5;1;
+227;EVN_LP_181;http://hocpianodedang.edumall.vn/;null;C2;5;1;
+228;EVN_LP_182;http://yogatrehoakhuonmat03.edumall.vn/;null;C2;5;1;
+229;EVN_LP_183;http://quantricamxuc.edumall.vn/;15287;C2;5;1;
+230;EVN_LP_184;http://banhangtrenzalo.edumall.vn;null;C2;5;1;
+231;EVN_LP_185;http://tronbotienganhgiaotiep.edumall.vn/;2892;C2;5;1;
+232;EVN_LP_186;hocpianocanban.edumall.vn;8138;C2;5;1;
+233;EVN_LP_187;http://pianocoban03.edumall.vn/;null;C2;5;1;
+234;EVN_LP_188;http://hanhtrinhnuoicon01.edumall.com;null;C2;5;1;
+235;EVN_LP_189;link;null;C2;5;1;
+236;EVN_LP_190;http://phonghuytrongdoisong19.edumall.vn;null;C2;5;1;
+237;EVN_LP_191;http://tienghansocap01.edumall.vn/;null;C2;5;1;
+238;EVN_LP_192;http://giaotieptiengtrungcoban.edumall.vn;null;C2;5;1;
+239;EVN_LP_193;tuhoclaptrinhandroid.edumall.vn;null;C2;5;1;
+240;EVN_LP_194;laptrinhandroid06.edumall.vn;1488;C2;5;1;
+241;EVN_LP_195;http://kyxaodohoa01.edumall.vn/;15868;C2;5;1;
+242;EVN_LP_196;http://hoccoreldrawsieutoc.edumall.vn/;null;C2;5;1;
+243;EVN_LP_197;http://thienkhicong02.edumall.vn/;1852;C2;5;1;
+244;EVN_LP_198;http://thienkhicong04.edumall.vn/;706;C2;5;1;
+245;EVN_LP_199;http://pianocoban01.edumall.vn/;null;C2;5;1;
+246;EVN_LP_200;http://phongkinhdoanhtudong01.edumall.vn/;null;C2;5;1;
+247;EVN_LP_201;http://thienkhicong01.edumall.vn/;1436;C2;5;1;
+248;EVN_LP_202;http://hocadobephotoshop.edumall.vn;null;C2;5;1;
+249;EVN_LP_203;taohinhrevit01.edumall.vn;null;C2;5;1;
+250;EVN_LP_204;http://marketingfandb01.edumall.vn/;8339;C2;5;1;
+251;EVN_LP_205;xaydungnoidungfanpagetuadenz.edumall.vn;531;C2;5;1;
+252;EVN_LP_206;http://excelcongso9.edumall.vn/;null;C2;5;1;
+253;EVN_LP_207;http://excelcongso.edumall.vn/;null;C2;5;1;
+254;EVN_LP_208;http://excelcongso5.edumall.vn/;null;C2;5;1;
+255;EVN_LP_209;http://phaplycobanchokhoinghiep.edumall.vn/;null;C2;5;1;
+256;EVN_LP_210;http://yogatrehoacothe02.edumall.vn/;8550;C2;5;1;
+257;EVN_LP_211;http://yogachomebau2.edumall.vn;9970;C2;5;1;
+258;EVN_LP_212;tronbokynangtienganh.edumall.vn;3931;C2;5;1;
+259;EVN_LP_213;http://thienungdung.edumall.vn/;null;C2;5;1;
+260;EVN_LP_214;http://tinhocvanphong.edumall.vn/;null;C2;5;1;
+261;EVN_LP_215;chinhphuctoeicreading01.edumall.vn;null;C2;5;1;
+262;EVN_LP_216;http://bikipluyenthitoeic.edumall.vn;1560;C2;5;1;
+263;EVN_LP_217;http://hocnhaychachacha.edumall.vn/;null;C2;5;1;
+264;EVN_LP_218;http://yogasinhly.edumall.vn/;null;C2;5;1;
+265;EVN_LP_219;http://thanhthaorevitvalumion01.edumall.vn/;null;C2;5;1;
+266;EVN_LP_220;http://nhiepanhaz.edumall.vn;3621;C2;5;1;
+267;EVN_LP_221;dinhcaothietkenoithat02.edumall.vn;null;C2;5;1;
+268;EVN_LP_222;http://chinhphuctiengtrung16h.edumall.vn/;4968;C2;5;1;
+269;EVN_LP_223;http://yogachovedep.edumall.vn/;null;C2;5;1;
+270;EVN_LP_224;http://hoctiengtrung.edumall.vn/;null;C2;5;1;
+271;EVN_LP_225;http://buocnhayquyenru.edumall.vn/;12134;C2;5;1;
+272;EVN_LP_226;lamvideochuyennghiep01.edumall.vn;null;C2;5;1;
+273;EVN_LP_227;http://vietbaiprchuyennghiep.edumall.vn/;20005;C2;5;1;
+274;EVN_LP_228;http://phuongphaphoctienganhdinhcao.edumall.vn/;null;C2;5;1;
+275;EVN_LP_229;toeicdinhcao01.edumall.vn;3038;C2;5;1;
+276;EVN_LP_230;hocsketchup.edumall.vn;null;C2;5;1;
+277;EVN_LP_231;chinhphucnetve01.edumall.vn;null;C2;5;1;
+278;EVN_LP_232;http://yogakhoedep.edumall.vn/;8856;C2;5;1;
+279;EVN_LP_233;http://combovanphong.edumall.vn/;402;C2;5;1;
+280;EVN_LP_234;http://powerpointchuyennghiep.edumall.vn/;null;C2;5;1;
+281;EVN_LP_235;hociot.edumall.vn;null;C2;5;1;
+282;EVN_LP_236;hoclaptrinhwebaz.edumall.vn;null;C2;5;1;
+283;EVN_LP_237;http://5phutkhoedephapdan.edumall.vn/;null;C2;5;1;
+284;EVN_LP_238;dinhcaothietkedohoa01.edumall.vn;12110;C2;5;1;
+285;EVN_LP_239;http://captocchinhphucielts.edumall.vn/;null;C2;5;1;
+286;EVN_LP_240;http://chinhphucieltscaptoc01.edumall.vn/;13159;C2;5;1;
+287;EVN_LP_241;http://lammonggel01.edumall.vn/;10971;C2;5;1;
+288;EVN_LP_242;http://huanluyencho01.edumall.vn/;null;C2;5;1;
+289;EVN_LP_243;excelketoantonghop07.edumall.vn;null;C2;5;1;
+290;EVN_LP_244;excelketoantonghop09.edumall.vn;8093;C2;5;1;
+291;EVN_LP_245;http://yogatrilieuphuchoi.edumall.vn/;9880;C2;5;1;
+292;EVN_LP_246;http://writingtask2.edumall.vn/;null;C2;5;1;
+293;EVN_LP_247;ketoantonghopexcel.edumall.vn;17594;C2;5;1;
+294;EVN_LP_248;dinhcaodohoachuyendong01.edumall.vn;null;C2;5;1;
+295;EVN_LP_249;http://caothutoeic.edumall.vn;4885;C2;5;1;
+296;EVN_LP_250;http://kinhdoanhthoitrang01.edumall.vn;8566;C2;5;1;
+297;EVN_LP_251;http://phuchoithiluc01.edumall.vn/;null;C2;5;1;
+298;EVN_LP_252;http://guitardienbasic.edumall.vn/;null;C2;5;1;
+299;EVN_LP_253;http://yogabanron.edumall.vn/;null;C2;5;1;
+300;EVN_LP_254;http://tienganhgiaotiepnentang.edumall.vn;931;C2;5;1;
+301;EVN_LP_255;luyengiaotieptienganh.edumall.vn;4558;C2;5;1;
+302;EVN_LP_256;hoclamtrangsucphukien.edumall.vn;null;C2;5;1;
+303;EVN_LP_257;http://yogachonam.edumall.vn/;7305;C2;5;1;
+304;EVN_LP_258;http://bokinhsau30ngay.edumall.vn/;null;C2;5;1;
+305;EVN_LP_259;http://luyenthihskcaptoc.edumall.vn/;null;C2;5;1;
+306;EVN_LP_260;http://tumassagetainha.edumall.vn/;null;C2;5;1;
+307;EVN_LP_261;http://yogacanbangnoitietto.edumall.vn/;null;C2;5;1;
+308;EVN_LP_262;http://instagramvapinterest.edumall.vn/	;866;C2;5;1;
+309;EVN_LP_263;tuvungieltscaptoc.edumall.vn;null;C2;5;1;
+310;EVN_LP_264;http://tronboyogachogiadinh.edumall.vn/;null;C2;5;1;
+311;EVN_LP_265;ketoandoanhnghiep.edumall.vn;1748;C2;5;1;
+312;EVN_LP_266;http://hocketoanthue01.edumall.vn/;2643;C2;5;1;
+313;EVN_LP_267;lamchuaccess09.edumall.vn;1003;C2;5;1;
+314;EVN_LP_268;shuffledance.edumall.vn;96724;C2;5;1;
+315;EVN_LP_269;http://thanhthaoexcel09.edumall.vn/;null;C2;5;1;
+316;EVN_LP_270;http://yogacanbangnoitiet.edumall.vn/;688;C2;5;1;
+317;EVN_LP_271;http://nentangtienganh01.edumall.vn/;16964;C2;5;1;
+318;EVN_LP_272;http://ebaydropshipping1.edumall.vn/;null;C2;5;1;
+319;EVN_LP_273;http://thanhthaophotoshoplightroom.edumall.vn/;409;C2;5;1;
+320;EVN_LP_274;http://tiengtrungkinhdoanh.edumall.vn;null;C2;5;1;
+321;EVN_LP_275;http://tuthuamvamixnhac.edumall.vn/;1163;C2;5;1;
+322;EVN_LP_276;http://dathangtaobao.edumall.vn/;null;C2;5;1;
+323;EVN_LP_277;chuyengiahackervabaomat.edumall.vn;2434;C2;5;1;
+324;EVN_LP_278;http://dathangtaobao.edumall.vn/;null;C2;5;1;
+325;EVN_LP_279;http://thietkewebbangphotoshop01.edumall.vn/;null;C2;5;1;
+326;EVN_LP_280;http://thietkequangcao01.edumall.vn/;null;C2;5;1;
+327;EVN_LP_281;http://tronbotienganhdilam.edumall.vn/;14065;C2;5;1;
+328;EVN_LP_282;http://chinhphuchskcaptoc.edumall.vn;null;C2;5;1;
+329;EVN_LP_283;http://lamkem01.edumall.vn/;null;C2;5;1;
+330;EVN_LP_284;http://lamkemtainha.edumall.vn/;5407;C2;5;1;
+331;EVN_LP_285;http://nhapmontarot.edumall.vn/;null;C2;5;1;
+332;EVN_LP_286;http://chinhphucketoan01.edumall.vn/;1784;C2;5;1;
+333;EVN_LP_287;http://thuchanhketoantrenmisa.edumall.vn/;9137;C2;5;1;
+334;EVN_LP_288;namchienluocbanhangthongminh.edumall.vn;206;C2;5;1;
+335;EVN_LP_289;lamvideobangdienthoai.edumall.vn;2765;C2;5;1;
+336;EVN_LP_290;http://tronbobanhang.edumall.vn/;342;C2;5;1;
+337;EVN_LP_291;nangcaonangsuat03.edumall.vn;852;C2;5;1;
+338;EVN_LP_292;http://phongthuynangcao.edumall.vn/;1685;C2;5;1;
+339;EVN_LP_293;http://tuhoctienganh.edumall.vn/;172;C2;5;1;
+340;EVN_LP_294;http://excelungdung9.edumall.vn/;3653;C2;5;1;
+341;EVN_LP_295;dinhcaothietkenoithat01.edumall.vn;12780;C2;5;1;
+342;IVYVN_WEB_100;ivynative.com;null;VIEW;8;4;
+343;IVYVN_LP_100;http://tienganhdoanhnhan.ivynative.com/;150000;C2;8;1;
+344;IVYVN_LP_101;tienganhcaocap.ivynative.com;1000;C2;8;1;
+345;IVYVN_LP_102;http://topicaivy.native.vn/;0;C2;8;1;
+346;IVYVN_LP_103;http://ivyenglish.topica.edu.vn/;0;C2;8;1;
+347;IVYVN_LP_104;http://tienganhlanhdao.ivynative.com;0;C2;8;1;
+348;IVYVN_LP_105;http://tienganhcaocap.ivynative.com/tieng-anh-doanh-nhan.php;0;C2;8;1;
+349;IVYVN_LP_106;http://ivy.topica.asia/landingpage3;0;C2;8;1;
+350;TFI_WEB_100;http://ivy.topica.asia/tfi/;null;VIEW;6;4;
+351;TFI_LP_100;http://tfiapply.topica.asia/;null;C2;6;1;
+352;AIVN_FB_100;Topica AI EdTech Lab;800;null;7;3;1485752728384460
+353;EVN_FB_100;1 Phút Thay Đổi Tư Duy Để Thành Công;200000;null;5;3;1038537596197340
+354;EVN_FB_101;Bí Quyết Phát Triển Bản Thân;30000;null;5;3;1811480579079470
+355;EVN_FB_102;Bí Quyết Thành công;293000;null;5;3;
+356;EVN_FB_103;Cao thủ đàn hát;101000;null;5;3;638779952931647
+357;EVN_FB_104;Cộng đồng designer;346000;null;5;3;1041710229203470
+358;EVN_FB_105;Cộng Đồng Marketing;20000;null;5;3;194761717624419
+359;EVN_FB_106;Dạy con đúng cách;112000;null;5;3;528055814042582
+360;EVN_FB_107;E2learn.vn;20000;null;5;3;589542831195267
+361;EVN_FB_108;Edumall.vn;47000;null;5;3;
+362;EVN_FB_109;Góc nhìn marketing;54000;null;5;3;568835566616333
+363;EVN_FB_110;Hội quán Designer;7000;null;5;3;344079222602623
+364;EVN_FB_111;Làm Web Thật Đơn Giản;102000;null;5;3;927224630665484
+365;EVN_FB_112;Lập trình di động;7000;null;5;3;196349327446985
+366;EVN_FB_113;Nghệ thuật giao tiếp;550000;null;5;3;1709538955946930
+367;EVN_FB_114;Nói với con;11000;null;5;3;784567725022568
+368;EVN_FB_115;Phong cách sống;183000;null;5;3;637724796292743
+369;EVN_FB_116;Phong thủy- vận mệnh;28000;null;5;3;719566231516178
+370;EVN_FB_117;Thách thức giàu có;7000;null;5;3;666175070207376
+371;EVN_FB_119;Từ mới mỗi ngày;41000;null;5;3;1786792831560990
+372;EVN_FB_120;Yêu Ca Hát;12000;null;5;3;317939641907475
+373;EVN_FB_121;Đẹp hơn mỗi ngày;7000;null;5;3;124865624638251
+374;EVN_FB_122;Thủ thuật Excel;617000;null;5;3;572176752944803
+375;EVN_FB_123;Tiếng Anh rất dễ dàng;360000;null;5;3;636512649799214
+376;NVN_FB_100;Đọc báo thay bạn;911000;null;4;3;400202166812077
+377;NVN_FB_101;English+ ;110;null;4;3;255693334808832
+378;NVN_FB_102;Highlight+;18000;null;4;3;
+379;NVN_FB_103;Topica Native - Luyện nói Tiếng Anh Online thỏa thích;727000;null;4;3;255610044616834
+380;NVN_FB_104;Topica Native VIP- Be Native, Be Global;14000;null;4;3;1077092202367130
+381;NVN_FB_105;Việt Nam says hello;38000;null;4;3;
+382;NVN_FB_106;Tin Giáo Dục;80;null;4;3;786763318130283
+383;NVN_FB_107;Tin hay mỗi ngày;553000;null;4;3;1543972522504650
+384;NVN_FB_108;Topica English;null;null;4;3;873347369397239
+385;NVN_FB_109;Topica Premium Carrier;null;null;4;3;1490627557660690
+386;TEG_FB_100;Topica Edtech Group;190000;null;1;3;394786430590494
+387;TEG_FB_101;Topica Edtech;11000;null;1;3;1112889808775320
+388;TEG_FB_102;TOPICA.asia;null;null;1;3;1717951841820810
+389;TEG_FB_103;Topica EdTech Asia Hackathon;2000;null;6;3;974820955937579
+390;TEG_FB_104;Topica Fouder Institute;5500;null;6;3;254466714568158
+391;12CFOVN_FB_100;12CFO TƯƠNG LAI;2000;null;2;3;1690204691246090
+392;18FVN_FB_100;18 Founders In Residence;8000;null;2;3;1713256242279420
+393;22CEOVN_FB_100;22 Future CEOs;null;null;2;3;1556657824631870
+394;22CEOVN_FB_101;22Ceo Tương lai Đông Nam Á;6000;null;2;3;1085571824836000
+395;FIDVN_FB_100;Future International Director 4.0;null;null;2;3;
+396;TD_FB_100;Ham học;5500;null;2;3;411212485620663
+397;TD_FB_101;Hành trình khởi nghiệp;38000;null;2;3;1747013658917410
+398;TD_FB_102;Máu làm giàu;195000;null;2;3;444996485645111
+399;TD_FB_103;Tin tức 24h;24000;null;2;3;1736682426653140
+400;TD_FB_104;Tuyển dụng Topica;80000;null;2;3;1526325860921800
+401;TD_FB_105;Việc làm giới trẻ;37000;null;2;3;1062606847106750
+402;UVN_FB_100;1000 Doanh Nhân;null;null;3;3;164518930246253
+403;UVN_FB_101;Chương trình Đại học cho người đi làm;85000;null;3;3;1537880433114280
+404;UVN_FB_102;E-learning Việt Nam;null;null;3;3;652110788273103
+405;UVN_FB_103;Học Đại học theo cách của bạn;null;null;3;3;405938522888540
+406;UVN_FB_104;Học Liên thông, Văn bằng 2 Đại học ở đâu?;null;null;3;3;
+407;UVN_FB_105;Học trực tuyến E-learning;null;null;3;3;
+408;UVN_FB_106;TOPICA 3 - Online Bachelor's Degree;null;null;3;3;131412680408
+409;UVN_FB_107;Tuyển sinh chương trình cử nhân trực tuyến;113000;null;3;3;494602303973448
+410;UVN_FB_108;Xu hướng giới trẻ;234000;null;3;3;314117198783400
+411;UVN_FB_109;Học Trực Tuyến - Elearning;null;null;3;3;420270728074571
+412;UVN_FB_110;Topica 3 - Cử Nhân Trực Tuyến, Uy Tín Quốc Tế;null;null;3;3;917681378300375
+413;UVN_FB_111;Topica3-TVTS;null;null;3;3;607373466093479

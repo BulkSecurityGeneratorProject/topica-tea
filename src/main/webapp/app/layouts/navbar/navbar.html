@@ -32,18 +32,24 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active">
-                                <a ui-sref="event" ng-click="vm.collapseNavbar()">
+                    	<li ui-sref-active="active" has-any-authority="ROLE_DIRECTOR,ROLE_COORDINATOR,ROLE_WRITER,ROLE_APPROVAL,ROLE_MANAGER">
+                                <a ui-sref="event-flow" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.event">Quản lý sự kiện</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active" has-authority="ROLE_WRITER">
+                        <li ui-sref-active="active" has-authority="ROLE_BOSS">
+                                <a ui-sref="event" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span>Sự kiện nóng</span>
+                                </a>
+                            </li>
+                        <!-- <li ui-sref-active="active" has-authority="ROLE_WRITER">
                                 <a ui-sref="article" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.article">Article</span>
                                 </a>
-                            </li>
+                            </li> -->
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
@@ -117,12 +123,12 @@
                                     <span data-translate="global.menu.entities.fanpage">Fanpage</span>
                                 </a>
                             </li> -->
-                        <li ui-sref-active="active">
+                        <!-- <li ui-sref-active="active">
                                 <a ui-sref="product-html-template" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span data-translate="global.menu.entities.productHtmlTemplate">Product Html Template</span>
                                 </a>
-						</li>
+						</li> -->
 					</ul>
 				</li>
                 <li ng-class="{active: vm.$state.includes('category')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>

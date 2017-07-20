@@ -32,7 +32,7 @@
             $scope.$emit('topicaEventAmplifyApp:eventUpdate', result);
 //            $uibModalInstance.close(result);
             vm.isSaving = false;
-            $state.go('event', null, { reload: 'event' });
+            $state.go('event-flow', null, { reload: 'event-flow' });
         }
 
         function onSaveError () {
